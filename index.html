@@ -61,10 +61,13 @@
     <!-- Estilo de la aplicación -->
     <link rel="stylesheet" type="text/css" href="src/stylesheets/root.css" media="screen">
     <link rel="stylesheet" type="text/css" href="src/stylesheets/mobile.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="src/stylesheets/errors.css" media="screen">
 
     <!-- Carga núcleo js -->
     <script src="src/core/config.js"></script>
     <script src="src/core/about.js"></script>
+    <script src="src/core/errors.js"></script>
+    <script src="src/core/date.js"></script>
     <script src="src/core/utils.js"></script>
 
     <!-- Carga elementos interfaz gráfica -->
@@ -77,6 +80,11 @@
 
 <body>
 <div id="root">
+    <div id="mainContent" class="fill"></div>
+    <div id="errorMsg" class="noselect">
+        <div id="errorMsgText"></div>
+    </div>
+    <div id="footer"></div>
 </div>
 <a href="#" class="back-to-top" id="scrolls"></a>
 <div id="preload_resources"></div>

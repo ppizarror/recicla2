@@ -7,33 +7,16 @@
  */
 
 // Código de errores
-
-/**
- * Establece los mensajes de error una vez cargado el idioma
- */
-function initErrors() {
-    var errid = Object.keys(errordb);
-    var i, j, lng;
-    for (i = 0; i < errid.length; i++) {
-        j = errid[i];
-        if (errordb[j].code > 1) {
-            lng = lang['errordb_{0}_msg'.format(j)];
-            if (lng == null) {
-                console.error(lang.error_errordb_langinit_msg.format(j));
-                break;
-            }
-            errordb[j].msg = lng;
-            lng = lang['errordb_{0}_moreinfo'.format(j)];
-            if (lng == null) {
-                console.error(lang.error_errordb_langinit_moreinfo.format(j));
-                break;
-            }
-            errordb[j].moreinfo = lng;
-            errordb[j].id = j;
-        }
+var errordb = {
+    "langNotExist": {
+        "code": 0,
+        "id": "langNotExist",
+        "moreinfo": "La configuración cfg_lang_ui es incorrecta, compruebe el archivo de configuraciones de la app",
+        "msg": "Configuración de idioma incorrecta"
     }
-}
+};
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Oculta mensajes de error
  */
@@ -65,18 +48,11 @@ function throwErrorIDException(errorid, exceptionmsg) {
     } catch (e) {
     } finally {
     }
-    var $tooltipTheme;
-    try {
-        $tooltipTheme = theme.tooltipTheme;
-    } catch (e) {
-        $tooltipTheme = 'tooltipster-borderless';
-    } finally {
-    }
     $errormsg.tooltipster({
         content: errorid.moreinfo + '.',
         maxWidth: $errormsg.width() * 0.8,
         side: 'bottom',
-        theme: $tooltipTheme
+        theme: cfg_tooltip_theme
     });
 
     // Muestra una notificación
@@ -84,7 +60,7 @@ function throwErrorIDException(errorid, exceptionmsg) {
         throwErrorNotification(errorid);
     }
     var resizeObject = function () {
-        $errormsg.css('top', (getElementHeight($(document)) - getElementHeight($('#header')) - getElementHeight($errormsg)) / 2 + 'px');
+        $errormsg.css('top', (getElementHeight($(document)) - getElementHeight($errormsg)) / 2 + 'px');
     };
     resizeObject();
     $(window).on('resize.errorPanel', resizeObject);
@@ -107,13 +83,12 @@ function throwErrorID(errorid) {
     throwErrorIDException(errorid, null);
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Escribe un error en toda la página
  * @param {object} errorid      Objeto de errordb
  */
 function throwFullErrorId(errorid) {
-    $('#header').css('display', 'none');
-    $('#menu').css('display', 'none');
     throwErrorID(errorid);
 }
 
@@ -140,9 +115,9 @@ function throwErrorNotification(errorid) {
         "timeOut": cfg_notification_timeout
     };
     toastr['error'](errorid.moreinfo + '.', errorid.msg);
-    loadHandler(false, '');
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Lanza una notificación de error más un mensaje en la página web
  * @param {object} errorid      Objeto de errordb
@@ -154,6 +129,7 @@ function throwErrorMessage(errorid) {
     }
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Lanza un mensaje de exepción
  * @param {object} exceptionmsg     Objeto de la exepción
@@ -178,11 +154,12 @@ function throwExceptionMessage(exceptionmsg) {
     };
     toastr['error'](exceptionmsg.message, 'Exception');
     if (cfg_verbose) {
-        consoleLogException(exceptionmsg);
+        consoleLogException(exceptionmsg, false);
     }
     loadHandler(false, '');
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Muestra una advertencia al usuario
  * @param {string} message      Mensaje de error

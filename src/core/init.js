@@ -6,6 +6,7 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
+// noinspection JSUnresolvedFunction
 /**
  * Inicia el programa
  */
@@ -15,10 +16,9 @@ $(document).ready(function () {
 
     // Establece el idioma
     if (langExists(cfg_lang_ui)) {
-        console.log($lang_db);
         lang = $lang_db[cfg_lang_ui];
     } else {
-
+        throwErrorID(errordb.langNotExist);
     }
 
     // Activa el botón back to top

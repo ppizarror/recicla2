@@ -85,6 +85,7 @@ function isFalseNotNull(obj) {
     return notNullUndf(obj) && !obj
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Retorna verdadero si el objeto es verdadero y no nulo
  * @param {object} obj      Objeto a comprobar
@@ -139,5 +140,66 @@ function getElementWidth(elem) {
     } catch (e) {
         return -1;
     } finally {
+    }
+}
+
+/**
+ * Muestra un mensaje de error en la consola
+ * @param {string} msg      Mensaje
+ * @param {boolean} w       Indica si se escribe el encabezado o no
+ */
+function consoleLogError(msg, w) {
+    var $m;
+    if (cfg_verbose) {
+        if (w) {
+            $m = 'ERROR: ';
+        } else {
+            $m = '';
+        }
+        console.error('{2}{1} [{0}]'.format(new Date().format('d/m/y H:i:s'), msg, $m));
+    }
+}
+
+/**
+ * Muestra un mensaje de advertencia en la consola
+ * @param {string} msg      Mensaje
+ * @param {boolean} w       Indica si se escribe el encabezado o no
+ */
+function consoleLogWarn(msg, w) {
+    var $m;
+    if (cfg_verbose) {
+        if (w) {
+            $m = 'ERROR: ';
+        } else {
+            $m = '';
+        }
+        console.warn('{2}{1} [{0}]'.format(new Date().format('d/m/y H:i:s'), msg, $m));
+    }
+}
+
+/**
+ * Escribe un error en consola
+ * @param exceptionmsg      Excepción
+ * @param {boolean} w       Indica si se escribe el encabezado o no
+ */
+function consoleLogException(exceptionmsg, w) {
+    var $m;
+    if (cfg_verbose) {
+        if (w) {
+            $m = 'EXCEPTION: ';
+        } else {
+            $m = '';
+        }
+        console.error('{2}{0} {1}'.format(exceptionmsg.message, exceptionmsg.stack, $m));
+    }
+}
+
+/**
+ * Muestra un mensaje de información en la consola
+ * @param {string} msg      Mensaje
+ */
+function consoleLogInfo(msg) {
+    if (cfg_verbose) {
+        console.log('[{0}] {1}'.format(new Date().format('d/m/y H:i:s'), msg));
     }
 }
