@@ -30,7 +30,7 @@ var aboutinfo = {
     "productname": "Recicla2",
     "version": {
         "date": "26/03/2018",
-        "v": "0.0.1"
+        "v": "0.0.2"
     }
 };
 
