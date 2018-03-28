@@ -6,7 +6,7 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-let $lang_es = {
+$lang_db.es = {
+    'name_lang': 'Español',
     'test': 'Mensaje de test'
 };
-$.extend($lang_db.es, $lang_es, true);

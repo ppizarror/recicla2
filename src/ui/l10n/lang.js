@@ -7,11 +7,7 @@
  */
 
 // Globales
-var $lang_db = {
-    'es': {
-        'name_lang': 'Español'
-    }
-};
+var $lang_db = {};
 var lang;
 
 // noinspection JSUnusedGlobalSymbols

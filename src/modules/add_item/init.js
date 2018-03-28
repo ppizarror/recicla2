@@ -9,6 +9,5 @@
 /**
  * Inicia el módulo al cargar la página
  */
-$(document).ready(function () {
-    consoleLogInfo('holi');
+$(document).ready(function () {l
 });
