@@ -1,0 +1,20 @@
+/*
+RECICLA2
+Archivo estilo página web en móviles para los elementos principales.
+
+Autor: Pablo Pizarro R. @ppizarror.com
+Copyright 2018, no copiar o distribuír sin permiso directo del autor.
+*/
+
+@media screen and (max-width: 600px) {
+    a.back-to-top {
+        border-radius: 30px;
+        height: 60px;
+        width: 60px;
+    }
+
+    #errorMsg {
+        font-size: 1.4rem;
+        padding: 5px !important;
+    }
+}
