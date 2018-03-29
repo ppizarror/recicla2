@@ -9,5 +9,5 @@
 /**
  * Inicia el módulo al cargar la página
  */
-$(document).ready(function () {l
+$(document).ready(function () {
 });
