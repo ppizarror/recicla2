@@ -1,5 +1,5 @@
 /*
-CPLANLIST-S4AV
+RECICLA2
 Estilo de errores.
 
 Autor: Pablo Pizarro R. @ppizarror.com
@@ -8,8 +8,10 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 
 #errorMsg {
     /* Actualizado en mobile.css*/
-    background-color: rgb(150, 150, 150);
+    background-color: #ffffff;
     box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     display: none;
     font-size: 1.6rem;

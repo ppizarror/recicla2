@@ -10,4 +10,5 @@
  * Inicia el módulo al cargar la página
  */
 $(document).ready(function () {
+    let addContainer = new Container();
 });

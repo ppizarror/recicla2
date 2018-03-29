@@ -19,6 +19,7 @@ var cfg_back_to_top = {
     enabled: true, // Indica si la funcionalidad está activa
     px_to_trigger: 600, // Pixeles para activar el botón para subir
 };
+var cfg_id_size = 10; // Largo de las id aleatorias generadas
 var cfg_tooltip_theme = 'tooltipster-borderless'; // Tema de los tooltip
 
 /**

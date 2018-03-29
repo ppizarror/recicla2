@@ -34,6 +34,39 @@ function getRandomColor() {
 
 // noinspection JSUnusedGlobalSymbols
 /**
+ * Redondea un número
+ * @param {number} num      Número
+ * @param {number} scale    Cantidad de decimales
+ * @return {number}         Número redondeado
+ */
+function roundNumber(num, scale) {
+    // noinspection JSUnresolvedFunction
+    if (!('' + num).includes('e')) {
+        // noinspection JSCheckFunctionSignatures
+        return +(Math.round(num + 'e+' + scale) + 'e-' + scale);
+    } else {
+        var arr = ('' + num).split('e');
+        var sig = '';
+        if (+arr[1] + scale > 0) {
+            sig = '+';
+        }
+        var i = +arr[0] + 'e' + sig + (+arr[1] + scale);
+        // noinspection JSCheckFunctionSignatures
+        return +(Math.round(i) + 'e-' + scale);
+    }
+}
+
+/**
+ * Convierte un número decimal en hexadecimal
+ * @param {number} dec      Número decimal
+ * @return {string}         Número hexadecimal
+ */
+function dec2hex(dec) {
+    return ('0' + dec.toString(16)).substr(-2)
+}
+
+// noinspection JSUnusedGlobalSymbols
+/**
  * Genera un string aleatorio
  * @param {number} len      Largo del string a generar
  * @return {string}         String aleatorio
@@ -160,13 +193,14 @@ function consoleLogError(msg, w) {
     }
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Muestra un mensaje de advertencia en la consola
  * @param {string} msg      Mensaje
  * @param {boolean} w       Indica si se escribe el encabezado o no
  */
 function consoleLogWarn(msg, w) {
-    var $m;
+    let $m;
     if (cfg_verbose) {
         if (w) {
             $m = 'ERROR: ';
@@ -194,6 +228,7 @@ function consoleLogException(exceptionmsg, w) {
     }
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Muestra un mensaje de información en la consola
  * @param {string} msg      Mensaje

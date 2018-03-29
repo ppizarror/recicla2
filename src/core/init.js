@@ -6,11 +6,11 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-// noinspection JSUnresolvedFunction
 /**
  * Inicia el programa
  */
 $(document).ready(function () {
+
     // Imprime el acerca-de
     printAboutInfo();
 
@@ -20,6 +20,9 @@ $(document).ready(function () {
     } else {
         throwErrorID(errordb.langNotExist);
     }
+
+    // Inicia los errores
+    initErrors();
 
     // Activa el botón back to top
     showBackToTopButton();

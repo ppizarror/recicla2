@@ -16,6 +16,23 @@ var errordb = {
     }
 };
 
+/**
+ * Inicia mensajes de error
+ */
+function initErrors() {
+    let $add = function (id, msg, moreinfo) {
+        errordb[id] = {
+            id: id,
+            moreinfo: moreinfo,
+            msg: msg
+        }
+    };
+
+    /**
+     * Añade errores
+     */
+}
+
 // noinspection JSUnusedGlobalSymbols
 /**
  * Oculta mensajes de error
