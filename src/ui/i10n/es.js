@@ -26,6 +26,7 @@ $lang_db.es = {
     'add_item_form_error_n': 'Se han encontrado {0} errores en el formulario',
     'add_item_form_name': 'Nombre artículo',
     'add_item_form_nc': 'Nombre contacto',
+    'add_item_form_pick_sel': 'Debe escoger un campo',
     'add_item_form_ok_upload': 'El artículo ha sido publicado correctamente',
     'add_item_form_phone': 'Fono contacto',
     'add_item_form_photo': 'Fotografía',

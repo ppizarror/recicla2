@@ -7,8 +7,9 @@
  */
 
 // Arreglo funciones de validación
-var validation_add_item_fun = [];
-var $_validation_add_item_display_tooltip = true;
+var $_add_item_is_valid = false; // Indica que el ítem actual es válido
+var $_validation_add_item_display_tooltip = true; // Puede dibujar un tooltip sobre un campo
+var validation_add_item_fun = []; // Funciones validadoras
 
 /**
  * Valida un input
@@ -135,6 +136,7 @@ function validateAddItemInputText($input, options) {
  */
 function validateAddItemSelector($input) {
     let st = {
+        message: lang.add_item_form_pick_sel,
         status: $input.val() !== 'sin-region'
     };
     validateAddItemChangeStyleInput($input, st);
@@ -257,9 +259,10 @@ function validateAddItemForm() {
         }
     }
     $_validation_add_item_display_tooltip = true;
+    $_add_item_is_valid = ($nerr !== 0);
 
     return {
-        failed: $nerr !== 0,
+        failed: $_add_item_is_valid,
         nfail: $nerr
     }
 }

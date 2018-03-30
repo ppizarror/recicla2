@@ -20,7 +20,8 @@ function createListItem() {
      * Genera el header y el contenedor
      */
     new Header({
-        title: lang.list_item_title
+        title: lang.list_item_title,
+        showBackButton: false
     });
     let add_container = new Container({
         padding: 0

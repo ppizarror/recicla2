@@ -7,10 +7,9 @@
  */
 
 // Formulario
-var $add_item_form_id; // ID del formulario
 var $add_item_form_titles; // Elementos del formulario
-var $add_item_total_pics = 1; // Imágenes totales añadidas al formulario
 var $add_item_rc_chile; // Almacena base de datos de regiones y comunas de Chile
+var $add_item_total_pics = 1; // Imágenes totales añadidas al formulario
 
 /**
  * Crea el módulo en la ui.
@@ -65,9 +64,8 @@ function createAddItem() {
     /**
      * Genera el formulario
      */
-    $add_item_form_id = generateId(cfg_id_size);
-    $ocr.append('<form id="{0}" name="addItem"></form>'.format($add_item_form_id));
-    let $formobj = $('#{0}'.format($add_item_form_id));
+    $ocr.append('<form id="{0}" name="addItem" method="post"><input type="submit" style="display: none"></form>'.format(cfg_additem_form_id));
+    let $formobj = $('#{0}'.format(cfg_additem_form_id));
     let $resizef;
     for (let i = 0; i < $ftitle_k.length; i++) {
         $k = $add_item_form_titles[$ftitle_k[i]];
@@ -114,7 +112,18 @@ function createAddItem() {
     $('#' + $b_add_id).on('click.submitFormButtom', function () {
         // Se valida el formulario
         let $validate = validateAddItemForm();
-        if ($validate.failed) {
+
+        /**
+         * El formulario no tiene errores, se suben los datos al servidor
+         */
+        if (!$validate.failed) {
+            uploadItemToServer();
+        }
+
+        /**
+         * El formulario tuvo errores, se muestran en pantalla
+         */
+        else {
             $.alert({
                 animateFromElement: false,
                 animation: 'scale',
@@ -133,15 +142,6 @@ function createAddItem() {
                         text: lang.close
                     }
                 }
-            });
-        } else {
-            $.alert({
-                columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
-                content: lang.add_item_form_ok_upload,
-                title: lang.module_add_item,
-                onClose: function () {
-                    loadModule(modules.home);
-                },
             });
         }
     });
