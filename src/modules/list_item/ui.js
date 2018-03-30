@@ -36,7 +36,6 @@ function createListItem() {
          * @type{Item}
          */
         $item = $items[i];
-
-        console.log($item.getName());
+        $add_c.append('k');
     }
 }

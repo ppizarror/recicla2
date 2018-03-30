@@ -18,6 +18,7 @@ var aboutinfo = {
     },
     "dependencies": {
         "bootstrap": "4.0.0-beta",      // https://github.com/twbs/bootstrap
+        "dataTables": "1.10.16",        // https://datatables.net/
         "fontawesome": "5.0.9",         // https://fontawesome.com
         "hover": "2.3.0",               // https://github.com/IanLunn/Hover
         "jquery": "3.3.1",              // https://github.com/jquery/jquery
