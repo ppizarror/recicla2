@@ -18,6 +18,7 @@ var aboutinfo = {
     },
     "dependencies": {
         "bootstrap": "4.0.0-beta",      // https://github.com/twbs/bootstrap
+        "fontawesome": "5.0.9",         // https://fontawesome.com
         "hover": "2.3.0",               // https://github.com/IanLunn/Hover
         "jquery": "3.3.1",              // https://github.com/jquery/jquery
         "jquery-confirm": "3.3.0",      // https://github.com/craftpip/jquery-confirm
@@ -26,8 +27,8 @@ var aboutinfo = {
     },
     "productname": "Recicla2",
     "version": {
-        "date": "29/03/2018",
-        "v": "0.1.3"
+        "date": "30/03/2018",
+        "v": "0.1.5"
     }
 };
 

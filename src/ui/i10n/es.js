@@ -29,5 +29,7 @@ $lang_db.es = {
     'look_file': 'Buscar&hellip;',
     'module_add_item': 'Añadir nuevo artículo',
     'name_lang': 'Español',
-    'test': 'Mensaje de test'
+    'test': 'Mensaje de test',
+    'add_item_cancel_title': 'Cancelar',
+    'add_item_cancel_ask': '¿Está seguro?',
 };

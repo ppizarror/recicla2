@@ -7,75 +7,136 @@
  */
 
 // Formulario
-var $add_item_form_titles; // Elementos del formulario
 var $add_item_form_id; // ID del formulario
+var $add_item_form_titles; // Elementos del formulario
 var $add_item_total_pics = 1; // Imágenes totales añadidas al formulario
-var $rc_chile = {
-    "regiones": [{
-        "NombreRegion": "Arica y Parinacota",
-        "comunas": ["Arica", "Camarones", "Putre", "General Lagos"]
-    },
-        {
-            "NombreRegion": "Tarapacá",
-            "comunas": ["Iquique", "Alto Hospicio", "Pozo Almonte", "Camiña", "Colchane", "Huara", "Pica"]
-        },
-        {
-            "NombreRegion": "Antofagasta",
-            "comunas": ["Antofagasta", "Mejillones", "Sierra Gorda", "Taltal", "Calama", "Ollagüe", "San Pedro de Atacama", "Tocopilla", "María Elena"]
-        },
-        {
-            "NombreRegion": "Atacama",
-            "comunas": ["Copiapó", "Caldera", "Tierra Amarilla", "Chañaral", "Diego de Almagro", "Vallenar", "Alto del Carmen", "Freirina", "Huasco"]
-        },
-        {
-            "NombreRegion": "Coquimbo",
-            "comunas": ["La Serena", "Coquimbo", "Andacollo", "La Higuera", "Paiguano", "Vicuña", "Illapel", "Canela", "Los Vilos", "Salamanca", "Ovalle", "Combarbalá", "Monte Patria", "Punitaqui", "Río Hurtado"]
-        },
-        {
-            "NombreRegion": "Valparaíso",
-            "comunas": ["Valparaíso", "Casablanca", "Concón", "Juan Fernández", "Puchuncaví", "Quintero", "Viña del Mar", "Isla de Pascua", "Los Andes", "Calle Larga", "Rinconada", "San Esteban", "La Ligua", "Cabildo", "Papudo", "Petorca", "Zapallar", "Quillota", "Calera", "Hijuelas", "La Cruz", "Nogales", "San Antonio", "Algarrobo", "Cartagena", "El Quisco", "El Tabo", "Santo Domingo", "San Felipe", "Catemu", "Llaillay", "Panquehue", "Putaendo", "Santa María", "Quilpué", "Limache", "Olmué", "Villa Alemana"]
-        },
-        {
-            "NombreRegion": "Región del Libertador Gral. Bernardo O’Higgins",
-            "comunas": ["Rancagua", "Codegua", "Coinco", "Coltauco", "Doñihue", "Graneros", "Las Cabras", "Machalí", "Malloa", "Mostazal", "Olivar", "Peumo", "Pichidegua", "Quinta de Tilcoco", "Rengo", "Requínoa", "San Vicente", "Pichilemu", "La Estrella", "Litueche", "Marchihue", "Navidad", "Paredones", "San Fernando", "Chépica", "Chimbarongo", "Lolol", "Nancagua", "Palmilla", "Peralillo", "Placilla", "Pumanque", "Santa Cruz"]
-        },
-        {
-            "NombreRegion": "Región del Maule",
-            "comunas": ["Talca", "ConsVtución", "Curepto", "Empedrado", "Maule", "Pelarco", "Pencahue", "Río Claro", "San Clemente", "San Rafael", "Cauquenes", "Chanco", "Pelluhue", "Curicó", "Hualañé", "Licantén", "Molina", "Rauco", "Romeral", "Sagrada Familia", "Teno", "Vichuquén", "Linares", "Colbún", "Longaví", "Parral", "ReVro", "San Javier", "Villa Alegre", "Yerbas Buenas"]
-        },
-        {
-            "NombreRegion": "Región del Biobío",
-            "comunas": ["Concepción", "Coronel", "Chiguayante", "Florida", "Hualqui", "Lota", "Penco", "San Pedro de la Paz", "Santa Juana", "Talcahuano", "Tomé", "Hualpén", "Lebu", "Arauco", "Cañete", "Contulmo", "Curanilahue", "Los Álamos", "Tirúa", "Los Ángeles", "Antuco", "Cabrero", "Laja", "Mulchén", "Nacimiento", "Negrete", "Quilaco", "Quilleco", "San Rosendo", "Santa Bárbara", "Tucapel", "Yumbel", "Alto Biobío", "Chillán", "Bulnes", "Cobquecura", "Coelemu", "Coihueco", "Chillán Viejo", "El Carmen", "Ninhue", "Ñiquén", "Pemuco", "Pinto", "Portezuelo", "Quillón", "Quirihue", "Ránquil", "San Carlos", "San Fabián", "San Ignacio", "San Nicolás", "Treguaco", "Yungay"]
-        },
-        {
-            "NombreRegion": "Región de la Araucanía",
-            "comunas": ["Temuco", "Carahue", "Cunco", "Curarrehue", "Freire", "Galvarino", "Gorbea", "Lautaro", "Loncoche", "Melipeuco", "Nueva Imperial", "Padre las Casas", "Perquenco", "Pitrufquén", "Pucón", "Saavedra", "Teodoro Schmidt", "Toltén", "Vilcún", "Villarrica", "Cholchol", "Angol", "Collipulli", "Curacautín", "Ercilla", "Lonquimay", "Los Sauces", "Lumaco", "Purén", "Renaico", "Traiguén", "Victoria",]
-        },
-        {
-            "NombreRegion": "Región de Los Ríos",
-            "comunas": ["Valdivia", "Corral", "Lanco", "Los Lagos", "Máfil", "Mariquina", "Paillaco", "Panguipulli", "La Unión", "Futrono", "Lago Ranco", "Río Bueno"]
-        },
-        {
-            "NombreRegion": "Región de Los Lagos",
-            "comunas": ["Puerto Montt", "Calbuco", "Cochamó", "Fresia", "FruVllar", "Los Muermos", "Llanquihue", "Maullín", "Puerto Varas", "Castro", "Ancud", "Chonchi", "Curaco de Vélez", "Dalcahue", "Puqueldón", "Queilén", "Quellón", "Quemchi", "Quinchao", "Osorno", "Puerto Octay", "Purranque", "Puyehue", "Río Negro", "San Juan de la Costa", "San Pablo", "Chaitén", "Futaleufú", "Hualaihué", "Palena"]
-        },
-        {
-            "NombreRegion": "Región Aisén del Gral. Carlos Ibáñez del Campo",
-            "comunas": ["Coihaique", "Lago Verde", "Aisén", "Cisnes", "Guaitecas", "Cochrane", "O’Higgins", "Tortel", "Chile Chico", "Río Ibáñez"]
-        },
-        {
-            "NombreRegion": "Región de Magallanes y de la AntárVca Chilena",
-            "comunas": ["Punta Arenas", "Laguna Blanca", "Río Verde", "San Gregorio", "Cabo de Hornos (Ex Navarino)", "AntárVca", "Porvenir", "Primavera", "Timaukel", "Natales", "Torres del Paine"]
-        },
-        {
-            "NombreRegion": "Región Metropolitana de Santiago",
-            "comunas": ["Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "San Joaquín", "San Miguel", "San Ramón", "Vitacura", "Puente Alto", "Pirque", "San José de Maipo", "Colina", "Lampa", "TilVl", "San Bernardo", "Buin", "Calera de Tango", "Paine", "Melipilla", "Alhué", "Curacaví", "María Pinto", "San Pedro", "Talagante", "El Monte", "Isla de Maipo", "Padre Hurtado", "Peñaflor"]
-        }]
-};
+var $add_item_rc_chile; // Almacena base de datos de regiones y comunas de Chile
 
 function createAddItem() {
 
-    // Genera los títulos del formulario
+    /**
+     * Inicia el objeto del formulario
+     */
+    initAddItemFormObject();
+
+    /**
+     * Genera el header y el contenedor
+     */
+    new Header({
+        title: lang.module_add_item
+    });
+    let add_container = new Container({
+        padding: 0
+    });
+    let $add_c = add_container.getDOM();
+
+    /**
+     * Crea las columnas del formulario
+     */
+    let $cl = generateId(cfg_id_size);
+    let $cr = generateId(cfg_id_size);
+    $add_c.append('<div id="{0}" class="add-item-form-column add-item-form-leftcolumn"></div><div id="{1}" class="add-item-form-column add-item-form-rightcolumn"></div>'.format($cl, $cr));
+    let $ocl = $('#{0}'.format($cl));
+    let $ocr = $('#{0}'.format($cr));
+
+    /**
+     * Dibuja los nombres del formulario
+     */
+    let $ftitle_k = Object.keys($add_item_form_titles);
+    let $k;
+    for (let i = 0; i < $ftitle_k.length; i++) {
+        $k = $add_item_form_titles[$ftitle_k[i]];
+        $k.id_title = generateId(cfg_id_size);
+        if ($k.icon !== '') {
+            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{2}" class="add_item_form_line add-item-nameobj"><div class="add-item-form-title-inner"><i class="{1} add-item-nameobj-icon hvr-icon-rotate"></i>{0}</div></div>'.format($k.name, $k.icon, $k.id_title));
+        } else {
+            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{1}" class="add_item_form_line add-item-nameobj">{0}</div>'.format($k.name, $k.id_title));
+        }
+    }
+
+    /**
+     * Genera el formulario
+     */
+    $add_item_form_id = generateId(cfg_id_size);
+    $ocr.append('<form id="{0}" name="addItem"></form>'.format($add_item_form_id));
+    let $formobj = $('#{0}'.format($add_item_form_id));
+    let $resizef;
+    for (let i = 0; i < $ftitle_k.length; i++) {
+        $k = $add_item_form_titles[$ftitle_k[i]];
+        $k.id_form = generateId(cfg_id_size);
+        $formobj.append('<div id={1} class="add_item_form_line">{0}</div>'.format($k.form, $k.id_form));
+
+        // Genera el thread de ajuste del tamaño de cada título
+        $resizef = autoResizeTitles($k.id_form, $k.id_title);
+        $k.resizeFun = $resizef;
+        $resizef();
+        if ($k.resizeThread) {
+            setInterval($resizef, cfg_ui_watchinterval); // Comprueba la altura del elemento
+        }
+
+        // Ejecuta la función afterDraw si existe
+        if ($k.afterDrawFun !== undefined) {
+            $k.afterDrawFun();
+        }
+    }
+
+    /**
+     * Añade barra botones
+     */
+    let $b_cancel_id = generateId(cfg_id_size);
+    let $b_add_id = generateId(cfg_id_size);
+    $(ui_main_content).append('<!--suppress ALL --><div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{2}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
+
+    // Botón cancelar cierra módulo y carga módulo listar
+    $('#' + $b_cancel_id).on('click', function () {
+        confirmPopup(lang.add_item_cancel_title, lang.add_item_cancel_ask, {
+            icon: 'fas fa-exclamation-triangle',
+            confirm: function () {
+                loadModule(modules.listItem);
+            }
+        });
+    });
+}
+
+/**
+ * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario
+ * @param formid            ID del formulario
+ * @param titleid           ID del elemento del título
+ * @return {function}
+ */
+function autoResizeTitles(formid, titleid) {
+    return function () {
+        // noinspection JSValidateTypes
+        let h = $('#{0}'.format(formid)).outerHeight();
+        $('#{0}'.format(titleid)).css('height', h + 'px');
+    };
+}
+
+/**
+ * Actualiza el nombre de las imágenes en los label
+ */
+function updateFileFormAddItemWatcher() {
+    $(document).on('change', ':file', function () {
+        var input = $(this),
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+    });
+    $(document).ready(function () {
+        $(':file').on('fileselect', function (event, numFiles, label) {
+            var input = $(this).parents('.input-group').find(':text'),
+                log = numFiles > 1 ? numFiles + ' files selected' : label;
+            if (input.length) {
+                input.val(log);
+            }
+        });
+    });
+}
+
+/**
+ * Inicia el objeto del formulario.
+ */
+function initAddItemFormObject() {
     $add_item_form_titles = {
         "0": {
             "name": lang.add_item_form_name,
@@ -99,7 +160,7 @@ function createAddItem() {
                 let $a = $('.add-item-pic-new-pic');
                 $a.tooltipster({
                     content: lang.add_new_photo_tooltip,
-                    delay: 1000,
+                    delay: cfg_additem_add_pic_tooltip_delay,
                     side: 'bottom',
                     theme: cfg_tooltip_theme
                 });
@@ -168,115 +229,79 @@ function createAddItem() {
             "resizeThread": false
         }
     };
-
-    // Genera el header
-    new Header({
-        title: lang.module_add_item
-    });
-
-    // Genera el contador
-    let add_container = new Container({
-        padding: 0
-    });
-    let $add_c = add_container.getDOM();
-
-    // Crea las columnas del formulario
-    let $cl = generateId(cfg_id_size);
-    let $cr = generateId(cfg_id_size);
-    $add_c.append('<div id="{0}" class="add-item-form-column add-item-form-leftcolumn"></div><div id="{1}" class="add-item-form-column add-item-form-rightcolumn"></div>'.format($cl, $cr));
-    let $ocl = $('#{0}'.format($cl));
-    let $ocr = $('#{0}'.format($cr));
-
-    // Dibuja los nombres del formulario
-    let $ftitle_k = Object.keys($add_item_form_titles);
-    let $k;
-    for (let i = 0; i < $ftitle_k.length; i++) {
-        $k = $add_item_form_titles[$ftitle_k[i]];
-        $k.id_title = generateId(cfg_id_size);
-        if ($k.icon !== '') {
-            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{2}" class="add_item_form_line add-item-nameobj"><div class="add-item-form-title-inner"><i class="{1} add-item-nameobj-icon hvr-icon-rotate"></i>{0}</div></div>'.format($k.name, $k.icon, $k.id_title));
-        } else {
-            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{1}" class="add_item_form_line add-item-nameobj">{0}</div>'.format($k.name, $k.id_title));
-        }
-    }
-
-    // Genera el formulario
-    $add_item_form_id = generateId(cfg_id_size);
-    $ocr.append('<form id="{0}" name="addItem"></form>'.format($add_item_form_id));
-    let $formobj = $('#{0}'.format($add_item_form_id));
-    let $resizef;
-    for (let i = 0; i < $ftitle_k.length; i++) {
-        $k = $add_item_form_titles[$ftitle_k[i]];
-        $k.id_form = generateId(cfg_id_size);
-        $formobj.append('<div id={1} class="add_item_form_line">{0}</div>'.format($k.form, $k.id_form));
-
-        // Genera el thread de ajuste del tamaño de cada título
-        $resizef = autoResizeTitles($k.id_form, $k.id_title);
-        $k.resizeFun = $resizef;
-        $resizef();
-        if ($k.resizeThread) {
-            setInterval($resizef, cfg_ui_watchinterval); // Comprueba la altura del elemento
-        }
-
-        // Ejecuta la función afterDraw si existe
-        if ($k.afterDrawFun !== undefined) {
-            $k.afterDrawFun();
-        }
-    }
-
-    // Añade barra botones
-    let $b_cancel_id = generateId(cfg_id_size);
-    let $b_add_id = generateId(cfg_id_size);
-    $(ui_main_content).append('<!--suppress ALL --><div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{2}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
-    $('#' + $b_cancel_id).on('click', function () {
-        confirmPopup('a', 'b', {});
-    });
-}
-
-/**
- * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario
- * @param formid            ID del formulario
- * @param titleid           ID del elemento del título
- * @return {function}
- */
-function autoResizeTitles(formid, titleid) {
-    return function () {
-        // noinspection JSValidateTypes
-        let h = $('#{0}'.format(formid)).outerHeight();
-        $('#{0}'.format(titleid)).css('height', h + 'px');
-    };
-}
-
-/**
- * Actualiza el nombre de las imágenes en los label
- */
-function updateFileFormAddItemWatcher() {
-    $(document).on('change', ':file', function () {
-        var input = $(this),
-            numFiles = input.get(0).files ? input.get(0).files.length : 1,
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-        input.trigger('fileselect', [numFiles, label]);
-    });
-    $(document).ready(function () {
-        $(':file').on('fileselect', function (event, numFiles, label) {
-            var input = $(this).parents('.input-group').find(':text'),
-                log = numFiles > 1 ? numFiles + ' files selected' : label;
-            if (input.length) {
-                input.val(log);
-            }
-        });
-    });
 }
 
 /**
  * Actualiza el formulario de las regiones y las comunas
  */
 function addItemUpdateRCForm() {
+    $add_item_rc_chile = {
+        "regiones": [{
+            "NombreRegion": "Arica y Parinacota",
+            "comunas": ["Arica", "Camarones", "Putre", "General Lagos"]
+        },
+            {
+                "NombreRegion": "Tarapacá",
+                "comunas": ["Iquique", "Alto Hospicio", "Pozo Almonte", "Camiña", "Colchane", "Huara", "Pica"]
+            },
+            {
+                "NombreRegion": "Antofagasta",
+                "comunas": ["Antofagasta", "Mejillones", "Sierra Gorda", "Taltal", "Calama", "Ollagüe", "San Pedro de Atacama", "Tocopilla", "María Elena"]
+            },
+            {
+                "NombreRegion": "Atacama",
+                "comunas": ["Copiapó", "Caldera", "Tierra Amarilla", "Chañaral", "Diego de Almagro", "Vallenar", "Alto del Carmen", "Freirina", "Huasco"]
+            },
+            {
+                "NombreRegion": "Coquimbo",
+                "comunas": ["La Serena", "Coquimbo", "Andacollo", "La Higuera", "Paiguano", "Vicuña", "Illapel", "Canela", "Los Vilos", "Salamanca", "Ovalle", "Combarbalá", "Monte Patria", "Punitaqui", "Río Hurtado"]
+            },
+            {
+                "NombreRegion": "Valparaíso",
+                "comunas": ["Valparaíso", "Casablanca", "Concón", "Juan Fernández", "Puchuncaví", "Quintero", "Viña del Mar", "Isla de Pascua", "Los Andes", "Calle Larga", "Rinconada", "San Esteban", "La Ligua", "Cabildo", "Papudo", "Petorca", "Zapallar", "Quillota", "Calera", "Hijuelas", "La Cruz", "Nogales", "San Antonio", "Algarrobo", "Cartagena", "El Quisco", "El Tabo", "Santo Domingo", "San Felipe", "Catemu", "Llaillay", "Panquehue", "Putaendo", "Santa María", "Quilpué", "Limache", "Olmué", "Villa Alemana"]
+            },
+            {
+                "NombreRegion": "Región del Libertador Gral. Bernardo O’Higgins",
+                "comunas": ["Rancagua", "Codegua", "Coinco", "Coltauco", "Doñihue", "Graneros", "Las Cabras", "Machalí", "Malloa", "Mostazal", "Olivar", "Peumo", "Pichidegua", "Quinta de Tilcoco", "Rengo", "Requínoa", "San Vicente", "Pichilemu", "La Estrella", "Litueche", "Marchihue", "Navidad", "Paredones", "San Fernando", "Chépica", "Chimbarongo", "Lolol", "Nancagua", "Palmilla", "Peralillo", "Placilla", "Pumanque", "Santa Cruz"]
+            },
+            {
+                "NombreRegion": "Región del Maule",
+                "comunas": ["Talca", "ConsVtución", "Curepto", "Empedrado", "Maule", "Pelarco", "Pencahue", "Río Claro", "San Clemente", "San Rafael", "Cauquenes", "Chanco", "Pelluhue", "Curicó", "Hualañé", "Licantén", "Molina", "Rauco", "Romeral", "Sagrada Familia", "Teno", "Vichuquén", "Linares", "Colbún", "Longaví", "Parral", "ReVro", "San Javier", "Villa Alegre", "Yerbas Buenas"]
+            },
+            {
+                "NombreRegion": "Región del Biobío",
+                "comunas": ["Concepción", "Coronel", "Chiguayante", "Florida", "Hualqui", "Lota", "Penco", "San Pedro de la Paz", "Santa Juana", "Talcahuano", "Tomé", "Hualpén", "Lebu", "Arauco", "Cañete", "Contulmo", "Curanilahue", "Los Álamos", "Tirúa", "Los Ángeles", "Antuco", "Cabrero", "Laja", "Mulchén", "Nacimiento", "Negrete", "Quilaco", "Quilleco", "San Rosendo", "Santa Bárbara", "Tucapel", "Yumbel", "Alto Biobío", "Chillán", "Bulnes", "Cobquecura", "Coelemu", "Coihueco", "Chillán Viejo", "El Carmen", "Ninhue", "Ñiquén", "Pemuco", "Pinto", "Portezuelo", "Quillón", "Quirihue", "Ránquil", "San Carlos", "San Fabián", "San Ignacio", "San Nicolás", "Treguaco", "Yungay"]
+            },
+            {
+                "NombreRegion": "Región de la Araucanía",
+                "comunas": ["Temuco", "Carahue", "Cunco", "Curarrehue", "Freire", "Galvarino", "Gorbea", "Lautaro", "Loncoche", "Melipeuco", "Nueva Imperial", "Padre las Casas", "Perquenco", "Pitrufquén", "Pucón", "Saavedra", "Teodoro Schmidt", "Toltén", "Vilcún", "Villarrica", "Cholchol", "Angol", "Collipulli", "Curacautín", "Ercilla", "Lonquimay", "Los Sauces", "Lumaco", "Purén", "Renaico", "Traiguén", "Victoria",]
+            },
+            {
+                "NombreRegion": "Región de Los Ríos",
+                "comunas": ["Valdivia", "Corral", "Lanco", "Los Lagos", "Máfil", "Mariquina", "Paillaco", "Panguipulli", "La Unión", "Futrono", "Lago Ranco", "Río Bueno"]
+            },
+            {
+                "NombreRegion": "Región de Los Lagos",
+                "comunas": ["Puerto Montt", "Calbuco", "Cochamó", "Fresia", "FruVllar", "Los Muermos", "Llanquihue", "Maullín", "Puerto Varas", "Castro", "Ancud", "Chonchi", "Curaco de Vélez", "Dalcahue", "Puqueldón", "Queilén", "Quellón", "Quemchi", "Quinchao", "Osorno", "Puerto Octay", "Purranque", "Puyehue", "Río Negro", "San Juan de la Costa", "San Pablo", "Chaitén", "Futaleufú", "Hualaihué", "Palena"]
+            },
+            {
+                "NombreRegion": "Región Aisén del Gral. Carlos Ibáñez del Campo",
+                "comunas": ["Coihaique", "Lago Verde", "Aisén", "Cisnes", "Guaitecas", "Cochrane", "O’Higgins", "Tortel", "Chile Chico", "Río Ibáñez"]
+            },
+            {
+                "NombreRegion": "Región de Magallanes y de la AntárVca Chilena",
+                "comunas": ["Punta Arenas", "Laguna Blanca", "Río Verde", "San Gregorio", "Cabo de Hornos (Ex Navarino)", "AntárVca", "Porvenir", "Primavera", "Timaukel", "Natales", "Torres del Paine"]
+            },
+            {
+                "NombreRegion": "Región Metropolitana de Santiago",
+                "comunas": ["Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "San Joaquín", "San Miguel", "San Ramón", "Vitacura", "Puente Alto", "Pirque", "San José de Maipo", "Colina", "Lampa", "TilVl", "San Bernardo", "Buin", "Calera de Tango", "Paine", "Melipilla", "Alhué", "Curacaví", "María Pinto", "San Pedro", "Talagante", "El Monte", "Isla de Maipo", "Padre Hurtado", "Peñaflor"]
+            }]
+    };
     let iRegion = 0;
     let $hr = '<option value="sin-region">{0}</option>'.format(lang.add_item_r_pick);
     let $hc = '<option value="sin-region">{0}</option>'.format(lang.add_item_c_pick);
-    $.each($rc_chile.regiones, function () {
-        $hr = $hr + '<option value="' + $rc_chile.regiones[iRegion].NombreRegion + '">' + $rc_chile.regiones[iRegion].NombreRegion + '</option>';
+    $.each($add_item_rc_chile.regiones, function () {
+        $hr = $hr + '<option value="' + $add_item_rc_chile.regiones[iRegion].NombreRegion + '">' + $add_item_rc_chile.regiones[iRegion].NombreRegion + '</option>';
         iRegion++;
     });
     var $ohr = $('#formRegiones');
@@ -292,11 +317,11 @@ function addItemUpdateRCForm() {
         $ohc.removeAttr('disabled');
         var $valr = $(this).val();
         var $htmlc = '';
-        $.each($rc_chile.regiones, function () {
-            if ($rc_chile.regiones[$ir].NombreRegion === $valr) {
+        $.each($add_item_rc_chile.regiones, function () {
+            if ($add_item_rc_chile.regiones[$ir].NombreRegion === $valr) {
                 var iComunas = 0;
-                $.each($rc_chile.regiones[$ir].comunas, function () {
-                    $htmlc = $htmlc + '<option value="' + $rc_chile.regiones[$ir].comunas[iComunas] + '">' + $rc_chile.regiones[$ir].comunas[iComunas] + '</option>';
+                $.each($add_item_rc_chile.regiones[$ir].comunas, function () {
+                    $htmlc = $htmlc + '<option value="' + $add_item_rc_chile.regiones[$ir].comunas[iComunas] + '">' + $add_item_rc_chile.regiones[$ir].comunas[iComunas] + '</option>';
                     iComunas++;
                 });
             }
