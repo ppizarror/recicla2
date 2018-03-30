@@ -18,7 +18,14 @@ var test_items = [
         userPhone: '967583912',
         userStreet: 'San Gregorio #21',
         comments: [
-            
+            new Comment({
+                comment: 'Hola',
+                user: 'Elvia Ratón Calvo'
+            }),
+            new Comment({
+                comment: 'Jajajaja que comentario más inutil',
+                user: 'Jorge Nitales'
+            })
         ]
     }),
     new Item({
@@ -30,7 +37,8 @@ var test_items = [
         userContact: 'Pablo Pizarro',
         userEmail: 'pablo.pizarro@ing.uchile.cl',
         userPhone: '993932215',
-        userStreet: 'Avenida Vicuña Mackenna, p16, Los Álamos Norte'
+        userStreet: 'Avenida Vicuña Mackenna, p16, Los Álamos Norte',
+        comments: []
     }),
     new Item({
         comuna: 'Toltén',
@@ -41,7 +49,21 @@ var test_items = [
         userContact: 'Juan Antonio Ríos Mauleu',
         userEmail: 'juanito@fbi.com',
         userPhone: '91234567',
-        userStreet: 'Calle sin número, #200'
+        userStreet: 'Calle sin número, #200',
+        comments: [
+            new Comment({
+                comment: 'Hola, me interesa mucho tu teléfono, te envié un correo :)',
+                user: 'Marcia Ana'
+            }),
+            new Comment({
+                comment: 'Tiene doble sim????',
+                user: 'Igor Dito'
+            }),
+            new Comment({
+                comment: 'It\'s fake news',
+                user: 'Donald Trunp'
+            })
+        ]
     }),
     new Item({
         comuna: 'Los Vilos',
@@ -52,7 +74,13 @@ var test_items = [
         userContact: 'Lola Mento Helen Chufe',
         userEmail: 'lolam@cia.com',
         userPhone: '91244537',
-        userStreet: 'Alguna calle de Coquimbo, n°20'
+        userStreet: 'Alguna calle de Coquimbo, n°20',
+        comments: [
+            new Comment({
+                comment: 'Oye tienen wifi?',
+                user: 'Josebas'
+            })
+        ]
     }),
     new Item({
         comuna: 'Dalcahue',
@@ -63,6 +91,7 @@ var test_items = [
         userContact: 'Matías Queroso',
         userEmail: 'matias@faisbun.com',
         userPhone: '91244567',
-        userStreet: 'Ya no sé qué inventar, #2'
+        userStreet: 'Ya no sé qué inventar, #2',
+        comments: []
     })
 ];

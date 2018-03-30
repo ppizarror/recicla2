@@ -14,6 +14,7 @@
 function Item(options) {
     var self = this;
     let $defaults = {
+        comments: [], // Comentarios del artículo
         comuna: '', // Comuna del artículo
         desc: '', // Descripción del artículo
         name: '', // Nombre del artículo
@@ -22,12 +23,13 @@ function Item(options) {
         userContact: '', // Nombre y contacto del usuario del artículo
         userEmail: '', // Correo del usuario
         userPhone: '', // Teléfono del usuario
-        userStreet: '' // Calle del usuario
+        userStreet: '', // Calle del usuario,
     };
     options = $.extend($defaults, options);
 
     // Variables de instancia
     this._c = options.comuna;
+    this._comments = options.comments;
     this._id = generateId(10);
     this._name = options.name;
     this._photos = options.photos;
@@ -36,6 +38,14 @@ function Item(options) {
     this._user_name = options.userContact;
     this._user_phone = options.userPhone;
     this._user_street = options.userStreet;
+
+    /**
+     * Retorna el ID del objeto
+     * @return {string|*}
+     */
+    this.getID = function () {
+        return self._id;
+    };
 
     /**
      * Retorna el nombre del artículo
@@ -98,5 +108,33 @@ function Item(options) {
      */
     this.getUserPhone = function () {
         return self._user_phone;
-    }
+    };
+
+    /**
+     * Rorna los comentarios
+     * @return {Array|Comment}
+     */
+    this.getComments = function () {
+        return self._comments;
+    };
+
+    /**
+     * Añade un comentario
+     * @param user
+     * @param comment
+     */
+    this.addComment = function (user, comment) {
+        self._comments.push(new Comment({
+            comment: comment,
+            user: user
+        }));
+    };
+
+    /**
+     * Retorna el número de comentarios del artículo
+     * @return {number}
+     */
+    this.getTotalComments = function () {
+        return self._comments.length;
+    };
 }
