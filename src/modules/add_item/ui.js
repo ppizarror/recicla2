@@ -12,12 +12,20 @@ var $add_item_form_titles; // Elementos del formulario
 var $add_item_total_pics = 1; // Imágenes totales añadidas al formulario
 var $add_item_rc_chile; // Almacena base de datos de regiones y comunas de Chile
 
+/**
+ * Crea el módulo en la ui.
+ */
 function createAddItem() {
 
     /**
      * Inicia el objeto del formulario
      */
     initAddItemFormObject();
+
+    /**
+     * Cambia el título de la página
+     */
+    document.title = lang.module_add_item;
 
     /**
      * Genera el header y el contenedor
