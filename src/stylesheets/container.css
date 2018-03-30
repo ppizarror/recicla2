@@ -8,9 +8,7 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 
 .ui-container {
     background-color: #ffffff;
-    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.3);
     display: block;
     float: left;
-    margin: 0 auto;
-    padding: 10px;
+    margin: 10px auto;
 }

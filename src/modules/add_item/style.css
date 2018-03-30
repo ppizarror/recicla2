@@ -1,0 +1,44 @@
+/*
+ADD ITEM STYLE
+Estilo añadir item.
+
+Autor: Pablo Pizarro R. @ppizarror.com
+Copyright 2018, no copiar o distribuír sin permiso directo del autor.
+*/
+
+.add-item-form-column {
+    float: left;
+    height: 100%;
+    padding: 5px;
+}
+
+.add-item-form-leftcolumn {
+    background-color: #393939;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    box-shadow: inset 0 -3px 10px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    width: 30%;
+}
+
+.add-item-form-rightcolumn {
+    width: 70%;
+}
+
+.add-item-nameobj {
+    cursor: default;
+    margin-left: 10px;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.add_item_form_line {
+    display: inline-block;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.add-item-nameobj-icon {
+    margin-right: 20px;
+}

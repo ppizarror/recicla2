@@ -65,6 +65,7 @@ function getYesterdayDateElement() {
     return getDateElement(-1, 0, 0, 0, 0, 0);
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Crea una fecha random entre el día actual y el principio de año
  * @return {object}     Fecha random
@@ -110,7 +111,7 @@ function getDateElement(d, m, y, h, mn, s) {
 /**
  * Formatea las fechas
  */
-;(function () {
+(function () {
     function g(a, c) {
         a.setHours(a.getHours() + parseFloat(c));
         return a
@@ -192,6 +193,7 @@ function getDateElement(d, m, y, h, mn, s) {
          */
         S: function () {
             var a = this.getDate();
+            // noinspection JSCheckFunctionSignatures
             return /^1[0-9]$/.test(a) ? "th" : /1$/.test(a) ? "st" : /2$/.test(a) ? "nd" : /3$/.test(a) ? "rd" : "th"
         },
         w: function () {return this.getDay()},
@@ -221,8 +223,11 @@ function getDateElement(d, m, y, h, mn, s) {
             var a = this.getFullYear();
             return 0 === a % 4 && 0 !== a % 100 || 0 === a % 400
         },
-        o: function () {return parseInt(this.getFullYear())},
+        o: function () {// noinspection JSCheckFunctionSignatures
+            return parseInt(this.getFullYear())
+        },
         Y: function () {// noinspection JSConstructorReturnsPrimitive
+            // noinspection JSCheckFunctionSignatures
             return parseInt(this.getFullYear())
         },
         y: function () {return parseInt((this.getFullYear() + "").substr(-2))},
@@ -294,8 +299,12 @@ function getDateElement(d, m, y, h, mn, s) {
          * @return {number}
          */
         Z: function () {return 60 * this.getTimezoneOffset()},
-        c: function () {return g(new Date(this), -(this.getTimezoneOffset() / 60)).toISOString()},
-        r: function () {return g(new Date(this), -(this.getTimezoneOffset() / 60)).toISOString()},
+        c: function () {// noinspection JSCheckFunctionSignatures
+            return g(new Date(this), -(this.getTimezoneOffset() / 60)).toISOString()
+        },
+        r: function () {// noinspection JSCheckFunctionSignatures
+            return g(new Date(this), -(this.getTimezoneOffset() / 60)).toISOString()
+        },
         /**
          * @return {number}
          */

@@ -80,15 +80,18 @@
     <!-- Inicia app -->
     <script src="src/core/init.js"></script>
 
-    <!-- Carga módulo -->
+    <!-- Carga módulo <Añadir item> -->
+    <link rel="stylesheet" type="text/css" href="src/modules/add_item/style.css" media="screen">
+    <script src="src/modules/add_item/ui.js"></script>
+    <script src="src/modules/add_item/validation.js"></script>
     <script src="src/modules/add_item/init.js"></script>
 </head>
 
 <body>
 <div id="root">
     <div id="appBackground"></div>
-    <div id="mainContent" class="fill"></div>
-    <div id="errorMsg" class="noselect">
+    <div id="mainContent"></div>
+    <div id="errorMsg">
         <div id="errorMsgText"></div>
     </div>
     <div id="footer"></div>

@@ -16,21 +16,18 @@ var aboutinfo = {
         "tag": "@ppizarror",
         "website": "http://ppizarror.com/"
     },
-    "resources": {
-        "favicon": "CC0" // https://pixabay.com/es/reciclaje-tri%C3%A1ngulo-de-s%C3%ADmbolo-1699572/
-    },
     "dependencies": {
-        "bootstrap": "4.0.0-beta",                  //  https://github.com/twbs/bootstrap
-        "hover": "2.3.0",                           //  https://github.com/IanLunn/Hover
-        "jquery": "3.3.1",                          //  https://github.com/jquery/jquery
-        "jquery-confirm": "3.3.0",                  //  https://github.com/craftpip/jquery-confirm
-        "toastr": "2.1.4",                          //  https://github.com/CodeSeven/toastr
-        "tooltipster": "4.2.6"                      //  https://github.com/iamceege/tooltipster
+        "bootstrap": "4.0.0-beta",      // https://github.com/twbs/bootstrap
+        "hover": "2.3.0",               // https://github.com/IanLunn/Hover
+        "jquery": "3.3.1",              // https://github.com/jquery/jquery
+        "jquery-confirm": "3.3.0",      // https://github.com/craftpip/jquery-confirm
+        "toastr": "2.1.4",              // https://github.com/CodeSeven/toastr
+        "tooltipster": "4.2.6"          // https://github.com/iamceege/tooltipster
     },
     "productname": "Recicla2",
     "version": {
-        "date": "26/03/2018",
-        "v": "0.0.2"
+        "date": "29/03/2018",
+        "v": "0.0.3"
     }
 };
 
