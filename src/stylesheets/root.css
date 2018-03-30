@@ -57,6 +57,7 @@ a.back-to-top {
 }
 
 #mainContent {
+    display: table;
     margin: 0 auto;
     max-width: 980px;
     min-width: 420px;

@@ -14,4 +14,6 @@ $(document).ready(function () {
     // Dibuja el container
     createAddItem();
 
+    // Centra la página
+    centerMainContent();
 });

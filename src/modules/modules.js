@@ -6,6 +6,7 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Módulos de la aplicación
  */
@@ -21,6 +22,7 @@ var modules = {
     }
 };
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Carga el archivo definido por el módulo m
  * @param m {String}        Archivo del módulo

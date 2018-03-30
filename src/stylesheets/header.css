@@ -1,0 +1,64 @@
+/*
+RECICLA2
+Header, cabecera de cada página.
+
+Autor: Pablo Pizarro R. @ppizarror.com
+Copyright 2018, no copiar o distribuír sin permiso directo del autor.
+*/
+
+.header-container {
+    color: #ffffff;
+    display: block;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.header-module {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.header-back-button-container {
+    width: 25%;
+}
+
+.header-back-button-icon {
+    float: left;
+}
+
+.header-back-button-title {
+    float: left;
+}
+
+.header-title {
+    font-size: 2.0rem;
+    line-height: 1 !important;
+    font-weight: 600;
+    text-align: center;
+    width: 50%;
+    cursor: default;
+}
+
+@media screen and (min-width: 900px) and (max-width: 1200px) {
+    .header-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+    .header-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header-title {
+        font-size: 1.2rem;
+    }
+}
+
+.header-app-logo {
+    text-align: right;
+    width: 25%;
+}

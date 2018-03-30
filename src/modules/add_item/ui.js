@@ -165,6 +165,9 @@ function createAddItem() {
         }
     };
 
+    // Genera el header
+    let header = new Header();
+
     // Genera el contador
     let add_container = new Container({
         backgroundColor: '#393939',
@@ -186,9 +189,9 @@ function createAddItem() {
         $k = $add_item_form_titles[$ftitle_k[i]];
         $k.id_title = generateId(cfg_id_size);
         if ($k.icon !== '') {
-            $ocl.append('<div id="{2}" class="add_item_form_line add-item-nameobj"><div class="add-item-form-title-inner"><i class="{1} add-item-nameobj-icon"></i>{0}</div></div>'.format($k.name, $k.icon, $k.id_title));
+            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{2}" class="add_item_form_line add-item-nameobj"><div class="add-item-form-title-inner"><i class="{1} add-item-nameobj-icon"></i>{0}</div></div>'.format($k.name, $k.icon, $k.id_title));
         } else {
-            $ocl.append('<div id="{1}" class="add_item_form_line add-item-nameobj">{0}</div>'.format($k.name, $k.id_title));
+            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{1}" class="add_item_form_line add-item-nameobj">{0}</div>'.format($k.name, $k.id_title));
         }
     }
 

@@ -16,6 +16,7 @@ function Container(options) {
         backgroundColor: '#ffffff',
         borderRadius: 5,
         padding: 10,
+        parent: ui_main_content,
         shadow: true,
         width: 100
     };
@@ -25,7 +26,7 @@ function Container(options) {
     /**
      * Crea el container en el DOM
      */
-    let _mainContent = $('#mainContent');
+    let _mainContent = $(options.parent);
     this._id = generateId(cfg_id_size);
     _mainContent.append('<div id="{0}" class="ui-container"></div>'.format(self._id));
     this._obj = $('#{0}'.format(this._id));
