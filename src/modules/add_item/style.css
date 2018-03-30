@@ -49,7 +49,7 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     margin-right: 20px;
 }
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 750px) {
     .add-item-nameobj-icon {
         display: none;
     }
@@ -66,4 +66,58 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 
 .add-item-description {
     resize: none;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.add-item-pic-label {
+    margin-bottom: 0 !important;
+}
+
+.add-item-pic-new-entry-block {
+    margin-top: .4rem !important;
+}
+
+.add-item-pic-item-text {
+    border-bottom-right-radius: 3px !important;
+    border-top-right-radius: 3px !important;
+    flex: inherit !important;
+    height: 38px;
+    width: 65% !important;
+}
+
+.add-item-pic-new-pic {
+    cursor: pointer;
+    float: right;
+    height: 38px;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+}
+
+.add-item-rc-selectors {
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px;
+    position: relative;
 }

@@ -43,6 +43,7 @@ function Container(options) {
         self._obj.css('box-shadow', '3px 3px 20px rgba(0, 0, 0, 0.3)')
     }
 
+    // noinspection JSUnusedGlobalSymbols
     /**
      * Retorna el id
      * @return {string|*}
