@@ -26,7 +26,9 @@ var test_items = [
                 comment: 'Jajajaja que comentario más inutil',
                 user: 'Jorge Nitales'
             })
-        ]
+        ],
+        date: getRandomDateElement(),
+        id: 0
     }),
     new Item({
         comuna: 'La Florida',
@@ -38,7 +40,9 @@ var test_items = [
         userEmail: 'pablo.pizarro@ing.uchile.cl',
         userPhone: '993932215',
         userStreet: 'Avenida Vicuña Mackenna, p16, Los Álamos Norte',
-        comments: []
+        comments: [],
+        date: getRandomDateElement(),
+        id: 1
     }),
     new Item({
         comuna: 'Toltén',
@@ -63,7 +67,9 @@ var test_items = [
                 comment: 'It\'s fake news',
                 user: 'Donald Trunp'
             })
-        ]
+        ],
+        date: getRandomDateElement(),
+        id: 2
     }),
     new Item({
         comuna: 'Los Vilos',
@@ -80,7 +86,9 @@ var test_items = [
                 comment: 'Oye tienen wifi?',
                 user: 'Josebas'
             })
-        ]
+        ],
+        date: getRandomDateElement(),
+        id: 3
     }),
     new Item({
         comuna: 'Dalcahue',
@@ -92,6 +100,8 @@ var test_items = [
         userEmail: 'matias@faisbun.com',
         userPhone: '91244567',
         userStreet: 'Ya no sé qué inventar, #2',
-        comments: []
+        comments: [],
+        date: getRandomDateElement(),
+        id: 4
     })
 ];

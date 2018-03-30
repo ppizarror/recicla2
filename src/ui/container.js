@@ -15,6 +15,7 @@ function Container(options) {
     let $defaults = {
         backgroundColor: '#ffffff',
         borderRadius: 5,
+        elementClass: '',
         padding: 10,
         parent: ui_main_content,
         shadow: true,
@@ -28,7 +29,10 @@ function Container(options) {
      */
     let _mainContent = $(options.parent);
     this._id = generateId(cfg_id_size);
-    _mainContent.append('<div id="{0}" class="ui-container"></div>'.format(self._id));
+    if (options.elementClass !== '') {
+        options.elementClass = ' ' + options.elementClass;
+    }
+    _mainContent.append('<div id="{0}" class="ui-container{1}"></div>'.format(self._id, options.elementClass));
     this._obj = $('#{0}'.format(this._id));
 
     /**

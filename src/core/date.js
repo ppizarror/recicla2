@@ -29,7 +29,6 @@ function createDateElement(day, month, year, hour, min, sec) {
     return {
         date: date,
         day: day,
-        daystring: date.format('Y/m/d'),
         hour: hour,
         min: min,
         month: month,

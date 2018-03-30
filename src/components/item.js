@@ -16,22 +16,26 @@ function Item(options) {
     let $defaults = {
         comments: [], // Comentarios del artículo
         comuna: '', // Comuna del artículo
+        date: {}, // Fecha del artículo
         desc: '', // Descripción del artículo
+        id: -1, // Id del objeto
         name: '', // Nombre del artículo
         photos: [], // Lista de fotos del artículo
         region: '', // Región del artículo
         userContact: '', // Nombre y contacto del usuario del artículo
         userEmail: '', // Correo del usuario
         userPhone: '', // Teléfono del usuario
-        userStreet: '', // Calle del usuario,
+        userStreet: '', // Calle del usuario
     };
     options = $.extend($defaults, options);
 
     // Variables de instancia
     this._c = options.comuna;
     this._comments = options.comments;
+    this._date = options.date;
     this._id = generateId(10);
     this._name = options.name;
+    this._objid = options.id;
     this._photos = options.photos;
     this._r = options.region;
     this._user_email = options.userEmail;
@@ -44,7 +48,15 @@ function Item(options) {
      * @return {string|*}
      */
     this.getID = function () {
-        return self._id;
+        return self._objid;
+    };
+
+    /**
+     * Obtiene la fecha del artículo
+     * @return {{}|date|*}
+     */
+    this.getDate = function () {
+        return this._date.date.format('Y/m/d H:m:s')
     };
 
     /**
@@ -76,6 +88,14 @@ function Item(options) {
      */
     this.getPhotos = function () {
         return self._photos;
+    };
+
+    /**
+     * Retorna el total de fotos del artículo
+     * @return {number}
+     */
+    this.getTotalPhotos = function () {
+        return self._photos.length;
     };
 
     /**

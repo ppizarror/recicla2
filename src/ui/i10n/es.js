@@ -46,6 +46,16 @@ $lang_db.es = {
     'module_add_item': 'Añadir nuevo artículo',
     'module_list_item': 'Recicla2',
     'list_item_title': 'Últimos artículos',
+    'list_item_date': 'Fecha Ingreso',
+    'list_item_item': 'Artículo',
+    'list_item_r': 'Región',
+    'list_item_c': 'Comuna',
+    'list_item_ncoments': 'N° Comentarios',
+    'list_item_npics': 'N° Fotos',
+    'list_item_user_email': 'Email contacto',
+    'list_item_user_name': 'Nombre contacto',
+    'list_item_user_street': 'Calle contacto',
+    'datatable_json_file': 'http://ppizarror.com/resources/tableSpanish.json',
     'name_lang': 'Español',
     'z_test': 'Mensaje de test'
 };

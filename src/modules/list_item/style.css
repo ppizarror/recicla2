@@ -5,3 +5,30 @@ Estilo lista de artículos.
 Autor: Pablo Pizarro R. @ppizarror.com
 Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 */
+
+.list-item-container {
+    font-size: 0.95rem;
+    padding: 15px 20px 20px !important;
+}
+
+.list-item-container .dataTables_filter label input {
+    background-clip: padding-box;
+    background: #fff none;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, .15);
+    color: #495057;
+    display: block;
+    float: right;
+    font-family: inherit;
+    font-size: 1.0rem;
+    font-weight: 300;
+    line-height: 0;
+    margin-top: -3px;
+    outline-offset: -2px;
+    padding: 3px 3px 3px 10px !important;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.list-item-link-view {
+    font-weight: 600;
+}
