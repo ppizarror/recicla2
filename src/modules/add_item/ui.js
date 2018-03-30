@@ -338,7 +338,7 @@ function initAddItemFormObject() {
                 var $input = $('input[name=calle-articulo]');
                 var $f = function () {
                     return validateAddItemInputText($input, {
-                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#-]+$/i
+                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#°-]+$/i
                     });
                 };
 
