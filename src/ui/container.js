@@ -13,6 +13,7 @@
  */
 function Container(options) {
     let $defaults = {
+        backgroundColor: '#ffffff',
         borderRadius: 5,
         padding: 10,
         shadow: true,
@@ -33,6 +34,7 @@ function Container(options) {
      * Aplica css
      */
     self._obj.css({
+        'background-color': options.backgroundColor,
         'border-radius': options.borderRadius + 'px',
         'padding': options.padding !== 0 ? options.padding + 'px' : '0',
         'width': Math.max(Math.min(100, options.width), 0) + '%'

@@ -13,15 +13,15 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 }
 
 .add-item-form-leftcolumn {
-    background-color: #393939;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
     box-shadow: inset 0 -3px 10px rgba(0, 0, 0, 0.1);
     color: #ffffff;
     width: 30%;
 }
 
 .add-item-form-rightcolumn {
+    background-color: #ffffff;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
     width: 70%;
 }
 
@@ -34,11 +34,36 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 }
 
 .add_item_form_line {
-    display: inline-block;
+    display: block;
     padding: 5px 0;
     width: 100%;
 }
 
+.add-item-form-title-inner {
+    display: inline;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
 .add-item-nameobj-icon {
     margin-right: 20px;
+}
+
+@media screen and (max-width: 870px) {
+    .add-item-nameobj-icon {
+        display: none;
+    }
+
+    .add-item-nameobj {
+        margin-left: 3px !important;
+    }
+}
+
+.add-item-form-text {
+    padding: .4rem .75rem !important;
+    font-size: 1rem !important;
+}
+
+.add-item-description {
+    resize: none;
 }
