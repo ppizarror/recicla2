@@ -103,7 +103,6 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 @media screen and (min-width: 900px) and (max-width: 1200px) {
     .header-app-container {
         font-size: 1.2rem;
-        margin-top: 0;
     }
 }
 
@@ -111,7 +110,6 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     .header-app-container {
         font-size: 1.2rem;
         padding: 7px;
-        margin-top: 0;
     }
 }
 
@@ -119,7 +117,6 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     .header-app-container {
         font-size: 1.1rem;
         padding: 9px;
-        margin-top: 0;
     }
 }
 

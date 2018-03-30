@@ -78,6 +78,11 @@ function createAddItem() {
         if ($k.afterDrawFun !== undefined) {
             $k.afterDrawFun();
         }
+
+        // Ejecuta la función de validación si existe
+        if ($k.validate !== undefined) {
+            $k.validate();
+        }
     }
 
     /**
@@ -85,7 +90,7 @@ function createAddItem() {
      */
     let $b_cancel_id = generateId(cfg_id_size);
     let $b_add_id = generateId(cfg_id_size);
-    $(ui_main_content).append('<!--suppress ALL --><div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{2}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
+    $(ui_main_content).append('<!--suppress ALL --><div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{3}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
 
     // Botón cancelar cierra módulo y carga módulo listar
     $('#' + $b_cancel_id).on('click', function () {
@@ -93,6 +98,28 @@ function createAddItem() {
             icon: 'fas fa-exclamation-triangle',
             confirm: function () {
                 loadModule(modules.listItem);
+            }
+        });
+    });
+
+    // Botón guardar artículo
+    $('#' + $b_add_id).on('click', function () {
+        $.alert({
+            animateFromElement: false,
+            animation: 'scale',
+            content: lang.add_item_form_error_1,
+            draggable: true,
+            dragWindowGap: 0,
+            escapeKey: false,
+            icon: 'fas fa-exclamation-triangle',
+            theme: cfg_popup_theme,
+            title: lang.error,
+            buttons: {
+                ok: {
+                    keys: ['enter', 'esc'],
+                    btnClass: 'btn-danger',
+                    text: lang.close
+                }
             }
         });
     });
@@ -141,14 +168,41 @@ function initAddItemFormObject() {
         "0": {
             "name": lang.add_item_form_name,
             "icon": "fas fa-box",
-            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-articulo' maxlength='80' size='40'>",
-            "resizeThread": false
+            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-articulo' maxlength='80' minlength='15' size='40'>",
+            "resizeThread": false,
+            "validate": function () {
+                var $input = $('input[name=nombre-articulo]');
+                var $f = function () {
+                    validateAddItemInputText($input, {
+                        schars: /^[\u00F1a-z_0-9',.#!\[\]¡°|"-]+$/i
+                    });
+                };
+
+                // Añade evento change
+                $input.on('change', $f);
+                validation_add_item_fun.push($f);
+            }
         },
         "1": {
             "name": lang.add_item_form_desc,
             "icon": "far fa-comment-alt",
             "form": "<textarea class='form-control add-item-description' rows='3' name='descripcion-articulo' maxlength='1000'></textarea>",
-            "resizeThread": false
+            "resizeThread": false,
+            "validate": function () {
+                var $input = $('textarea[name=descripcion-articulo]');
+                var $f = function () {
+                    validateAddItemInputText($input, {
+                        cantBeEmpty: false,
+                        checkMinSize: false,
+                        schars: /^[\u00F1a-z_0-9',.#!$\[\]¡°|"-]+$/i,
+                        userMessage: lang.add_item_form_valid_desc
+                    });
+                };
+
+                // Añade evento change
+                $input.on('change', $f);
+                validation_add_item_fun.push($f);
+            }
         },
         "2": {
             "name": lang.add_item_form_photo,
@@ -187,6 +241,7 @@ function initAddItemFormObject() {
                     }
                 };
                 $a.on('click.addNewPic', $f);
+                validation_add_item_fun.push($f);
             }
         },
         "3": {
@@ -207,26 +262,80 @@ function initAddItemFormObject() {
         "5": {
             "name": lang.add_item_form_sn,
             "icon": "fas fa-map-marker-alt",
-            "form": "<input type='text' class='form-control add-item-form-text' name='calle-articulo' maxlength='150' size='60'>",
-            "resizeThread": false
+            "form": "<input type='text' class='form-control add-item-form-text' name='calle-articulo' maxlength='150' minlength='10' size='60'>",
+            "resizeThread": false,
+            "validate": function () {
+                var $input = $('input[name=calle-articulo]');
+                var $f = function () {
+                    validateAddItemInputText($input, {
+                        schars: /^[\u00F1a-z_0-9',.#-]+$/i
+                    });
+                };
+
+                // Añade evento change
+                $input.on('change', $f);
+                validation_add_item_fun.push($f);
+            }
         },
         "6": {
             "name": lang.add_item_form_nc,
             "icon": "fas fa-user",
-            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-contacto' maxlength='200' size='60'>",
-            "resizeThread": false
+            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-contacto' maxlength='200' size='60' minlength='10' >",
+            "resizeThread": false,
+            "validate": function () {
+                var $input = $('input[name=nombre-contacto]');
+                var $f = function () {
+                    validateAddItemInputText($input, {
+                        schars: /^[a-z,.]+$/i
+                    });
+                };
+
+                // Añade evento change
+                $input.on('change', $f);
+                validation_add_item_fun.push($f);
+            }
         },
         "7": {
             "name": lang.add_item_form_email,
             "icon": "far fa-envelope",
             "form": "<input type='text' class='form-control add-item-form-text' name='email-contacto' maxlength='100' size='40'>",
-            "resizeThread": false
+            "resizeThread": false,
+            "validate": function () {
+                var $input = $('input[name=email-contacto]');
+                var $f = function () {
+                    validateAddItemEmail($input);
+                };
+
+                // Añade evento change
+                $input.on('change', $f);
+                validation_add_item_fun.push($f);
+            }
         },
         "8": {
             "name": lang.add_item_form_phone,
             "icon": "fas fa-phone",
-            "form": "<input type='text' class='form-control add-item-form-text' name='fono-contacto' maxlength='20' size='20'>",
-            "resizeThread": false
+            "form": "<input type='text' class='form-control add-item-form-text' name='fono-contacto' minlength='9' size='20'>",
+            "resizeThread": false,
+            "validate": function () {
+                var $input = $('input[name=fono-contacto]');
+                var $f = function () {
+                    validateAddItemInputText($input, {
+                        multipleWords: false,
+                        checkMaxSize: false,
+                        checkMinSize: true,
+                        schars: /^[0-9]+$/i,
+                        userMessage: lang.add_item_form_type_phone,
+                        userFun: function () { // Chequea el número
+                            let $p = $input.val();
+                            return $p[0] === '9';
+                        }
+                    });
+                };
+
+                // Añade evento change
+                $input.on('change', $f);
+                validation_add_item_fun.push($f);
+            }
         }
     };
 }
