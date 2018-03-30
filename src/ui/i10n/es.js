@@ -22,6 +22,8 @@ $lang_db.es = {
     'add_item_form_sn': 'Calle y número',
     'add_item_r_pick': 'Seleccione región',
     'add_new_photo_tooltip': 'Añadir nueva foto',
+    'answer_no': 'No',
+    'answer_yes': 'Si',
     'app_about': 'Aplicación destinada a la información de donaciones electrónicas. Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web.<br><br>Autor: <a href="http://ppizarror.com">Pablo Pizarro R.</a> - 2018.',
     'header_index': 'Ir a Inicio',
     'look_file': 'Buscar&hellip;',

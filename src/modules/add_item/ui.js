@@ -92,14 +92,14 @@ function createAddItem() {
         "2": {
             "name": lang.add_item_form_photo,
             "icon": "fas fa-camera",
-            "form": '<!--suppress ALL --><div class="input-group"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary" style="cursor: pointer;"><input type="file" name="foto-articulo1" style="display: none;">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled><span class="btn btn-success add-item-pic-new-pic"><i class="fas fa-plus"></i></span></div>'.format(lang.look_file),
+            "form": '<!--suppress ALL --><div class="input-group"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary" style="cursor: pointer;"><input type="file" name="foto-articulo1" style="display: none;">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled><span class="btn btn-success add-item-pic-new-pic hvr-icon-pop hvr-shadow"><i class="fas fa-plus hvr-icon"></i></span></div>'.format(lang.look_file),
             "newform": '',
             "resizeThread": false,
             "afterDrawFun": function () {
                 let $a = $('.add-item-pic-new-pic');
                 $a.tooltipster({
                     content: lang.add_new_photo_tooltip,
-                    delay: 600,
+                    delay: 1000,
                     side: 'bottom',
                     theme: cfg_tooltip_theme
                 });
@@ -194,7 +194,7 @@ function createAddItem() {
         $k = $add_item_form_titles[$ftitle_k[i]];
         $k.id_title = generateId(cfg_id_size);
         if ($k.icon !== '') {
-            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{2}" class="add_item_form_line add-item-nameobj"><div class="add-item-form-title-inner"><i class="{1} add-item-nameobj-icon"></i>{0}</div></div>'.format($k.name, $k.icon, $k.id_title));
+            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{2}" class="add_item_form_line add-item-nameobj"><div class="add-item-form-title-inner"><i class="{1} add-item-nameobj-icon hvr-icon-rotate"></i>{0}</div></div>'.format($k.name, $k.icon, $k.id_title));
         } else {
             $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{1}" class="add_item_form_line add-item-nameobj">{0}</div>'.format($k.name, $k.id_title));
         }
@@ -225,7 +225,12 @@ function createAddItem() {
     }
 
     // Añade barra botones
-    $(ui_main_content).append('<div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add));
+    let $b_cancel_id = generateId(cfg_id_size);
+    let $b_add_id = generateId(cfg_id_size);
+    $(ui_main_content).append('<!--suppress ALL --><div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{2}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
+    $('#' + $b_cancel_id).on('click', function () {
+        confirmPopup('a', 'b', {});
+    });
 }
 
 /**

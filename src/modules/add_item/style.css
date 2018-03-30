@@ -134,7 +134,7 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 
 .add-item-bottom-bar {
     display: inline-block;
-    margin-top: 20px;
+    margin: 20px 0;
     width: 100%;
 }
 

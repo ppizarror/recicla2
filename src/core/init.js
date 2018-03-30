@@ -26,4 +26,7 @@ $(document).ready(function () {
 
     // Activa el botón back to top
     showBackToTopButton();
+
+    // Verifica el modo móvil
+    checkMobileStatus();
 });

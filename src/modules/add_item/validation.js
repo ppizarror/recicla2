@@ -5,3 +5,9 @@
  @author Pablo Pizarro R. @ppizarror.com
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
+
+/**
+ * Valida el formulario para agregar artículos.
+ */
+function validateAddItemForm() {
+}

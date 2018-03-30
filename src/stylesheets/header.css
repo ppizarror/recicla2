@@ -9,7 +9,8 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 .header-container {
     color: #ffffff;
     display: block;
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-bottom: 10px;
     width: 100%;
 }
 
