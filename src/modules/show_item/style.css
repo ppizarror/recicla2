@@ -32,18 +32,3 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 .list-item-link-view {
     font-weight: 600;
 }
-
-.list-item-bottom-bar {
-    display: inline-block;
-    margin: 20px 0;
-    width: 100%;
-}
-
-.list-item-botton-buttoncontainer {
-    float: right;
-}
-
-.list-item-bottom-button {
-    cursor: pointer !important;
-    margin-left: 20px;
-}

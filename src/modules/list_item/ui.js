@@ -29,26 +29,32 @@ function createListItem() {
     });
     let $add_c = add_container.getDOM();
 
-    // Carga los artículos y los dibuja
+    /**
+     * Carga los artículos y los dibuja
+     */
     let $items = loadLastItemsFromServer();
     let $item;
     let $tableid = generateId(cfg_id_size);
     $add_c.append('<table id="{0}" width="100%" class="display list-item-table responsive" cellspacing="0" ><thead><tr><th>{1}</th><th>{2}</th><th>{3}</th><th>{4}</th><th>{5}</th><th>{6}</th><th>{7}</th></tr></thead><tbody class="itemsContent"></tbody></table>'.format($tableid, lang.list_item_date, lang.list_item_item, lang.list_item_r, lang.list_item_c, lang.list_item_ncoments, lang.list_item_npics, lang.list_item_user_email));
     let $tablecontent = $('#' + $tableid).find('.itemsContent');
 
-    // Dibuja los artículos
+    /**
+     * Dibuja los artículos
+     */
     for (let i = 0; i < $items.length; i++) {
         /**
          * @type{Item}
          */
         $item = $items[i];
-        $tablecontent.append('<tr><td>{0}</td><td><a href="{7}" class="list-item-link-view">{1}</a></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td></tr>'.format($item.getDate(), $item.getName(), $item.getRegion(), $item.getComuna(), $item.getTotalComments(), $item.getTotalPhotos(), $item.getUserEmail(), modules.showItem.file.format($item.getID())));
+        $tablecontent.append('<!--suppress ALL --><tr><td>{0}</td><td><a href="{7}" class="list-item-link-view">{1}</a></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td></tr>'.format($item.getDate(), $item.getName(), $item.getRegion(), $item.getComuna(), $item.getTotalComments(), $item.getTotalPhotos(), $item.getUserEmail(), modules.showItem.file.format($item.getID())));
     }
 
-    // noinspection JSCheckFunctionSignatures
+    /**
+     * Crea el Datatables
+     */
+        // noinspection JSCheckFunctionSignatures
     var $table = $('#{0}'.format($tableid));
-    var $tobj;
-    $tobj = $table.DataTable({
+    $table.DataTable({
         responsive: true,
         columnDefs: [
             {responsivePriority: 1, targets: 0},
@@ -74,6 +80,14 @@ function createListItem() {
                     $(window).on('resize.errorPanel', centerMainContent);
                 }
             }
+    });
+
+    /**
+     * Añade botón informar artículo
+     */
+    let $new_item_id = generateId(cfg_id_size);
+    $(ui_main_content).append('<!--suppress ALL --><div class="list-item-bottom-bar"><div class="list-item-botton-buttoncontainer"><button id="{0}" type="button" class="btn btn-primary list-item-bottom-button hvr-shadow">{1}</button></div></div>'.format($new_item_id, lang.list_item_new_item));
+    $('#' + $new_item_id).on('click', function () {
+        loadModule(modules.addItem);
     })
-    ;
 }

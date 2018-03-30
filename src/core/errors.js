@@ -31,6 +31,7 @@ function initErrors() {
     /**
      * Añade errores
      */
+    $add('itemNotExist', lang.item_not_exist_msg, lang.item_not_exist_moreinfo);
 }
 
 // noinspection JSUnusedGlobalSymbols

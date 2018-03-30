@@ -238,3 +238,12 @@ function consoleLogInfo(msg) {
         console.log('[{0}] {1}'.format(new Date().format('d/m/y H:i:s'), msg));
     }
 }
+
+/**
+ * Obtiene parámetro url
+ * @param {string} name     Nombre del parámetro
+ * @return {string}         Valor del parámetro
+ */
+function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
+}

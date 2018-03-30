@@ -28,7 +28,7 @@ var cfg_ui_watchinterval = 250; // Intervalo para ver cambios en la ui (ms)
 /**
  * Configuraciones de las notificaciones
  */
-var cfg_always_show_err_notification = true;
+var cfg_always_show_err_notification = false;
 var cfg_notification_extendedtimeout = 1000;
 var cfg_notification_hideduration = 1000;
 var cfg_notification_showduration = 300;
