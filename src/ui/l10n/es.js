@@ -20,7 +20,6 @@ $lang_db.es = {
     'name_lang': 'Español',
     'test': 'Mensaje de test',
     'look_file': 'Buscar&hellip;',
-    'add_new_photo': '+',
     'add_new_photo_tooltip': 'Añadir nueva foto',
     'add_item_r_pick': 'Seleccione región',
     'add_item_c_pick': 'Seleccione comuna',

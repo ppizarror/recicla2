@@ -92,7 +92,7 @@ function createAddItem() {
         "2": {
             "name": lang.add_item_form_photo,
             "icon": "fas fa-camera",
-            "form": '<!--suppress ALL --><div class="input-group"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary" style="cursor: pointer;"><input type="file" name="foto-articulo1" style="display: none;">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled><span class="btn btn-success add-item-pic-new-pic">{1}</span></div>'.format(lang.look_file, lang.add_new_photo),
+            "form": '<!--suppress ALL --><div class="input-group"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary" style="cursor: pointer;"><input type="file" name="foto-articulo1" style="display: none;">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled><span class="btn btn-success add-item-pic-new-pic"><i class="fas fa-plus"></i></span></div>'.format(lang.look_file),
             "newform": '',
             "resizeThread": false,
             "afterDrawFun": function () {
@@ -141,26 +141,26 @@ function createAddItem() {
         },
         "5": {
             "name": lang.add_item_form_sn,
-            "icon": "fas fa-map-marker",
-            "form": "",
+            "icon": "fas fa-map-marker-alt",
+            "form": "<input type='text' class='form-control add-item-form-text' name='calle-articulo' maxlength='150' size='60'>",
             "resizeThread": false
         },
         "6": {
             "name": lang.add_item_form_nc,
             "icon": "fas fa-user",
-            "form": "",
+            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-contacto' maxlength='200' size='60'>",
             "resizeThread": false
         },
         "7": {
             "name": lang.add_item_form_email,
             "icon": "far fa-envelope",
-            "form": "",
+            "form": "<input type='text' class='form-control add-item-form-text' name='email-contacto' maxlength='100' size='40'>",
             "resizeThread": false
         },
         "8": {
             "name": lang.add_item_form_phone,
             "icon": "fas fa-phone",
-            "form": "",
+            "form": "<input type='text' class='form-control add-item-form-text' name='fono-contacto' maxlength='20' size='20'>",
             "resizeThread": false
         }
     };
@@ -181,7 +181,6 @@ function createAddItem() {
 
     // Dibuja los nombres del formulario
     let $ftitle_k = Object.keys($add_item_form_titles);
-    console.log($ftitle_k);
     let $k;
     for (let i = 0; i < $ftitle_k.length; i++) {
         $k = $add_item_form_titles[$ftitle_k[i]];
