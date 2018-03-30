@@ -11,8 +11,5 @@
  */
 function centerMainContent() {
     $(ui_main_content).css('position', 'relative');
-    var $f = function () {
-        $(ui_main_content).css('top', (getElementHeight($(document)) - getElementHeight($(ui_main_content))) / 2 + 'px');
-    };
-    $f();
+    $(ui_main_content).css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_main_content))) / 2) + 'px');
 }

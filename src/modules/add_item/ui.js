@@ -109,16 +109,20 @@ function createAddItem() {
 
                 // Añade una nueva entrada para agregar imagen
                 var $f = function () {
-                    if ($add_item_total_pics >= 5) {
+                    if ($add_item_total_pics >= cfg_additem_max_photos) {
                         return;
                     }
                     $add_item_total_pics += 1;
+                    if ($add_item_total_pics === cfg_additem_max_photos) {
+                        $('.add-item-pic-new-pic').fadeOut();
+                    }
+
                     $('#{0}'.format($id)).append('<!--suppress ALL --><div class="input-group add-item-pic-new-entry-block"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary" style="cursor: pointer;"><input type="file" name="foto-articulo{2}"  style="display: none;">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled></div>'.format(lang.look_file, lang.add_new_photo, $add_item_total_pics));
                     $resize();
                     updateFileFormAddItemWatcher();
 
-                    if ($add_item_total_pics === 5) {
-                        $('.add-item-pic-new-pic').fadeOut();
+                    if (cfg_additem_center_module) {
+                        centerMainContent();
                     }
                 };
                 $a.on('click.addNewPic', $f);
@@ -166,11 +170,12 @@ function createAddItem() {
     };
 
     // Genera el header
-    let header = new Header();
+    new Header({
+        title: lang.module_add_item
+    });
 
     // Genera el contador
     let add_container = new Container({
-        backgroundColor: '#393939',
         padding: 0
     });
     let $add_c = add_container.getDOM();

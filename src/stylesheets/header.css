@@ -9,8 +9,14 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 .header-container {
     color: #ffffff;
     display: block;
-    padding-bottom: 20px;
+    padding: 20px 0;
     width: 100%;
+}
+
+@media screen and (max-height: 600px) {
+    .header-container {
+        padding: 10px 0;
+    }
 }
 
 .header-module {
@@ -19,12 +25,29 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     vertical-align: middle;
 }
 
-.header-back-button-container {
+.header-back-button {
+    height: 100%;
+    vertical-align: middle;
     width: 25%;
+}
+
+.header-back-button-container {
+    display: block;
+    cursor: pointer;
+    font-weight: 300;
+}
+
+.header-back-button-container:hover {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .header-back-button-icon {
     float: left;
+    margin-right: 15px;
+}
+
+.header-back-button-icon:hover {
+    color: #3a7fd5;
 }
 
 .header-back-button-title {
@@ -32,12 +55,13 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 }
 
 .header-title {
-    font-size: 2.0rem;
-    line-height: 1 !important;
-    font-weight: 600;
-    text-align: center;
-    width: 50%;
     cursor: default;
+    font-size: 2.0rem;
+    font-weight: 600;
+    line-height: 1 !important;
+    text-align: center;
+    vertical-align: middle;
+    width: 50%;
 }
 
 @media screen and (min-width: 900px) and (max-width: 1200px) {
@@ -46,19 +70,72 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     }
 }
 
-@media screen and (min-width: 500px) and (max-width: 900px) {
+@media screen and (min-width: 600px) and (max-width: 900px) {
     .header-title {
         font-size: 1.3rem;
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .header-title {
         font-size: 1.2rem;
     }
 }
 
 .header-app-logo {
+    font-weight: 400;
     text-align: right;
+    font-size: 1.3rem;
     width: 25%;
+}
+
+.header-app-container {
+    float: right;
+    margin-bottom: -20px;
+    margin-top: 1px;
+    padding: 10px;
+    position: relative;
+    top: -10px;
+    width: fit-content;
+}
+
+@media screen and (min-width: 900px) and (max-width: 1200px) {
+    .header-app-container {
+        font-size: 1.2rem;
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+    .header-app-container {
+        font-size: 1.2rem;
+        padding: 7px;
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header-app-container {
+        font-size: 1.1rem;
+        padding: 9px;
+        margin-top: 0;
+    }
+}
+
+.header-app-container:hover {
+    background-color: rgba(29, 97, 138, 0.15);
+    border-radius: 10px;
+    cursor: pointer;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.header-app-container > img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 700px) {
+    .header-app-container > img {
+        display: none;
+    }
 }

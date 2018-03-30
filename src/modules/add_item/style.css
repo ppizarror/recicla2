@@ -13,6 +13,9 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 }
 
 .add-item-form-leftcolumn {
+    background-color: #393939;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
     box-shadow: inset 0 -3px 10px rgba(0, 0, 0, 0.1);
     color: #ffffff;
     width: 30%;
@@ -35,6 +38,7 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 
 .add-item-nameobj:hover {
     color: #3a7fd5;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .add_item_form_line {

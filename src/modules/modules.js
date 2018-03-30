@@ -15,18 +15,17 @@ var modules = {
         'file': 'add_item.html'
     },
     'listItem': {
-        'file': 'list_item.html'
+        'file': 'index.html'
     },
     'showItem': {
         'file': 'show_item.html?id={0}'
     }
 };
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Carga el archivo definido por el módulo m
- * @param m {String}        Archivo del módulo
+ * @param m {object}        Archivo del módulo
  */
 function loadModule(m) {
-    window.location.href = m;
+    window.location.href = m.file;
 }
