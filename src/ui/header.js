@@ -37,7 +37,7 @@ function Header(options) {
         $backb.css('visibility', 'hidden');
     } else {
         $backb.click(function () {
-            loadModule(modules.listItem);
+            loadModule(modules.home);
         });
     }
 

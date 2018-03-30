@@ -22,13 +22,17 @@ function validateAddItemInputText($input, options) {
         checkMaxSize: true, // Chequea largo máximo
         checkMinSize: true, // Chequea largo mínimo
         multipleWords: true, // Acepta múltiples palabras
-        schars: /^[\u00F1a-z0-9]+$/i, // Expresión regular clásica
+        schars: /^[À-ÿ\u00f1\u00d1a-z0-9]+$/i, // Expresión regular clásica
+        trim: true, // Aplica trim a los datos
         userFun: null, // Función de validación del usuario
         userMessage: '', // Mensaje de error proporcionado por el usuario
     };
     options = $.extend($defaults, options);
 
     let text = $input.val();
+    if (options.trim) {
+        text = $.trim(text);
+    }
 
     // Se obtienen los tamaños mínimos y máximos si es que existen
     let min_size = $input.attr('minlength');
@@ -126,11 +130,26 @@ function validateAddItemInputText($input, options) {
 }
 
 /**
+ * Valida que un selector haya cambiado de valor
+ * @param $input
+ */
+function validateAddItemSelector($input) {
+    let st = {
+        status: $input.val() !== 'sin-region'
+    };
+    validateAddItemChangeStyleInput($input, st);
+
+    return st;
+}
+
+/**
  * Valida un campo input
  * @param $input
  */
 function validateAddItemEmail($input) {
     let email = $input.val();
+    email = $.trim(email);
+    $input.val(email);
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let s = re.test(String(email).toLowerCase());
 
@@ -142,6 +161,15 @@ function validateAddItemEmail($input) {
     validateAddItemChangeStyleInput($input, st);
 
     return st;
+}
+
+function validateAddItemPic($input) {
+    let $file = $input.val();
+    let st = {
+        message: lang.add_item_form_bad_pic,
+        status: $file !== '',
+    };
+    validateAddItemChangeStyleInput($input, st);
 }
 
 /**
@@ -194,13 +222,14 @@ function validateAddItemChangeStyleInput($input, s) {
 
         if (err_str !== '' && $_validation_add_item_display_tooltip) {
             $input.tooltipster({
+                animation: 'grow',
                 content: err_str + '.',
                 delay: cfg_additem_form_tooltip_error_delay,
+                distance: 0,
                 maxWidth: 350,
                 side: 'bottom',
                 theme: cfg_tooltip_theme,
-                timer: 0,
-                animation: 'grow'
+                timer: 0
             });
             $input.tooltipster('open');
         }

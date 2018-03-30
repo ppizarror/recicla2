@@ -127,7 +127,14 @@ function createAddItem() {
                 }
             });
         } else {
-
+            $.alert({
+                columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
+                content: lang.add_item_form_ok_upload,
+                title: lang.module_add_item,
+                onClose: function () {
+                    loadModule(modules.home);
+                },
+            });
         }
     });
 }
@@ -172,6 +179,8 @@ function updateFileFormAddItemWatcher() {
  */
 function initAddItemFormObject() {
     $add_item_form_titles = {
+
+        // Nombre artículo
         "0": {
             "name": lang.add_item_form_name,
             "icon": "fas fa-box",
@@ -181,7 +190,7 @@ function initAddItemFormObject() {
                 var $input = $('input[name=nombre-articulo]');
                 var $f = function () {
                     return validateAddItemInputText($input, {
-                        schars: /^[\u00F1a-z_0-9',.#!\[\]¡°|"-]+$/i
+                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!\[\]¡°|"-]+$/i
                     });
                 };
 
@@ -190,6 +199,8 @@ function initAddItemFormObject() {
                 validation_add_item_fun.push($f);
             }
         },
+
+        // Descripción
         "1": {
             "name": lang.add_item_form_desc,
             "icon": "far fa-comment-alt",
@@ -201,7 +212,7 @@ function initAddItemFormObject() {
                     return validateAddItemInputText($input, {
                         cantBeEmpty: false,
                         checkMinSize: false,
-                        schars: /^[\u00F1a-z_0-9',.#!$\[\]¡°|"-]+$/i,
+                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!$\[\]¡°|"-]+$/i,
                         userMessage: lang.add_item_form_valid_desc
                     });
                 };
@@ -211,10 +222,12 @@ function initAddItemFormObject() {
                 validation_add_item_fun.push($f);
             }
         },
+
+        // Fotos
         "2": {
             "name": lang.add_item_form_photo,
             "icon": "fas fa-camera",
-            "form": '<!--suppress ALL --><div class="input-group"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary" style="cursor: pointer;"><input type="file" name="foto-articulo1" style="display: none;">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled><span class="btn btn-success add-item-pic-new-pic hvr-icon-pop hvr-shadow"><i class="fas fa-plus hvr-icon"></i></span></div>'.format(lang.look_file),
+            "form": '<!--suppress ALL --><div class="input-group"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button"><input type="file" name="foto-articulo1" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc1"><span class="btn btn-success add-item-pic-new-pic hvr-icon-pop hvr-shadow"><i class="fas fa-plus hvr-icon"></i></span></div>'.format(lang.look_file),
             "newform": '',
             "resizeThread": false,
             "afterDrawFun": function () {
@@ -229,6 +242,15 @@ function initAddItemFormObject() {
                 var $resize = this.resizeFun;
                 updateFileFormAddItemWatcher();
 
+                // Se valida el ítem
+                var $input = $('input[name=foto-articulo-desc1]');
+                var $s = function () {
+                    return validateAddItemPic($input);
+                };
+
+                // Añade evento change
+                validation_add_item_fun.push($s);
+
                 // Añade una nueva entrada para agregar imagen
                 var $f = function () {
                     if ($add_item_total_pics >= cfg_additem_max_photos) {
@@ -239,9 +261,17 @@ function initAddItemFormObject() {
                         $('.add-item-pic-new-pic').fadeOut();
                     }
 
-                    $('#{0}'.format($id)).append('<!--suppress ALL --><div class="input-group add-item-pic-new-entry-block"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary" style="cursor: pointer;"><input type="file" name="foto-articulo{2}"  style="display: none;">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled></div>'.format(lang.look_file, lang.add_new_photo, $add_item_total_pics));
+                    $('#{0}'.format($id)).append('<!--suppress ALL --><div class="input-group add-item-pic-new-entry-block"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button" style="cursor: pointer;"><input type="file" name="foto-articulo{2}" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc{2}" ></div>'.format(lang.look_file, lang.add_new_photo, $add_item_total_pics));
                     $resize();
                     updateFileFormAddItemWatcher();
+
+                    var $input = $('input[name=foto-articulo-desc{0}]'.format($add_item_total_pics));
+                    var $s = function () {
+                        return validateAddItemPic($input);
+                    };
+
+                    // Añade evento change
+                    validation_add_item_fun.push($s);
 
                     if (cfg_additem_center_module) {
                         centerMainContent();
@@ -250,12 +280,26 @@ function initAddItemFormObject() {
                 $a.on('click.addNewPic', $f);
             }
         },
+
+        // Región
         "3": {
             "name": lang.add_item_form_r_e,
             "icon": "fas fa-globe",
             "form": "<select id='formRegiones' class='add-item-rc-selectors' name='region-articulo'></select>",
             "resizeThread": false,
+            "validate": function () {
+                var $input = $('select[name=region-articulo]');
+                var $f = function () {
+                    return validateAddItemSelector($input);
+                };
+
+                // Añade evento change
+                $input.on('change', $f);
+                validation_add_item_fun.push($f);
+            }
         },
+
+        // Comuna
         "4": {
             "name": lang.add_item_form_c_e,
             "icon": "fas fa-globe",
@@ -263,8 +307,20 @@ function initAddItemFormObject() {
             "resizeThread": false,
             "afterDrawFun": function () {
                 addItemUpdateRCForm();
+            },
+            "validate": function () {
+                var $input = $('select[name=comuna-articulo]');
+                var $f = function () {
+                    return validateAddItemSelector($input);
+                };
+
+                // Añade evento change
+                $input.on('change', $f);
+                validation_add_item_fun.push($f);
             }
         },
+
+        // Calle
         "5": {
             "name": lang.add_item_form_sn,
             "icon": "fas fa-map-marker-alt",
@@ -274,7 +330,7 @@ function initAddItemFormObject() {
                 var $input = $('input[name=calle-articulo]');
                 var $f = function () {
                     return validateAddItemInputText($input, {
-                        schars: /^[\u00F1a-z_0-9',.#-]+$/i
+                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#-]+$/i
                     });
                 };
 
@@ -283,6 +339,8 @@ function initAddItemFormObject() {
                 validation_add_item_fun.push($f);
             }
         },
+
+        // Nombre del contacto
         "6": {
             "name": lang.add_item_form_nc,
             "icon": "fas fa-user",
@@ -292,7 +350,7 @@ function initAddItemFormObject() {
                 var $input = $('input[name=nombre-contacto]');
                 var $f = function () {
                     return validateAddItemInputText($input, {
-                        schars: /^[a-z,.]+$/i
+                        schars: /^[À-ÿ\u00f1\u00d1a-z,.]+$/i
                     });
                 };
 
@@ -301,6 +359,8 @@ function initAddItemFormObject() {
                 validation_add_item_fun.push($f);
             }
         },
+
+        // E-mail del contacto
         "7": {
             "name": lang.add_item_form_email,
             "icon": "far fa-envelope",
@@ -317,6 +377,8 @@ function initAddItemFormObject() {
                 validation_add_item_fun.push($f);
             }
         },
+
+        // Teléfono del contacto
         "8": {
             "name": lang.add_item_form_phone,
             "icon": "fas fa-phone",

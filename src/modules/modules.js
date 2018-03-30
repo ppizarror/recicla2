@@ -19,6 +19,9 @@ var modules = {
     },
     'showItem': {
         'file': 'show_item.html?id={0}'
+    },
+    'home': {
+        'file': 'index.html'
     }
 };
 

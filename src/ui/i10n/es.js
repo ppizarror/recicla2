@@ -25,6 +25,7 @@ $lang_db.es = {
     'answer_no': 'No',
     'answer_yes': 'Si',
     'app_about': 'Aplicación destinada a la información de donaciones electrónicas. Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web.<br><br>Autor: <a href="http://ppizarror.com">Pablo Pizarro R.</a> - 2018.',
+    'add_item_form_bad_pic': 'Debe seleccionar una imagen válida',
     'header_index': 'Ir a Inicio',
     'look_file': 'Buscar&hellip;',
     'module_add_item': 'Añadir nuevo artículo',
@@ -43,4 +44,5 @@ $lang_db.es = {
     'error': 'Error',
     'add_item_form_error_1': 'Se ha encontrado un error en el formulario',
     'add_item_form_error_n': 'Se han encontrado {0} errores en el formulario',
+    'add_item_form_ok_upload': 'El artículo ha sido publicado correctamente',
 };

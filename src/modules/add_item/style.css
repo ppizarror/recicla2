@@ -107,19 +107,36 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 
 .add-item-pic-item-text {
     border-bottom-right-radius: 3px !important;
+    border-left: none !important;
     border-top-right-radius: 3px !important;
     flex: inherit !important;
-    height: 38px;
+    height: 34px;
+    margin-left: 1px;
     width: 65% !important;
+}
+
+@media screen and (max-width: 780px) {
+    .add-item-pic-item-text {
+        width: 50% !important;
+    }
 }
 
 .add-item-pic-new-pic {
     cursor: pointer;
     float: right;
-    height: 38px;
+    height: 34px;
+    padding-left: 9px;
+    padding-top: 5px;
     position: absolute;
     right: 0;
+    width: 34px;
     z-index: 10;
+}
+
+.add-item-pic-button {
+    cursor: pointer;
+    height: 34px;
+    line-height: 0.9;
 }
 
 .add-item-rc-selectors {
