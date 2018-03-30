@@ -93,7 +93,7 @@ function createAddItem() {
     $(ui_main_content).append('<!--suppress ALL --><div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{3}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
 
     // Botón cancelar cierra módulo y carga módulo listar
-    $('#' + $b_cancel_id).on('click', function () {
+    $('#' + $b_cancel_id).on('click.cancelFormButton', function () {
         confirmPopup(lang.add_item_cancel_title, lang.add_item_cancel_ask, {
             icon: 'fas fa-exclamation-triangle',
             confirm: function () {
@@ -103,25 +103,32 @@ function createAddItem() {
     });
 
     // Botón guardar artículo
-    $('#' + $b_add_id).on('click', function () {
-        $.alert({
-            animateFromElement: false,
-            animation: 'scale',
-            content: lang.add_item_form_error_1,
-            draggable: true,
-            dragWindowGap: 0,
-            escapeKey: false,
-            icon: 'fas fa-exclamation-triangle',
-            theme: cfg_popup_theme,
-            title: lang.error,
-            buttons: {
-                ok: {
-                    keys: ['enter', 'esc'],
-                    btnClass: 'btn-danger',
-                    text: lang.close
+    $('#' + $b_add_id).on('click.submitFormButtom', function () {
+        // Se valida el formulario
+        let $validate = validateAddItemForm();
+        if ($validate.failed) {
+            $.alert({
+                animateFromElement: false,
+                animation: 'scale',
+                columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
+                content: ($validate.nfail === 1 ? lang.add_item_form_error_1 : lang.add_item_form_error_n.format($validate.nfail)) + '.',
+                draggable: true,
+                dragWindowGap: 0,
+                escapeKey: false,
+                icon: 'fas fa-exclamation-triangle',
+                theme: cfg_popup_theme,
+                title: lang.error,
+                buttons: {
+                    ok: {
+                        keys: ['enter', 'esc'],
+                        btnClass: 'btn-danger',
+                        text: lang.close
+                    }
                 }
-            }
-        });
+            });
+        } else {
+
+        }
     });
 }
 
@@ -173,7 +180,7 @@ function initAddItemFormObject() {
             "validate": function () {
                 var $input = $('input[name=nombre-articulo]');
                 var $f = function () {
-                    validateAddItemInputText($input, {
+                    return validateAddItemInputText($input, {
                         schars: /^[\u00F1a-z_0-9',.#!\[\]¡°|"-]+$/i
                     });
                 };
@@ -191,7 +198,7 @@ function initAddItemFormObject() {
             "validate": function () {
                 var $input = $('textarea[name=descripcion-articulo]');
                 var $f = function () {
-                    validateAddItemInputText($input, {
+                    return validateAddItemInputText($input, {
                         cantBeEmpty: false,
                         checkMinSize: false,
                         schars: /^[\u00F1a-z_0-9',.#!$\[\]¡°|"-]+$/i,
@@ -241,7 +248,6 @@ function initAddItemFormObject() {
                     }
                 };
                 $a.on('click.addNewPic', $f);
-                validation_add_item_fun.push($f);
             }
         },
         "3": {
@@ -267,7 +273,7 @@ function initAddItemFormObject() {
             "validate": function () {
                 var $input = $('input[name=calle-articulo]');
                 var $f = function () {
-                    validateAddItemInputText($input, {
+                    return validateAddItemInputText($input, {
                         schars: /^[\u00F1a-z_0-9',.#-]+$/i
                     });
                 };
@@ -285,7 +291,7 @@ function initAddItemFormObject() {
             "validate": function () {
                 var $input = $('input[name=nombre-contacto]');
                 var $f = function () {
-                    validateAddItemInputText($input, {
+                    return validateAddItemInputText($input, {
                         schars: /^[a-z,.]+$/i
                     });
                 };
@@ -303,7 +309,7 @@ function initAddItemFormObject() {
             "validate": function () {
                 var $input = $('input[name=email-contacto]');
                 var $f = function () {
-                    validateAddItemEmail($input);
+                    return validateAddItemEmail($input);
                 };
 
                 // Añade evento change
@@ -319,7 +325,7 @@ function initAddItemFormObject() {
             "validate": function () {
                 var $input = $('input[name=fono-contacto]');
                 var $f = function () {
-                    validateAddItemInputText($input, {
+                    return validateAddItemInputText($input, {
                         multipleWords: false,
                         checkMaxSize: false,
                         checkMinSize: true,

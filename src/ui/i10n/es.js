@@ -41,6 +41,6 @@ $lang_db.es = {
     'add_item_form_valid_desc': 'Ingrese una descripción válida, máximo 1000 carácteres',
     'close': 'Cerrar',
     'error': 'Error',
-    'add_item_form_error_1': 'Se han encontrado un error en el formulario',
+    'add_item_form_error_1': 'Se ha encontrado un error en el formulario',
     'add_item_form_error_n': 'Se han encontrado {0} errores en el formulario',
 };

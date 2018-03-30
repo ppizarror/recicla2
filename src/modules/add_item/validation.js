@@ -17,7 +17,7 @@ var $_validation_add_item_display_tooltip = true;
  */
 function validateAddItemInputText($input, options) {
     let $defaults = {
-        cantBeEmpty: true, // Indica si el formulario puede estar vacío
+        cantBeEmpty: true, // Indica si el formulario no puede estar vacío
         changeInputStyle: true, // Actualiza el estilo del input
         checkMaxSize: true, // Chequea largo máximo
         checkMinSize: true, // Chequea largo mínimo
@@ -99,6 +99,11 @@ function validateAddItemInputText($input, options) {
     }
     s = s && $ufun;
 
+    // El contenido está vacío
+    if (!options.cantBeEmpty && text === '') {
+        s = true;
+    }
+
     // Genera el estado
     let st = {
         message: options.userMessage, // Mensaje del usuario
@@ -118,14 +123,6 @@ function validateAddItemInputText($input, options) {
     }
 
     return st;
-}
-
-/**
- * Valida un número telefónico Chileno
- * @param $input
- */
-function validateAddItemPhone($input) {
-    console.log(validation_add_item_fun);
 }
 
 /**
@@ -163,7 +160,6 @@ function validateAddItemChangeStyleInput($input, s) {
     if (s.status) {
         $input.addClass('add-item-input-ok');
     } else {
-        console.log(s);
         $input.addClass('add-item-input-bad');
 
         // Genera el string del error
@@ -215,5 +211,26 @@ function validateAddItemChangeStyleInput($input, s) {
  * Valida el formulario para agregar artículos.
  */
 function validateAddItemForm() {
+    var $f; // Función validadora
+    var $r; // Resultado de cada validador
+    var $nerr = 0; // Número de errores
 
+    // Se recorre cada item validador del formulario
+    for (let i = 0; i < validation_add_item_fun.length; i++) {
+        $f = validation_add_item_fun[i];
+        $r = $f();
+        if ($r === undefined) {
+            continue;
+        }
+        if (!$r.status) {
+            $nerr += 1;
+            $_validation_add_item_display_tooltip = false;
+        }
+    }
+    $_validation_add_item_display_tooltip = true;
+
+    return {
+        failed: $nerr !== 0,
+        nfail: $nerr
+    }
 }
