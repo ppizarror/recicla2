@@ -27,4 +27,16 @@ function createListItem() {
         padding: 0
     });
     let $add_c = add_container.getDOM();
+
+    // Carga los artículos y los dibuja
+    let $items = loadLastItemsFromServer();
+    let $item;
+    for (let i = 0; i < $items.length; i++) {
+        /**
+         * @type{Item}
+         */
+        $item = $items[i];
+
+        console.log($item.getName());
+    }
 }

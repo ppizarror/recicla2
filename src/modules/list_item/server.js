@@ -14,6 +14,8 @@ function loadLastItemsFromServer(options) {
     let $defaults = {
         itemsToLoad: 5
     };
+    // noinspection JSUnusedAssignment
     options = $.extend($defaults, options);
+    return test_items;
 }
 
