@@ -131,3 +131,18 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     padding: 6px;
     position: relative;
 }
+
+.add-item-bottom-bar {
+    display: inline-block;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.add-item-bottom-button {
+    cursor: pointer !important;
+    margin-left: 20px;
+}
+
+.add-item-botton-buttoncontainer {
+    float: right;
+}

@@ -26,7 +26,7 @@ function Header(options) {
      * Añade el header
      */
     this._id = generateId(cfg_id_size);
-    _parentobj.append('<!--suppress ALL --><div id="{0}" class="header-container"><div class="header-module header-back-button"><div class="header-back-button-container"><div class="header-back-button-icon"><i class="fas fa-chevron-circle-left"></i></div><div class="header-back-button-title">{1}</div></div></div><div class="header-module header-title"></div><div class="header-module header-app-logo"><div class="header-app-container"><img src="resources/ui/favicon/favicon.png" /> Recicla2</div></div>'.format(self._id, lang.header_index));
+    _parentobj.append('<!--suppress ALL --><div id="{0}" class="header-container"><div class="header-module header-back-button"><div class="header-back-button-container hvr-icon-buzz-out"><div class="header-back-button-icon hvr-icon"><i class="fas fa-chevron-circle-left"></i></div><div class="header-back-button-title">{1}</div></div></div><div class="header-module header-title"></div><div class="header-module header-app-logo"><div class="header-app-container"><img src="resources/ui/favicon/favicon.png" /> Recicla2</div></div>'.format(self._id, lang.header_index));
     this._obj = $('#{0}'.format(self._id));
 
     /**

@@ -7,8 +7,10 @@
  */
 
 $lang_db.es = {
+    'add_item_add': 'Ingresar este artículo',
     'add_item_add_photo': 'Agregar otra fotografía',
     'add_item_c_pick': 'Seleccione comuna',
+    'add_item_cancel': 'Cancelar',
     'add_item_form_c_e': 'Comuna entrega',
     'add_item_form_desc': 'Descripción',
     'add_item_form_email': 'Email contacto',
@@ -25,5 +27,5 @@ $lang_db.es = {
     'look_file': 'Buscar&hellip;',
     'module_add_item': 'Añadir nuevo artículo',
     'name_lang': 'Español',
-    'test': 'Mensaje de test',
+    'test': 'Mensaje de test'
 };

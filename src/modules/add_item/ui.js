@@ -223,6 +223,9 @@ function createAddItem() {
             $k.afterDrawFun();
         }
     }
+
+    // Añade barra botones
+    $(ui_main_content).append('<div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add));
 }
 
 /**
