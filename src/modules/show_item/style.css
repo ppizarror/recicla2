@@ -8,7 +8,7 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 
 .show-item-transform {
     position: absolute !important;
-    top: -200px !important;
+    top: -150px !important;
     transform: skew(0, -1.5deg);
 }
 
