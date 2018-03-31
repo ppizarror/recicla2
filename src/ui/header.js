@@ -61,4 +61,12 @@ function Header(options) {
 
     // Escribe el título
     self._obj.find('.header-title').html(options.title);
+
+    /**
+     * Retorna el DOM
+     * @return {void|jQuery|HTMLElement|*}
+     */
+    this.getDOM = function () {
+        return self._obj;
+    }
 }

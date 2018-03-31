@@ -177,6 +177,21 @@ function getElementWidth(elem) {
 }
 
 /**
+ * Retorna el ancho en px del elemento en el DOM sin padding
+ * @param elem {Object}         Elemento jQuery
+ * @return {number}
+ */
+function getElementInnerWidth(elem) {
+    try {
+        // noinspection JSValidateTypes
+        return elem.innerWidth(true);
+    } catch (e) {
+        return -1;
+    } finally {
+    }
+}
+
+/**
  * Muestra un mensaje de error en la consola
  * @param {string} msg      Mensaje
  * @param {boolean} w       Indica si se escribe el encabezado o no

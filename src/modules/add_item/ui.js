@@ -283,6 +283,7 @@ function initAddItemFormObject() {
 
                     if (cfg_additem_center_module) {
                         centerMainContent();
+                        showItemBackgroundResize();
                     }
                 };
                 $a.on('click.addNewPic', $f);

@@ -10,9 +10,7 @@
  * Centra el panel principal
  */
 function centerMainContent() {
-    let $appbackground = $('#appBackground');
     let $maincontent = $(ui_main_content);
     $maincontent.css('position', 'relative');
     $(ui_main_content).css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_main_content))) / 2) + 'px');
-    $appbackground.css('width', Math.max(getElementWidth($appbackground), getElementWidth($maincontent)));
 }

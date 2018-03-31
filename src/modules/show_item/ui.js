@@ -7,7 +7,9 @@
  */
 
 var $show_item_comment_container; // Objeto contenedor de los comentarios
+var $show_item_container; // Contenedor de la página mostrar artículo
 var $show_item_empty_comment = true; // Indica si hay o no comentarios
+var $show_item_header_container; // Elemento header de la página
 var $show_item_sections; // Secciones del artículo
 
 /**
@@ -24,13 +26,14 @@ function createShowItem($item) {
     /**
      * Genera el header y el contenedor
      */
-    new Header({
+    let show_header = new Header({
         title: lang.show_item_title
     });
-    let add_container = new Container({
+    let show_container = new Container({
         padding: 0
     });
-    let $add_c = add_container.getDOM();
+    $show_item_container = show_container.getDOM();
+    $show_item_header_container = show_header.getDOM();
 
     /**
      * Inicia los datos del objeto
@@ -42,7 +45,7 @@ function createShowItem($item) {
      */
     let $cl = generateId(cfg_id_size);
     let $cr = generateId(cfg_id_size);
-    $add_c.append('<div id="{0}" class="add-item-form-column add-item-form-leftcolumn"></div><div id="{1}" class="add-item-form-column add-item-form-rightcolumn"></div>'.format($cl, $cr));
+    $show_item_container.append('<div id="{0}" class="add-item-form-column add-item-form-leftcolumn"></div><div id="{1}" class="add-item-form-column add-item-form-rightcolumn"></div>'.format($cl, $cr));
     let $ocl = $('#{0}'.format($cl));
     let $ocr = $('#{0}'.format($cr));
 
@@ -222,6 +225,7 @@ function autoResizeTitles(formid, titleid) {
         // noinspection JSValidateTypes
         let h = $('#{0}'.format(formid)).outerHeight();
         $('#{0}'.format(titleid)).css('height', h + 'px');
+        showItemBackgroundResize();
     };
 }
 
@@ -238,7 +242,7 @@ function initShowItemSections($item) {
             "name": lang.add_item_form_name,
             "icon": "fas fa-box",
             "value": "<div class='show-item-name'>{0}</div>".format($item.getName()),
-            "resizeThread": false
+            "resizeThread": true
         },
 
         // Descripción
@@ -301,13 +305,14 @@ function initShowItemSections($item) {
                     $('#' + $imageid).on('click', $imageswipe);
                 }
                 $container.slick({
+                    adaptiveHeight: true,
                     centerMode: false,
                     dots: true,
                     infinite: false,
-                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    slidesToShow: 3,
                     speed: 300,
-                    variableWidth: true,
-                    adaptiveHeight: true
+                    variableWidth: true
                 });
                 this.resizeFun();
             }
@@ -369,4 +374,16 @@ function initShowItemSections($item) {
             "resizeThread": false
         }
     };
+}
+
+/**
+ * Centra el panel principal
+ */
+function showItemBackgroundResize() {
+    let $appbackground = $('#appBackground');
+    let $maincontent = $(ui_main_content);
+    $maincontent.css('position', 'relative');
+    $(ui_main_content).css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_main_content))) / 2) + 'px');
+    $appbackground.css('width', getElementInnerWidth($(window)) + 'px');
+    $appbackground.css('height', getElementHeight($show_item_container) + 150 + 'px')
 }

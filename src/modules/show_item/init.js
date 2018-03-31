@@ -24,7 +24,11 @@ $(document).ready(function () {
 
     // Centra la página
     if (cfg_showitem_center_module) {
-        centerMainContent();
-        $(window).on('resize.errorPanel', centerMainContent);
+        var $f = function () {
+            centerMainContent();
+            showItemBackgroundResize();
+        };
+        $(window).on('resize.errorPanel', $f);
+        $f();
     }
 });
