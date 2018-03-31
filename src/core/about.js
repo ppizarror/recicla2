@@ -23,6 +23,8 @@ var aboutinfo = {
         "hover": "2.3.0",               // https://github.com/IanLunn/Hover
         "jquery": "3.3.1",              // https://github.com/jquery/jquery
         "jquery-confirm": "3.3.0",      // https://github.com/craftpip/jquery-confirm
+        "photoswipe": "4.1.2",          // http://photoswipe.com
+        "slick": "1.8.0",               // http://kenwheeler.github.io
         "toastr": "2.1.4",              // https://github.com/CodeSeven/toastr
         "tooltipster": "4.2.6"          // https://github.com/iamceege/tooltipster
     },
