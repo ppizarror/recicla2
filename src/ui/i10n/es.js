@@ -9,6 +9,7 @@
 $lang_db.es = {
     'add_comment_bad_comment': 'Provea un comentario apropiado, mayor a 10 caracteres',
     'add_comment_bad_name': 'Provea un nombre de usuario apropiado, mayor a 5 caracteres',
+    'add_comment_button_cancel': 'Cancelar',
     'add_comment_button_submit': 'Guardar',
     'add_comment_comment_input': 'Ingrese su comentario',
     'add_comment_comment_title': 'Comentario',

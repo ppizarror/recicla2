@@ -161,27 +161,30 @@ function createShowItem($item) {
                 },
 
                 // Se cancela el comentario
-                cancel: function () {
-                    $.alert({
-                        animateFromElement: false,
-                        animation: 'scale',
-                        columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
-                        content: lang.show_item_comment_canceled,
-                        draggable: true,
-                        dragWindowGap: 0,
-                        escapeKey: false,
-                        icon: 'far fa-comment',
-                        theme: cfg_popup_theme,
-                        title: lang.add_comment_title,
-                        buttons: {
-                            ok: {
-                                keys: ['enter', 'esc'],
-                                btnClass: 'btn-danger',
-                                text: lang.close
+                cancel: {
+                    text: lang.add_comment_button_cancel,
+                    action: function () {
+                        $.alert({
+                            animateFromElement: false,
+                            animation: 'scale',
+                            columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
+                            content: lang.show_item_comment_canceled,
+                            draggable: true,
+                            dragWindowGap: 0,
+                            escapeKey: false,
+                            icon: 'far fa-comment',
+                            theme: cfg_popup_theme,
+                            title: lang.add_comment_title,
+                            buttons: {
+                                ok: {
+                                    keys: ['enter', 'esc'],
+                                    btnClass: 'btn-danger',
+                                    text: lang.close
+                                }
                             }
-                        }
-                    });
-                },
+                        });
+                    },
+                }
             },
             onContentReady: function () {
                 // bind to events
