@@ -150,9 +150,47 @@ function initShowItemSections($item) {
             "afterDrawFun": function () {
                 let $pics = $item.getPhotos();
                 let $container = $('.show-item-gallery');
+                let $imageid;
+                let $imageswipe;
                 for (let i = 0; i < $item.getTotalPhotos(); i++) {
+                    $imageid = generateId(cfg_id_size);
+                    var $imagesrc = $pics[i];
+
                     // noinspection QuirksModeInspectionTool
-                    $container.append('<!--suppress ALL --><div class="show-item-small-pic hvr-grow"><img src="{0}" alt="{1}"/></div>'.format($pics[i], lang.show_item_pic_n.format(i + 1)));
+                    $container.append('<!--suppress ALL --><div id="{2}" class="show-item-small-pic hvr-grow"><img src="{0}" alt="{1}"/></div>'.format($imagesrc, lang.show_item_pic_n.format(i + 1), $imageid));
+
+                    // Se crea listener de click para abrir photoswipe en la imagen
+                    $imageswipe = function ($src, $i) {
+                        return function () {
+                            var pswpElement = document.querySelectorAll('.pswp')[0];
+                            var items = [{
+                                src: $src,
+                                w: 800,
+                                h: 600,
+                                title: lang.show_item_pic_n.format($i)
+                            }];
+                            var options = {
+                                index: 0,
+                                showAnimationDuration: 400,
+                                hideAnimationDuration: 400,
+                                shareEl: false,
+                                counterEl: false,
+                                history: true,
+                                fullscreenEl: false,
+                                zoomEl: false
+                            };
+                            var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+                            gallery.listen('close', function () {
+                                $('a.back-to-top').fadeIn('slow');
+                            });
+                            gallery.init();
+                            $('a.back-to-top').fadeOut('slow');
+                        }
+                    };
+                    $imageswipe = $imageswipe($imagesrc, i + 1);
+
+                    // El click activa la galería
+                    $('#' + $imageid).on('click', $imageswipe);
                 }
                 $container.slick({
                     centerMode: false,
