@@ -7,17 +7,6 @@
  * Copyright 2013-2017 jquery-confirm
  * Licensed under MIT (https://github.com/craftpip/jquery-confirm/blob/master/LICENSE)
  */
-@-webkit-keyframes jconfirm-spin {
-    from {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-
 @keyframes jconfirm-spin {
     from {
         transform: rotate(0deg);
@@ -78,10 +67,6 @@ body[class*=jconfirm-no-scroll-] {
     padding: 50px 0;
 }
 
-.jconfirm .jconfirm-box-container {
-    transition: -webkit-transform;
-}
-
 .jconfirm .jconfirm-box-container.jconfirm-no-transition {
     transition: none !important;
 }
@@ -97,16 +82,6 @@ body[class*=jconfirm-no-scroll-] {
     margin-right: auto;
 }
 
-@-webkit-keyframes type-blue {
-    1%,
-    100% {
-        border-color: #3498db;
-    }
-    50% {
-        border-color: #5faee3;
-    }
-}
-
 @keyframes type-blue {
     1%,
     100% {
@@ -114,16 +89,6 @@ body[class*=jconfirm-no-scroll-] {
     }
     50% {
         border-color: #5faee3;
-    }
-}
-
-@-webkit-keyframes type-green {
-    1%,
-    100% {
-        border-color: #2ecc71;
-    }
-    50% {
-        border-color: #54d98c;
     }
 }
 
@@ -137,16 +102,6 @@ body[class*=jconfirm-no-scroll-] {
     }
 }
 
-@-webkit-keyframes type-red {
-    1%,
-    100% {
-        border-color: #e74c3c;
-    }
-    50% {
-        border-color: #ed7669;
-    }
-}
-
 @keyframes type-red {
     1%,
     100% {
@@ -154,16 +109,6 @@ body[class*=jconfirm-no-scroll-] {
     }
     50% {
         border-color: #ed7669;
-    }
-}
-
-@-webkit-keyframes type-orange {
-    1%,
-    100% {
-        border-color: #f1c40f;
-    }
-    50% {
-        border-color: #f4d03f;
     }
 }
 
@@ -177,16 +122,6 @@ body[class*=jconfirm-no-scroll-] {
     }
 }
 
-@-webkit-keyframes type-purple {
-    1%,
-    100% {
-        border-color: #9b59b6;
-    }
-    50% {
-        border-color: #b07cc6;
-    }
-}
-
 @keyframes type-purple {
     1%,
     100% {
@@ -194,16 +129,6 @@ body[class*=jconfirm-no-scroll-] {
     }
     50% {
         border-color: #b07cc6;
-    }
-}
-
-@-webkit-keyframes type-dark {
-    1%,
-    100% {
-        border-color: #34495e;
-    }
-    50% {
-        border-color: #46627f;
     }
 }
 
@@ -372,19 +297,6 @@ body[class*=jconfirm-no-scroll-] {
     overflow-y: hidden;
 }
 
-.jconfirm .jconfirm-box div.jconfirm-content-pane::-webkit-scrollbar {
-    width: 3px;
-}
-
-.jconfirm .jconfirm-box div.jconfirm-content-pane::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.jconfirm .jconfirm-box div.jconfirm-content-pane::-webkit-scrollbar-thumb {
-    background: #666;
-    border-radius: 3px;
-}
-
 .jconfirm .jconfirm-box div.jconfirm-content-pane .jconfirm-content {
     overflow: auto;
 }
@@ -420,7 +332,7 @@ body[class*=jconfirm-no-scroll-] {
     cursor: pointer;
     border-radius: 4px;
     min-height: 1em;
-    transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+    transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
     border: none;
     background-image: none;
 }
@@ -659,30 +571,6 @@ body[class*=jconfirm-no-scroll-] {
     transform: translate3d(0, 0, 0);
 }
 
-@-webkit-keyframes shake {
-    10%,
-    90% {
-        -webkit-transform: translate3d(-2px, 0, 0);
-        transform: translate3d(-2px, 0, 0);
-    }
-    20%,
-    80% {
-        -webkit-transform: translate3d(4px, 0, 0);
-        transform: translate3d(4px, 0, 0);
-    }
-    30%,
-    50%,
-    70% {
-        -webkit-transform: translate3d(-8px, 0, 0);
-        transform: translate3d(-8px, 0, 0);
-    }
-    40%,
-    60% {
-        -webkit-transform: translate3d(8px, 0, 0);
-        transform: translate3d(8px, 0, 0);
-    }
-}
-
 @keyframes shake {
     10%,
     90% {
@@ -700,18 +588,6 @@ body[class*=jconfirm-no-scroll-] {
     40%,
     60% {
         transform: translate3d(8px, 0, 0);
-    }
-}
-
-@-webkit-keyframes glow {
-    0%,
-    100% {
-        -webkit-box-shadow: 0 0 0 red;
-        box-shadow: 0 0 0 red;
-    }
-    50% {
-        -webkit-box-shadow: 0 0 30px red;
-        box-shadow: 0 0 30px red;
     }
 }
 
@@ -1014,7 +890,6 @@ body[class*=jconfirm-no-scroll-] {
 }
 
 .jconfirm.jconfirm-modern .jconfirm-box div.jconfirm-title-c .jconfirm-icon-c {
-    transition: -webkit-transform .5s;
     transform: scale(0);
     display: block;
     margin-right: 0;
