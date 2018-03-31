@@ -16,7 +16,7 @@ var test_items = [
         userContact: 'Andrés Molina',
         userEmail: 'andres@gmail.com',
         userPhone: '967583912',
-        userStreet: 'San Gregorio #21',
+        userStreet: 'Riquelme 714',
         comments: [
             new Comment({
                 comment: 'Hola',
@@ -39,21 +39,21 @@ var test_items = [
         userContact: 'Pablo Pizarro',
         userEmail: 'pablo.pizarro@ing.uchile.cl',
         userPhone: '993932215',
-        userStreet: 'Avenida Vicuña Mackenna, p16, Los Álamos Norte',
+        userStreet: 'Gerónimo de Alderete 2400',
         comments: [],
         date: getRandomDateElement(),
         id: 1
     }),
     new Item({
-        comuna: 'Toltén',
+        comuna: 'Curicó',
         desc: 'Regalo teléfono huawei en perfectas condiciones, 64 gb memoria interna, tiene unos pequeños detalles en la parte trasera pero nada muy grave, fácilmente reparable',
         name: 'Huawei P9 en perfecto estado, 64GB memoria interna',
         photos: ['test/images/08871714.jpg', 'test/images/09453862.jpg', 'test/images/23867949.jpg'],
-        region: 'Región de la Araucanía',
+        region: 'Región del Maule',
         userContact: 'Juan Antonio Ríos Mauleu',
         userEmail: 'juanito@fbi.com',
         userPhone: '91234567',
-        userStreet: 'Calle sin número, #200',
+        userStreet: 'Avenida Circunvalación 1716',
         comments: [
             new Comment({
                 comment: 'Hola, me interesa mucho tu teléfono, te envié un correo :)',
@@ -80,7 +80,7 @@ var test_items = [
         userContact: 'Lola Mento Helen Chufe',
         userEmail: 'lolam@cia.com',
         userPhone: '91244537',
-        userStreet: 'Alguna calle de Coquimbo, n°20',
+        userStreet: 'Avda. Caupolicán 799',
         comments: [
             new Comment({
                 comment: 'Oye tienen wifi?',
@@ -99,7 +99,7 @@ var test_items = [
         userContact: 'Matías Queroso',
         userEmail: 'matias@faisbun.com',
         userPhone: '91244567',
-        userStreet: 'Ya no sé qué inventar, #2',
+        userStreet: '18 de Septiembre',
         comments: [],
         date: getRandomDateElement(),
         id: 4

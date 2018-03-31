@@ -33,6 +33,7 @@ function Item(options) {
     this._c = options.comuna;
     this._comments = options.comments;
     this._date = options.date;
+    this._description = options.desc;
     this._id = generateId(10);
     this._name = options.name;
     this._objid = options.id;
@@ -49,6 +50,14 @@ function Item(options) {
      */
     this.getID = function () {
         return self._objid;
+    };
+
+    /**
+     * Obtiene la descripción del artículo
+     * @return {string|*}
+     */
+    this.getDescription = function () {
+        return self._description;
     };
 
     /**
