@@ -17,6 +17,6 @@ $(document).ready(function () {
     // Centra la página
     if (cfg_listitem_center_module) {
         centerMainContent();
-        $(window).on('resize.errorPanel', centerMainContent);
+        $(window).on('resize.listItemPanel', centerMainContent);
     }
 });

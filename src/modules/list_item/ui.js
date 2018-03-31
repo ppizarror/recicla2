@@ -58,26 +58,25 @@ function createListItem() {
         responsive: true,
         columnDefs: [
             {responsivePriority: 1, targets: 0},
-            {responsivePriority: 2, targets: -2}
+            {responsivePriority: 2, targets: -2},
+            {"className": "dt-center", "targets": "_all"}
         ],
-        'language':
+        language:
             {
                 'url':
                 lang.datatable_json_file
             }
         ,
-        'order':
+        order:
             [
                 [0, 'desc']
             ],
-        'initComplete':
-
+        initComplete:
             function () {
-                // Centra la página
-                if (cfg_listitem_center_module) {
+                if (cfg_listitem_center_module) { //Centra la página
                     centerMainContent();
-                    $(window).off('resize.errorPanel');
-                    $(window).on('resize.errorPanel', centerMainContent);
+                    $(window).off('resize.listItemPanel');
+                    $(window).on('resize.listItemPanel', centerMainContent);
                 }
             }
     });
