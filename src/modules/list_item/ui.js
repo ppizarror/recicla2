@@ -46,7 +46,7 @@ function createListItem() {
          * @type{Item}
          */
         $item = $items[i];
-        $tablecontent.append('<!--suppress ALL --><tr><td>{0}</td><td><a href="{7}" class="list-item-link-view">{1}</a></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td></tr>'.format($item.getDate(), $item.getName(), $item.getRegion(), $item.getComuna(), $item.getTotalComments(), $item.getTotalPhotos(), $item.getUserEmail(), modules.showItem.file.format($item.getID())));
+        $tablecontent.append('<!--suppress ALL --><tr><td>{0}</td><td><a href="{7}" class="list-item-link-view">{1}</a></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td><a href="mailto:{6}">{6}</a></td></tr>'.format($item.getDate(), $item.getName(), $item.getRegion(), $item.getComuna(), $item.getTotalComments(), $item.getTotalPhotos(), $item.getUserEmail(), modules.showItem.file.format($item.getID())));
     }
 
     /**

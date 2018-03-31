@@ -6,7 +6,7 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-function Comment(options) {
+function ItemComment(options) {
     var self = this;
     let $defaults = {
         comment: '',

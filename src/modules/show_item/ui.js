@@ -6,6 +6,8 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
+var $show_item_comment_container; // Objeto contenedor de los comentarios
+var $show_item_empty_comment = true; // Indica si hay o no comentarios
 var $show_item_sections; // Secciones del artículo
 
 /**
@@ -89,22 +91,121 @@ function createShowItem($item) {
     let $comment_container_id = generateId(cfg_id_size);
     // noinspection QuirksModeInspectionTool
     $(ui_main_content).append('<div class="show-item-comments-container"><div class="show-item-comment-menu"><div class="show-item-comment-menu-title">{1}</div><div class="show-item-comment-buttons"><button id="{2}" type="button" class="btn btn-primary show-item-add-comment-button hvr-shadow">{0}</button></div></div><div class="show-item-comment-list" id="{3}"></div></div>'.format(lang.show_item_add_comment, lang.show_item_comments_title, $comment_button_id, $comment_container_id));
-    let $comment_container_obj = $('#' + $comment_container_id);
+    $show_item_comment_container = $('#' + $comment_container_id);
 
     let $comments = $item.getComments();
 
     /**
-     * @type {Comment}
+     * @type {ItemComment}
      */
-    let $c; // Comentario
     if ($item.getTotalComments() === 0) {
-        $comment_container_obj.append('<div class="show-item-comment-entry show-item-no-comments">{0}</div>'.format(lang.show_item_no_comments));
+        $show_item_comment_container.append('<div class="show-item-comment-entry show-item-no-comments">{0}</div>'.format(lang.show_item_no_comments));
     } else {
         for (let i = 0; i < $item.getTotalComments(); i++) {
-            $c = $comments[i];
-            $comment_container_obj.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div></div><div class="show-item-comment-content">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment()));
+            addCommentItem($comments[i]);
         }
+        $show_item_empty_comment = false;
     }
+
+    /**
+     * Añade evento añadir comentario
+     */
+    $('#' + $comment_button_id).on('click', function () {
+        $.confirm({
+            animateFromElement: false,
+            animation: 'scale',
+            columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
+            title: lang.add_comment_title,
+            icon: 'far fa-comment',
+            draggable: true,
+            dragWindowGap: 0,
+            theme: cfg_popup_theme,
+            content: '' +
+            '<form method="post">' +
+            '<div class="form-group">' +
+            '<label>' + lang.add_comment_name_title + '</label>' +
+            '<input type="text" placeholder="' + lang.add_comment_name_input + '" class="name form-control" required />' +
+            '</div>' +
+            '<div class="form-group">' +
+            '<label>' + lang.add_comment_comment_title + '</label>' +
+            '<textarea rows="2" type="text" placeholder="' + lang.add_comment_comment_input + '" class="comment form-control show-item-comment-textarea" required></textarea>' +
+            '</div>' +
+            '</form>',
+            buttons: {
+                formSubmit: {
+                    text: lang.add_comment_button_submit,
+                    btnClass: 'btn-blue',
+                    action: function () {
+                        let name = this.$content.find('.name').val();
+                        let comment = this.$content.find('.comment').val();
+                        if (!name || name.length < 5) {
+                            $.alert(lang.add_comment_bad_name);
+                            return false;
+                        }
+                        if (!comment || comment.length < 10) {
+                            $.alert(lang.add_comment_bad_comment);
+                            return false;
+                        }
+
+                        // TODO: Guardar comentario
+                        $.alert(lang.add_comment_ok);
+
+                        // Se agrega el comentario en el dom
+                        addCommentItem(new ItemComment({
+                            comment: comment,
+                            date: getLocalDateElement(),
+                            user: name
+                        }));
+                        return true;
+                    }
+                },
+
+                // Se cancela el comentario
+                cancel: function () {
+                    $.alert({
+                        animateFromElement: false,
+                        animation: 'scale',
+                        columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
+                        content: lang.show_item_comment_canceled,
+                        draggable: true,
+                        dragWindowGap: 0,
+                        escapeKey: false,
+                        icon: 'far fa-comment',
+                        theme: cfg_popup_theme,
+                        title: lang.add_comment_title,
+                        buttons: {
+                            ok: {
+                                keys: ['enter', 'esc'],
+                                btnClass: 'btn-danger',
+                                text: lang.close
+                            }
+                        }
+                    });
+                },
+            },
+            onContentReady: function () {
+                // bind to events
+                var jc = this;
+                this.$content.find('form').on('submit', function (e) {
+                    // if the user submits the form by pressing enter in the field.
+                    e.preventDefault();
+                    jc.$$formSubmit.trigger('click'); // reference the button and click it
+                });
+            }
+        });
+    });
+}
+
+/**
+ * Añade un comentario en la página
+ * @param $c {ItemComment}      Comentario
+ */
+function addCommentItem($c) {
+    if ($show_item_empty_comment) {
+        $show_item_comment_container.empty();
+        $show_item_empty_comment = false;
+    }
+    $show_item_comment_container.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div></div><div class="show-item-comment-content">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment()));
 }
 
 /**

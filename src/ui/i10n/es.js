@@ -7,6 +7,15 @@
  */
 
 $lang_db.es = {
+    'add_comment_bad_comment': 'Provea un comentario apropiado, mayor a 10 caracteres',
+    'add_comment_bad_name': 'Provea un nombre de usuario apropiado, mayor a 5 caracteres',
+    'add_comment_button_submit': 'Guardar',
+    'add_comment_comment_input': 'Ingrese su comentario',
+    'add_comment_comment_title': 'Comentario',
+    'add_comment_name_input': 'Ingrese su nombre',
+    'add_comment_name_title': 'Nombre',
+    'add_comment_ok': 'Comentario agregado!',
+    'add_comment_title': 'Nuevo Comentario',
     'add_item_add': 'Ingresar este artículo',
     'add_item_add_photo': 'Agregar otra fotografía',
     'add_item_c_pick': 'Seleccione comuna',
@@ -40,6 +49,7 @@ $lang_db.es = {
     'answer_yes': 'Si',
     'app_about': 'Aplicación destinada a la información de donaciones electrónicas. Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web.<br><br>Autor: <a href="http://ppizarror.com">Pablo Pizarro R.</a> - 2018.',
     'close': 'Cerrar',
+    'comment_date_format': '{0} a las {1}',
     'datatable_json_file': 'http://ppizarror.com/resources/tableSpanish.json',
     'error': 'Error',
     'header_index': 'Ir a Inicio',
@@ -60,13 +70,13 @@ $lang_db.es = {
     'module_add_item': 'Añadir nuevo artículo',
     'module_list_item': 'Recicla2',
     'name_lang': 'Español',
-    'show_item_pic_n': 'Fotografía {0}',
-    'show_item_no_comments':'No existen comentarios para este artículo',
-    'show_item_title': 'Ver artículo',
     'show_item_add_comment': 'Agregar Comentario',
+    'show_item_comment_canceled': 'Comentario cancelado.',
     'show_item_comments_title': 'Comentarios',
+    'show_item_no_comments': 'No existen comentarios para este artículo',
+    'show_item_pic_n': 'Fotografía {0}',
     'show_item_publish_date': 'Fecha de publicación',
     'show_item_publish_date_format': '{0} a las {1}',
-    'comment_date_format': '{0} a las {1}',
+    'show_item_title': 'Ver artículo',
     'z_test': 'Mensaje de test'
 };

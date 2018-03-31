@@ -151,7 +151,7 @@ function Item(options) {
 
     /**
      * Retorna los comentarios
-     * @return {Array|Comment}
+     * @return {Array|ItemComment}
      */
     this.getComments = function () {
         return self._comments;
@@ -164,7 +164,7 @@ function Item(options) {
      * @param date
      */
     this.addComment = function (user, comment, date) {
-        self._comments.push(new Comment({
+        self._comments.push(new ItemComment({
             comment: comment,
             date: date,
             user: user
