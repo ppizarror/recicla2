@@ -12,6 +12,10 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     transform: skew(0, -1.5deg);
 }
 
+.show-item-maincontent {
+    padding: 0 20px;
+}
+
 .show-item-name {
     font-weight: 500;
     padding-left: 5px;

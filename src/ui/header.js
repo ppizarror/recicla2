@@ -54,7 +54,8 @@ function Header(options) {
             delay: 1000,
             maxWidth: 280,
             side: 'bottom',
-            theme: cfg_tooltip_theme
+            theme: cfg_tooltip_theme,
+            timer: 0
         });
     }
 
