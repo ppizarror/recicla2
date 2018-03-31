@@ -65,6 +65,8 @@ $lang_db.es = {
     'show_item_title': 'Ver artículo',
     'show_item_add_comment': 'Agregar Comentario',
     'show_item_comments_title': 'Comentarios',
+    'show_item_publish_date': 'Fecha de publicación',
+    'show_item_publish_date_format': '{0} a las {1}',
     'comment_date_format': '{0} a las {1}',
     'z_test': 'Mensaje de test'
 };

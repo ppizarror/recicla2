@@ -65,7 +65,17 @@ function Item(options) {
      * @return {{}|date|*}
      */
     this.getDate = function () {
-        return this._date.date.format('Y/m/d H:m:s')
+        return this._date.date.format('Y/m/d H:m:s');
+    };
+
+    /**
+     * Retorna la fecha de publicación del artículo
+     * @return {string}
+     */
+    this.getPublishDate = function () {
+        let $a = this._date.date.format('Y/m/d');
+        let $b = this._date.date.format('H:m:s');
+        return lang.show_item_publish_date_format.format($a, $b);
     };
 
     /**

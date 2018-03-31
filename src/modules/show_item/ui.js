@@ -255,6 +255,14 @@ function initShowItemSections($item) {
             "icon": "fas fa-phone",
             "value": "<div class='show-item-text'>+56{0}</div>".format($item.getUserPhone()),
             "resizeThread": false
+        },
+
+        // Publicado el
+        "9": {
+            "name": lang.show_item_publish_date,
+            "icon": "far fa-clock",
+            "value": "<div class='show-item-text'>{0}</div>".format($item.getPublishDate()),
+            "resizeThread": false
         }
     };
 }
