@@ -61,7 +61,7 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 
 .show-item-comments-container {
     display: inline-block;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
     margin-top: 15px;
     width: 100%;
 }
@@ -140,5 +140,13 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     cursor: default;
     font-size: 1.0rem;
     text-align: justify;
+    word-wrap: break-word;
+}
+
+.show-item-no-comments {
+    cursor: default;
+    font-size: 1.0rem;
+    font-weight: 400;
+    text-align: center;
     word-wrap: break-word;
 }

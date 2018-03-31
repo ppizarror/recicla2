@@ -97,9 +97,13 @@ function createShowItem($item) {
      * @type {Comment}
      */
     let $c; // Comentario
-    for (let i = 0; i < $item.getTotalComments(); i++) {
-        $c = $comments[i];
-        $comment_container_obj.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div></div><div class="show-item-comment-content">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment()));
+    if ($item.getTotalComments() === 0) {
+        $comment_container_obj.append('<div class="show-item-comment-entry show-item-no-comments">{0}</div>'.format(lang.show_item_no_comments));
+    } else {
+        for (let i = 0; i < $item.getTotalComments(); i++) {
+            $c = $comments[i];
+            $comment_container_obj.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div></div><div class="show-item-comment-content">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment()));
+        }
     }
 }
 

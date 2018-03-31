@@ -61,6 +61,7 @@ $lang_db.es = {
     'module_list_item': 'Recicla2',
     'name_lang': 'Español',
     'show_item_pic_n': 'Fotografía {0}',
+    'show_item_no_comments':'No existen comentarios para este artículo',
     'show_item_title': 'Ver artículo',
     'show_item_add_comment': 'Agregar Comentario',
     'show_item_comments_title': 'Comentarios',
