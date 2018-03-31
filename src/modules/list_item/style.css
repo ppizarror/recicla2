@@ -55,11 +55,12 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 .list-item-bottom-bar {
     display: inline-block;
     margin: 20px 0;
+    text-align: center;
     width: 100%;
 }
 
 .list-item-botton-buttoncontainer {
-    float: right;
+    margin: 0 auto 20px;
 }
 
 .list-item-bottom-button {

@@ -86,7 +86,7 @@ function createListItem() {
      * Añade botón informar artículo
      */
     let $new_item_id = generateId(cfg_id_size);
-    $(ui_main_content).append('<!--suppress ALL --><div class="list-item-bottom-bar"><div class="list-item-botton-buttoncontainer"><button id="{0}" type="button" class="btn btn-primary list-item-bottom-button hvr-shadow">{1}</button></div></div>'.format($new_item_id, lang.list_item_new_item));
+    $(ui_main_content).append('<!--suppress ALL --><div class="list-item-bottom-bar"><div class="list-item-botton-buttoncontainer"><button id="{0}" type="button" class="btn btn-success list-item-bottom-button hvr-shadow">{1}</button></div></div>'.format($new_item_id, lang.list_item_new_item));
     $('#' + $new_item_id).on('click', function () {
         loadModule(modules.addItem);
     })
