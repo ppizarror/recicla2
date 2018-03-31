@@ -140,7 +140,7 @@ function Item(options) {
     };
 
     /**
-     * Rorna los comentarios
+     * Retorna los comentarios
      * @return {Array|Comment}
      */
     this.getComments = function () {
@@ -151,10 +151,12 @@ function Item(options) {
      * Añade un comentario
      * @param user
      * @param comment
+     * @param date
      */
-    this.addComment = function (user, comment) {
+    this.addComment = function (user, comment, date) {
         self._comments.push(new Comment({
             comment: comment,
+            date: date,
             user: user
         }));
     };

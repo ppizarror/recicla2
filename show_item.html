@@ -36,11 +36,6 @@
     <meta name="msapplication-config" content="resources/ui/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- Comprobación de js -->
-    <noscript>
-        <meta http-equiv="refresh" content="0;url=js/nojs.html">
-    </noscript>
-
     <!-- Importación de librerías -->
     <script src="js/jquery/jquery-3.3.1.js"></script>
     <script src="js/toastr/toastr.min.js"></script>
@@ -49,6 +44,8 @@
     <script src="js/dataTables/jquery.dataTables.min.js"></script>
     <script src="js/dataTables/dataTables.responsive.min.js"></script>
     <script src="js/slick/slick.min.js"></script>
+    <script src="js/photoswipe/photoswipe.min.js"></script>
+    <script src="js/photoswipe/photoswipe-ui-default.min.js"></script>
 
     <!-- Estilos de librerías -->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-v5/css/fontawesome-all.min.css" media="screen">
@@ -66,6 +63,7 @@
     <link rel="stylesheet" type="text/css" href="css/jquery-confirm/jquery-confirm.min.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/slick/slick.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/slick/slick-theme.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/photoswipe/photoswipe.min.css" media="screen">
 
     <!-- Estilo de la aplicación -->
     <link rel="stylesheet" type="text/css" href="src/stylesheets/root.css" media="screen">
@@ -111,7 +109,7 @@
 
 <body>
 <div id="root">
-    <div id="appBackground"></div>
+    <div id="appBackground" class="show-item-transform"></div>
     <div id="mainContent"></div>
     <div id="errorMsg">
         <div id="errorMsgText"></div>

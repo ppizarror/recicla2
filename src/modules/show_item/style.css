@@ -6,22 +6,31 @@ Autor: Pablo Pizarro R. @ppizarror.com
 Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 */
 
-.list-item-name {
+.show-item-transform {
+    position: absolute !important;
+    top: -200px !important;
+    transform: skew(0, -1.5deg);
+}
+
+.show-item-name {
     font-weight: 500;
     padding-left: 5px;
     padding-top: 3px !important;
 }
 
-.list-item-text {
+.show-item-text {
     font-weight: 400;
     padding-left: 5px;
     padding-top: 3px !important;
 }
 
-.list-item-description {
+.show-item-description {
     font-weight: 400;
     padding-left: 5px;
     padding-top: 0 !important;
+    text-align: justify;
+    word-wrap: break-word;
+    padding-right: 10px;
 }
 
 .show-item-small-pic {
@@ -48,4 +57,88 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 
 .show-item-email:hover {
     text-decoration: none;
+}
+
+.show-item-comments-container {
+    display: inline-block;
+    margin-bottom: 50px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.show-item-comment-menu {
+    display: block;
+    width: 35%;
+    float: left;
+}
+
+.show-item-comment-list {
+    display: block;
+    float: left;
+    width: 65%;
+}
+
+.show-item-comment-menu-title {
+    cursor: default;
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.show-item-comment-buttons {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.show-item-add-comment-button {
+    cursor: pointer;
+    font-size: 1.0rem;
+}
+
+@media screen and (max-width: 780px) {
+    .show-item-add-comment-button {
+        font-size: 0.8rem;
+    }
+}
+
+.show-item-comment-entry {
+    background-color: rgba(201, 201, 201, 0.34);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.41);
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    margin-right: 30px;
+    padding: 10px;
+    width: 100%;
+}
+
+.show-item-comment-header {
+    display: inline-block;
+    width: 100%;
+}
+
+.show-item-comment-user-name {
+    cursor: default;
+    float: left;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: -5px;
+    max-width: 230px;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.show-item-comment-date {
+    color: #a5a6a7;
+    cursor: default;
+    float: right;
+    font-size: 0.8rem;
+}
+
+.show-item-comment-content {
+    cursor: default;
+    font-size: 1.0rem;
+    text-align: justify;
+    word-wrap: break-word;
 }

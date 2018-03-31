@@ -81,6 +81,26 @@ function createShowItem($item) {
             $k.afterDrawFun();
         }
     }
+
+    /**
+     * Escribe los comentarios
+     */
+    let $comment_button_id = generateId(cfg_id_size);
+    let $comment_container_id = generateId(cfg_id_size);
+    // noinspection QuirksModeInspectionTool
+    $(ui_main_content).append('<div class="show-item-comments-container"><div class="show-item-comment-menu"><div class="show-item-comment-menu-title">{1}</div><div class="show-item-comment-buttons"><button id="{2}" type="button" class="btn btn-primary show-item-add-comment-button hvr-shadow">{0}</button></div></div><div class="show-item-comment-list" id="{3}"></div></div>'.format(lang.show_item_add_comment, lang.show_item_comments_title, $comment_button_id, $comment_container_id));
+    let $comment_container_obj = $('#' + $comment_container_id);
+
+    let $comments = $item.getComments();
+
+    /**
+     * @type {Comment}
+     */
+    let $c; // Comentario
+    for (let i = 0; i < $item.getTotalComments(); i++) {
+        $c = $comments[i];
+        $comment_container_obj.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div></div><div class="show-item-comment-content">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment()));
+    }
 }
 
 /**
@@ -102,13 +122,14 @@ function autoResizeTitles(formid, titleid) {
  * @param $item
  */
 function initShowItemSections($item) {
+    // noinspection QuirksModeInspectionTool
     $show_item_sections = {
 
         // Nombre artículo
         "0": {
             "name": lang.add_item_form_name,
             "icon": "fas fa-box",
-            "value": "<div class='list-item-name'>{0}</div>".format($item.getName()),
+            "value": "<div class='show-item-name'>{0}</div>".format($item.getName()),
             "resizeThread": false
         },
 
@@ -116,8 +137,8 @@ function initShowItemSections($item) {
         "1": {
             "name": lang.add_item_form_desc,
             "icon": "far fa-comment-alt",
-            "value": "<div class='list-item-description'>{0}</div>".format($item.getDescription()),
-            "resizeThread": false
+            "value": "<div class='show-item-description'>{0}</div>".format($item.getDescription()),
+            "resizeThread": true
         },
 
         // Fotos
@@ -150,7 +171,7 @@ function initShowItemSections($item) {
         "3": {
             "name": lang.add_item_form_r_e,
             "icon": "fas fa-globe",
-            "value": "<div class='list-item-text'><a href='https://www.google.com/maps/search/{0},Chile'>{0}</a></div>".format($item.getRegion()),
+            "value": "<div class='show-item-text'><a href='https://www.google.com/maps/search/{0},Chile'>{0}</a></div>".format($item.getRegion()),
             "resizeThread": false
         },
 
@@ -158,7 +179,7 @@ function initShowItemSections($item) {
         "4": {
             "name": lang.add_item_form_c_e,
             "icon": "fas fa-globe",
-            "value": "<div class='list-item-text'><a href='https://www.google.com/maps/search/{0},{1},Chile'>{0}</a></div>".format($item.getComuna(), $item.getRegion()),
+            "value": "<div class='show-item-text'><a href='https://www.google.com/maps/search/{0},{1},Chile'>{0}</a></div>".format($item.getComuna(), $item.getRegion()),
             "resizeThread": false
         },
 
@@ -166,7 +187,7 @@ function initShowItemSections($item) {
         "5": {
             "name": lang.add_item_form_sn,
             "icon": "fas fa-map-marker-alt",
-            "value": "<div class='list-item-text'><a href='https://www.google.com/maps/search/{0}, {1}, {2}, Chile'>{0}</a></div>".format($item.getUserStreet(), $item.getComuna(), $item.getRegion()),
+            "value": "<div class='show-item-text'><a href='https://www.google.com/maps/search/{0}, {1}, {2}, Chile'>{0}</a></div>".format($item.getUserStreet(), $item.getComuna(), $item.getRegion()),
             "resizeThread": false
         },
 
@@ -174,7 +195,7 @@ function initShowItemSections($item) {
         "6": {
             "name": lang.add_item_form_nc,
             "icon": "fas fa-user",
-            "value": "<div class='list-item-text'>{0}</div>".format($item.getUserName()),
+            "value": "<div class='show-item-text'>{0}</div>".format($item.getUserName()),
             "resizeThread": false
         },
 
@@ -182,7 +203,7 @@ function initShowItemSections($item) {
         "7": {
             "name": lang.add_item_form_email,
             "icon": "far fa-envelope",
-            "value": "<div class='list-item-text'><a href='mailto:{0}' class='show-item-email'>{0}</a></div>".format($item.getUserEmail()),
+            "value": "<div class='show-item-text'><a href='mailto:{0}' class='show-item-email'>{0}</a></div>".format($item.getUserEmail()),
             "resizeThread": false
         },
 
@@ -190,7 +211,7 @@ function initShowItemSections($item) {
         "8": {
             "name": lang.add_item_form_phone,
             "icon": "fas fa-phone",
-            "value": "<div class='list-item-text'>+56{0}</div>".format($item.getUserPhone()),
+            "value": "<div class='show-item-text'>+56{0}</div>".format($item.getUserPhone()),
             "resizeThread": false
         }
     };

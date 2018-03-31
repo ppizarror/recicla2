@@ -9,7 +9,7 @@
 var test_items = [
     new Item({
         comuna: 'Taltal',
-        desc: 'Hermosa multifuncional Canon, imprime hasta 5000 hojas por cada tóner de tinta',
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida mi sed lorem consectetur pretium. Fusce tristique dictum lacus vitae lobortis. Vivamus at malesuada lacus. Ut at lobortis eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam a risus fermentum, malesuada eros quis, sodales ex. Fusce sem orci, egestas sit amet posuere vitae, ultricies in metus. Donec vehicula dui faucibus mauris gravida, non congue nulla porta.',
         name: 'Impresora laser Canon XLS-130',
         photos: ['test/images/23588694.jpg', 'test/images/34769404.jpg', 'test/images/73742077.jpg'],
         region: 'Antofagasta',
@@ -20,10 +20,17 @@ var test_items = [
         comments: [
             new Comment({
                 comment: 'Hola',
+                date: getRandomDateElement(),
                 user: 'Elvia Ratón Calvo'
             }),
             new Comment({
+                comment: 'Vivamus et neque sed justo maximus cursus. Phasellus mi nisl, tincidunt id placerat et, pharetra in lectus. Phasellus a porta justo. Fusce nec rhoncus nulla. Mauris malesuada nisl sem, quis tempus leo blandit et. In tempus efficitur volutpat. Donec luctus maximus tincidunt. Aliquam sollicitudin consectetur lectus sed bibendum. Sed sed arcu lorem. Phasellus vestibulum condimentum suscipit. Sed scelerisque massa sit amet mollis elementum. Mauris vitae risus ut ante tristique faucibus. Donec finibus lacus at tincidunt convallis. Aliquam pulvinar nulla id augue faucibus, id gravida arcu consectetur.',
+                date: getRandomDateElement(),
+                user: 'El Lorem Ipsum'
+            }),
+            new Comment({
                 comment: 'Jajajaja que comentario más inutil',
+                date: getRandomDateElement(),
                 user: 'Jorge Nitales'
             })
         ],
@@ -52,19 +59,22 @@ var test_items = [
         region: 'Región del Maule',
         userContact: 'Juan Antonio Ríos Mauleu',
         userEmail: 'juanito@fbi.com',
-        userPhone: '91234567',
+        userPhone: '981244568',
         userStreet: 'Avenida Circunvalación 1716',
         comments: [
             new Comment({
                 comment: 'Hola, me interesa mucho tu teléfono, te envié un correo :)',
+                date: getRandomDateElement(),
                 user: 'Marcia Ana'
             }),
             new Comment({
                 comment: 'Tiene doble sim????',
+                date: getRandomDateElement(),
                 user: 'Igor Dito'
             }),
             new Comment({
                 comment: 'It\'s fake news',
+                date: getRandomDateElement(),
                 user: 'Donald Trunp'
             })
         ],
@@ -79,11 +89,12 @@ var test_items = [
         region: 'Coquimbo',
         userContact: 'Lola Mento Helen Chufe',
         userEmail: 'lolam@cia.com',
-        userPhone: '91244537',
+        userPhone: '981264567',
         userStreet: 'Avda. Caupolicán 799',
         comments: [
             new Comment({
                 comment: 'Oye tienen wifi?',
+                date: getRandomDateElement(),
                 user: 'Josebas'
             })
         ],
@@ -98,7 +109,7 @@ var test_items = [
         region: 'Región de los Lagos',
         userContact: 'Matías Queroso',
         userEmail: 'matias@faisbun.com',
-        userPhone: '91244567',
+        userPhone: '981244567',
         userStreet: '18 de Septiembre',
         comments: [],
         date: getRandomDateElement(),
