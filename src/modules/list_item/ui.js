@@ -35,7 +35,7 @@ function createListItem() {
     let $items = loadLastItemsFromServer();
     let $item;
     let $tableid = generateId(cfg_id_size);
-    $add_c.append('<table id="{0}" width="100%" class="display list-item-table responsive" cellspacing="0" ><thead><tr><th>{1}</th><th>{2}</th><th>{3}</th><th>{4}</th><th>{5}</th><th>{6}</th><th>{7}</th></tr></thead><tbody class="itemsContent"></tbody></table>'.format($tableid, lang.list_item_date, lang.list_item_item, lang.list_item_r, lang.list_item_c, lang.list_item_ncoments, lang.list_item_npics, lang.list_item_user_email));
+    $add_c.append('<table id="{0}" style="width:100%" class="display list-item-table responsive"><thead><tr><th>{1}</th><th>{2}</th><th>{3}</th><th>{4}</th><th>{5}</th><th>{6}</th><th>{7}</th></tr></thead><tbody class="itemsContent"></tbody></table>'.format($tableid, lang.list_item_date, lang.list_item_item, lang.list_item_r, lang.list_item_c, lang.list_item_ncoments, lang.list_item_npics, lang.list_item_user_email));
     let $tablecontent = $('#' + $tableid).find('.itemsContent');
 
     /**

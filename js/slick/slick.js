@@ -1320,12 +1320,6 @@
                     'id': 'slick-slide' + _.instanceUid + i,
                     'tabindex': -1
                 });
-
-                if (slideControlIndex !== -1) {
-                    $(this).attr({
-                        'aria-describedby': 'slick-slide-control' + _.instanceUid + slideControlIndex
-                    });
-                }
             });
 
             _.$dots.attr('role', 'tablist').find('li').each(function(i) {

@@ -15,7 +15,6 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     padding: 0 20px;
 }
 
-
 .list-item-container .dataTables_length label select {
     background-clip: padding-box;
     background: #fff none;
@@ -66,4 +65,12 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 .list-item-bottom-button {
     cursor: pointer !important;
     margin-left: 20px;
+}
+
+.list-item-table {
+    width: 100%;
+}
+
+.list-item-table td {
+    padding: 10px;
 }
