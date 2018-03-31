@@ -141,6 +141,7 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 
 .add-item-rc-selectors {
     border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, .15);
     cursor: pointer;
     font-size: 0.85rem;
     font-weight: 600;

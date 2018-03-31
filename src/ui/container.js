@@ -45,7 +45,7 @@ function Container(options) {
         'width': Math.max(Math.min(100, options.width), 0) + '%'
     });
     if (options.shadow) {
-        self._obj.css('box-shadow', '3px 3px 20px rgba(0, 0, 0, 0.3)')
+        self._obj.css('box-shadow', 'rgba(0, 0, 0, 0.3) 3px 3px 20px 2px')
     }
 
     // noinspection JSUnusedGlobalSymbols
