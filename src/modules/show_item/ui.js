@@ -14,7 +14,7 @@ var $show_item_sections; // Secciones del artículo
 
 /**
  * Crea el módulo en la ui.
- * @param $item
+ * @param $item {Item}      Artículo cargado
  */
 function createShowItem($item) {
 
@@ -216,8 +216,8 @@ function addCommentItem($c) {
 
 /**
  * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario
- * @param formid            ID del formulario
- * @param titleid           ID del elemento del título
+ * @param formid {string}       ID del formulario
+ * @param titleid {string}      ID del elemento del título
  * @return {function}
  */
 function autoResizeTitles(formid, titleid) {
@@ -231,7 +231,7 @@ function autoResizeTitles(formid, titleid) {
 
 /**
  * Inicia el objeto del formulario.
- * @param $item
+ * @param $item {Item}  Artículo
  */
 function initShowItemSections($item) {
     // noinspection QuirksModeInspectionTool

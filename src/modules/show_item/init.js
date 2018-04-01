@@ -24,11 +24,17 @@ $(document).ready(function () {
 
     // Centra la página
     if (cfg_showitem_center_module) {
-        var $f = function () {
+        let $f = function () {
             centerMainContent();
-            showItemBackgroundResize();
         };
         $(window).on('resize.errorPanel', $f);
         $f();
     }
+
+    // Ajusta el fondo al reajustar
+    let $f = function () {
+        showItemBackgroundResize();
+    };
+    $(window).on('resize.backgroundItem', $f);
+    $f();
 });

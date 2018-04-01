@@ -149,9 +149,9 @@ function createAddItem() {
 
 /**
  * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario
- * @param formid            ID del formulario
- * @param titleid           ID del elemento del título
- * @return {function}
+ * @param formid {string}   ID del formulario
+ * @param titleid {string}  ID del elemento del título
+ * @return {function}       Función ajuste del css
  */
 function autoResizeTitles(formid, titleid) {
     return function () {

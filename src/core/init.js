@@ -29,4 +29,7 @@ $(document).ready(function () {
 
     // Verifica el modo móvil
     checkMobileStatus();
+
+    // Precarga recursos
+    preloadResources();
 });

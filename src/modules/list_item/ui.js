@@ -37,7 +37,7 @@ function createListItem() {
     let $items = loadLastItemsFromServer();
     let $item;
     let $tableid = generateId(cfg_id_size);
-    list_item_container.append('<table id="{0}" style="width:100%" class="display list-item-table nowrap"><thead><tr><th>{1}</th><th>{2}</th><th>{3}</th><th>{4}</th><th>{5}</th><th>{6}</th><th>{7}</th></tr></thead><tbody class="itemsContent"></tbody></table>'.format($tableid, lang.list_item_date, lang.list_item_item, lang.list_item_r, lang.list_item_c, lang.list_item_ncoments, lang.list_item_npics, lang.list_item_user_email));
+    list_item_container.append('<table id="{0}" style="width:100%" class="display list-item-table nowrap"><thead><tr><th>{1}</th><th>{2}</th><th>{3}</th><th>{4}</th><th>{5}</th><th>{6}</th><th>{7}</th><th>{8}</th><th>{9}</th><th>{10}</th></tr></thead><tbody class="itemsContent"></tbody></table>'.format($tableid, lang.list_item_date, lang.list_item_item, lang.list_item_r, lang.list_item_c, lang.list_item_ncoments, lang.list_item_npics, lang.list_item_user_email, lang.list_item_user_name, lang.list_item_user_phone, lang.list_item_user_street));
     let $tablecontent = $('#' + $tableid).find('.itemsContent');
 
     /**
@@ -45,8 +45,15 @@ function createListItem() {
      */
     let $itemname;
     for (let i = 0; i < $items.length; i++) {
+
+        // Verifica que no se hayan cargado más de los elementos límite
+        if (i === cfg_listitem_initial_loads) {
+            break;
+        }
+
         /**
-         * @type{Item}
+         * Carga el ítem
+         * @type    {Item}
          */
         $item = $items[i];
 
@@ -54,10 +61,21 @@ function createListItem() {
         $itemname = trimShowItemName($item.getName());
 
         // noinspection HtmlUnknownTarget
-        $tablecontent.append('<tr><td>{0}</td><td><a href="{7}" class="list-item-link-view" id="{8}">{1}</a></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td><a href="mailto:{6}">{6}</a></td></tr>'.format($item.getDate(), $itemname.name, $item.getRegion(), $item.getComuna(), $item.getTotalComments(), $item.getTotalPhotos(), $item.getUserEmail(), modules.showItem.file.format($item.getID()), $itemname.id));
+        $tablecontent.append('<tr><td>{0}</td><td><a href="{7}" class="list-item-link-view" id="{8}">{1}</a></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td><a href="mailto:{6}">{6}</a></td><td>{9}</td><td>{10}</td><td>{11}</td></tr>'.format($item.getDate(), $itemname.name, $item.getRegion(), $item.getComuna(), $item.getTotalComments(), $item.getTotalPhotos(), $item.getUserEmail(), modules.showItem.file.format($item.getID()), $itemname.id, $item.getUserName(), $item.getUserPhone(), $item.getUserStreet()));
 
         // Si el nombre fue acordado añadir un tooltip
-        $('#' + $itemname.id);
+        if ($itemname.trimmed) {
+            $('#' + $itemname.id).tooltipster({
+                animation: 'grow',
+                content: $itemname.original,
+                contentAsHTML: true,
+                delay: 700,
+                maxWidth: 280,
+                side: 'bottom',
+                theme: cfg_tooltip_theme,
+                timer: 0
+            });
+        }
     }
 
     /**
@@ -82,9 +100,13 @@ function createListItem() {
             ],
         initComplete: // Función que se carga al generar la tabla
             function () {
-                if (cfg_listitem_center_module) { //Centra la página
+
+                //Centra la página
+                if (cfg_listitem_center_module) {
                     centerMainContent();
                 }
+
+                // Muestra el contenido de la página
                 fadeInMainContent(function () {
                     $(window).off('resize.listItemPanel');
                     var $f = function () {
@@ -96,7 +118,10 @@ function createListItem() {
                     };
                     $(window).on('resize.listItemPanel', $f);
                     $f();
-                })
+                });
+
+                // Oculta el panel de carga
+                loadHandler(false);
             },
     });
 
@@ -127,8 +152,8 @@ function adjustListItemWidth() {
 
 /**
  * Acorta el nombre de un artículo a lo pedido por configuración página visualización
- * @param name      Nombre de un artículo
- * @return {object}
+ * @param name {string}     Nombre de un artículo
+ * @return {object}         Retorna objeto status trim
  */
 function trimShowItemName(name) {
     let $n = name; // Nombre
@@ -141,6 +166,7 @@ function trimShowItemName(name) {
     return {
         id: generateId(cfg_id_size),
         name: $n,
+        original: name,
         trimmed: $s
     }
 }

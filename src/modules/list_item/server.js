@@ -8,14 +8,17 @@
 
 /**
  * Carga los artículos desde el servidor
- * @param options
+ * @param options {object}      Parámetros de carga
  */
 function loadLastItemsFromServer(options) {
     let $defaults = {
-        itemsToLoad: 5
+        itemsToLoad: cfg_listitem_initial_loads
     };
+
     // noinspection JSUnusedAssignment
     options = $.extend($defaults, options);
+
+    // TEST
     return test_items;
 }
 

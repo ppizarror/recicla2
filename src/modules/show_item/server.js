@@ -8,8 +8,8 @@
 
 /**
  * Carga un artículo con un ID determinado
- * @param id
- * @return {Item}
+ * @param id {string}   ID del artículo
+ * @return {Item}       Artículo
  */
 function loadItemID(id) {
     let $item;
@@ -24,4 +24,3 @@ function loadItemID(id) {
     }
     return null;
 }
-

@@ -11,6 +11,9 @@
  */
 $(document).ready(function () {
 
+    // Muestra panel cargando
+    loadHandler(true);
+
     // Dibuja el módulo
     createListItem();
 
@@ -20,7 +23,9 @@ $(document).ready(function () {
     // Centra la página
     if (cfg_listitem_center_module) {
         centerMainContent();
-        adjustListItemWidth();
         $(window).on('resize.listItemPanel', centerMainContent);
     }
+
+    // Ajusta el tamaño del contenido
+    adjustListItemWidth();
 });
