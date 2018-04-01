@@ -37,6 +37,12 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     padding-right: 10px;
 }
 
+@media screen and (max-width: 700px) {
+    .show-item-description {
+        font-weight: 300;
+    }
+}
+
 .show-item-small-pic {
     cursor: pointer;
     display: block;
@@ -52,7 +58,7 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 }
 
 .show-item-gallery {
-    display: inline-block;
+    display: grid;
     margin-left: 10%;
     max-width: 600px;
     padding-right: 5px;
@@ -70,6 +76,12 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     width: 100%;
 }
 
+@media screen and (max-width: 700px) {
+    .show-item-comments-container {
+        margin-top: 15px;
+    }
+}
+
 .show-item-comment-menu {
     display: block;
     width: 35%;
@@ -82,11 +94,23 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     width: 65%;
 }
 
+@media screen and (max-width: 700px) {
+    .show-item-comment-list {
+        padding-left: 10px;
+    }
+}
+
 .show-item-comment-menu-title {
     cursor: default;
     font-size: 1.7rem;
     font-weight: 700;
     text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+    .show-item-comment-menu-title {
+        font-size: 1.3rem;
+    }
 }
 
 .show-item-comment-buttons {
@@ -99,9 +123,9 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     font-size: 1.0rem;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 700px) {
     .show-item-add-comment-button {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 }
 

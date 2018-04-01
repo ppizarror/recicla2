@@ -11,10 +11,6 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     padding: 15px 20px 20px !important;
 }
 
-.list-item-maincontent {
-    padding: 0 20px;
-}
-
 .list-item-container .dataTables_length label select {
     background-clip: padding-box;
     background: #fff none;

@@ -310,7 +310,7 @@ function initShowItemSections($item) {
                     dots: true,
                     infinite: false,
                     slidesToScroll: 1,
-                    slidesToShow: 3,
+                    slidesToShow: 1,
                     speed: 300,
                     variableWidth: true
                 });

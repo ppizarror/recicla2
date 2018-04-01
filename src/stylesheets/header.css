@@ -52,7 +52,15 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 }
 
 .header-back-button-title {
+    display: block;
     float: left;
+}
+
+@media screen and (max-width: 600px) {
+    .header-back-button-title {
+        display: none;
+        float: left;
+    }
 }
 
 .header-title {

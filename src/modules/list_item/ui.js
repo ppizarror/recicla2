@@ -6,6 +6,8 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
+var list_item_container; // Contenedor listar ítems
+
 /**
  * Crea el módulo en la ui.
  */
@@ -23,11 +25,11 @@ function createListItem() {
         title: lang.list_item_title,
         showBackButton: false
     });
-    let add_container = new Container({
+    let list_item_c = new Container({
         elementClass: 'list-item-container',
         padding: 0
     });
-    let $add_c = add_container.getDOM();
+    list_item_container = list_item_c.getDOM();
 
     /**
      * Carga los artículos y los dibuja
@@ -35,7 +37,7 @@ function createListItem() {
     let $items = loadLastItemsFromServer();
     let $item;
     let $tableid = generateId(cfg_id_size);
-    $add_c.append('<table id="{0}" style="width:100%" class="display list-item-table responsive"><thead><tr><th>{1}</th><th>{2}</th><th>{3}</th><th>{4}</th><th>{5}</th><th>{6}</th><th>{7}</th></tr></thead><tbody class="itemsContent"></tbody></table>'.format($tableid, lang.list_item_date, lang.list_item_item, lang.list_item_r, lang.list_item_c, lang.list_item_ncoments, lang.list_item_npics, lang.list_item_user_email));
+    list_item_container.append('<table id="{0}" style="width:100%" class="display list-item-table nowrap"><thead><tr><th>{1}</th><th>{2}</th><th>{3}</th><th>{4}</th><th>{5}</th><th>{6}</th><th>{7}</th></tr></thead><tbody class="itemsContent"></tbody></table>'.format($tableid, lang.list_item_date, lang.list_item_item, lang.list_item_r, lang.list_item_c, lang.list_item_ncoments, lang.list_item_npics, lang.list_item_user_email));
     let $tablecontent = $('#' + $tableid).find('.itemsContent');
 
     /**
@@ -46,7 +48,8 @@ function createListItem() {
          * @type{Item}
          */
         $item = $items[i];
-        $tablecontent.append('<!--suppress ALL --><tr><td>{0}</td><td><a href="{7}" class="list-item-link-view">{1}</a></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td><a href="mailto:{6}">{6}</a></td></tr>'.format($item.getDate(), $item.getName(), $item.getRegion(), $item.getComuna(), $item.getTotalComments(), $item.getTotalPhotos(), $item.getUserEmail(), modules.showItem.file.format($item.getID())));
+        // noinspection HtmlUnknownTarget
+        $tablecontent.append('<tr><td>{0}</td><td><a href="{7}" class="list-item-link-view">{1}</a></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td><a href="mailto:{6}">{6}</a></td></tr>'.format($item.getDate(), trimShowItemName($item.getName()), $item.getRegion(), $item.getComuna(), $item.getTotalComments(), $item.getTotalPhotos(), $item.getUserEmail(), modules.showItem.file.format($item.getID())));
     }
 
     /**
@@ -56,11 +59,9 @@ function createListItem() {
     var $table = $('#{0}'.format($tableid));
     $table.DataTable({
         responsive: true,
-        columnDefs: [
-            {responsivePriority: 1, targets: 0},
-            {responsivePriority: 2, targets: -2},
-            {"className": "dt-center", "targets": "_all"}
-        ],
+        columnDefs: [{
+            className: 'dt-center',
+        }],
         language:
             {
                 'url':
@@ -74,9 +75,13 @@ function createListItem() {
         initComplete:
             function () {
                 if (cfg_listitem_center_module) { //Centra la página
-                    centerMainContent();
                     $(window).off('resize.listItemPanel');
-                    $(window).on('resize.listItemPanel', centerMainContent);
+                    var $f = function () {
+                        centerMainContent();
+                        adjustListItemWidth();
+                    };
+                    $f();
+                    $(window).on('resize.listItemPanel', $f);
                 }
             }
     });
@@ -89,4 +94,32 @@ function createListItem() {
     $('#' + $new_item_id).on('click', function () {
         loadModule(modules.addItem);
     })
+}
+
+/**
+ * Ajusta el contenido al ancho de la página a un 80%
+ */
+function adjustListItemWidth() {
+    let $min = parseInt($(ui_main_content).css('min-width'), 10);
+    let $max = parseInt($(ui_main_content).css('max-width'), 10);
+
+    // Calcula nuevo ancho
+    let $w = getElementWidth($(window)) * 0.8;
+
+    // Ajusta el ancho según mínimo y máximo
+    $w = Math.min($max, Math.max($min, $w));
+    list_item_container.css('width', $w + 'px');
+}
+
+/**
+ * Acorta el nombre de un artículo a lo pedido por configuración página visualización
+ * @param name
+ * @return {*}
+ */
+function trimShowItemName(name) {
+    if (name.length > cfg_showitem_max_chars_name) {
+        return name.substring(0, cfg_showitem_max_chars_name) + '…';
+    } else {
+        return name;
+    }
 }
