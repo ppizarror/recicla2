@@ -14,3 +14,24 @@ function centerMainContent() {
     $maincontent.css('position', 'relative');
     $(ui_main_content).css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_main_content))) / 2) + 'px');
 }
+
+/**
+ * Oculta el panel principal
+ */
+function hideMainContent() {
+    let $maincontent = $(ui_main_content);
+    $maincontent.css('display', 'none');
+}
+
+/**
+ * Muestra el panel principal
+ * @param $f        Callback finalización
+ */
+function fadeInMainContent($f) {
+    let $maincontent = $(ui_main_content);
+    if (notNullUndf($f)) {
+        $maincontent.fadeIn(400, $f);
+    } else {
+        $maincontent.fadeIn(400);
+    }
+}

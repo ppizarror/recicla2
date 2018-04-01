@@ -14,6 +14,9 @@ $(document).ready(function () {
     // Dibuja el módulo
     createListItem();
 
+    // Oculta el panel principal
+    hideMainContent();
+
     // Centra la página
     if (cfg_listitem_center_module) {
         centerMainContent();

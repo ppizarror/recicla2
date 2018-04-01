@@ -43,13 +43,21 @@ function createListItem() {
     /**
      * Dibuja los artículos
      */
+    let $itemname;
     for (let i = 0; i < $items.length; i++) {
         /**
          * @type{Item}
          */
         $item = $items[i];
+
+        // Acorta el nombre
+        $itemname = trimShowItemName($item.getName());
+
         // noinspection HtmlUnknownTarget
-        $tablecontent.append('<tr><td>{0}</td><td><a href="{7}" class="list-item-link-view">{1}</a></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td><a href="mailto:{6}">{6}</a></td></tr>'.format($item.getDate(), trimShowItemName($item.getName()), $item.getRegion(), $item.getComuna(), $item.getTotalComments(), $item.getTotalPhotos(), $item.getUserEmail(), modules.showItem.file.format($item.getID())));
+        $tablecontent.append('<tr><td>{0}</td><td><a href="{7}" class="list-item-link-view" id="{8}">{1}</a></td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td><a href="mailto:{6}">{6}</a></td></tr>'.format($item.getDate(), $itemname.name, $item.getRegion(), $item.getComuna(), $item.getTotalComments(), $item.getTotalPhotos(), $item.getUserEmail(), modules.showItem.file.format($item.getID()), $itemname.id));
+
+        // Si el nombre fue acordado añadir un tooltip
+        $('#' + $itemname.id);
     }
 
     /**
@@ -72,18 +80,24 @@ function createListItem() {
             [
                 [0, 'desc']
             ],
-        initComplete:
+        initComplete: // Función que se carga al generar la tabla
             function () {
                 if (cfg_listitem_center_module) { //Centra la página
+                    centerMainContent();
+                }
+                fadeInMainContent(function () {
                     $(window).off('resize.listItemPanel');
                     var $f = function () {
-                        centerMainContent();
+                        if (cfg_listitem_center_module) { //Centra la página
+                            centerMainContent();
+                        }
                         adjustListItemWidth();
+                        consoleLogInfo('w');
                     };
-                    $f();
                     $(window).on('resize.listItemPanel', $f);
-                }
-            }
+                    $f();
+                })
+            },
     });
 
     /**
@@ -93,7 +107,7 @@ function createListItem() {
     $(ui_main_content).append('<!--suppress ALL --><div class="list-item-bottom-bar"><div class="list-item-botton-buttoncontainer"><button id="{0}" type="button" class="btn btn-success list-item-bottom-button hvr-shadow">{1}</button></div></div>'.format($new_item_id, lang.list_item_new_item));
     $('#' + $new_item_id).on('click', function () {
         loadModule(modules.addItem);
-    })
+    });
 }
 
 /**
@@ -113,13 +127,20 @@ function adjustListItemWidth() {
 
 /**
  * Acorta el nombre de un artículo a lo pedido por configuración página visualización
- * @param name
- * @return {*}
+ * @param name      Nombre de un artículo
+ * @return {object}
  */
 function trimShowItemName(name) {
+    let $n = name; // Nombre
+    let $s = false; // Indica si se acortó o no
     if (name.length > cfg_showitem_max_chars_name) {
-        return name.substring(0, cfg_showitem_max_chars_name) + '…';
-    } else {
-        return name;
+        $n = name.substring(0, cfg_showitem_max_chars_name) + '…';
+        $s = true;
+    }
+
+    return {
+        id: generateId(cfg_id_size),
+        name: $n,
+        trimmed: $s
     }
 }
