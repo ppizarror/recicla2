@@ -22,7 +22,7 @@ function loadHandler(status) {
 function Loading(Checker, callback) {
     var h, hh, w, posX, posY;
     var $body = $('body');
-    var $rootHtml = $('#root');
+    // var $rootHtml = $('#root');
     var $backtotop = $('a.back-to-top');
     if (typeof(Checker) === 'boolean') {
         h = getElementHeight($(window));
