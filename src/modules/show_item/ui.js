@@ -329,7 +329,7 @@ function initShowItemSections($item) {
         // Comuna
         "4": {
             "name": lang.add_item_form_c_e,
-            "icon": "fas fa-globe",
+            "icon": "fas fa-map-marker-alt",
             "value": "<div class='show-item-text'><a href='https://www.google.com/maps/search/{0},{1},Chile'>{0}</a></div>".format($item.getComuna(), $item.getRegion()),
             "resizeThread": false
         },
@@ -337,7 +337,7 @@ function initShowItemSections($item) {
         // Calle
         "5": {
             "name": lang.add_item_form_sn,
-            "icon": "fas fa-map-marker-alt",
+            "icon": "fas fa-home",
             "value": "<div class='show-item-text'><a href='https://www.google.com/maps/search/{0}, {1}, {2}, Chile'>{0}</a></div>".format($item.getUserStreet(), $item.getComuna(), $item.getRegion()),
             "resizeThread": false
         },

@@ -325,7 +325,7 @@ function initAddItemFormObject() {
         // Comuna
         "4": {
             "name": lang.add_item_form_c_e,
-            "icon": "fas fa-globe",
+            "icon": "fas fa-map-marker-alt",
             "form": "<select id='formComunas' class='add-item-rc-selectors' name='comuna-articulo' disabled></select>",
             "resizeThread": false,
             "afterDrawFun": function () {
@@ -346,7 +346,7 @@ function initAddItemFormObject() {
         // Calle
         "5": {
             "name": lang.add_item_form_sn,
-            "icon": "fas fa-map-marker-alt",
+            "icon": "fas fa-home",
             "form": "<input type='text' class='form-control add-item-form-text' name='calle-articulo' maxlength='150' minlength='10' size='60'>",
             "resizeThread": false,
             "validate": function () {

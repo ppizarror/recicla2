@@ -36,11 +36,6 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     white-space: nowrap;
 }
 
-.add-item-nameobj:hover {
-    color: #3a7fd5;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
 .add_item_form_line {
     display: block;
     padding: 5px 0;
@@ -54,8 +49,13 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 }
 
 .add-item-nameobj-icon {
+    color: #c2c2c2;
+    opacity: 0.7;
     margin-right: 20px;
-    min-width: 18px;
+    width: 18px;
+    position: relative;
+    text-align: center;
+    top: -2px;
 }
 
 @media screen and (max-width: 780px) {
