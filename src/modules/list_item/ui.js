@@ -114,7 +114,6 @@ function createListItem() {
                             centerMainContent();
                         }
                         adjustListItemWidth();
-                        consoleLogInfo('w');
                     };
                     $(window).on('resize.listItemPanel', $f);
                     $f();

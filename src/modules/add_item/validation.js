@@ -8,7 +8,9 @@
 
 // Arreglo funciones de validación
 var $_add_item_is_valid = false; // Indica que el ítem actual es válido
+var $_is_validation_add_item_query = false; // Indica que la validación se hizo desde la función general
 var $_validation_add_item_display_tooltip = true; // Puede dibujar un tooltip sobre un campo
+var $_validation_add_item_tooltip = null; // Objeto input que se validó y tuvo errores
 var validation_add_item_fun = []; // Funciones validadoras
 
 /**
@@ -234,10 +236,13 @@ function validateAddItemChangeStyleInput($input, s) {
                 distance: 0,
                 maxWidth: 350,
                 side: 'bottom',
-                theme: cfg_tooltip_theme,
-                timer: 0
+                theme: cfg_tooltip_theme
             });
-            $input.tooltipster('open');
+            if (!$_is_validation_add_item_query) {
+                $input.tooltipster('open');
+            } else {
+                $_validation_add_item_tooltip = $input;
+            }
         }
     }
 }
@@ -249,6 +254,9 @@ function validateAddItemForm() {
     var $f; // Función validadora
     var $r; // Resultado de cada validador
     var $nerr = 0; // Número de errores
+
+    // Se establece estado validador general
+    $_is_validation_add_item_query = true;
 
     // Se recorre cada item validador del formulario
     for (let i = 0; i < validation_add_item_fun.length; i++) {
@@ -264,6 +272,7 @@ function validateAddItemForm() {
     }
     $_validation_add_item_display_tooltip = true;
     $_add_item_is_valid = ($nerr !== 0);
+    $_is_validation_add_item_query = false;
 
     return {
         failed: $_add_item_is_valid,

@@ -137,8 +137,16 @@ function createAddItem() {
                 title: lang.error,
                 buttons: {
                     ok: {
-                        keys: ['enter', 'esc'],
+                        /**
+                         * Se muestra el tooltip sobre el input al cerrar el diálogo
+                         */
+                        action: function () {
+                            if (notNullUndf($_validation_add_item_tooltip)) {
+                                $_validation_add_item_tooltip.tooltipster('open');
+                            }
+                        },
                         btnClass: 'btn-danger',
+                        keys: ['enter', 'esc'],
                         text: lang.close
                     }
                 }
