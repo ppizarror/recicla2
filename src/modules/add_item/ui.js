@@ -140,11 +140,7 @@ function createAddItem() {
                         /**
                          * Se muestra el tooltip sobre el input al cerrar el diálogo
                          */
-                        action: function () {
-                            if (notNullUndf($_validation_add_item_tooltip)) {
-                                $_validation_add_item_tooltip.tooltipster('open');
-                            }
-                        },
+                        action: onClosePopupErrorAddItemHandler,
                         btnClass: 'btn-danger',
                         keys: ['enter', 'esc'],
                         text: lang.close
@@ -153,6 +149,15 @@ function createAddItem() {
             });
         }
     });
+}
+
+/**
+ * Función que se ejecuta después de cerrar el pop-up de errores al intentar enviar el formulario
+ */
+function onClosePopupErrorAddItemHandler() {
+    if (notNullUndf($_validation_add_item_tooltip)) {
+        $_validation_add_item_tooltip.tooltipster('open');
+    }
 }
 
 /**
@@ -186,6 +191,7 @@ function updateFileFormAddItemWatcher() {
             if (input.length) {
                 input.val(log);
             }
+            validateAddItemPic(input);
         });
     });
 }
@@ -367,6 +373,9 @@ function initAddItemFormObject() {
                 var $input = $('input[name=nombre-contacto]');
                 var $f = function () {
                     return validateAddItemInputText($input, {
+                        checkMinWords: true,
+                        minWords: 2,
+                        minWordsErrorMessage: lang.add_item_form_bad_name_words,
                         schars: /^[À-ÿ\u00f1\u00d1a-z,.]+$/i
                     });
                 };
@@ -399,8 +408,10 @@ function initAddItemFormObject() {
         "8": {
             "name": lang.add_item_form_phone,
             "icon": "fas fa-phone",
-            "form": "<input type='text' class='form-control add-item-form-text' name='fono-contacto' minlength='9' size='20'>",
+            "form": "<input type='text' class='form-control add-item-form-text' name='fono-contacto' minlength='9' size='20' maxlength='11'>",
             "resizeThread": false,
+            "afterDrawFun": function () {
+            },
             "validate": function () {
                 var $input = $('input[name=fono-contacto]');
                 var $f = function () {
@@ -412,7 +423,11 @@ function initAddItemFormObject() {
                         userMessage: lang.add_item_form_type_phone,
                         userFun: function () { // Chequea el número
                             let $p = $input.val();
-                            return $p[0] === '9';
+                            if ($p.length > 0) {
+                                return $p[0] === '9';
+                            } else {
+                                return false;
+                            }
                         }
                     });
                 };

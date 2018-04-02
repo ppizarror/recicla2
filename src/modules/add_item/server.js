@@ -10,7 +10,7 @@
  * Carga un artículo en el servidor.
  */
 function uploadItemToServer() {
-    var $o = $('#' + cfg_additem_form_id, $o);
+    var $o = $('#' + cfg_additem_form_id);
     $o.on('submit', function (e) {
 
         // El formulario es válido

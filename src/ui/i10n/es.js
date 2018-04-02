@@ -22,6 +22,8 @@ $lang_db.es = {
     'add_item_c_pick': 'Seleccione comuna',
     'add_item_cancel': 'Cancelar',
     'add_item_cancel_ask': '¿Está seguro?',
+    'add_item_min_words': 'Ingrese al menos {0} palabras',
+    'add_item_form_bad_name_words': 'Ingrese al menos un nombre y un apellido separados por un espacio',
     'add_item_cancel_title': 'Cancelar',
     'add_item_form_bad_email': 'El email no es válido',
     'add_item_form_bad_lreq': 'El largo debe ser de {0} carácteres ({1} existentes)',

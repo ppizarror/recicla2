@@ -24,6 +24,9 @@ function validateAddItemInputText($input, options) {
         changeInputStyle: true, // Actualiza el estilo del input
         checkMaxSize: true, // Chequea largo máximo
         checkMinSize: true, // Chequea largo mínimo
+        checkMinWords: false, // Chequea palabras mínimas
+        minWords: 1, // Palabras mínimas
+        minWordsErrorMessage: lang.add_item_min_words, // Mensaje de error al no cumplir palabras mínimas
         multipleWords: true, // Acepta múltiples palabras
         schars: /^[À-ÿ\u00f1\u00d1a-z0-9]+$/i, // Expresión regular clásica
         trim: true, // Aplica trim a los datos
@@ -72,6 +75,9 @@ function validateAddItemInputText($input, options) {
     let re = options.schars;
     let sreg;
 
+    // Palabras mínimas
+    let $nwords = 1;
+
     // Se ajusta el string si acepta o no múltiples palabras (espacios en blanco)
     if (!options.multipleWords) {
         text = text.split(' ').join('');
@@ -85,11 +91,12 @@ function validateAddItemInputText($input, options) {
         text = text.replace(/\s\s+/g, ' ');
         $input.val(text);
         let ktexts = text.split(' ');
+        $nwords = ktexts.length;
         sreg = true;
         if (re === null) {
             sreg = true;
         } else {
-            for (let i = 0; i < ktexts.length; i++) {
+            for (let i = 0; i < $nwords; i++) {
                 sreg = sreg && re.test(ktexts[i]);
                 if (!sreg) {
                     break;
@@ -98,6 +105,12 @@ function validateAddItemInputText($input, options) {
         }
     }
     s = s && sreg;
+
+    // Comprueba mínimo de palabras
+    let sminwords = $nwords >= options.minWords;
+    if (options.checkMinWords) {
+        s = s && sminwords;
+    }
 
     // Aplica la función del usuario
     let $ufun = true;
@@ -121,9 +134,12 @@ function validateAddItemInputText($input, options) {
         smaxv: max_size, // Tamaño mínimo de la respuesta
         smin: smin, // Indica que el error fue de largo máximo
         sminv: min_size, // Tamaño máximo de la respuesta
+        sminwords: !sminwords, // Indica si cumplió total palabras mínimo
         sreg: !sreg, // Indica que hubieron carácteres inválidos
         status: s, // Indica el estado de la validación
-        userFun: $ufun, // Indica el estado del usuario
+        userFun: $ufun, // Indica el estado del usuario,
+        wordsCount: $nwords, // Cantidad de palabras
+        wordsErrorMsg: options.minWordsErrorMessage, // Mensaje de error al no cumplir palaras mínimas
     };
     if (options.changeInputStyle) {
         validateAddItemChangeStyleInput($input, st);
@@ -178,6 +194,9 @@ function validateAddItemPic($input) {
         status: $file !== '',
     };
     validateAddItemChangeStyleInput($input, st);
+
+    // Retorna el objeto validador
+    return st;
 }
 
 /**
@@ -226,6 +245,9 @@ function validateAddItemChangeStyleInput($input, s) {
                     $addmsg(lang.add_item_form_bad_max.format(s.smaxv, s.size));
                 }
             }
+            if (s.sminwords) {
+                $addmsg(s.wordsErrorMsg.format(s.wordsCount));
+            }
         }
 
         if (err_str !== '' && $_validation_add_item_display_tooltip) {
@@ -271,11 +293,11 @@ function validateAddItemForm() {
         }
     }
     $_validation_add_item_display_tooltip = true;
-    $_add_item_is_valid = ($nerr !== 0);
+    $_add_item_is_valid = ($nerr === 0);
     $_is_validation_add_item_query = false;
 
     return {
-        failed: $_add_item_is_valid,
+        failed: !$_add_item_is_valid,
         nfail: $nerr
     }
 }
