@@ -268,8 +268,8 @@ function initShowItemSections($item) {
                     $imageid = generateId(cfg_id_size);
                     var $imagesrc = $pics[i];
 
-                    // noinspection QuirksModeInspectionTool
-                    $container.append('<!--suppress HtmlUnknownTarget --><div id="{2}" class="show-item-small-pic hvr-grow"><img src="{0}" alt="{1}"/></div>'.format($imagesrc, lang.show_item_pic_n.format(i + 1), $imageid));
+                    // noinspection QuirksModeInspectionTool,HtmlUnknownTarget
+                    $container.append('<div id="{2}" class="show-item-small-pic hvr-grow"><img src="{0}" alt="{1}"/></div>'.format($imagesrc, lang.show_item_pic_n.format(i + 1), $imageid));
 
                     // Se crea listener de click para abrir photoswipe en la imagen
                     $imageswipe = function ($src, $i) {
