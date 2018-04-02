@@ -55,9 +55,9 @@ function createAddItem() {
         $k = $add_item_form_titles[$ftitle_k[i]];
         $k.id_title = generateId(cfg_id_size);
         if ($k.icon !== '') {
-            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{2}" class="add_item_form_line add-item-nameobj"><div class="add-item-form-title-inner"><i class="{1} add-item-nameobj-icon hvr-icon-rotate"></i>{0}</div></div>'.format($k.name, $k.icon, $k.id_title));
+            $ocl.append('<div id="{2}" class="add_item_form_line add-item-nameobj"><div class="add-item-form-title-inner"><i class="{1} add-item-nameobj-icon hvr-icon-rotate"></i>{0}</div></div>'.format($k.name, $k.icon, $k.id_title));
         } else {
-            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{1}" class="add_item_form_line add-item-nameobj">{0}</div>'.format($k.name, $k.id_title));
+            $ocl.append('<div id="{1}" class="add_item_form_line add-item-nameobj">{0}</div>'.format($k.name, $k.id_title));
         }
     }
 
@@ -96,7 +96,8 @@ function createAddItem() {
      */
     let $b_cancel_id = generateId(cfg_id_size);
     let $b_add_id = generateId(cfg_id_size);
-    $(ui_main_content).append('<!--suppress ALL --><div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{3}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
+    // noinspection QuirksModeInspectionTool
+    $(ui_main_content).append('<div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{3}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
 
     // Botón cancelar cierra módulo y carga módulo listar
     $('#' + $b_cancel_id).on('click.cancelFormButton', function () {
@@ -200,6 +201,7 @@ function updateFileFormAddItemWatcher() {
  * Inicia el objeto del formulario.
  */
 function initAddItemFormObject() {
+    // noinspection QuirksModeInspectionTool
     $add_item_form_titles = {
 
         // Nombre artículo
@@ -249,7 +251,7 @@ function initAddItemFormObject() {
         "2": {
             "name": lang.add_item_form_photo,
             "icon": "fas fa-camera",
-            "form": '<!--suppress ALL --><div class="input-group"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button"><input type="file" name="foto-articulo1" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc1"><span class="btn btn-success add-item-pic-new-pic hvr-icon-pop hvr-shadow"><i class="fas fa-plus hvr-icon"></i></span></div>'.format(lang.look_file),
+            "form": '<div class="input-group"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button"><input type="file" name="foto-articulo1" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc1"><span class="btn btn-success add-item-pic-new-pic hvr-icon-pop hvr-shadow"><i class="fas fa-plus hvr-icon"></i></span></div>'.format(lang.look_file),
             "newform": '',
             "resizeThread": false,
             "afterDrawFun": function () {
@@ -283,7 +285,8 @@ function initAddItemFormObject() {
                         $('.add-item-pic-new-pic').fadeOut();
                     }
 
-                    $('#{0}'.format($id)).append('<!--suppress ALL --><div class="input-group add-item-pic-new-entry-block"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button" style="cursor: pointer;"><input type="file" name="foto-articulo{2}" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc{2}" ></div>'.format(lang.look_file, lang.add_new_photo, $add_item_total_pics));
+                    // noinspection QuirksModeInspectionTool
+                    $('#{0}'.format($id)).append('<div class="input-group add-item-pic-new-entry-block"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button" style="cursor: pointer;"><input type="file" name="foto-articulo{2}" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc{2}" ></div>'.format(lang.look_file, lang.add_new_photo, $add_item_total_pics));
                     $resize();
                     updateFileFormAddItemWatcher();
 

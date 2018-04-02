@@ -58,9 +58,9 @@ function createShowItem($item) {
         $k = $show_item_sections[$ftitle_k[i]];
         $k.id_title = generateId(cfg_id_size);
         if ($k.icon !== '') {
-            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{2}" class="add_item_form_line add-item-nameobj"><div class="add-item-form-title-inner"><i class="{1} add-item-nameobj-icon hvr-icon-rotate"></i>{0}</div></div>'.format($k.name, $k.icon, $k.id_title));
+            $ocl.append('<div id="{2}" class="add_item_form_line add-item-nameobj"><div class="add-item-form-title-inner"><i class="{1} add-item-nameobj-icon hvr-icon-rotate"></i>{0}</div></div>'.format($k.name, $k.icon, $k.id_title));
         } else {
-            $ocl.append('<!--suppress QuirksModeInspectionTool --><div id="{1}" class="add_item_form_line add-item-nameobj">{0}</div>'.format($k.name, $k.id_title));
+            $ocl.append('<div id="{1}" class="add_item_form_line add-item-nameobj">{0}</div>'.format($k.name, $k.id_title));
         }
     }
 
@@ -269,7 +269,7 @@ function initShowItemSections($item) {
                     var $imagesrc = $pics[i];
 
                     // noinspection QuirksModeInspectionTool
-                    $container.append('<!--suppress ALL --><div id="{2}" class="show-item-small-pic hvr-grow"><img src="{0}" alt="{1}"/></div>'.format($imagesrc, lang.show_item_pic_n.format(i + 1), $imageid));
+                    $container.append('<!--suppress HtmlUnknownTarget --><div id="{2}" class="show-item-small-pic hvr-grow"><img src="{0}" alt="{1}"/></div>'.format($imagesrc, lang.show_item_pic_n.format(i + 1), $imageid));
 
                     // Se crea listener de click para abrir photoswipe en la imagen
                     $imageswipe = function ($src, $i) {
