@@ -225,7 +225,6 @@ function autoResizeTitles(formid, titleid) {
         // noinspection JSValidateTypes
         let h = $('#{0}'.format(formid)).outerHeight();
         $('#{0}'.format(titleid)).css('height', h + 'px');
-        showItemBackgroundResize();
     };
 }
 
@@ -382,8 +381,10 @@ function initShowItemSections($item) {
 function showItemBackgroundResize() {
     let $appbackground = $('#appBackground');
     let $maincontent = $(ui_main_content);
+
+    // Aplica css
     $maincontent.css('position', 'relative');
     $(ui_main_content).css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_main_content))) / 2) + 'px');
-    $appbackground.css('width', getElementInnerWidth($(window)) + 'px');
-    $appbackground.css('height', getElementHeight($show_item_container) + 150 + 'px')
+    $appbackground.css('width', getElementInnerWidth($('#root')) + 'px');
+    $appbackground.css('height', getElementHeight($show_item_container) + 100 + 'px')
 }
