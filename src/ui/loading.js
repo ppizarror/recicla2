@@ -81,7 +81,6 @@ function Loading(Checker, callback) {
  * Añade evento de redimensionado del objeto loadingDiv
  */
 $(window).resize(function () {
-    console.log('k');
     var h, hh, w, posX, posY;
     if (document.getElementById('LoadingDivLayer') != null) {
         h = $(window).height();

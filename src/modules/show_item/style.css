@@ -164,6 +164,24 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     font-size: 0.8rem;
 }
 
+.show-item-comment-dateicon {
+    color: #a5a6a7;
+    cursor: pointer;
+    display: none;
+    float: right;
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 700px) {
+    .show-item-comment-date {
+        display: none;
+    }
+
+    .show-item-comment-dateicon {
+        display: block;
+    }
+}
+
 .show-item-comment-content {
     cursor: default;
     font-size: 1.0rem;

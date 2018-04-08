@@ -76,6 +76,7 @@ $lang_db.es = {
     'name_lang': 'Español',
     'show_item_add_comment': 'Agregar Comentario',
     'show_item_comment_canceled': 'Comentario cancelado.',
+    'show_item_comment_date_tooltip': 'Publicado el {0}',
     'show_item_comments_title': 'Comentarios',
     'show_item_no_comments': 'No existen comentarios para este artículo',
     'show_item_pic_n': 'Fotografía {0}',

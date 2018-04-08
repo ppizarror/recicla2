@@ -69,7 +69,7 @@ function createListItem() {
                 animation: 'grow',
                 content: $itemname.original,
                 contentAsHTML: true,
-                delay: 700,
+                delay: cfg_listitem_user_hoverdelay_tooltip_maxchars,
                 maxWidth: 280,
                 side: 'bottom',
                 theme: cfg_tooltip_theme,
@@ -158,8 +158,8 @@ function adjustListItemWidth() {
 function trimShowItemName(name) {
     let $n = name; // Nombre
     let $s = false; // Indica si se acortó o no
-    if (name.length > cfg_showitem_max_chars_name) {
-        $n = name.substring(0, cfg_showitem_max_chars_name) + '…';
+    if (name.length > cfg_listitem_max_chars_name) {
+        $n = name.substring(0, cfg_listitem_max_chars_name) + '…';
         $s = true;
     }
 

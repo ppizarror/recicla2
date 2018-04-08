@@ -211,7 +211,15 @@ function addCommentItem($c) {
         $show_item_comment_container.empty();
         $show_item_empty_comment = false;
     }
-    $show_item_comment_container.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div></div><div class="show-item-comment-content">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment()));
+    let $dateclockid = generateId(cfg_id_size);
+    $show_item_comment_container.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div><div class="show-item-comment-dateicon" id="{3}"><i class="far fa-clock"></i></div></div><div class="show-item-comment-content">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment(), $dateclockid));
+    $('#' + $dateclockid).tooltipster({
+        content: lang.show_item_comment_date_tooltip.format($c.getDate()),
+        delay: 400,
+        maxWidth: 200,
+        side: 'bottom',
+        theme: cfg_tooltip_theme
+    });
 }
 
 /**
