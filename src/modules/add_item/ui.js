@@ -235,9 +235,9 @@ function initAddItemFormObject() {
                 var $f = function () {
                     return validateAddItemInputText($input, {
                         cantBeEmpty: false,
+                        checkMaxSize: true,
                         checkMinSize: false,
-                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!$\[\]¡°|"-]+$/i,
-                        userMessage: lang.add_item_form_valid_desc
+                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!$\[\]¡°|"-]+$/i
                     });
                 };
 
@@ -411,7 +411,7 @@ function initAddItemFormObject() {
         "8": {
             "name": lang.add_item_form_phone,
             "icon": "fas fa-phone",
-            "form": "<input type='text' class='form-control add-item-form-text' name='fono-contacto' minlength='9' size='20' maxlength='11'>",
+            "form": "<input type='text' class='form-control add-item-form-text' name='fono-contacto' minlength='0' size='20' maxlength='9'>",
             "resizeThread": false,
             "afterDrawFun": function () {
             },
@@ -419,17 +419,18 @@ function initAddItemFormObject() {
                 var $input = $('input[name=fono-contacto]');
                 var $f = function () {
                     return validateAddItemInputText($input, {
+                        cantBeEmpty: false,
+                        checkMaxSize: true,
+                        checkMinSize: false,
                         multipleWords: false,
-                        checkMaxSize: false,
-                        checkMinSize: true,
                         schars: /^[0-9]+$/i,
                         userMessage: lang.add_item_form_type_phone,
                         userFun: function () { // Chequea el número
                             let $p = $input.val();
-                            if ($p.length > 0) {
-                                return $p[0] === '9';
+                            if ($p.length === 0) {
+                                return true;
                             } else {
-                                return false;
+                                return $p[0] === '9' && $p.length === 9;
                             }
                         }
                     });

@@ -44,7 +44,7 @@ $lang_db.es = {
     'add_item_form_r_e': 'Región entrega',
     'add_item_form_sn': 'Calle y número',
     'add_item_form_type_phone': 'Debe cumplir un formato de número de teléfono (9 XXXX XXXX)',
-    'add_item_form_valid_desc': 'Ingrese una descripción válida, máximo 1000 carácteres',
+    'add_item_form_valid_desc': 'Ingrese una descripción válida, máximo 1000 carácteres.',
     'add_item_min_words': 'Ingrese al menos {0} palabras',
     'add_item_r_pick': 'Seleccione región',
     'add_new_photo_tooltip': 'Añadir nueva foto',
