@@ -24,8 +24,9 @@ var errordb = {
  * Inicia mensajes de error
  */
 function initErrors() {
-    let $add = function (id, msg, moreinfo) {
+    let $add = function (id, msg, moreinfo, code) {
         errordb[id] = {
+            code: code,
             id: id,
             moreinfo: moreinfo,
             msg: msg
@@ -35,7 +36,9 @@ function initErrors() {
     /**
      * Añade errores
      */
-    $add('itemNotExist', lang.item_not_exist_msg, lang.item_not_exist_moreinfo);
+    $add('itemNotExist', lang.item_not_exist_msg, lang.item_not_exist_moreinfo, 1);
+    $add('badErrorId', lang.bad_error_id_msg, lang.bad_error_id_moreinfo, 2);
+    $add('uploadItemNotValid', lang.upload_item_failed_validation_msg, lang.upload_item_failed_validation_moreinfo, 3);
 }
 
 // noinspection JSUnusedGlobalSymbols

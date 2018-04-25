@@ -32,4 +32,7 @@ $(function () {
 
     // Precarga recursos
     preloadResources();
+
+    // Llamada a callbacks
+    initAppCallback();
 });

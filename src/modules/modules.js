@@ -6,13 +6,13 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-// noinspection JSUnusedGlobalSymbols
+// noinspection ES6ConvertVarToLetConst
 /**
  * Módulos de la aplicación
  */
 var modules = {
     'addItem': {
-        'file': 'utils.php'
+        'file': 'add_item.php'
     },
     'listItem': {
         'file': 'index.php'

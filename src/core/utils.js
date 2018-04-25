@@ -262,3 +262,28 @@ function consoleLogInfo(msg) {
 function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
 }
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Funciones que se ejecutan luego de iniciar la aplicación.
+ * @private
+ */
+var __initAppCallback = [];
+
+// noinspection JSUnusedGlobalSymbols
+/**
+ * Agrega función al callback inicial.
+ * @param {function} $f
+ */
+function pushInitAppCallbackFunction($f) {
+    __initAppCallback.push($f);
+}
+
+/**
+ * Llama a todas las funciones iniciales.
+ */
+function initAppCallback() {
+    for (let i = 0; i < __initAppCallback.length; i++) {
+        __initAppCallback[i]();
+    }
+}
