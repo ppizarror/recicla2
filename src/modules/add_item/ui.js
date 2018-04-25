@@ -79,7 +79,7 @@ function createAddItem() {
     /**
      * Genera el formulario
      */
-    $ocr.append('<form id="{0}" name="addItem" method="post" autocomplete="off"><input type="submit" style="display: none"></form>'.format(cfg_additem_form_id));
+    $ocr.append('<form id="{0}" name="addItem" method="post" autocomplete="off"><input type="hidden" id="addItemformValidated" name="form-validated" value="false" /><input type="submit" style="display: none"></form>'.format(cfg_additem_form_id));
     let $formobj = $('#{0}'.format(cfg_additem_form_id));
     let $resizef;
     for (let i = 0; i < $ftitle_k.length; i++) {

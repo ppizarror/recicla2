@@ -325,6 +325,9 @@ function validateAddItemForm() {
     $_add_item_is_valid = ($nerr === 0);
     $_is_validation_add_item_query = false;
 
+    // Se cambia valor del input hidden del formulario
+    $('#addItemformValidated').val($_add_item_is_valid);
+
     return {
         failed: !$_add_item_is_valid,
         nfail: $nerr
