@@ -57,5 +57,3 @@ function afterInitModuleCallback() {
         $f();
     }
 }
-
-console.log('loaded');

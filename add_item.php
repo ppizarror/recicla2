@@ -84,15 +84,15 @@
     <script src="src/ui/resources.js"></script>
 
     <!-- Carga módulo <Añadir artículo ítem> -->
-    <script src="src/modules/modules.js"></script>
-    <link rel="stylesheet" type="text/css" href="src/modules/add_item/style.css" media="screen">
-    <script src="src/modules/add_item/config.js"></script>
-    <script src="src/modules/add_item/server.js"></script>
-    <script src="src/modules/add_item/ui.js"></script>
-    <script src="src/modules/add_item/validation.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/modules/add_item/style.css?v=<?php echo uniqid(); ?>" media="screen">
+    <script src="src/modules/modules.js?v=<?php echo uniqid(); ?>"></script>
+    <script src="src/modules/add_item/config.js?v=<?php echo uniqid(); ?>"></script>
+    <script src="src/modules/add_item/server.js?v=<?php echo uniqid(); ?>"></script>
+    <script src="src/modules/add_item/ui.js?v=<?php echo uniqid(); ?>"></script>
+    <script src="src/modules/add_item/validation.js?v=<?php echo uniqid(); ?>"></script>
 
     <!-- Testing -->
-    <script src="test/add_item_test.js"></script>
+    <script src="test/add_item_test.js?v=<?php echo uniqid(); ?>"></script>
 
     <!-- Inicia app -->
     <script src="src/core/init.js"></script>

@@ -91,15 +91,15 @@
     <script src="src/components/item.js"></script>
     <script src="src/components/comment.js"></script>
 
+    <!-- Carga módulo <Listar ítem> -->
+    <link rel="stylesheet" type="text/css" href="src/modules/list_item/style.css?v=<?php echo uniqid(); ?>">
+    <script src="src/modules/modules.js?v=<?php echo uniqid(); ?>"></script>
+    <script src="src/modules/list_item/server.js?v=<?php echo uniqid(); ?>"></script>
+    <script src="src/modules/list_item/config.js?v=<?php echo uniqid(); ?>"></script>
+    <script src="src/modules/list_item/ui.js?v=<?php echo uniqid(); ?>"></script>
+
     <!-- Testing -->
     <script src="test/test.item.js"></script>
-
-    <!-- Carga módulo <Listar ítem> -->
-    <link rel="stylesheet" type="text/css" href="src/modules/list_item/style.css" media="screen">
-    <script src="src/modules/modules.js"></script>
-    <script src="src/modules/list_item/server.js"></script>
-    <script src="src/modules/list_item/config.js"></script>
-    <script src="src/modules/list_item/ui.js"></script>
 
     <!-- Inicia app -->
     <script src="src/core/init.js"></script>
