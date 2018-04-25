@@ -6,7 +6,11 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-// Código de errores
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Código de errores
+ * @type {{langNotExist: {code: number, id: string, moreinfo: string, msg: string}}}
+ */
 var errordb = {
     "langNotExist": {
         "code": 0,
@@ -50,8 +54,8 @@ function cleanErrorMsg() {
  * @param {object} exceptionmsg     Objeto de exepción
  */
 function throwErrorIDException(errorid, exceptionmsg) {
-    var $maincontent = $('#mainContent');
-    var $errormsg = $('#errorMsg');
+    let $maincontent = $('#mainContent');
+    let $errormsg = $('#errorMsg');
 
     // Muestra el recuadro del error
     $maincontent.empty();
@@ -77,7 +81,7 @@ function throwErrorIDException(errorid, exceptionmsg) {
     if (cfg_always_show_err_notification) {
         throwErrorNotification(errorid);
     }
-    var resizeObject = function () {
+    let resizeObject = function () {
         $errormsg.css('top', (getElementHeight($(document)) - getElementHeight($errormsg)) / 2 + 'px');
     };
     resizeObject();

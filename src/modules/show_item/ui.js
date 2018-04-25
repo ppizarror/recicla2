@@ -6,11 +6,36 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-var $show_item_comment_container; // Objeto contenedor de los comentarios
-var $show_item_container; // Contenedor de la página mostrar artículo
-var $show_item_empty_comment = true; // Indica si hay o no comentarios
-var $show_item_header_container; // Elemento header de la página
-var $show_item_sections; // Secciones del artículo
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Objeto contenedor de los comentarios
+ */
+var $show_item_comment_container;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Contenedor de la página mostrar artículo
+ */
+var $show_item_container;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Indica si hay o no comentarios
+ * @type {boolean}
+ */
+var $show_item_empty_comment = true;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Elemento header de la página
+ */
+var $show_item_header_container;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Secciones del artículo
+ */
+var $show_item_sections;
 
 /**
  * Crea el módulo en la ui.
@@ -190,12 +215,10 @@ function createShowItem($item) {
                 }
             },
             onContentReady: function () {
-                // bind to events
-                var jc = this;
+                let jc = this;
                 this.$content.find('form').on('submit', function (e) {
-                    // if the user submits the form by pressing enter in the field.
                     e.preventDefault();
-                    jc.$$formSubmit.trigger('click'); // reference the button and click it
+                    jc.$$formSubmit.trigger('click');
                 });
             }
         });
@@ -273,7 +296,7 @@ function initShowItemSections($item) {
                 let $imageswipe;
                 for (let i = 0; i < $item.getTotalPhotos(); i++) {
                     $imageid = generateId(cfg_id_size);
-                    var $imagesrc = $pics[i];
+                    let $imagesrc = $pics[i];
 
                     // noinspection QuirksModeInspectionTool,HtmlUnknownTarget
                     $container.append('<div id="{2}" class="show-item-small-pic hvr-grow"><img src="{0}" alt="{1}"/></div>'.format($imagesrc, lang.show_item_pic_n.format(i + 1), $imageid));
@@ -281,14 +304,14 @@ function initShowItemSections($item) {
                     // Se crea listener de click para abrir photoswipe en la imagen
                     $imageswipe = function ($src, $i) {
                         return function () {
-                            var pswpElement = document.querySelectorAll('.pswp')[0];
-                            var items = [{
+                            let pswpElement = document.querySelectorAll('.pswp')[0];
+                            let items = [{
                                 src: $src,
                                 w: 800,
                                 h: 600,
                                 title: lang.show_item_pic_n.format($i)
                             }];
-                            var options = {
+                            let options = {
                                 index: 0,
                                 showAnimationDuration: 400,
                                 hideAnimationDuration: 400,
@@ -298,7 +321,7 @@ function initShowItemSections($item) {
                                 fullscreenEl: false,
                                 zoomEl: false
                             };
-                            var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+                            let gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
                             gallery.listen('close', function () {
                                 $('a.back-to-top').fadeIn('slow');
                             });

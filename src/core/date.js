@@ -25,7 +25,7 @@ function createDateElement(day, month, year, hour, min, sec) {
     sec = parseInt(sec);
 
     // Crea objeto fecha
-    var date = new Date(year, month, day, hour, min, sec);
+    let date = new Date(year, month, day, hour, min, sec);
     return {
         date: date,
         day: day,
@@ -37,6 +37,7 @@ function createDateElement(day, month, year, hour, min, sec) {
     }
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Convierte un objeto date desde el servidor al local
  * @param {object} date     Objeto tipo DateElement
@@ -74,7 +75,7 @@ function getRandomDateElement() {
         return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     }
 
-    var d = randomDate(new Date(2018, 0, 1), new Date());
+    let d = randomDate(new Date(2018, 0, 1), new Date());
     return createDateElement(d.getDate(), d.getMonth(), d.getFullYear(), d.getHours(), d.getMinutes(), d.getSeconds());
 }
 
@@ -98,12 +99,12 @@ function getTomorrowDateElement() {
  * @return {object}     Retorna objeto tipo DateElement
  */
 function getDateElement(d, m, y, h, mn, s) {
-    var day = new Date().getDate() - d;
-    var hour = new Date().getHours() - h;
-    var min = new Date().getMinutes() - mn;
-    var month = new Date().getMonth() - m;
-    var sec = new Date().getSeconds() - s;
-    var year = new Date().getFullYear() - y;
+    let day = new Date().getDate() - d;
+    let hour = new Date().getHours() - h;
+    let min = new Date().getMinutes() - mn;
+    let month = new Date().getMonth() - m;
+    let sec = new Date().getSeconds() - s;
+    let year = new Date().getFullYear() - y;
     return createDateElement(day, month, year, hour, min, sec);
 }
 
@@ -117,12 +118,12 @@ function getDateElement(d, m, y, h, mn, s) {
     }
 
     function h(a, c) {
-        var b = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" ");
+        let b = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" ");
         return c ? b[a.getDay()].substr(0, 3) : b[a.getDay()]
     }
 
     function k(a, c) {
-        var b = "January February March April May June July August September October November December".split(" ");
+        let b = "January February March April May June July August September October November December".split(" ");
         return c ? b[a.getMonth()].substr(0, 3) : b[a.getMonth()]
     }
 
@@ -131,7 +132,7 @@ function getDateElement(d, m, y, h, mn, s) {
             if ("compound" === a) {
                 if (!1 === c) return this.format.compound;
                 // noinspection JSDuplicatedDeclaration
-                var b = {}, d;
+                let b = {}, d;
                 for (d in Date.prototype.format.compound) { // noinspection JSUnfilteredForInLoop
                     b[d] =
                         this.format(Date.prototype.format.compound[d]);
@@ -141,8 +142,8 @@ function getDateElement(d, m, y, h, mn, s) {
             if (Date.prototype.format.compound[a]) return this.format(Date.prototype.format.compound[a], c);
             if ("constants" === a) {
                 if (!1 === c) return this.format.constants;
-                b = {};
-                for (d in Date.prototype.format.constants) { // noinspection JSUnfilteredForInLoop
+                let b = {};
+                for (let d in Date.prototype.format.constants) { // noinspection JSUnfilteredForInLoop
                     b[d] = this.format(Date.prototype.format.constants[d]);
                 }
                 return b
@@ -150,8 +151,8 @@ function getDateElement(d, m, y, h, mn, s) {
             if (Date.prototype.format.constants[a]) return this.format(Date.prototype.format.constants[a], c);
             if ("pretty" === a) {
                 if (!1 === c) return this.format.pretty;
-                b = {};
-                for (d in Date.prototype.format.pretty) { // noinspection JSUnfilteredForInLoop
+                let b = {};
+                for (let d in Date.prototype.format.pretty) { // noinspection JSUnfilteredForInLoop
                     b[d] =
                         this.format(Date.prototype.format.pretty[d]);
                 }
@@ -159,10 +160,10 @@ function getDateElement(d, m, y, h, mn, s) {
             }
             if (Date.prototype.format.pretty[a]) return this.format(Date.prototype.format.pretty[a], c);
             // noinspection JSDuplicatedDeclaration
-            var b = a.split(""), e = "";
-            for (d in b) {
+            let b = a.split(""), e = "";
+            for (let d in b) {
                 // noinspection JSUnfilteredForInLoop
-                var f = b[d];
+                let f = b[d];
                 // noinspection JSUnfilteredForInLoop
                 f && /[a-z]/i.test(f) && !/\\/.test(e + f) && (b[d] = l[f] ? l[f].apply(this) : f);
                 // noinspection JSUnfilteredForInLoop
@@ -173,14 +174,20 @@ function getDateElement(d, m, y, h, mn, s) {
         return a
     }
 
-    var l = {
+    let l = {
         d: function () {
-            var a = this.getDate();
+            let a = this.getDate();
             return 9 < a ? a : "0" + a
         },
-        D: function () {return h(this, !0)},
-        j: function () {return this.getDate()},
-        l: function () {return h(this)},
+        D: function () {
+            return h(this, !0)
+        },
+        j: function () {
+            return this.getDate()
+        },
+        l: function () {
+            return h(this)
+        },
         /**
          * @return {number}
          */
@@ -191,46 +198,60 @@ function getDateElement(d, m, y, h, mn, s) {
          * @return {string}
          */
         S: function () {
-            var a = this.getDate();
+            let a = this.getDate();
             // noinspection JSCheckFunctionSignatures
             return /^1[0-9]$/.test(a) ? "th" : /1$/.test(a) ? "st" : /2$/.test(a) ? "nd" : /3$/.test(a) ? "rd" : "th"
         },
-        w: function () {return this.getDay()},
-        z: function () {return Math.round(Math.abs((this.getTime() - (new Date("1/1/" + this.getFullYear())).getTime()) / 864E5))},
+        w: function () {
+            return this.getDay()
+        },
+        z: function () {
+            return Math.round(Math.abs((this.getTime() - (new Date("1/1/" + this.getFullYear())).getTime()) / 864E5))
+        },
         /**
          * @return {number}
          */
         W: function () {
-            var a = new Date(this.getFullYear(), 0, 1);
+            let a = new Date(this.getFullYear(), 0, 1);
             return Math.ceil(((this - a) / 864E5 + a.getDay() + 1) / 7)
         },
-        F: function () {return k(this)},
+        F: function () {
+            return k(this)
+        },
         m: function () {
-            var a = this.getMonth() + 1;
+            let a = this.getMonth() + 1;
             return 9 < a ? a : "0" + a
         },
-        M: function () {return k(this, !0)},
+        M: function () {
+            return k(this, !0)
+        },
         n: function () {
             return this.getMonth() +
                 1
         },
-        t: function () {return (new Date(this.getFullYear(), this.getMonth() + 1, 0)).getDate()},
+        t: function () {
+            return (new Date(this.getFullYear(), this.getMonth() + 1, 0)).getDate()
+        },
         /**
          * @return {boolean}
          */
         L: function () {
-            var a = this.getFullYear();
+            let a = this.getFullYear();
             return 0 === a % 4 && 0 !== a % 100 || 0 === a % 400
         },
         o: function () {// noinspection JSCheckFunctionSignatures
             return parseInt(this.getFullYear())
         },
         Y: function () {// noinspection JSConstructorReturnsPrimitive
-            // noinspection JSCheckFunctionSignatures
+            // noinspection JSConstructorReturnsPrimitive
             return parseInt(this.getFullYear())
         },
-        y: function () {return parseInt((this.getFullYear() + "").substr(-2))},
-        a: function () {return 12 <= this.getHours() ? "pm" : "am"},
+        y: function () {
+            return parseInt((this.getFullYear() + "").substr(-2))
+        },
+        a: function () {
+            return 12 <= this.getHours() ? "pm" : "am"
+        },
         A: function () {// noinspection JSConstructorReturnsPrimitive
             return 12 <= this.getHours() ? "PM" : "AM"
         },
@@ -242,40 +263,44 @@ function getDateElement(d, m, y, h, mn, s) {
                 this.getSeconds() + .001 * this.getMilliseconds()) / 86.4)).slice(-3)
         },
         g: function () {
-            var a = this.getHours();
+            let a = this.getHours();
             return 0 === a ? 12 : 12 >= a ? a : a - 12
         },
         /**
          * @return {number}
          */
-        G: function () {return this.getHours()},
+        G: function () {
+            return this.getHours()
+        },
         h: function () {
-            var a = this.getHours();
+            let a = this.getHours();
             a = 12 >= a ? a : a - 12;
             return 0 === a ? 12 : 9 < a ? a : "0" + a
         },
         H: function () {
-            var a = this.getHours();
+            let a = this.getHours();
             return 9 < a ? a : "0" + a
         },
         i: function () {
-            var a = this.getMinutes();
+            let a = this.getMinutes();
             return 9 < a ? a : "0" + a
         },
         s: function () {
-            var a = this.getSeconds();
+            let a = this.getSeconds();
             return 9 < a ? a : "0" + a
         },
-        u: function () {return this.getMilliseconds()},
+        u: function () {
+            return this.getMilliseconds()
+        },
         e: function () {
-            var a = this.toString().match(/ ([A-Z]{3,4})([-|+]?\d{4})/);
+            let a = this.toString().match(/ ([A-Z]{3,4})([-|+]?\d{4})/);
             return 1 < a.length ? a[1] : ""
         },
         /**
          * @return {number}
          */
         I: function () {
-            var a = new Date(this.getFullYear(), 0, 1), c = new Date(this.getFullYear(), 6, 1);
+            let a = new Date(this.getFullYear(), 0, 1), c = new Date(this.getFullYear(), 6, 1);
             a = Math.max(a.getTimezoneOffset(), c.getTimezoneOffset());
             return this.getTimezoneOffset() < a ? 1 : 0
         },
@@ -283,21 +308,25 @@ function getDateElement(d, m, y, h, mn, s) {
          * @return {string}
          */
         O: function () {
-            var a = this.toString().match(/ ([A-Z]{3,4})([-|+]?\d{4})/);
+            let a = this.toString().match(/ ([A-Z]{3,4})([-|+]?\d{4})/);
             return 2 < a.length ? a[2] : ""
         },
         /**
          * @return {string}
          */
         P: function () {
-            var a = this.toString().match(/ ([A-Z]{3,4})([-|+]?\d{4})/);
+            let a = this.toString().match(/ ([A-Z]{3,4})([-|+]?\d{4})/);
             return 2 < a.length ? a[2].substr(0, 3) + ":" + a[2].substr(3, 2) : ""
         },
-        T: function () {return this.toLocaleString("en", {timeZoneName: "short"}).split(" ").pop()},
+        T: function () {
+            return this.toLocaleString("en", {timeZoneName: "short"}).split(" ").pop()
+        },
         /**
          * @return {number}
          */
-        Z: function () {return 60 * this.getTimezoneOffset()},
+        Z: function () {
+            return 60 * this.getTimezoneOffset()
+        },
         c: function () {// noinspection JSCheckFunctionSignatures
             return g(new Date(this), -(this.getTimezoneOffset() / 60)).toISOString()
         },
@@ -307,7 +336,9 @@ function getDateElement(d, m, y, h, mn, s) {
         /**
          * @return {number}
          */
-        U: function () {return this.getTime() / 1E3 | 0}
+        U: function () {
+            return this.getTime() / 1E3 | 0
+        }
     }, m = {
         commonLogFormat: "d/M/Y:G:i:s",
         exif: "Y:m:d G:i:s",

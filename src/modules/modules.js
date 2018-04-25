@@ -33,10 +33,14 @@ function loadModule(m) {
     window.location.href = m.file;
 }
 
-// Contiene los llamados a las funciones a ejecutar tras iniciar un módulo
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Contiene los llamados a las funciones a ejecutar tras iniciar un módulo
+ * @type {Array}
+ * @private
+ */
 var __afterModuleInit = [];
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Añade una función a afterModuleInit.
  * @param {function} $f     Función

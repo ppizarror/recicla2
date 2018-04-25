@@ -9,7 +9,7 @@
 /**
  * Inicia el módulo al cargar la página
  */
-$(document).ready(function () {
+$(function () {
 
     // Muestra panel cargando
     loadHandler(true);

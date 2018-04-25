@@ -6,7 +6,11 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-var list_item_container; // Contenedor listar ítems
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Contenedor listar ítems
+ */
+var list_item_container;
 
 /**
  * Crea el módulo en la ui.
@@ -82,7 +86,7 @@ function createListItem() {
      * Crea el Datatables
      */
         // noinspection JSCheckFunctionSignatures
-    var $table = $('#{0}'.format($tableid));
+    let $table = $('#{0}'.format($tableid));
     $table.DataTable({
         responsive: true,
         columnDefs: [{
@@ -109,7 +113,7 @@ function createListItem() {
                 // Muestra el contenido de la página
                 fadeInMainContent(function () {
                     $(window).off('resize.listItemPanel');
-                    var $f = function () {
+                    let $f = function () {
                         if (cfg_listitem_center_module) { //Centra la página
                             centerMainContent();
                         }

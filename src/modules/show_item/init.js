@@ -9,11 +9,11 @@
 /**
  * Inicia el módulo al cargar la página
  */
-$(document).ready(function () {
+$(function () {
 
     // Carga el artículo
     let $item_id = parseInt(getURLParameter('id'));
-    var $loaded_item = loadItemID($item_id);
+    let $loaded_item = loadItemID($item_id);
 
     if ($loaded_item === null) {
         throwErrorID(errordb.itemNotExist);

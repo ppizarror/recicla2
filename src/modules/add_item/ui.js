@@ -6,10 +6,25 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-// Formulario
-var $add_item_form_titles; // Elementos del formulario
-var $add_item_rc_chile; // Almacena base de datos de regiones y comunas de Chile
-var $add_item_total_pics = 1; // Imágenes totales añadidas al formulario
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Elementos del formulario
+ */
+var $add_item_form_titles;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Almacena base de datos de regiones y comunas de Chile
+ */
+var $add_item_rc_chile;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Imágenes totales añadidas al formulario
+ * @type {number}
+ */
+var $add_item_total_pics = 1;
 
 /**
  * Crea el módulo en la ui.
@@ -180,14 +195,14 @@ function autoResizeTitles(formid, titleid) {
  */
 function updateFileFormAddItemWatcher() {
     $(document).on('change', ':file', function () {
-        var input = $(this),
+        let input = $(this),
             numFiles = input.get(0).files ? input.get(0).files.length : 1,
             label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
         input.trigger('fileselect', [numFiles, label]);
     });
     $(document).ready(function () {
         $(':file').on('fileselect', function (event, numFiles, label) {
-            var input = $(this).parents('.input-group').find(':text'),
+            let input = $(this).parents('.input-group').find(':text'),
                 log = numFiles > 1 ? numFiles + ' files selected' : label;
             if (input.length) {
                 input.val(log);
@@ -211,8 +226,8 @@ function initAddItemFormObject() {
             "form": "<input type='text' class='form-control add-item-form-text' name='nombre-articulo' maxlength='80' minlength='15' size='40'>",
             "resizeThread": false,
             "validate": function () {
-                var $input = $('input[name=nombre-articulo]');
-                var $f = function () {
+                let $input = $('input[name=nombre-articulo]');
+                let $f = function () {
                     return validateAddItemInputText($input, {
                         schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!\[\]¡°|"-]+$/i
                     });
@@ -231,8 +246,8 @@ function initAddItemFormObject() {
             "form": "<textarea class='form-control add-item-description' rows='3' name='descripcion-articulo' maxlength='1000'></textarea>",
             "resizeThread": false,
             "validate": function () {
-                var $input = $('textarea[name=descripcion-articulo]');
-                var $f = function () {
+                let $input = $('textarea[name=descripcion-articulo]');
+                let $f = function () {
                     return validateAddItemInputText($input, {
                         cantBeEmpty: false,
                         checkMaxSize: true,
@@ -262,13 +277,13 @@ function initAddItemFormObject() {
                     side: 'bottom',
                     theme: cfg_tooltip_theme
                 });
-                var $id = this.id_form;
-                var $resize = this.resizeFun;
+                let $id = this.id_form;
+                let $resize = this.resizeFun;
                 updateFileFormAddItemWatcher();
 
                 // Se valida el ítem
-                var $input = $('input[name=foto-articulo-desc1]');
-                var $s = function () {
+                let $input = $('input[name=foto-articulo-desc1]');
+                let $s = function () {
                     return validateAddItemPic($input);
                 };
 
@@ -276,7 +291,7 @@ function initAddItemFormObject() {
                 validation_add_item_fun.push($s);
 
                 // Añade una nueva entrada para agregar imagen
-                var $f = function () {
+                let $f = function () {
                     if ($add_item_total_pics >= cfg_additem_max_photos) {
                         return;
                     }
@@ -300,7 +315,7 @@ function initAddItemFormObject() {
 
                     // Aumenta contador foto-counter
                     let $counter = $('input[name=foto-counter]');
-                    $counter.val(parseInt($counter.val()) + 1);
+                    $counter.val($add_item_total_pics);
 
                     if (cfg_additem_center_module) {
                         centerMainContent();
@@ -318,8 +333,8 @@ function initAddItemFormObject() {
             "form": "<select id='formRegiones' class='add-item-rc-selectors' name='region-articulo'></select>",
             "resizeThread": false,
             "validate": function () {
-                var $input = $('select[name=region-articulo]');
-                var $f = function () {
+                let $input = $('select[name=region-articulo]');
+                let $f = function () {
                     return validateAddItemSelector($input);
                 };
 
@@ -339,8 +354,8 @@ function initAddItemFormObject() {
                 addItemUpdateRCForm();
             },
             "validate": function () {
-                var $input = $('select[name=comuna-articulo]');
-                var $f = function () {
+                let $input = $('select[name=comuna-articulo]');
+                let $f = function () {
                     return validateAddItemSelector($input);
                 };
 
@@ -357,8 +372,8 @@ function initAddItemFormObject() {
             "form": "<input type='text' class='form-control add-item-form-text' name='calle-articulo' maxlength='150' minlength='10' size='60'>",
             "resizeThread": false,
             "validate": function () {
-                var $input = $('input[name=calle-articulo]');
-                var $f = function () {
+                let $input = $('input[name=calle-articulo]');
+                let $f = function () {
                     return validateAddItemInputText($input, {
                         schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#°-]+$/i
                     });
@@ -377,8 +392,8 @@ function initAddItemFormObject() {
             "form": "<input type='text' class='form-control add-item-form-text' name='nombre-contacto' maxlength='200' size='60' minlength='10' >",
             "resizeThread": false,
             "validate": function () {
-                var $input = $('input[name=nombre-contacto]');
-                var $f = function () {
+                let $input = $('input[name=nombre-contacto]');
+                let $f = function () {
                     return validateAddItemInputText($input, {
                         checkMinWords: true,
                         minWords: 2,
@@ -400,8 +415,8 @@ function initAddItemFormObject() {
             "form": "<input type='text' class='form-control add-item-form-text' name='email-contacto' maxlength='100' size='40'>",
             "resizeThread": false,
             "validate": function () {
-                var $input = $('input[name=email-contacto]');
-                var $f = function () {
+                let $input = $('input[name=email-contacto]');
+                let $f = function () {
                     return validateAddItemEmail($input);
                 };
 
@@ -420,8 +435,8 @@ function initAddItemFormObject() {
             "afterDrawFun": function () {
             },
             "validate": function () {
-                var $input = $('input[name=fono-contacto]');
-                var $f = function () {
+                let $input = $('input[name=fono-contacto]');
+                let $f = function () {
                     return validateAddItemInputText($input, {
                         cantBeEmpty: false,
                         checkMaxSize: true,
@@ -521,19 +536,19 @@ function addItemUpdateRCForm() {
         $hr = $hr + '<option value="' + $add_item_rc_chile.regiones[iRegion].NombreRegion + '">' + $add_item_rc_chile.regiones[iRegion].NombreRegion + '</option>';
         iRegion++;
     });
-    var $ohr = $('#formRegiones');
-    var $ohc = $('#formComunas');
+    let $ohr = $('#formRegiones');
+    let $ohc = $('#formComunas');
 
     $ohr.html($hr);
     $ohc.html($hc);
 
     // noinspection JSValidateTypes
     $ohr.change(function () {
-        var $ir = 0;
-        var $ohc = $('#formComunas');
+        let $ir = 0;
+        let $ohc = $('#formComunas');
         $ohc.removeAttr('disabled');
-        var $valr = $(this).val();
-        var $htmlc = '';
+        let $valr = $(this).val();
+        let $htmlc = '';
         $.each($add_item_rc_chile.regiones, function () {
             if ($add_item_rc_chile.regiones[$ir].NombreRegion === $valr) {
                 let iComunas = 0;

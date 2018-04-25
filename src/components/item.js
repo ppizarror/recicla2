@@ -12,7 +12,7 @@
  * @constructor
  */
 function Item(options) {
-    var self = this;
+    let self = this;
     let $defaults = {
         comments: [], // Comentarios del artículo
         comuna: '', // Comuna del artículo
@@ -157,6 +157,7 @@ function Item(options) {
         return self._comments;
     };
 
+    // noinspection JSUnusedGlobalSymbols
     /**
      * Añade un comentario
      * @param user

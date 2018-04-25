@@ -7,7 +7,7 @@
  */
 
 function ItemComment(options) {
-    var self = this;
+    let self = this;
     let $defaults = {
         comment: '',
         date: {},

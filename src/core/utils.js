@@ -24,9 +24,9 @@ if (!String.prototype.format) {
  * @return {string}
  */
 function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
@@ -45,12 +45,12 @@ function roundNumber(num, scale) {
         // noinspection JSCheckFunctionSignatures
         return +(Math.round(num + 'e+' + scale) + 'e-' + scale);
     } else {
-        var arr = ('' + num).split('e');
-        var sig = '';
+        let arr = ('' + num).split('e');
+        let sig = '';
         if (+arr[1] + scale > 0) {
             sig = '+';
         }
-        var i = +arr[0] + 'e' + sig + (+arr[1] + scale);
+        let i = +arr[0] + 'e' + sig + (+arr[1] + scale);
         // noinspection JSCheckFunctionSignatures
         return +(Math.round(i) + 'e-' + scale);
     }
@@ -72,7 +72,7 @@ function dec2hex(dec) {
  * @return {string}         String aleatorio
  */
 function generateId(len) {
-    var arr = new Uint8Array((len || 40) / 2);
+    let arr = new Uint8Array((len || 40) / 2);
     window.crypto.getRandomValues(arr);
     return Array.from(arr, dec2hex).join('');
 }
@@ -83,8 +83,8 @@ function generateId(len) {
  * @param {object} $dict        Diccionario
  */
 function clearDict($dict) {
-    var props = Object.keys($dict);
-    for (var i = 0; i < props.length; i++) {
+    let props = Object.keys($dict);
+    for (let i = 0; i < props.length; i++) {
         delete $dict[props[i]];
     }
 }
@@ -197,7 +197,7 @@ function getElementInnerWidth(elem) {
  * @param {boolean} w       Indica si se escribe el encabezado o no
  */
 function consoleLogError(msg, w) {
-    var $m;
+    let $m;
     if (cfg_verbose) {
         if (w) {
             $m = 'ERROR: ';
@@ -232,7 +232,7 @@ function consoleLogWarn(msg, w) {
  * @param {boolean} w       Indica si se escribe el encabezado o no
  */
 function consoleLogException(exceptionmsg, w) {
-    var $m;
+    let $m;
     if (cfg_verbose) {
         if (w) {
             $m = 'EXCEPTION: ';

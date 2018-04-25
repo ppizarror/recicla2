@@ -6,12 +6,40 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-// Arreglo funciones de validación
-var $_add_item_is_valid = false; // Indica que el ítem actual es válido
-var $_is_validation_add_item_query = false; // Indica que la validación se hizo desde la función general
-var $_validation_add_item_display_tooltip = true; // Puede dibujar un tooltip sobre un campo
-var $_validation_add_item_tooltip = null; // Objeto input que se validó y tuvo errores
-var validation_add_item_fun = []; // Funciones validadoras
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Indica que el ítem actual es válido
+ * @type {boolean}
+ */
+var $_add_item_is_valid = false;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Indica que la validación se hizo desde la función general
+ * @type {boolean}
+ */
+var $_is_validation_add_item_query = false;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Puede dibujar un tooltip sobre un campo
+ * @type {boolean}
+ */
+var $_validation_add_item_display_tooltip = true;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Objeto input que se validó y tuvo errores
+ * @type {null}
+ */
+var $_validation_add_item_tooltip = null;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Funciones validadoras
+ * @type {Array}
+ */
+var validation_add_item_fun = [];
 
 /**
  * Valida un input
@@ -221,7 +249,7 @@ function validateAddItemChangeStyleInput($input, s) {
         if (s.cantBeEmpty) {
             return;
         }
-        var err_str = '';
+        let err_str = '';
         let $addmsg = function (m) {
             if (err_str !== '') {
                 err_str += '. ';
@@ -263,6 +291,7 @@ function validateAddItemChangeStyleInput($input, s) {
             if (!$_is_validation_add_item_query) {
                 $input.tooltipster('open');
             } else {
+                // noinspection JSValidateTypes
                 $_validation_add_item_tooltip = $input;
             }
         }
@@ -273,9 +302,9 @@ function validateAddItemChangeStyleInput($input, s) {
  * Valida el formulario para agregar artículos.
  */
 function validateAddItemForm() {
-    var $f; // Función validadora
-    var $r; // Resultado de cada validador
-    var $nerr = 0; // Número de errores
+    let $f; // Función validadora
+    let $r; // Resultado de cada validador
+    let $nerr = 0; // Número de errores
 
     // Se establece estado validador general
     $_is_validation_add_item_query = true;

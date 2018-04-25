@@ -7,7 +7,7 @@
  */
 
 /**
- * Inicia el programa
+ * Inicia la aplicación
  */
 $(function () {
 
