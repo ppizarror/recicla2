@@ -42,9 +42,13 @@
     <script src="js/toastr/toastr.min.js"></script>
     <script src="js/jquery-confirm/jquery-confirm.min.js"></script>
     <script src="js/tooltipster/tooltipster.bundle.min.js"></script>
+    <script src="js/dataTables/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables/dataTables.responsive.min.js"></script>
 
     <!-- Estilos de librerías -->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-v5/css/fontawesome-all.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/dataTables/jquery.dataTables.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/dataTables/responsive.dataTables.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-4.0.0-beta.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/toastr/toastr.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/tooltipster/tooltipster.bundle.css" media="screen">
@@ -83,17 +87,23 @@
     <script src="src/ui/loading.js"></script>
     <script src="src/ui/resources.js"></script>
 
-    <!-- Carga módulo <Añadir artículo ítem> -->
+    <!-- Carga componentes -->
+    <script src="src/components/item.js"></script>
+    <script src="src/components/comment.js"></script>
+
+    <!-- Testing -->
+    <script src="test/test.item.js"></script>
+
+    <!-- Carga módulo <Listar ítem> -->
+    <link rel="stylesheet" type="text/css" href="src/modules/list_item/style.css" media="screen">
     <script src="src/modules/modules.js"></script>
-    <link rel="stylesheet" type="text/css" href="src/modules/add_item/style.css" media="screen">
-    <script src="src/modules/add_item/config.js"></script>
-    <script src="src/modules/add_item/server.js"></script>
-    <script src="src/modules/add_item/ui.js"></script>
-    <script src="src/modules/add_item/validation.js"></script>
+    <script src="src/modules/list_item/server.js"></script>
+    <script src="src/modules/list_item/config.js"></script>
+    <script src="src/modules/list_item/ui.js"></script>
 
     <!-- Inicia app -->
     <script src="src/core/init.js"></script>
-    <script src="src/modules/add_item/init.js"></script>
+    <script src="src/modules/list_item/init.js"></script>
 </head>
 
 <body>

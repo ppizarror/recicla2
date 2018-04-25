@@ -9,7 +9,7 @@
 /**
  * Inicia el programa
  */
-$(document).ready(function () {
+$(function () {
 
     // Imprime el acerca-de
     printAboutInfo();

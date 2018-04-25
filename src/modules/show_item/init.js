@@ -37,4 +37,7 @@ $(document).ready(function () {
     };
     $(window).on('resize.backgroundItem', $f);
     $f();
+
+    // Llamada a los callbacks
+    afterInitModuleCallback();
 });

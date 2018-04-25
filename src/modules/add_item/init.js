@@ -9,7 +9,7 @@
 /**
  * Inicia el módulo al cargar la página
  */
-$(document).ready(function () {
+$(function () {
 
     // Dibuja el container
     createAddItem();
@@ -19,4 +19,7 @@ $(document).ready(function () {
         centerMainContent();
         $(window).on('resize.errorPanel', centerMainContent);
     }
+
+    // Llamada a los callbacks
+    afterInitModuleCallback();
 });

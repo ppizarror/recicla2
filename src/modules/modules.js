@@ -12,16 +12,16 @@
  */
 var modules = {
     'addItem': {
-        'file': 'add_item.html'
+        'file': 'add_item.php'
     },
     'listItem': {
-        'file': 'index.html'
+        'file': 'index.php'
     },
     'showItem': {
-        'file': 'show_item.html?id={0}'
+        'file': 'show_item.php?id={0}'
     },
     'home': {
-        'file': 'index.html'
+        'file': 'index.php'
     }
 };
 
@@ -32,3 +32,30 @@ var modules = {
 function loadModule(m) {
     window.location.href = m.file;
 }
+
+// Contiene los llamados a las funciones a ejecutar tras iniciar un módulo
+var __afterModuleInit = [];
+
+// noinspection JSUnusedGlobalSymbols
+/**
+ * Añade una función a afterModuleInit.
+ * @param {function} $f     Función
+ * @return
+ */
+function addAfterInitModuleCallback($f) {
+    __afterModuleInit.push($f);
+}
+
+/**
+ * Llama a todas las funcionesafterModuleInit.
+ * @return
+ */
+function afterInitModuleCallback() {
+    let $f;
+    for (let i = 0; i < __afterModuleInit.length; i++) {
+        $f = __afterModuleInit[i];
+        $f();
+    }
+}
+
+console.log('loaded');

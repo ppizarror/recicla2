@@ -1,2 +1,5 @@
 # Carpetas IDE's
 .idea/
+
+# SQL
+sql/

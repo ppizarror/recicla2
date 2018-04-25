@@ -83,5 +83,6 @@ $lang_db.es = {
     'show_item_publish_date': 'Fecha de publicación',
     'show_item_publish_date_format': '{0} a las {1}',
     'show_item_title': 'Ver artículo',
+    'test_add_item': 'Test Añadir Ítem',
     'z_test': 'Mensaje de test'
 };

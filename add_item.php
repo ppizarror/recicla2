@@ -42,11 +42,6 @@
     <script src="js/toastr/toastr.min.js"></script>
     <script src="js/jquery-confirm/jquery-confirm.min.js"></script>
     <script src="js/tooltipster/tooltipster.bundle.min.js"></script>
-    <script src="js/dataTables/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables/dataTables.responsive.min.js"></script>
-    <script src="js/slick/slick.min.js"></script>
-    <script src="js/photoswipe/photoswipe.min.js"></script>
-    <script src="js/photoswipe/photoswipe-ui-default.min.js"></script>
 
     <!-- Estilos de librerías -->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-v5/css/fontawesome-all.css" media="screen">
@@ -60,10 +55,6 @@
     <link rel="stylesheet" type="text/css" href="css/tooltipster/themes/sideTip-shadow.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/hover/hover.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/jquery-confirm/jquery-confirm.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/slick/slick.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/slick/slick-theme.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/photoswipe/photoswipe.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/photoswipe/default-skin/default-skin.css" media="screen">
 
     <!-- Estilo de la aplicación -->
     <link rel="stylesheet" type="text/css" href="src/stylesheets/root.css" media="screen">
@@ -92,67 +83,30 @@
     <script src="src/ui/loading.js"></script>
     <script src="src/ui/resources.js"></script>
 
-    <!-- Carga componentes -->
-    <script src="src/components/item.js"></script>
-    <script src="src/components/comment.js"></script>
-    <script src="test/test.item.js"></script>
-
-    <!-- Carga módulo <Mostrar ítem> -->
+    <!-- Carga módulo <Añadir artículo ítem> -->
     <script src="src/modules/modules.js"></script>
     <link rel="stylesheet" type="text/css" href="src/modules/add_item/style.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="src/modules/show_item/style.css" media="screen">
-    <script src="src/modules/show_item/server.js"></script>
-    <script src="src/modules/show_item/config.js"></script>
-    <script src="src/modules/show_item/ui.js"></script>
+    <script src="src/modules/add_item/config.js"></script>
+    <script src="src/modules/add_item/server.js"></script>
+    <script src="src/modules/add_item/ui.js"></script>
+    <script src="src/modules/add_item/validation.js"></script>
+
+    <!-- Testing -->
+    <script src="test/add_item_test.js"></script>
 
     <!-- Inicia app -->
     <script src="src/core/init.js"></script>
-    <script src="src/modules/show_item/init.js"></script>
+    <script src="src/modules/add_item/init.js"></script>
 </head>
 
 <body>
 <div id="root">
-    <div id="appBackground" class="show-item-transform"></div>
-    <div id="mainContent">
-    </div>
+    <div id="appBackground"></div>
+    <div id="mainContent"></div>
     <div id="errorMsg">
         <div id="errorMsgText"></div>
     </div>
     <div id="footer"></div>
-</div>
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="pswp__bg"></div>
-    <div class="pswp__scroll-wrap">
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Cerrar (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Compartir"></button>
-                <button class="pswp__button pswp__button--fs" title="Cerrar pantalla completa"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom"></button>
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Anterior (Flecha izquierda)"></button>
-            <button class="pswp__button pswp__button--arrow--right" title="Siguiente (Flecha derecha)"></button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
 </div>
 <a href="#" class="back-to-top" id="scrolls"></a>
 <div id="preload_resources"></div>

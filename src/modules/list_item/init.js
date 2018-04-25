@@ -28,4 +28,7 @@ $(document).ready(function () {
 
     // Ajusta el tamaño del contenido
     adjustListItemWidth();
+
+    // Llamada a los callbacks
+    afterInitModuleCallback();
 });
