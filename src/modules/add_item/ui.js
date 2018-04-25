@@ -79,7 +79,7 @@ function createAddItem() {
     /**
      * Genera el formulario
      */
-    $ocr.append('<form id="{0}" name="addItem" method="post"><input type="submit" style="display: none"></form>'.format(cfg_additem_form_id));
+    $ocr.append('<form id="{0}" name="addItem" method="post" autocomplete="off"><input type="submit" style="display: none"></form>'.format(cfg_additem_form_id));
     let $formobj = $('#{0}'.format(cfg_additem_form_id));
     let $resizef;
     for (let i = 0; i < $ftitle_k.length; i++) {
@@ -223,7 +223,7 @@ function initAddItemFormObject() {
         "0": {
             "name": lang.add_item_form_name,
             "icon": "fas fa-box",
-            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-articulo' maxlength='80' minlength='15' size='40'>",
+            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-articulo' maxlength='80' minlength='15' size='40' autocomplete='off'>",
             "resizeThread": false,
             "validate": function () {
                 let $input = $('input[name=nombre-articulo]');
@@ -243,7 +243,7 @@ function initAddItemFormObject() {
         "1": {
             "name": lang.add_item_form_desc,
             "icon": "far fa-comment-alt",
-            "form": "<textarea class='form-control add-item-description' rows='3' name='descripcion-articulo' maxlength='1000'></textarea>",
+            "form": "<textarea class='form-control add-item-description' rows='3' name='descripcion-articulo' maxlength='1000' autocomplete='off'></textarea>",
             "resizeThread": false,
             "validate": function () {
                 let $input = $('textarea[name=descripcion-articulo]');
@@ -330,7 +330,7 @@ function initAddItemFormObject() {
         "3": {
             "name": lang.add_item_form_r_e,
             "icon": "fas fa-globe",
-            "form": "<select id='formRegiones' class='add-item-rc-selectors' name='region-articulo'></select>",
+            "form": "<select id='formRegiones' class='add-item-rc-selectors' name='region-articulo' autocomplete='off'></select>",
             "resizeThread": false,
             "validate": function () {
                 let $input = $('select[name=region-articulo]');
@@ -348,7 +348,7 @@ function initAddItemFormObject() {
         "4": {
             "name": lang.add_item_form_c_e,
             "icon": "fas fa-map-marker-alt",
-            "form": "<select id='formComunas' class='add-item-rc-selectors' name='comuna-articulo' disabled></select>",
+            "form": "<select id='formComunas' class='add-item-rc-selectors' name='comuna-articulo' autocomplete='off' disabled></select>",
             "resizeThread": false,
             "afterDrawFun": function () {
                 addItemUpdateRCForm();
@@ -369,7 +369,7 @@ function initAddItemFormObject() {
         "5": {
             "name": lang.add_item_form_sn,
             "icon": "fas fa-home",
-            "form": "<input type='text' class='form-control add-item-form-text' name='calle-articulo' maxlength='150' minlength='10' size='60'>",
+            "form": "<input type='text' class='form-control add-item-form-text' name='calle-articulo' maxlength='150' minlength='10' size='60' autocomplete='off'>",
             "resizeThread": false,
             "validate": function () {
                 let $input = $('input[name=calle-articulo]');
@@ -389,7 +389,7 @@ function initAddItemFormObject() {
         "6": {
             "name": lang.add_item_form_nc,
             "icon": "fas fa-user",
-            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-contacto' maxlength='200' size='60' minlength='10' >",
+            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-contacto' maxlength='200' size='60' minlength='10' autocomplete='off'>",
             "resizeThread": false,
             "validate": function () {
                 let $input = $('input[name=nombre-contacto]');
@@ -412,7 +412,7 @@ function initAddItemFormObject() {
         "7": {
             "name": lang.add_item_form_email,
             "icon": "far fa-envelope",
-            "form": "<input type='text' class='form-control add-item-form-text' name='email-contacto' maxlength='100' size='40'>",
+            "form": "<input type='text' class='form-control add-item-form-text' name='email-contacto' maxlength='100' size='40' autocomplete='off'>",
             "resizeThread": false,
             "validate": function () {
                 let $input = $('input[name=email-contacto]');
@@ -430,7 +430,7 @@ function initAddItemFormObject() {
         "8": {
             "name": lang.add_item_form_phone,
             "icon": "fas fa-phone",
-            "form": "<input type='text' class='form-control add-item-form-text' name='fono-contacto' minlength='0' size='20' maxlength='9'>",
+            "form": "<input type='text' class='form-control add-item-form-text' name='fono-contacto' minlength='0' size='20' maxlength='9' autocomplete='off'>",
             "resizeThread": false,
             "afterDrawFun": function () {
             },
