@@ -251,7 +251,7 @@ function initAddItemFormObject() {
         "2": {
             "name": lang.add_item_form_photo,
             "icon": "fas fa-camera",
-            "form": '<div class="input-group"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button"><input type="file" name="foto-articulo1" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc1"><span class="btn btn-success add-item-pic-new-pic hvr-icon-pop hvr-shadow"><i class="fas fa-plus hvr-icon"></i></span></div>'.format(lang.look_file),
+            "form": '<div class="input-group"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button"><input type="file" name="foto-articulo1" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc1"><span class="btn btn-success add-item-pic-new-pic hvr-icon-pop hvr-shadow"><i class="fas fa-plus hvr-icon"></i></span></div><input type="hidden" name="foto-counter" value="1" />'.format(lang.look_file),
             "newform": '',
             "resizeThread": false,
             "afterDrawFun": function () {
@@ -290,13 +290,17 @@ function initAddItemFormObject() {
                     $resize();
                     updateFileFormAddItemWatcher();
 
-                    var $input = $('input[name=foto-articulo-desc{0}]'.format($add_item_total_pics));
-                    var $s = function () {
+                    let $input = $('input[name=foto-articulo-desc{0}]'.format($add_item_total_pics));
+                    let $s = function () {
                         return validateAddItemPic($input);
                     };
 
                     // Añade evento change
                     validation_add_item_fun.push($s);
+
+                    // Aumenta contador foto-counter
+                    let $counter = $('input[name=foto-counter]');
+                    $counter.val(parseInt($counter.val()) + 1);
 
                     if (cfg_additem_center_module) {
                         centerMainContent();
@@ -532,7 +536,7 @@ function addItemUpdateRCForm() {
         var $htmlc = '';
         $.each($add_item_rc_chile.regiones, function () {
             if ($add_item_rc_chile.regiones[$ir].NombreRegion === $valr) {
-                var iComunas = 0;
+                let iComunas = 0;
                 $.each($add_item_rc_chile.regiones[$ir].comunas, function () {
                     $htmlc = $htmlc + '<option value="' + $add_item_rc_chile.regiones[$ir].comunas[iComunas] + '">' + $add_item_rc_chile.regiones[$ir].comunas[iComunas] + '</option>';
                     iComunas++;
