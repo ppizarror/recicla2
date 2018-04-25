@@ -18,12 +18,12 @@ function __addItemTest() {
     // Se escribe texto en el formulario
     $form['nombre-articulo'].value = 'Huawei P9 en perfecto estado, 64GB memoria interna';
     $form['descripcion-articulo'].value = 'Regalo teléfono huawei en perfectas condiciones, 64 gb memoria interna, tiene unos pequeños detalles en la parte trasera pero nada muy grave, fácilmente reparable';
-    $('#formRegiones').val('Región Metropolitana de Santiago');
+    $('#formRegiones').val(1);
     $comunas.append($('<option>', {
-        value: 'Las Condes',
+        value: '130204',
         text: 'Las Condes'
     }));
-    $comunas.val('Las Condes');
+    $comunas.val('130204');
     $form['calle-articulo'].value = 'Avenida Circunvalación 1716';
     $form['nombre-contacto'].value = 'Juan Antonio Ríos Mauleu';
     $form['email-contacto'].value = 'juanito@fbi.com';

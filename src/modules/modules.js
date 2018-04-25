@@ -12,7 +12,7 @@
  */
 var modules = {
     'addItem': {
-        'file': 'add_item.php'
+        'file': 'utils.php'
     },
     'listItem': {
         'file': 'index.php'

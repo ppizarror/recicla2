@@ -1,16 +1,25 @@
 <!DOCTYPE html>
+<?php
+/**
+ *Recicla2
+ * Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web, 2018, Otoño.
+ *
+ * Autor: Pablo Pizarro R. @ppizarror.com
+ * Copyright 2018, no copiar o distribuír sin permiso directo del autor.
+ */
+
+// Importación de archivos
+require_once('src/server/dbconfig.php');
+require_once('src/modules/add_item/server/utils.php');
+
+// Obtiene conexión a base de datos
+$db = DbConfig::getConnection();
+?>
 
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Recicla2</title>
-    <!--
-    Recicla2
-    Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web, 2018, Otoño.
-
-    Autor: Pablo Pizarro R. @ppizarror.com
-    Copyright 2018, no copiar o distribuír sin permiso directo del autor.
-    -->
 
     <!-- Meta tags -->
     <meta name="viewport" content="width=device-width">
@@ -20,7 +29,8 @@
     <meta name="twitter:description"
           content="Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web."/>
     <meta name="twitter:title" content="Recicla2"/>
-    <meta property="og:description" content="Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web."/>
+    <meta property="og:description"
+          content="Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web."/>
     <meta property="og:title" content="Recicla2"/>
 
     <!-- Favicon -->
@@ -84,12 +94,15 @@
     <script src="src/ui/resources.js"></script>
 
     <!-- Carga módulo <Añadir artículo ítem> -->
-    <link rel="stylesheet" type="text/css" href="src/modules/add_item/style.css?v=<?php echo uniqid(); ?>" media="screen">
+    <link rel="stylesheet" type="text/css" href="src/modules/add_item/style.css?v=<?php echo uniqid(); ?>">
     <script src="src/modules/modules.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/add_item/config.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/add_item/server.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/add_item/ui.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/add_item/validation.js?v=<?php echo uniqid(); ?>"></script>
+    <?php
+    load_rc_chile($db);
+    ?>
 
     <!-- Testing -->
     <script src="test/add_item_test.js?v=<?php echo uniqid(); ?>"></script>
@@ -112,3 +125,8 @@
 <div id="preload_resources"></div>
 </body>
 </html>
+
+<?php
+// Cierra la conexión
+$db->close();
+?>
