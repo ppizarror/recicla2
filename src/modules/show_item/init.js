@@ -14,6 +14,7 @@ $(function () {
     // Carga el artículo
     if (items === null) {
         throwErrorID(errordb.itemNotExist);
+        return;
     }
 
     // Dibuja el módulo

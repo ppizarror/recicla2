@@ -51,6 +51,7 @@ $lang_db.es = {
     'answer_no': 'No',
     'answer_yes': 'Si',
     'app_about': 'Aplicación destinada a la información de donaciones electrónicas. Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web.<br><br>Autor: <a href="http://ppizarror.com">Pablo Pizarro R.</a> - 2018.',
+    'back_home': 'Devuélveme a casa',
     'bad_error_id_moreinfo': 'El código de error provisto no existe en la base de datos',
     'bad_error_id_msg': 'ID de error no existe',
     'close': 'Cerrar',

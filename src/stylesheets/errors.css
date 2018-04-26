@@ -12,7 +12,6 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     box-sizing: border-box;
     border-radius: 5px;
     box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
     display: none;
     font-size: 1.6rem;
     font-weight: 300;
@@ -49,4 +48,17 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     position: relative;
     right: 5px;
     top: 2px;
+}
+
+.err-back-home {
+    color: #213244;
+    cursor: pointer;
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+.err-back-home:hover {
+    color: #213244;
+    opacity: 1.0;
+    text-decoration: none;
 }
