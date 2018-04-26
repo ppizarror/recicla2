@@ -1,16 +1,24 @@
 <!DOCTYPE html>
+<?php
+/**
+ *Recicla2
+ * Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web, 2018, Otoño.
+ *
+ * Autor: Pablo Pizarro R. @ppizarror.com
+ * Copyright 2018, no copiar o distribuír sin permiso directo del autor.
+ */
 
+// Importación de archivos
+require_once('src/server/dbconfig.php');
+require_once('src/modules/add_item/server/utils.php');
+
+// Obtiene conexión a base de datos
+$db = DbConfig::getConnection();
+?>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Recicla2</title>
-    <!--
-    Recicla2
-    Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web, 2018, Otoño.
-
-    Autor: Pablo Pizarro R. @ppizarror.com
-    Copyright 2018, no copiar o distribuír sin permiso directo del autor.
-    -->
 
     <!-- Meta tags -->
     <meta name="viewport" content="width=device-width">
