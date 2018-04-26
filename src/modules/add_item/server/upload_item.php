@@ -9,6 +9,7 @@
  * Importación de librerías
  */
 include_once("../../../server/dbconfig.php");
+include_once("../../../server/utils.php");
 
 /**
  * Constantes
@@ -91,25 +92,25 @@ if ($_POST) {
     /**
      * Verifica que existan elementos del formulario
      */
-    $needed_keys = array('form-validated', 'nombre-articulo', 'descripcion-articulo', 'foto-articulo1', 'foto-counter', 'region-articulo', 'comuna-articulo', 'calle-articulo', 'nombre-contacto', 'email-contacto', 'fono-contacto', 'MAX_FILE_SIZE');
+    $needed_keys = array('form-validated', 'nombre-articulo', 'descripcion-articulo', 'foto-counter', 'region-articulo', 'comuna-articulo', 'calle-articulo', 'nombre-contacto', 'email-contacto', 'fono-contacto', 'MAX_FILE_SIZE');
     foreach ($needed_keys as $k) {
         if (!isset($_POST[$k])) {
-            throw_error('KEY NOT FOUND');
+            throw_error('KEY NOT FOUND: ' . $k);
         }
+    }
+    $post_length = count(array_keys($_POST));
+    if ($post_length != FORM_SIZE) {
+        throw_error('POST LENGTH NOT MATCH');
     }
 
     /**
      * Verifica que se tenga el largo adecuado del post
      */
-    $post_length = count(array_keys($_POST));
     $total_pics = htmlspecialchars($_POST['foto-counter']);
     if (is_numeric($total_pics)) {
         $total_pics = intval($total_pics);
         if ($total_pics > 5 or $total_pics < 1) {
             throw_error('INVALID TOTAL PICS LENGTH');
-        }
-        if ($post_length != (FORM_SIZE + $total_pics)) {
-            throw_error('POST LENGTH NOT MATCH');
         }
     }
 
@@ -202,9 +203,55 @@ if ($_POST) {
     }
 
     /**
+     * Tamaño máximo archivos
+     */
+    $_max_file_size = htmlspecialchars($_POST['MAX_FILE_SIZE']);
+    if (is_numeric($_max_file_size)) {
+        $_max_file_size = intval($_max_file_size);
+    } else {
+        throw_error('MAX_FILE_SIZE NOT VALID');
+    }
+    if ($_max_file_size != 4194304) {
+        throw_error('MAX_FILE_SIZE HAS BEEN CHANGED BY USER');
+    }
+    $_max_file_size = min($_max_file_size, getMaximumFileUploadSize());
+
+    /**
      * Valida los archivos (tamaño)
      */
+    for ($i = 1; $i <= $total_pics; $i++) {
+        $photo = 'foto-articulo' . $i;
 
+        // Chequea que esté definida y sin error
+        if (!isset($_FILES[$photo]) or $_FILES[$photo]['error'] != UPLOAD_ERR_OK) {
+            throw_error('PHOTO ' . $photo . ' NOT VALID');
+        }
+
+        // Chequea que sea una imagen
+        if (!getimagesize($_FILES[$photo]['tmp_name'])) {
+            throw_error('FILE ' . $_FILES[$photo]['name'] . ' IS NOT AN IMAGE');
+        }
+
+        // Chequea que cumpla el tamaño máximo
+        if ($_FILES[$photo]['size'] > $_max_file_size) {
+            throw_error('FILE ' . $_FILES[$photo]['name'] . ' OUT OF SIZE');
+        }
+    }
+
+    // En este punto todos los elementos han sido validados, así que obtiene la hora y sube los elementos
+    date_default_timezone_set('America/Santiago');
+    $_a_date = date('m/d/Y h:i:s a', time());
+
+    // Se suben las fotos
+    for ($i = 1; $i <= $total_pics; $i++) {
+        $photo = 'foto-articulo' . $i;
+        $tmp_name = $_FILES[$photo]['tmp_name'];
+        $file_extension = pathinfo($_FILES[$photo]['name'], PATHINFO_EXTENSION);
+        $filename = uniqid(rand(), false) . $file_extension;
+        echo $filename;
+    }
+
+    print_r($_FILES);
 
 } else {
     throw_error('NOT_POST');
