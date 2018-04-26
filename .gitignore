@@ -1,8 +1,5 @@
 # Carpetas IDE's
 .idea/
 
-# SQL
-sql/
-
 # Fotografías de los artículos
 resources/photos/*
