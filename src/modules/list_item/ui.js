@@ -9,7 +9,6 @@
 // noinspection ES6ConvertVarToLetConst
 /**
  * Contenedor listar ítems
- * @type {jQuery|HTMLElement|*}
  */
 var list_item_container;
 
@@ -136,16 +135,21 @@ function createListItem() {
 
     /**
      * Se comprueba botón página previa
+     * @type {void|jQuery|HTMLElement}
      */
     $pag_prev = $('#' + $pag_prev);
     if (list_item_prev_page === 0) {
+        // noinspection JSUnresolvedFunction
         $pag_prev.prop('disabled', true);
+        // noinspection JSUnresolvedFunction
         $pag_prev.removeClass('hvr-shadow');
+        // noinspection JSUnresolvedFunction
         $pag_prev.css('cursor', 'default');
     } else {
         if (list_item_prev_page === -1) {
             list_item_prev_page = 0;
         }
+        // noinspection JSUnresolvedFunction
         $pag_prev.on('click', function () {
             window.location.href = 'index.php?from={0}'.format(list_item_prev_page);
         });
@@ -156,10 +160,14 @@ function createListItem() {
      */
     $pag_post = $('#' + $pag_post);
     if (list_item_next_page === 0) {
+        // noinspection JSUnresolvedFunction
         $pag_post.prop('disabled', true);
+        // noinspection JSUnresolvedFunction
         $pag_post.removeClass('hvr-shadow');
+        // noinspection JSUnresolvedFunction
         $pag_post.css('cursor', 'default');
     } else {
+        // noinspection JSUnresolvedFunction
         $pag_post.on('click', function () {
             window.location.href = 'index.php?from={0}'.format(list_item_next_page);
         });
@@ -174,6 +182,11 @@ function createListItem() {
     $('#' + $new_item_id).on('click', function () {
         loadModule(modules.addItem);
     });
+
+    /**
+     * Desactiva selección en contenido
+     */
+    $(ui_main_content).on('selectstart dragstart', false);
 }
 
 /**

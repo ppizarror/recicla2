@@ -75,6 +75,11 @@ function createShowItem($item) {
     let $ocr = $('#{0}'.format($cr));
 
     /**
+     * Desactiva selección columna izquierda
+     */
+    $ocl.on('selectstart dragstart', false);
+
+    /**
      * Dibuja los nombres del formulario
      */
     let $ftitle_k = Object.keys($show_item_sections);
@@ -120,6 +125,7 @@ function createShowItem($item) {
     // noinspection QuirksModeInspectionTool
     $(ui_main_content).append('<div class="show-item-comments-container"><div class="show-item-comment-menu"><div class="show-item-comment-menu-title">{1}</div><div class="show-item-comment-buttons"><button id="{2}" type="button" class="btn btn-primary show-item-add-comment-button hvr-shadow">{0}</button></div></div><div class="show-item-comment-list" id="{3}"></div></div>'.format(lang.show_item_add_comment, lang.show_item_comments_title, $comment_button_id, $comment_container_id));
     $show_item_comment_container = $('#' + $comment_container_id);
+    $('.show-item-comment-menu').on('selectstart dragstart', false);
 
     let $comments = $item.getComments();
 
@@ -152,7 +158,7 @@ function createShowItem($item) {
             '<form autocomplete="off">' +
             '<div class="form-group">' +
             '<label>' + lang.add_comment_name_title + '</label>' +
-            '<input type="text" name="comment-author" placeholder="' + lang.add_comment_name_input + '" class="name form-control" maxlength="200" required />' +
+            '<input type="text" name="comment-author" placeholder="' + lang.add_comment_name_input + '" class="name form-control" maxlength="200" required autofocus/>' +
             '</div>' +
             '<div class="form-group">' +
             '<label>' + lang.add_comment_comment_title + '</label>' +
@@ -188,6 +194,7 @@ function createShowItem($item) {
                             url: 'src/server/upload_comment.php'
                         });
 
+                        // noinspection JSUnresolvedFunction
                         /**
                          * Respuesta correcta
                          */
@@ -217,6 +224,7 @@ function createShowItem($item) {
                             }
                         });
 
+                        // noinspection JSUnresolvedFunction
                         /**
                          * Server falló, se alerta al usuario
                          */
@@ -257,6 +265,7 @@ function createShowItem($item) {
                 let jc = this;
                 this.$content.find('form').on('submit', function (e) {
                     e.preventDefault();
+                    // noinspection JSUnresolvedVariable
                     jc.$$formSubmit.trigger('click');
                 });
             }
@@ -274,7 +283,9 @@ function addCommentItem($c) {
         $show_item_empty_comment = false;
     }
     let $dateclockid = generateId(cfg_id_size);
-    $show_item_comment_container.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div><div class="show-item-comment-dateicon" id="{3}"><i class="far fa-clock"></i></div></div><div class="show-item-comment-content">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment(), $dateclockid));
+    let $commentid = generateId(cfg_id_size);
+    $show_item_comment_container.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div><div class="show-item-comment-dateicon" id="{3}"><i class="far fa-clock"></i></div></div><div class="show-item-comment-content" id="{4}">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment(), $dateclockid, $commentid));
+    $('#' + $commentid).emoticons();
     $('#' + $dateclockid).tooltipster({
         content: lang.show_item_comment_date_tooltip.format($c.getDate()),
         delay: 400,
@@ -319,7 +330,10 @@ function initShowItemSections($item) {
             "name": lang.add_item_form_desc,
             "icon": "far fa-comment-alt",
             "value": "<div class='show-item-description'>{0}</div>".format($item.getDescription()),
-            "resizeThread": true
+            "resizeThread": true,
+            "afterDrawFun": function () {
+                $('.show-item-description').emoticons();
+            }
         },
 
         // Fotos
@@ -333,6 +347,10 @@ function initShowItemSections($item) {
                 let $container = $('.show-item-gallery');
                 let $imageid;
                 let $imageswipe;
+
+                /**
+                 * Recorre cada foto y añade a la galería
+                 */
                 for (let i = 0; i < $item.getTotalPhotos(); i++) {
                     $imageid = generateId(cfg_id_size);
                     let $imagesrc = $pics[i];
@@ -373,6 +391,10 @@ function initShowItemSections($item) {
                     // El click activa la galería
                     $('#' + $imageid).on('click', $imageswipe);
                 }
+
+                /**
+                 * Se crea objeto slick que hace un slider
+                 */
                 $container.slick({
                     adaptiveHeight: true,
                     centerMode: false,
@@ -384,6 +406,11 @@ function initShowItemSections($item) {
                     variableWidth: true
                 });
                 this.resizeFun();
+
+                /**
+                 * Desactiva selección del contenedor
+                 */
+                $('#' + this.id_value).on('selectstart dragstart', false);
             }
         },
 
@@ -423,7 +450,7 @@ function initShowItemSections($item) {
         "7": {
             "name": lang.add_item_form_email,
             "icon": "far fa-envelope",
-            "value": "<div class='show-item-text'><a href='mailto:{0}' class='show-item-email'>{0}</a></div>".format($item.getUserEmail()),
+            "value": "<div class='show-item-text'><a href='mailto:{0}' class='disable-a-hover'>{0}</a></div>".format($item.getUserEmail()),
             "resizeThread": false
         },
 
@@ -431,7 +458,7 @@ function initShowItemSections($item) {
         "8": {
             "name": lang.add_item_form_phone,
             "icon": "fas fa-phone",
-            "value": "<div class='show-item-text'><a href='tel:{0}'>+56 {0}</a></div>".format($item.getUserPhone()),
+            "value": "<div class='show-item-text'><a href='tel:{0}' class='disable-a-hover'>+56{0}</a></div>".format($item.getUserPhone()),
             "resizeThread": false
         },
 

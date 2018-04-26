@@ -63,3 +63,7 @@ a.back-to-top {
     min-width: 420px;
     width: 80%;
 }
+
+.disable-a-hover:hover {
+    text-decoration: none;
+}

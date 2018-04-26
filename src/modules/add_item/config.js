@@ -11,3 +11,9 @@ var cfg_additem_center_module = true; // Centra el contenido
 var cfg_additem_form_id = 'addItem'; // ID en el dom del formulario
 var cfg_additem_form_tooltip_error_delay = 1500; // Temporizador tooltip errores
 var cfg_additem_max_photos = 5; // Numero máximo de fotos permitidas
+
+/**
+ * Variables globales
+ */
+var $add_item_c_chile;
+var $add_item_r_chile;

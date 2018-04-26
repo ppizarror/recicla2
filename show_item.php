@@ -118,6 +118,8 @@ $db = DbConfig::getConnection();
     <script src="src/modules/modules.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/show_item/config.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/show_item/ui.js?v=<?php echo uniqid(); ?>"></script>
+    <script src="js/emoticon/jquery.corners.js"></script>
+    <script src="js/emoticon/jquery.emoticons.js"></script>
 
     <?php
     /**

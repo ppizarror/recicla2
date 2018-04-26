@@ -56,6 +56,11 @@ function createAddItem() {
     let $ocr = $('#{0}'.format($cr));
 
     /**
+     * Desactiva selección columna izquierda
+     */
+    $ocl.on('selectstart dragstart', false);
+
+    /**
      * Dibuja los nombres del formulario
      */
     let $ftitle_k = Object.keys($add_item_form_titles);
@@ -167,6 +172,7 @@ function createAddItem() {
  */
 function onClosePopupErrorAddItemHandler() {
     if (notNullUndf($_validation_add_item_tooltip)) {
+        // noinspection JSUnresolvedFunction
         $_validation_add_item_tooltip.tooltipster('open');
     }
 }
@@ -218,13 +224,13 @@ function initAddItemFormObject() {
         "0": {
             "name": lang.add_item_form_name,
             "icon": "fas fa-box",
-            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-articulo' maxlength='80' minlength='15' size='40' autocomplete='off'>",
+            "form": "<input type='text' class='form-control add-item-form-text' name='nombre-articulo' maxlength='80' minlength='15' size='40' autocomplete='off' autofocus>",
             "resizeThread": false,
             "validate": function () {
                 let $input = $('input[name=nombre-articulo]');
                 let $f = function () {
                     return validateAddItemInputText($input, {
-                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!\[\]¡°|"-]+$/i
+                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!;?¿/{}\[\]¡°|"-]+$/i
                     });
                 };
 
@@ -247,7 +253,7 @@ function initAddItemFormObject() {
                         cantBeEmpty: false,
                         checkMaxSize: true,
                         checkMinSize: false,
-                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!$%\[\]¡°|"-]+$/i
+                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!$%:)<>=(\[\]¡°|"-]+$/i
                     });
                 };
 
@@ -296,7 +302,7 @@ function initAddItemFormObject() {
                     }
 
                     // noinspection QuirksModeInspectionTool
-                    $('#{0}'.format($id)).append('<div class="input-group add-item-pic-new-entry-block"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button" style="cursor: pointer;"><input type="file" name="foto-articulo{2}" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc{2}" ></div>'.format(lang.look_file, lang.add_new_photo, $add_item_total_pics));
+                    $('#{0}'.format($id)).append('<div class="input-group add-item-pic-new-entry-block"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button" style="cursor: pointer;"><input type="file" name="foto-articulo{2}" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc{1}" ></div>'.format(lang.look_file, $add_item_total_pics));
                     $resize();
                     updateFileFormAddItemWatcher();
 
@@ -369,7 +375,7 @@ function initAddItemFormObject() {
                 let $input = $('input[name=calle-articulo]');
                 let $f = function () {
                     return validateAddItemInputText($input, {
-                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#°-]+$/i
+                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#/!°-]+$/i
                     });
                 };
 

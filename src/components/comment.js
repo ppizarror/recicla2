@@ -8,24 +8,25 @@
 
 /**
  * Valida un email.
- * @param $input
- * @returns {{message: string, status: boolean}}
+ * @param $email
+ * @return {boolean}
  */
-function validateAddItemEmail($input) {
-    let email = $input.val();
-    email = $.trim(email);
-    $input.val(email);
+function validateEmail($email) {
+    $email = $.trim($email);
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    let s = re.test(String(email).toLowerCase());
+    return re.test(String($email).toLowerCase());
+}
 
-    // Genera el estado
-    let st = {
-        message: lang.add_item_form_bad_email,
-        status: s,
-    };
-    validateAddItemChangeStyleInput($input, st);
-
-    return st;
+/**
+ * Valida un número de teléfono.
+ * @param $tel
+ * @return {boolean}
+ */
+function validatePhone($tel) {
+    if (!/^\d+$/.test($tel)) {
+        return false;
+    }
+    return ($tel.length === 9 && $tel[0] === '9') || $tel.length === 11 && $tel.substring(0, 2) === '569';
 }
 
 /**
@@ -73,7 +74,18 @@ function ItemComment(options) {
         /**
          * Se identifica email o teléfono
          */
+        let $words = self._comment.split(' ');
+        for (let $i = 0; $i < $words.length; $i++) {
+            if (validateEmail($words[$i])) {
+                // noinspection QuirksModeInspectionTool
+                $words[$i] = '<a href="mailto:matias@faisbun.com" class="disable-a-hover">{0}</a>'.format($words[$i]);
+            } else if (validatePhone($words[$i].replace('+56', ''))) {
+                $words[$i] = $words[$i].replace('+56', '');
+                // noinspection QuirksModeInspectionTool
+                $words[$i] = '<a href="tel:{0}" class="disable-a-hover">+56{0}</a>'.format($words[$i]);
+            }
+        }
 
-        return self._comment;
+        return $words.join(' ');
     };
 }

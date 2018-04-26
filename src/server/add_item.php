@@ -53,13 +53,13 @@ function load_rc_chile($db)
     /** @noinspection PhpUndefinedVariableInspection */
     /** @noinspection ES6ConvertVarToLetConst */
     /** @noinspection JSUnusedLocalSymbols */
-    echo 'var $add_item_c_chile=' . json_encode($comunas);
+    echo '$add_item_c_chile=' . json_encode($comunas);
     echo "\n\t\t";
 
     /** @noinspection PhpUndefinedVariableInspection */
     /** @noinspection ES6ConvertVarToLetConst */
     /** @noinspection JSUnusedLocalSymbols */
-    echo 'var $add_item_r_chile=' . json_encode($region);
+    echo '$add_item_r_chile=' . json_encode($region);
 
     // Cierra el script
     echo "\n\t</script>\n";

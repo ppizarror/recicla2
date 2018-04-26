@@ -16,13 +16,14 @@ function Container(options) {
         backgroundColor: '#ffffff',
         borderRadius: 5,
         elementClass: '',
+        disableSelection: false,
         padding: 10,
         parent: ui_main_content,
         shadow: true,
         width: 100
     };
     options = $.extend($defaults, options);
-    var self = this;
+    let self = this;
 
     /**
      * Crea el container en el DOM
@@ -34,6 +35,13 @@ function Container(options) {
     }
     _mainContent.append('<div id="{0}" class="ui-container{1}"></div>'.format(self._id, options.elementClass));
     this._obj = $('#{0}'.format(this._id));
+
+    /**
+     * Desactiva la selección
+     */
+    if (options.disableSelection) {
+        this._obj.on('selectstart dragstart', false);
+    }
 
     /**
      * Aplica css
