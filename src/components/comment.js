@@ -6,6 +6,11 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
+/**
+ * Comentario de un Ítem
+ * @param options
+ * @constructor
+ */
 function ItemComment(options) {
     let self = this;
     let $defaults = {
@@ -21,17 +26,17 @@ function ItemComment(options) {
     this._user = options.user;
 
     /**
-     * Retorna el objeto de la fecha
+     * Retorna el objeto de la fecha.
      * @return {string}
      */
     this.getDate = function () {
-        let $a = this._date.year + '/' + padLeft(this._date.month, 2) + '/' + padLeft(this._date.day, 2) + ' ';
+        let $a = this._date.year + '/' + padLeft(this._date.day, 2) + '/' + padLeft(this._date.month, 2) + ' ';
         let $b = padLeft(this._date.hour, 2) + ':' + padLeft(this._date.min, 2) + ':' + padLeft(this._date.sec, 2);
         return lang.comment_date_format.format($a, $b);
     };
 
     /**
-     * Retorna el nombre del autor del comentario
+     * Retorna el nombre del autor del comentario.
      * @return {string|*}
      */
     this.getUser = function () {
@@ -39,7 +44,7 @@ function ItemComment(options) {
     };
 
     /**
-     * Retorna el comentario mismo
+     * Retorna el comentario mismo.
      * @return {string|*}
      */
     this.getComment = function () {

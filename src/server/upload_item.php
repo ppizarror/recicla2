@@ -42,35 +42,6 @@ function throw_error($id)
 }
 
 /**
- * Comprueba que un string esté entre mínimo y maximo.
- * @param $s
- * @param $minl
- * @param $maxl
- * @return boolean
- */
-function validate_string_size($s, $minl, $maxl)
-{
-    $l = strlen(trim($s)); // Largo del string
-
-    if ($minl != -1 and $maxl != -1) {
-        if ($minl <= $l and $l <= $maxl) {
-            return true;
-        }
-    } else {
-        if ($minl == -1) {
-            if ($l <= $maxl) {
-                return true;
-            }
-        } else {
-            if ($l >= $minl) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-/**
  * Valida un número de teléfono
  * @param $t
  * @return boolean
@@ -88,7 +59,7 @@ function validate_telephone($t)
 }
 
 // Si se envía por post se realiza cadena de verificaciones
-if ($_POST) {
+if ($_POST and !$_GET) {
 
     /**
      * Verifica que existan elementos del formulario
@@ -119,7 +90,7 @@ if ($_POST) {
      * Formulario válido
      */
     $form_valid = $_POST['form-validated'];
-    if ($form_valid != 'true') {
+    if ($form_valid !== 'true') {
         throw_error('FORM NOT VALID');
     }
 
@@ -142,7 +113,7 @@ if ($_POST) {
     /**
      * Valida la región
      */
-    $_a_reg = htmlspecialchars($_POST['region-articulo']);
+    $_a_reg = $db->real_escape_string(htmlspecialchars($_POST['region-articulo']));
     if (!is_numeric($_a_reg)) {
         throw_error('REGION NOT VALID');
     }
@@ -158,7 +129,7 @@ if ($_POST) {
     /**
      * Valida la comuna
      */
-    $_a_cm = htmlspecialchars($_POST['comuna-articulo']);
+    $_a_cm = $db->real_escape_string(htmlspecialchars($_POST['comuna-articulo']));
     if (!is_numeric($_a_cm)) {
         throw_error('COMUNA NOT VALID');
     }
@@ -198,7 +169,7 @@ if ($_POST) {
     /**
      * Valida el teléfono del usuario
      */
-    $_a_tel = htmlspecialchars($_POST['fono-contacto']);
+    $_a_tel = $db->real_escape_string(htmlspecialchars($_POST['fono-contacto']));
     if (!validate_telephone($_a_tel)) {
         throw_error('FONO-CONTACTO NOT VALID');
     }
@@ -250,6 +221,7 @@ if ($_POST) {
     $_a_desc = $db->real_escape_string($_a_desc);
     $_a_name = $db->real_escape_string($_a_name);
     $_a_nc = $db->real_escape_string($_a_nc);
+    $_a_st = $db->real_escape_string($_a_st);
 
     /**
      * Se sube el artículo
@@ -286,6 +258,7 @@ if ($_POST) {
     /**
      * Termina conexión, se envía a menú principal
      */
+    $db->close();
     setcookie('additem', 1, 0, "/");
     header("Location: ../../../../index.php?status=added");
     die();

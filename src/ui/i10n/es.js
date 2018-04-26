@@ -16,6 +16,8 @@ $lang_db.es = {
     'add_comment_name_input': 'Ingrese su nombre',
     'add_comment_name_title': 'Nombre',
     'add_comment_ok': 'Comentario agregado!',
+    'add_comment_query_error': 'Error en la consulta, no se ha guardado el comentario',
+    'add_comment_server_error': 'Ha ocurrido un error en el servidor al procesar la consulta',
     'add_comment_title': 'Nuevo Comentario',
     'add_item_add': 'Ingresar este artículo',
     'add_item_add_photo': 'Agregar otra fotografía',

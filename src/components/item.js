@@ -29,9 +29,21 @@ function Item(options) {
     };
     options = $.extend($defaults, options);
 
+    /**
+     * Convierte comentarios.
+     * @static
+     */
+    let $convertCList = function ($comments) {
+        let $clist = [];
+        for (let $i = 0; $i < $comments.length; $i++) {
+            $clist.push(new ItemComment($comments[$i]));
+        }
+        return $clist;
+    };
+
     // Variables de instancia
     this._c = options.comuna;
-    this._comments = options.comments;
+    this._comments = $convertCList(options.comments);
     this._date = createDateFromServerTime(options.date);
     this._description = options.desc;
     this._id = generateId(10);
@@ -45,7 +57,7 @@ function Item(options) {
     this._user_street = options.userStreet;
 
     /**
-     * Retorna el ID del objeto
+     * Retorna el ID del objeto.
      * @return {string|*}
      */
     this.getID = function () {
@@ -61,27 +73,27 @@ function Item(options) {
     };
 
     /**
-     * Obtiene la fecha del artículo
+     * Obtiene la fecha del artículo.
      * @return {{}|date|*}
      */
     this.getDate = function () {
-        let $d = this._date.year + '/' + padLeft(this._date.month, 2) + '/' + padLeft(this._date.day, 2);
+        let $d = this._date.year + '/' + padLeft(this._date.day, 2) + '/' + padLeft(this._date.month, 2);
         $d += ' ' + padLeft(this._date.hour, 2) + ':' + padLeft(this._date.min, 2) + ':' + padLeft(this._date.sec, 2);
         return $d;
     };
 
     /**
-     * Retorna la fecha de publicación del artículo
+     * Retorna la fecha de publicación del artículo.
      * @return {string}
      */
     this.getPublishDate = function () {
-        let $a = this._date.year + '/' + padLeft(this._date.month, 2) + '/' + padLeft(this._date.day, 2) + ' ';
+        let $a = this._date.year + '/' + padLeft(this._date.day, 2) + '/' + padLeft(this._date.month, 2) + ' ';
         let $b = padLeft(this._date.hour, 2) + ':' + padLeft(this._date.min, 2) + ':' + padLeft(this._date.sec, 2);
         return lang.comment_date_format.format($a, $b);
     };
 
     /**
-     * Retorna el nombre del artículo
+     * Retorna el nombre del artículo.
      * @return {string|*}
      */
     this.getName = function () {
@@ -89,7 +101,7 @@ function Item(options) {
     };
 
     /**
-     * Retorna la comuna del artículo
+     * Retorna la comuna del artículo.
      * @return {string|*}
      */
     this.getComuna = function () {
@@ -97,14 +109,14 @@ function Item(options) {
     };
 
     /**
-     * Retorna la región del artículo
+     * Retorna la región del artículo.
      */
     this.getRegion = function () {
         return self._r;
     };
 
     /**
-     * Retorna las fotos del artículo
+     * Retorna las fotos del artículo.
      * @return {Array|*}
      */
     this.getPhotos = function () {
@@ -112,7 +124,7 @@ function Item(options) {
     };
 
     /**
-     * Retorna el total de fotos del artículo
+     * Retorna el total de fotos del artículo.
      * @return {number}
      */
     this.getTotalPhotos = function () {
@@ -120,7 +132,7 @@ function Item(options) {
     };
 
     /**
-     * Retorna el nombre del usuario
+     * Retorna el nombre del usuario.
      * @return {string|*}
      */
     this.getUserName = function () {
@@ -128,7 +140,7 @@ function Item(options) {
     };
 
     /**
-     * Retorna el correo del usuario
+     * Retorna el correo del usuario.
      * @return {string|*}
      */
     this.getUserEmail = function () {
@@ -136,7 +148,7 @@ function Item(options) {
     };
 
     /**
-     * Retorna la calle del usuario
+     * Retorna la calle del usuario.
      * @return {string|*}
      */
     this.getUserStreet = function () {
@@ -144,7 +156,7 @@ function Item(options) {
     };
 
     /**
-     * Retorna el número de teléfono del usuario
+     * Retorna el número de teléfono del usuario.
      * @return {string|*}
      */
     this.getUserPhone = function () {
@@ -152,7 +164,7 @@ function Item(options) {
     };
 
     /**
-     * Retorna los comentarios
+     * Retorna los comentarios.
      * @return {Array|ItemComment}
      */
     this.getComments = function () {
@@ -161,7 +173,7 @@ function Item(options) {
 
     // noinspection JSUnusedGlobalSymbols
     /**
-     * Añade un comentario
+     * Añade un comentario.
      * @param user
      * @param comment
      * @param date
@@ -175,7 +187,7 @@ function Item(options) {
     };
 
     /**
-     * Retorna el número de comentarios del artículo
+     * Retorna el número de comentarios del artículo.
      * @return {number}
      */
     this.getTotalComments = function () {

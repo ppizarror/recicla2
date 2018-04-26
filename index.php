@@ -2,10 +2,8 @@
 /**
  * Chequea cookies
  */
-$DISPLAY_ADDITEM_POPUP = false;
 if (isset($_COOKIE['additem'])) {
     setcookie('additem', '', -1, '/'); // Borra la cookie
-    $DISPLAY_ADDITEM_POPUP = true;
 }
 ?>
     <!DOCTYPE html>

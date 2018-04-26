@@ -142,21 +142,21 @@ function createShowItem($item) {
         $.confirm({
             animateFromElement: false,
             animation: 'scale',
-            columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
+            columnClass: 'col-md-{0} col-md-offset-5 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 400 ? '6' : '4'),
             title: lang.add_comment_title,
             icon: 'far fa-comment',
             draggable: true,
             dragWindowGap: 0,
             theme: cfg_popup_theme,
             content: '' +
-            '<form method="post">' +
+            '<form autocomplete="off">' +
             '<div class="form-group">' +
             '<label>' + lang.add_comment_name_title + '</label>' +
-            '<input type="text" placeholder="' + lang.add_comment_name_input + '" class="name form-control" required />' +
+            '<input type="text" name="comment-author" placeholder="' + lang.add_comment_name_input + '" class="name form-control" maxlength="200" required />' +
             '</div>' +
             '<div class="form-group">' +
             '<label>' + lang.add_comment_comment_title + '</label>' +
-            '<textarea rows="2" type="text" placeholder="' + lang.add_comment_comment_input + '" class="comment form-control show-item-comment-textarea" required></textarea>' +
+            '<textarea name="comment-text" rows="2" type="text" placeholder="' + lang.add_comment_comment_input + '" class="comment form-control show-item-comment-textarea" maxlength="500" required></textarea>' +
             '</div>' +
             '</form>',
             buttons: {
@@ -166,25 +166,64 @@ function createShowItem($item) {
                     action: function () {
                         let name = this.$content.find('.name').val();
                         let comment = this.$content.find('.comment').val();
-                        if (!name || name.length < 5) {
+                        this.$content.find('.validated').val('false');
+                        if (!name || name.length < 5 || name.length > 200) {
                             $.alert(lang.add_comment_bad_name);
                             return false;
                         }
-                        if (!comment || comment.length < 10) {
+                        if (!comment || comment.length < 10 || comment.length > 500) {
                             $.alert(lang.add_comment_bad_comment);
                             return false;
                         }
+                        this.$content.find('.validated').val('true');
 
-                        // TODO: Guardar comentario
-                        $.alert(lang.add_comment_ok);
+                        /**
+                         * Se crea la consulta ajax
+                         * @type {*|{readyState, getResponseHeader, getAllResponseHeaders, setRequestHeader, overrideMimeType, statusCode, abort}}
+                         */
+                        let $request = $.ajax({
+                            data: 'validated=true&itemid={0}&comment-author={2}&comment-text={1}'.format($item.getID(), comment, name),
+                            timeout: 10000,
+                            type: 'post',
+                            url: 'src/server/upload_comment.php'
+                        });
 
-                        // Se agrega el comentario en el dom
-                        addCommentItem(new ItemComment({
-                            comment: comment,
-                            date: getLocalDateElement(),
-                            user: name
-                        }));
-                        return true;
+                        /**
+                         * Respuesta correcta
+                         */
+                        $request.done(function (response) {
+                            try {
+                                let data = JSON.parse(response);
+
+                                // Si no se encontraron errores se procede
+                                if (Object.keys(data).indexOf('error') !== -1 && data.error === '') {
+
+                                    // Se agrega el comentario en el dom
+                                    addCommentItem(new ItemComment({
+                                        comment: comment,
+                                        date: data.date,
+                                        user: name
+                                    }));
+
+                                    // Alerta comentario agregado
+                                    $.alert(lang.add_comment_ok);
+
+                                } else {
+                                    $.alert(lang.add_comment_query_error);
+                                }
+                            } catch ($e) {
+                                console.log($e.message);
+                            } finally {
+                            }
+                        });
+
+                        /**
+                         * Server falló, se alerta al usuario
+                         */
+                        $request.fail(function () {
+                                $.alert(lang.add_comment_server_error);
+                            }
+                        );
                     }
                 },
 

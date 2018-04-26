@@ -183,8 +183,7 @@ function item_generate_list($db, $rows)
  */
 function _item_check_add_status()
 {
-    global $DISPLAY_ADDITEM_POPUP;
-    if ($DISPLAY_ADDITEM_POPUP) {
+    if (isset($_COOKIE['additem'])) {
         // Se escribe un popup al cargar
         echo "<script>
         function uploadItemOkPopup() {

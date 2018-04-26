@@ -55,3 +55,32 @@ function convertPHPSizeToBytes($sSize)
     }
     return (int)$iValue;
 }
+
+/**
+ * Comprueba que un string esté entre mínimo y maximo.
+ * @param $s
+ * @param $minl
+ * @param $maxl
+ * @return boolean
+ */
+function validate_string_size($s, $minl, $maxl)
+{
+    $l = strlen(trim($s)); // Largo del string
+
+    if ($minl != -1 and $maxl != -1) {
+        if ($minl <= $l and $l <= $maxl) {
+            return true;
+        }
+    } else {
+        if ($minl == -1) {
+            if ($l <= $maxl) {
+                return true;
+            }
+        } else {
+            if ($l >= $minl) {
+                return true;
+            }
+        }
+    }
+    return false;
+}

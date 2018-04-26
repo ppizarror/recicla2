@@ -137,7 +137,7 @@ $db = DbConfig::getConnection();
     echo "<script>
         items = " . json_encode(item_download_by_id($db, $id)) . ";
         if(items.length === 1){
-            items = new Item(items[0]);   
+            items = new Item(items[0]); 
         }else{
             items = null;
         }
