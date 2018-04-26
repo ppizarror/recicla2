@@ -3,3 +3,6 @@
 
 # SQL
 sql/
+
+# Fotografías de los artículos
+resources/photos/*

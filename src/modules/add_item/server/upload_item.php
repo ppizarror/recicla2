@@ -14,8 +14,10 @@ include_once("../../../server/utils.php");
 /**
  * Constantes
  */
-const TEST_TYPE_ERROR_KILL = 0; // Indica el tipo de error, si es verdadero redirige la aplicación y termina consulta
+const FILE_UPLOAD_PATH = "../../../../resources/photos/"; // Ubicación carpeta uploads
 const FORM_SIZE = 11; // Tamaño del formulario
+const TEST_TYPE_ERROR_KILL = 0; // Indica el tipo de error, si es verdadero redirige la aplicación y termina consulta
+define('HOUR_FORMAT', 'Y-m-d H:i:s');
 
 /** @var mysqli $db */
 $db = DbConfig::getConnection();
@@ -240,19 +242,46 @@ if ($_POST) {
 
     // En este punto todos los elementos han sido validados, así que obtiene la hora y sube los elementos
     date_default_timezone_set('America/Santiago');
-    $_a_date = date('m/d/Y h:i:s a', time());
+    $_a_date = date('Y-m-d H:i:s');
 
-    // Se suben las fotos
+    /**
+     * Se sube el artículo
+     */
+    $sql = "INSERT INTO articulo (nombre, descripcion, fecha_ingreso, comuna_id, calle_numero, nombre_contacto, email_contacto, fono_contacto) VALUES ('{$_a_name}','{$_a_desc}','{$_a_date}',{$_a_cm},'{$_a_st}','{$_a_nc}','{$_a_cemail}','{$_a_tel}');";
+    $result = $db->query($sql);
+    if (!$result) {
+        throw_error('CANNOT QUERY INSERT INTO DATABASE');
+    }
+
+    // Se obtiene el último id
+    $_a_id = mysqli_insert_id($db);
+
+    /**
+     * Se suben las fotos
+     */
     for ($i = 1; $i <= $total_pics; $i++) {
         $photo = 'foto-articulo' . $i;
         $tmp_name = $_FILES[$photo]['tmp_name'];
         $file_extension = pathinfo($_FILES[$photo]['name'], PATHINFO_EXTENSION);
-        $filename = uniqid(rand(), false) . $file_extension;
-        echo $filename;
+        $filename = uniqid(rand(), false) . '.' . $file_extension;
+        if (!move_uploaded_file($_FILES[$photo]['tmp_name'], FILE_UPLOAD_PATH . $filename)) {
+            throw_error('FILE ' . $_FILES[$photo]['name'] . ' COULD NOT BE SAVED ON THE SERVER');
+        }
+
+        // Añade imagen a base de datos
+        $sql = "INSERT INTO fotografia (ruta_archivo, nombre_archivo, articulo_id) VALUES ('{$filename}','{$_FILES[$photo]['name']}',{$_a_id})";
+        $result = $db->query($sql);
+        if (!$result) {
+            throw_error('CANNOT QUERY INSERT IMAGE ON DATABASE');
+        }
     }
 
-    print_r($_FILES);
-
+    /**
+     * Termina conexión, se envía a menú principal
+     */
+    setcookie('additem', 1, 0, "/");
+    header("Location: ../../../../index.php?status=added");
+    die();
 } else {
-    throw_error('NOT_POST');
+    throw_error('NOT POST');
 }
