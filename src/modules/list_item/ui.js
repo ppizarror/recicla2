@@ -51,11 +51,6 @@ function createListItem() {
     let $itemname;
     for (let i = 0; i < $items.length; i++) {
 
-        // Verifica que no se hayan cargado más de los elementos límite
-        if (i === cfg_listitem_initial_loads) {
-            break;
-        }
-
         /**
          * Carga el ítem
          * @type    {Item}

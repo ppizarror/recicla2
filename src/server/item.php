@@ -11,10 +11,20 @@ const ITEM_CAT_MAX_LIST = 5; // Número de ítems por lista
  * Descarga un ítem raw por id.
  * @param $db
  * @param $id
+ * @return array
  */
 function item_download_by_id($db, $id)
 {
+    $sql = "SELECT id, nombre, descripcion, fecha_ingreso, comuna_id, calle_numero, nombre_contacto, email_contacto, fono_contacto FROM articulo WHERE id={$id}";
+    $results = $db->query($sql);
 
+    // Almacena todos los registros
+    $rows = array();
+    while ($row = $results->fetch_assoc()) {
+        $rows[] = $row;
+    }
+    mysqli_free_result($results);
+    return item_generate_list($db, $rows);
 }
 
 /**
@@ -29,10 +39,14 @@ function item_download_by_desc($db, $from)
     $from = max(0, $from);
 
     // Next
-    $next = $from + ITEM_CAT_MAX_LIST;
+    $next = ITEM_CAT_MAX_LIST;
 
     // Genera la consulta
-    $sql = "SELECT id, nombre, descripcion, fecha_ingreso, comuna_id, calle_numero, nombre_contacto, email_contacto, fono_contacto FROM articulo ORDER BY id DESC LIMIT {$from},{$next}";
+    if ($from === 0) {
+        $sql = "SELECT id, nombre, descripcion, fecha_ingreso, comuna_id, calle_numero, nombre_contacto, email_contacto, fono_contacto FROM articulo ORDER BY id DESC LIMIT {$next}";
+    } else {
+        $sql = "SELECT id, nombre, descripcion, fecha_ingreso, comuna_id, calle_numero, nombre_contacto, email_contacto, fono_contacto FROM articulo ORDER BY id DESC LIMIT {$from},{$next}";
+    }
     $results = $db->query($sql);
 
     // Almacena todos los registros
@@ -46,14 +60,14 @@ function item_download_by_desc($db, $from)
 
 /**
  * Indica si existen más items en una siguiente página a partir de un cierto índice
- * @param $db
- * @param $from
+ * @param mysqli $db
+ * @param int $from
  * @return int
  */
 function item_exists_after($db, $from)
 {
     // Índice incial siguiente página
-    $np_to = ITEM_CAT_MAX_LIST;
+    $np_to = ITEM_CAT_MAX_LIST + 1;
 
     // Genera la consulta
     $sql = "SELECT id FROM articulo ORDER BY id DESC LIMIT {$from},{$np_to}";
@@ -64,7 +78,13 @@ function item_exists_after($db, $from)
     mysqli_free_result($results);
 
     if ($total > 0) {
-        return $total;
+        if ($total == ITEM_CAT_MAX_LIST) {
+            return -1;
+        } else if ($total > ITEM_CAT_MAX_LIST) {
+            return ITEM_CAT_MAX_LIST;
+        } else {
+            return $total;
+        }
     } else {
         return 0;
     }
@@ -114,7 +134,7 @@ function item_generate_list($db, $rows)
         $sql = "SELECT ruta_archivo FROM fotografia WHERE articulo_id={$i_id}";
         $result = $db->query($sql);
         while ($row = $result->fetch_assoc()) {
-            $photos[] = $row;
+            $photos[] = PHOTO_PATH . $row['ruta_archivo'];
         }
         mysqli_free_result($result);
 

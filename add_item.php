@@ -122,7 +122,6 @@ $db = DbConfig::getConnection();
 <div id="preload_resources"></div>
 </body>
 </html>
-
 <?php
 // Cierra la conexión
 $db->close();

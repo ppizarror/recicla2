@@ -148,7 +148,7 @@ if (isset($_COOKIE['additem'])) {
 
         // Cálculo página previa
         $prev_page_var = 0;
-        if ($next_page > 0) {
+        if ($next_page > 0 or $next_page === -1) {
             $prev_page_var = $from_page - ITEM_CAT_MAX_LIST;
             if ($prev_page_var === 0) { // Si da la primera página se deja como -1
                 $prev_page_var = -1;
@@ -191,7 +191,6 @@ if (isset($_COOKIE['additem'])) {
     <div id="preload_resources"></div>
     </body>
     </html>
-
 <?php
 // Cierra la conexión
 $db->close();

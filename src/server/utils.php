@@ -4,6 +4,7 @@
  */
 
 const DATE_FORMAT = 'Y-m-d H:i:s';
+const PHOTO_PATH = 'resources/photos/';
 
 /**
  * This function returns the maximum files size that can be uploaded

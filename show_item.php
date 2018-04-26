@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<?php
+/**
+ * Recicla2
+ * Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web, 2018, Otoño.
+ *
+ * Autor: Pablo Pizarro R. @ppizarror.com
+ * Copyright 2018, no copiar o distribuír sin permiso directo del autor.
+ */
+
+// Importación de archivos
+require_once('src/server/dbconfig.php');
+require_once('src/server/item.php');
+
+// Obtiene conexión a base de datos
+$db = DbConfig::getConnection();
+?>
 
 <html lang="es">
 <head>
@@ -104,8 +120,22 @@
     <script src="src/modules/show_item/config.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/show_item/ui.js?v=<?php echo uniqid(); ?>"></script>
 
-    <!-- Testing -->
-    <script src="test/test.item.js"></script>
+    <?php
+    /**
+     * Obtiene el id del ítem
+     */
+
+    /**
+     * Descarga los ítems
+     */
+    /** @noinspection JSUnusedLocalSymbols */
+    /** @noinspection ES6ConvertVarToLetConst */
+    echo "items = " . json_encode(item_download_by_id($db, $id)) . ";
+            for (let i = 0; i < items.length; i++) {
+                items[i] = new Item(items[i]);
+            }
+        </script>\n";
+    ?>
 
     <!-- Inicia app -->
     <script src="src/core/init.js"></script>
@@ -160,3 +190,7 @@
 <div id="preload_resources"></div>
 </body>
 </html>
+<?php
+// Cierra la conexión
+$db->close();
+?>
