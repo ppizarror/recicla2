@@ -247,7 +247,7 @@ function initAddItemFormObject() {
                         cantBeEmpty: false,
                         checkMaxSize: true,
                         checkMinSize: false,
-                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!$\[\]¡°|"-]+$/i
+                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!$%\[\]¡°|"-]+$/i
                     });
                 };
 
@@ -314,7 +314,6 @@ function initAddItemFormObject() {
 
                     if (cfg_additem_center_module) {
                         centerMainContent();
-                        showItemBackgroundResize();
                     }
                 };
                 $a.on('click.addNewPic', $f);
@@ -464,8 +463,6 @@ function initAddItemFormObject() {
 function addItemUpdateRCForm() {
     let $hr = '<option value="sin-region">{0}</option>'.format(lang.add_item_r_pick);
     let $hc = '<option value="sin-region">{0}</option>'.format(lang.add_item_c_pick);
-
-    console.log($add_item_c_chile);
 
     // Se escriben las regiones
     let rkeys = Object.keys($add_item_r_chile);

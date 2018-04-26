@@ -32,6 +32,16 @@ function getRandomColor() {
     return color;
 }
 
+/**
+ * Aplica padding
+ * @param nr
+ * @param n
+ * @returns {string}
+ */
+function padLeft(nr, n) {
+    return Array(n - String(nr).length + 1).join('0') + nr;
+}
+
 // noinspection JSUnusedGlobalSymbols
 /**
  * Redondea un número

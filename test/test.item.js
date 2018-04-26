@@ -1,3 +1,4 @@
+// noinspection ES6ConvertVarToLetConst
 /**
  ITEM-TEST
  Items de la aplicación.
@@ -52,7 +53,15 @@ var test_items = [
         id: 1
     }),
     new Item({
+        comuna: 'Curicó',
+        desc: 'Regalo teléfono huawei en perfectas condiciones, 64 gb memoria interna, tiene unos pequeños detalles en la parte trasera pero nada muy grave, fácilmente reparable',
+        name: 'Huawei P9 en perfecto estado, 64GB memoria interna',
         photos: ['test/images/08871714.jpg', 'test/images/09453862.jpg', 'test/images/23867949.jpg'],
+        region: 'Región del Maule',
+        userContact: 'Juan Antonio Ríos Mauleu',
+        userEmail: 'juanito@fbi.com',
+        userPhone: '981244568',
+        userStreet: 'Avenida Circunvalación 1716',
         comments: [
             new ItemComment({
                 comment: 'Hola, me interesa mucho tu teléfono, te envié un correo :)',
@@ -80,7 +89,8 @@ var test_items = [
                 user: 'Fake user'
             })
         ],
-        date: getRandomDateElement()
+        date: getRandomDateElement(),
+        id: 2
     }),
     new Item({
         comuna: 'Los Vilos',

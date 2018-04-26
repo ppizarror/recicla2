@@ -3,6 +3,8 @@
  * Funciones utilitarias.
  */
 
+const DATE_FORMAT = 'Y-m-d H:i:s';
+
 /**
  * This function returns the maximum files size that can be uploaded
  * in PHP

@@ -3,6 +3,8 @@
  * Administra los ítems.
  */
 
+require_once('utils.php');
+
 const ITEM_CAT_MAX_LIST = 5; // Número de ítems por lista
 
 /**
@@ -103,7 +105,7 @@ function generate_item_list($db, $rows)
          */
         $item['comments'] = $comments;
         $item['comuna'] = $i_c;
-        $item['date'] = $ritem['fecha_ingreso'];
+        $item['date'] = date(DATE_FORMAT, strtotime($ritem['fecha_ingreso']));
         $item['desc'] = $ritem['descripcion'];
         $item['id'] = $i_id;
         $item['name'] = $ritem['nombre'];

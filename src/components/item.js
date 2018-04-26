@@ -32,7 +32,7 @@ function Item(options) {
     // Variables de instancia
     this._c = options.comuna;
     this._comments = options.comments;
-    this._date = new Date(options.date);
+    this._date = createDateFromServerTime(options.date);
     this._description = options.desc;
     this._id = generateId(10);
     this._name = options.name;
@@ -65,7 +65,9 @@ function Item(options) {
      * @return {{}|date|*}
      */
     this.getDate = function () {
-        return this._date.format('Y/m/d H:m:s');
+        let $d = this._date.year + '/' + padLeft(this._date.month, 2) + '/' + padLeft(this._date.day, 2);
+        $d += ' ' + padLeft(this._date.hour, 2) + ':' + padLeft(this._date.min, 2) + ':' + padLeft(this._date.sec, 2);
+        return $d;
     };
 
     /**
@@ -73,9 +75,9 @@ function Item(options) {
      * @return {string}
      */
     this.getPublishDate = function () {
-        let $a = this._date.format('Y/m/d');
-        let $b = this._date.format('H:m:s');
-        return lang.show_item_publish_date_format.format($a, $b);
+        let $a = this._date.year + '/' + padLeft(this._date.month, 2) + '/' + padLeft(this._date.day, 2) + ' ';
+        let $b = padLeft(this._date.hour, 2) + ':' + padLeft(this._date.min, 2) + ':' + padLeft(this._date.sec, 2);
+        return lang.comment_date_format.format($a, $b);
     };
 
     /**

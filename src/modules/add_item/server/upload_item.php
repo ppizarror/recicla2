@@ -17,7 +17,6 @@ include_once("../../../server/utils.php");
 const FILE_UPLOAD_PATH = "../../../../resources/photos/"; // Ubicación carpeta uploads
 const FORM_SIZE = 11; // Tamaño del formulario
 const TEST_TYPE_ERROR_KILL = 0; // Indica el tipo de error, si es verdadero redirige la aplicación y termina consulta
-define('HOUR_FORMAT', 'Y-m-d H:i:s');
 
 /** @var mysqli $db */
 $db = DbConfig::getConnection();
@@ -242,7 +241,7 @@ if ($_POST) {
 
     // En este punto todos los elementos han sido validados, así que obtiene la hora y sube los elementos
     date_default_timezone_set('America/Santiago');
-    $_a_date = date('Y-m-d H:i:s');
+    $_a_date = date(DATE_FORMAT);
 
     /**
      * Se escapan textos
