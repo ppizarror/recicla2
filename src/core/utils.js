@@ -297,3 +297,27 @@ function initAppCallback() {
         __initAppCallback[i]();
     }
 }
+
+/**
+ * Borra un parámetro de la url
+ * @param parameter
+ * @returns {string}
+ */
+function removeUrlParam(parameter) {
+    let url = document.location.href;
+    let urlparts = url.split('?');
+
+    if (urlparts.length >= 2) {
+        let urlBase = urlparts.shift();
+        let queryString = urlparts.join("?");
+
+        let prefix = encodeURIComponent(parameter) + '=';
+        let pars = queryString.split(/[&;]/g);
+        for (let i = pars.length; i-- > 0;)
+            if (pars[i].lastIndexOf(prefix, 0) !== -1)
+                pars.splice(i, 1);
+        url = urlBase + '?' + pars.join('&');
+        window.history.pushState('', document.title, url);
+    }
+    return url;
+}

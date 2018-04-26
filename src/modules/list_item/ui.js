@@ -9,6 +9,7 @@
 // noinspection ES6ConvertVarToLetConst
 /**
  * Contenedor listar ítems
+ * @type {jQuery|HTMLElement|*}
  */
 var list_item_container;
 
@@ -128,6 +129,46 @@ function createListItem() {
                 loadHandler(false);
             },
     });
+
+    /**
+     * Añade botones paginadores
+     */
+    let $paginator_id = generateId(cfg_id_size);
+    let $pag_prev = generateId(cfg_id_size);
+    let $pag_post = generateId(cfg_id_size);
+    // noinspection QuirksModeInspectionTool
+    list_item_container.append('<div id="{0}"><button id="{4}" type="button" class="btn list-item-paginator-button hvr-shadow">{2}</button><button type="button" class="btn list-item-paginator-button hvr-shadow" id="{3}">{1}</button></div>'.format($paginator_id, lang.page_prev, lang.page_post, $pag_prev, $pag_post));
+
+    /**
+     * Se comprueba botón página previa
+     */
+    $pag_prev = $('#' + $pag_prev);
+    if (list_item_prev_page === 0) {
+        $pag_prev.prop('disabled', true);
+        $pag_prev.removeClass('hvr-shadow');
+        $pag_prev.css('cursor', 'default');
+    } else {
+        if (list_item_prev_page === -1) {
+            list_item_prev_page = 0;
+        }
+        $pag_prev.on('click', function () {
+            window.location.href = 'index.php?from={0}'.format(list_item_prev_page);
+        });
+    }
+
+    /**
+     * Se comprueba botón página posterior
+     */
+    $pag_post = $('#' + $pag_post);
+    if (list_item_next_page === 0) {
+        $pag_post.prop('disabled', true);
+        $pag_post.removeClass('hvr-shadow');
+        $pag_post.css('cursor', 'default');
+    } else {
+        $pag_post.on('click', function () {
+            window.location.href = 'index.php?from={0}'.format(list_item_next_page);
+        });
+    }
 
     /**
      * Añade botón informar artículo

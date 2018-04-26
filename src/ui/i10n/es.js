@@ -76,6 +76,8 @@ $lang_db.es = {
     'module_add_item': 'Añadir nuevo artículo',
     'module_list_item': 'Recicla2',
     'name_lang': 'Español',
+    'page_post': 'Página siguiente',
+    'page_prev': 'Página anterior',
     'show_item_add_comment': 'Agregar Comentario',
     'show_item_comment_canceled': 'Comentario cancelado.',
     'show_item_comment_date_tooltip': 'Publicado el {0}',

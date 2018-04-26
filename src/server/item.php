@@ -25,11 +25,14 @@ function item_download_by_id($db, $id)
  */
 function item_download_by_desc($db, $from)
 {
+    // Comprueba from
+    $from = max(0, $from);
+
     // Next
     $next = $from + ITEM_CAT_MAX_LIST;
 
     // Genera la consulta
-    $sql = "SELECT id, nombre, descripcion, fecha_ingreso, comuna_id, calle_numero, nombre_contacto, email_contacto, fono_contacto FROM articulo ORDER BY id DESC LIMIT {$from}, {$next}";
+    $sql = "SELECT id, nombre, descripcion, fecha_ingreso, comuna_id, calle_numero, nombre_contacto, email_contacto, fono_contacto FROM articulo ORDER BY id DESC LIMIT {$from},{$next}";
     $results = $db->query($sql);
 
     // Almacena todos los registros
@@ -38,7 +41,33 @@ function item_download_by_desc($db, $from)
         $rows[] = $row;
     }
     mysqli_free_result($results);
-    return generate_item_list($db, $rows);
+    return item_generate_list($db, $rows);
+}
+
+/**
+ * Indica si existen más items en una siguiente página a partir de un cierto índice
+ * @param $db
+ * @param $from
+ * @return int
+ */
+function item_exists_after($db, $from)
+{
+    // Índice incial siguiente página
+    $np_to = ITEM_CAT_MAX_LIST;
+
+    // Genera la consulta
+    $sql = "SELECT id FROM articulo ORDER BY id DESC LIMIT {$from},{$np_to}";
+    $results = $db->query($sql);
+
+    // Total entradas
+    $total = mysqli_num_rows($results);
+    mysqli_free_result($results);
+
+    if ($total > 0) {
+        return $total;
+    } else {
+        return 0;
+    }
 }
 
 /**
@@ -47,7 +76,7 @@ function item_download_by_desc($db, $from)
  * @param array $rows
  * @return array array
  */
-function generate_item_list($db, $rows)
+function item_generate_list($db, $rows)
 {
     $items = array();
     for ($i = 0; $i < count($rows); $i++) {

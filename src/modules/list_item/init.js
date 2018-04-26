@@ -26,6 +26,9 @@ $(function () {
         $(window).on('resize.listItemPanel', centerMainContent);
     }
 
+    // Borra parámetros de la url
+    removeUrlParam('status');
+
     // Ajusta el tamaño del contenido
     adjustListItemWidth();
 

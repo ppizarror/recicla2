@@ -123,12 +123,50 @@ if (isset($_COOKIE['additem'])) {
         checkAddItemStatus();
 
         /**
+         * Chequea existencia de más ítems y añade botones
+         */
+        $from_page = 0;
+        if (isset($_GET['from']) and is_numeric($_GET['from'])) {
+            $from_page = max(0, intval($_GET['from']));
+        }
+
+        // Se aplica módulo
+        $from_page = $from_page - $from_page % ITEM_CAT_MAX_LIST;
+        $next_page = item_exists_after($db, $from_page);
+
+        // El usuario escribe una página muy avanzada, se recalcula reseteando
+        if ($next_page == 0 and $from_page != 0) {
+            $from_page = 0;
+            $next_page = item_exists_after($db, $from_page);
+        }
+
+        // Cálculo página siguiente
+        $next_page_var = 0;
+        if ($next_page === ITEM_CAT_MAX_LIST) {
+            $next_page_var = $from_page + ITEM_CAT_MAX_LIST;
+        }
+
+        // Cálculo página previa
+        $prev_page_var = 0;
+        if ($next_page > 0) {
+            $prev_page_var = $from_page - ITEM_CAT_MAX_LIST;
+            if ($prev_page_var === 0) { // Si da la primera página se deja como -1
+                $prev_page_var = -1;
+            } else if ($prev_page_var < 0) { // Se está en página 0
+                $prev_page_var = 0;
+            }
+        }
+
+        echo "<script>
+            list_item_prev_page = " . $prev_page_var . ";
+            list_item_next_page = " . $next_page_var . ";\n\t\t\t";
+
+        /**
          * Descarga los ítems
          */
         /** @noinspection JSUnusedLocalSymbols */
         /** @noinspection ES6ConvertVarToLetConst */
-        echo "<script>
-            var items = " . json_encode(item_download_by_desc($db, 0)) . ";
+        echo "items = " . json_encode(item_download_by_desc($db, $from_page)) . ";
             for (let i = 0; i < items.length; i++) {
                 items[i] = new Item(items[i]);
             }
