@@ -1,6 +1,8 @@
 <?php
 /**
- * Funciones utilitarias.
+ * Funciones utilitarias y configuraciones generales.
+ * @author Pablo Pizarro R. @ppizarror.com
+ * @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
 const DATE_FORMAT = 'Y-m-d H:i:s';

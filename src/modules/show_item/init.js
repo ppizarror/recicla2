@@ -12,15 +12,12 @@
 $(function () {
 
     // Carga el artículo
-    let $item_id = parseInt(getURLParameter('id'));
-    let $loaded_item = loadItemID($item_id);
-
-    if ($loaded_item === null) {
+    if (items === null) {
         throwErrorID(errordb.itemNotExist);
     }
 
     // Dibuja el módulo
-    createShowItem($loaded_item);
+    createShowItem(items);
 
     // Centra la página
     if (cfg_showitem_center_module) {

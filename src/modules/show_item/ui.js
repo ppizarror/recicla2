@@ -392,7 +392,7 @@ function initShowItemSections($item) {
         "8": {
             "name": lang.add_item_form_phone,
             "icon": "fas fa-phone",
-            "value": "<div class='show-item-text'>+56 {0}</div>".format($item.getUserPhone()),
+            "value": "<div class='show-item-text'><a href='tel:{0}'>+56 {0}</a></div>".format($item.getUserPhone()),
             "resizeThread": false
         },
 

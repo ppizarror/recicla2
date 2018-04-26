@@ -1,16 +1,21 @@
 <?php
 /**
- * Administra los ítems.
+ * Administración y descarga de ítems.
+ * @author Pablo Pizarro R. @ppizarror.com
+ * @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
 require_once('utils.php');
 
+/**
+ * Constantes
+ */
 const ITEM_CAT_MAX_LIST = 5; // Número de ítems por lista
 
 /**
  * Descarga un ítem raw por id.
- * @param $db
- * @param $id
+ * @param mysqli $db
+ * @param int $id
  * @return array
  */
 function item_download_by_id($db, $id)
@@ -171,4 +176,25 @@ function item_generate_list($db, $rows)
         $items[] = $item;
     }
     return $items;
+}
+
+/**
+ * Chequea que un ítem se subió, se manda una alerta.
+ */
+function _item_check_add_status()
+{
+    global $DISPLAY_ADDITEM_POPUP;
+    if ($DISPLAY_ADDITEM_POPUP) {
+        // Se escribe un popup al cargar
+        echo "<script>
+        function uploadItemOkPopup() {
+            $.alert({
+                columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
+                content: lang.add_item_form_ok_upload,
+                title: lang.module_add_item
+            });
+        }
+        addAfterInitModuleCallback(uploadItemOkPopup);
+    </script>\n";
+    }
 }

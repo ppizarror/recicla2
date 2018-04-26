@@ -20,7 +20,6 @@ if (isset($_COOKIE['additem'])) {
 
     // Importación de archivos
     require_once('src/server/dbconfig.php');
-    require_once('src/modules/show_item/server/check_status.php');
     require_once('src/server/item.php');
 
     // Obtiene conexión a base de datos
@@ -120,13 +119,14 @@ if (isset($_COOKIE['additem'])) {
         /**
          * Chequea que un ítem se subió, se manda un popup
          */
-        checkAddItemStatus();
+        _item_check_add_status();
 
         /**
          * Chequea existencia de más ítems y añade botones
          */
         $from_page = 0;
         if (isset($_GET['from']) and is_numeric($_GET['from'])) {
+            $from_page = htmlspecialchars($_GET['from']);
             $from_page = max(0, intval($_GET['from']));
         }
 

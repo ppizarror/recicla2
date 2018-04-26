@@ -8,13 +8,13 @@
 /**
  * Importación de librerías
  */
-include_once("../../../server/dbconfig.php");
-include_once("../../../server/utils.php");
+include_once("dbconfig.php");
+include_once("utils.php");
 
 /**
  * Constantes
  */
-const FILE_UPLOAD_PATH = "../../../../resources/photos/"; // Ubicación carpeta uploads
+const FILE_UPLOAD_PATH = "../../resources/photos/"; // Ubicación carpeta uploads
 const FORM_SIZE = 11; // Tamaño del formulario
 const TEST_TYPE_ERROR_KILL = 0; // Indica el tipo de error, si es verdadero redirige la aplicación y termina consulta
 

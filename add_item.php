@@ -10,7 +10,7 @@
 
 // Importación de archivos
 require_once('src/server/dbconfig.php');
-require_once('src/modules/add_item/server/utils.php');
+require_once('src/server/add_item.php');
 
 // Obtiene conexión a base de datos
 $db = DbConfig::getConnection();

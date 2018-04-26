@@ -7,3 +7,4 @@
  */
 
 var cfg_showitem_center_module = true; // Centra la página de visualización
+var items;

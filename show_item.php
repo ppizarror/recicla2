@@ -116,7 +116,6 @@ $db = DbConfig::getConnection();
     <link rel="stylesheet" type="text/css" href="src/modules/add_item/style.css?v=<?php echo uniqid(); ?>">
     <link rel="stylesheet" type="text/css" href="src/modules/show_item/style.css?v=<?php echo uniqid(); ?>">
     <script src="src/modules/modules.js?v=<?php echo uniqid(); ?>"></script>
-    <script src="src/modules/show_item/server.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/show_item/config.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/show_item/ui.js?v=<?php echo uniqid(); ?>"></script>
 
@@ -124,17 +123,25 @@ $db = DbConfig::getConnection();
     /**
      * Obtiene el id del ítem
      */
+    $id = -1;
+    if (isset($_GET['id']) and is_numeric($_GET['id'])) {
+        $id = htmlspecialchars($_GET['id']);
+        $id = intval($id);
+    }
 
     /**
      * Descarga los ítems
      */
     /** @noinspection JSUnusedLocalSymbols */
     /** @noinspection ES6ConvertVarToLetConst */
-    echo "items = " . json_encode(item_download_by_id($db, $id)) . ";
-            for (let i = 0; i < items.length; i++) {
-                items[i] = new Item(items[i]);
-            }
-        </script>\n";
+    echo "<script>
+        items = " . json_encode(item_download_by_id($db, $id)) . ";
+        if(items.length === 1){
+            items = new Item(items[0]);   
+        }else{
+            items = null;
+        }
+    </script>\n";
     ?>
 
     <!-- Inicia app -->
