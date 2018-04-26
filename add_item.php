@@ -104,9 +104,6 @@ $db = DbConfig::getConnection();
     load_rc_chile($db);
     ?>
 
-    <!-- Testing -->
-    <script src="test/add_item_test.js?v=<?php echo uniqid(); ?>"></script>
-
     <!-- Inicia app -->
     <script src="src/core/init.js"></script>
     <script src="src/modules/add_item/init.js"></script>

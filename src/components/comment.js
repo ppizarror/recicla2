@@ -17,7 +17,7 @@ function ItemComment(options) {
 
     // Instancia variables
     this._comment = options.comment;
-    this._date = options.date;
+    this._date = new Date(options.date);
     this._user = options.user;
 
     /**
@@ -25,8 +25,8 @@ function ItemComment(options) {
      * @return {string}
      */
     this.getDate = function () {
-        let $a = self._date.date.format('Y/m/d ');
-        let $b = self._date.date.format('H:m:s');
+        let $a = self._date.format('Y/m/d ');
+        let $b = self._date.format('H:m:s');
         return lang.comment_date_format.format($a, $b);
     };
 

@@ -245,6 +245,14 @@ if ($_POST) {
     $_a_date = date('Y-m-d H:i:s');
 
     /**
+     * Se escapan textos
+     */
+    $_a_cemail = $db->real_escape_string($_a_cemail);
+    $_a_desc = $db->real_escape_string($_a_desc);
+    $_a_name = $db->real_escape_string($_a_name);
+    $_a_nc = $db->real_escape_string($_a_nc);
+
+    /**
      * Se sube el artículo
      */
     $sql = "INSERT INTO articulo (nombre, descripcion, fecha_ingreso, comuna_id, calle_numero, nombre_contacto, email_contacto, fono_contacto) VALUES ('{$_a_name}','{$_a_desc}','{$_a_date}',{$_a_cm},'{$_a_st}','{$_a_nc}','{$_a_cemail}','{$_a_tel}');";

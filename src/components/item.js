@@ -32,7 +32,7 @@ function Item(options) {
     // Variables de instancia
     this._c = options.comuna;
     this._comments = options.comments;
-    this._date = options.date;
+    this._date = new Date(options.date);
     this._description = options.desc;
     this._id = generateId(10);
     this._name = options.name;
@@ -65,7 +65,7 @@ function Item(options) {
      * @return {{}|date|*}
      */
     this.getDate = function () {
-        return this._date.date.format('Y/m/d H:m:s');
+        return this._date.format('Y/m/d H:m:s');
     };
 
     /**
@@ -73,8 +73,8 @@ function Item(options) {
      * @return {string}
      */
     this.getPublishDate = function () {
-        let $a = this._date.date.format('Y/m/d');
-        let $b = this._date.date.format('H:m:s');
+        let $a = this._date.format('Y/m/d');
+        let $b = this._date.format('H:m:s');
         return lang.show_item_publish_date_format.format($a, $b);
     };
 

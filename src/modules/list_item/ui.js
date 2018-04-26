@@ -38,7 +38,7 @@ function createListItem() {
     /**
      * Carga los artículos y los dibuja
      */
-    let $items = loadLastItemsFromServer();
+    let $items = items;
     let $item;
     let $tableid = generateId(cfg_id_size);
     list_item_container.append('<table id="{0}" style="width:100%" class="display list-item-table nowrap"><thead><tr><th>{1}</th><th>{2}</th><th>{3}</th><th>{4}</th><th>{5}</th><th>{6}</th><th>{7}</th><th>{8}</th><th>{9}</th><th>{10}</th></tr></thead><tbody class="itemsContent"></tbody></table>'.format($tableid, lang.list_item_date, lang.list_item_item, lang.list_item_r, lang.list_item_c, lang.list_item_ncoments, lang.list_item_npics, lang.list_item_user_email, lang.list_item_user_name, lang.list_item_user_phone, lang.list_item_user_street));
@@ -89,6 +89,7 @@ function createListItem() {
     let $table = $('#{0}'.format($tableid));
     $table.DataTable({
         responsive: true,
+        paging: false,
         columnDefs: [{
             className: 'dt-center',
         }],

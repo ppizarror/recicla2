@@ -8,6 +8,7 @@
 
 /**
  * Carga un artículo en el servidor.
+ * @return
  */
 function uploadItemToServer() {
     let $o = $('#' + cfg_additem_form_id);
