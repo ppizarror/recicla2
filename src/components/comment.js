@@ -7,6 +7,28 @@
  */
 
 /**
+ * Valida un email.
+ * @param $input
+ * @returns {{message: string, status: boolean}}
+ */
+function validateAddItemEmail($input) {
+    let email = $input.val();
+    email = $.trim(email);
+    $input.val(email);
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let s = re.test(String(email).toLowerCase());
+
+    // Genera el estado
+    let st = {
+        message: lang.add_item_form_bad_email,
+        status: s,
+    };
+    validateAddItemChangeStyleInput($input, st);
+
+    return st;
+}
+
+/**
  * Comentario de un Ítem
  * @param options
  * @constructor
@@ -48,6 +70,10 @@ function ItemComment(options) {
      * @return {string|*}
      */
     this.getComment = function () {
+        /**
+         * Se identifica email o teléfono
+         */
+
         return self._comment;
     };
 }

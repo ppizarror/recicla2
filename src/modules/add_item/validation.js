@@ -42,9 +42,10 @@ var $_validation_add_item_tooltip = null;
 var validation_add_item_fun = [];
 
 /**
- * Valida un input
+ * Valida un input.
  * @param $input {object}       Input del formulario
  * @param options {object}      Parámetros validación
+ * @return {object}
  */
 function validateAddItemInputText($input, options) {
     let $defaults = {
@@ -177,8 +178,9 @@ function validateAddItemInputText($input, options) {
 }
 
 /**
- * Valida que un selector haya cambiado de valor
+ * Valida que un selector haya cambiado de valor.
  * @param $input {object}   Input del formulario
+ * @return {object}
  */
 function validateAddItemSelector($input) {
     let st = {
@@ -191,8 +193,9 @@ function validateAddItemSelector($input) {
 }
 
 /**
- * Valida un campo input
+ * Valida un campo input.
  * @param $input {object}   Input del formulario
+ * @return {object}
  */
 function validateAddItemEmail($input) {
     let email = $input.val();
@@ -212,8 +215,9 @@ function validateAddItemEmail($input) {
 }
 
 /**
- * Valida un campo file añadido de forma dinámica
+ * Valida un campo file añadido de forma dinámica.
  * @param $input {object}   Input añadido
+ * @return {object}
  */
 function validateAddItemPic($input) {
     let $file = $input.val();
@@ -228,9 +232,10 @@ function validateAddItemPic($input) {
 }
 
 /**
- * Cambia el estilo del input dependiendo del valor de verdad de s
+ * Cambia el estilo del input dependiendo del valor de verdad de s.
  * @param $input {object}   Objeto jQuery
  * @param s {boolean}       Valor booleano de verdad
+ * @return
  */
 function validateAddItemChangeStyleInput($input, s) {
     $input.removeClass('add-item-input-ok');
@@ -300,6 +305,7 @@ function validateAddItemChangeStyleInput($input, s) {
 
 /**
  * Valida el formulario para agregar artículos.
+ * @return {object}
  */
 function validateAddItemForm() {
     let $f; // Función validadora
