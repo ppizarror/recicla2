@@ -79,7 +79,7 @@ function createAddItem() {
     /**
      * Genera el formulario
      */
-    $ocr.append('<form id="{0}" name="addItem" method="post" autocomplete="off" action="src/modules/add_item/server/upload_item.php" enctype="multipart/form-data"><input type="hidden" name="MAX_FILE_SIZE" value="4194304" /><input type="hidden" id="addItemformValidated" name="form-validated" value="false" /><input type="submit" style="display: none"></form>'.format(cfg_additem_form_id));
+    $ocr.append('<form id="{0}" name="addItem" method="post" autocomplete="off" action="src/server/upload_item.php" enctype="multipart/form-data"><input type="hidden" name="MAX_FILE_SIZE" value="4194304" /><input type="hidden" id="addItemformValidated" name="form-validated" value="false" /><input type="submit" style="display: none"></form>'.format(cfg_additem_form_id));
     let $formobj = $('#{0}'.format(cfg_additem_form_id));
     let $resizef;
     for (let i = 0; i < $ftitle_k.length; i++) {
@@ -253,7 +253,7 @@ function initAddItemFormObject() {
                         cantBeEmpty: false,
                         checkMaxSize: true,
                         checkMinSize: false,
-                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!$%:)<>=(\[\]¡°|"-]+$/i
+                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!$%:;()?¿<>=\[\]¡°|"-]+$/i
                     });
                 };
 
@@ -302,7 +302,7 @@ function initAddItemFormObject() {
                     }
 
                     // noinspection QuirksModeInspectionTool
-                    $('#{0}'.format($id)).append('<div class="input-group add-item-pic-new-entry-block"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button" style="cursor: pointer;"><input type="file" name="foto-articulo{2}" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc{1}" ></div>'.format(lang.look_file, $add_item_total_pics));
+                    $('#{0}'.format($id)).append('<div class="input-group add-item-pic-new-entry-block"><label class="input-group-btn add-item-pic-label"><span class="btn btn-primary add-item-pic-button" style="cursor: pointer;"><input type="file" name="foto-articulo{1}" style="display: none;" accept="image/x-png, image/jpeg">{0}</span></label><input type="text" class="form-control add-item-pic-item-text" readonly disabled name="foto-articulo-desc{1}" ></div>'.format(lang.look_file, $add_item_total_pics));
                     $resize();
                     updateFileFormAddItemWatcher();
 

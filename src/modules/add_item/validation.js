@@ -234,7 +234,7 @@ function validateAddItemPic($input) {
 /**
  * Cambia el estilo del input dependiendo del valor de verdad de s.
  * @param $input {object}   Objeto jQuery
- * @param s {boolean}       Valor booleano de verdad
+ * @param s {object}       Valor booleano de verdad
  * @return
  */
 function validateAddItemChangeStyleInput($input, s) {

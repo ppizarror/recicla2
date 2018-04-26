@@ -32,11 +32,11 @@ function throw_error($id)
     $db->close();
 
     if (TEST_TYPE_ERROR_KILL) {
-        header("Location: ../../../../error.php?id=uploadItemNotValid&code={$id}");
+        header("Location: ../../error.php?id=uploadItemNotValid&code={$id}");
         die();
     } else {
         $_err_code = str_replace(" ", "_", $id);
-        echo "<pre>Error en consulta.\nERROR CODE: {$_err_code}</pre>";
+        echo "<pre>Error en consulta.\n\nERROR CODE: {$_err_code}</pre>";
         die();
     }
 }
@@ -194,9 +194,14 @@ if ($_POST and !$_GET) {
     for ($i = 1; $i <= $total_pics; $i++) {
         $photo = 'foto-articulo' . $i;
 
-        // Chequea que esté definida y sin error
+        // Chequea que esté definida en el formulario
         if (!isset($_FILES[$photo]) or $_FILES[$photo]['error'] != UPLOAD_ERR_OK) {
-            throw_error('PHOTO ' . $photo . ' NOT VALID');
+            throw_error('PHOTO ' . $photo . ' NOT FOUND ON FORM');
+        }
+
+        // Chequea que no tenga errores
+        if ($_FILES[$photo]['error'] != UPLOAD_ERR_OK) {
+            throw_error('PHOTO ' . $photo . ' HAS AN ERROR');
         }
 
         // Chequea que sea una imagen
@@ -260,7 +265,7 @@ if ($_POST and !$_GET) {
      */
     $db->close();
     setcookie('additem', 1, 0, "/");
-    header("Location: ../../../../index.php?status=added");
+    header("Location: ../../index.php?status=added");
     die();
 } else {
     throw_error('NOT POST');
