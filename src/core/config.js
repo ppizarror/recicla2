@@ -18,7 +18,7 @@ var cfg_width_enable_mobile = 600; // Pixeles activa modo móvil
  */
 var cfg_back_to_top = {
     enabled: true, // Indica si la funcionalidad está activa
-    px_to_trigger: 600, // Pixeles para activar el botón para subir
+    px_to_trigger: 400, // Pixeles para activar el botón para subir
 };
 var cfg_header_applogo_effect = 'hvr-wobble-top'; // Efecto cursor sobre ícono app
 var cfg_header_indexicon_effect = 'hvr-icon-buzz-out'; // Efecto cursor sobre ícono index

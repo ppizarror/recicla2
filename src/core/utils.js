@@ -143,6 +143,7 @@ function isTrueNotNull(obj) {
  * @return
  */
 function showBackToTopButton() {
+    /* global $*/
     if (cfg_back_to_top.enabled) {
         $(window).scroll(function () {
             location.pathname.replace(/^\//, '');
