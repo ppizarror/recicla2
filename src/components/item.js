@@ -69,7 +69,7 @@ function Item(options) {
      * @return {string|*}
      */
     this.getDescription = function () {
-        return self._description;
+        return self._description.replace(/\n/g, '<br>');
     };
 
     /**

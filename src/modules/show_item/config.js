@@ -7,4 +7,9 @@
  */
 
 var cfg_showitem_center_module = true; // Centra la página de visualización
+var cfg_sort_comments_by_date_desc = false; // Comentarios por fecha descendente
+
+/**
+ * Parámetros globales
+ */
 var items;

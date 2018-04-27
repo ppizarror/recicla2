@@ -6,12 +6,16 @@
  * @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-global $err_code;
-if ($_GET and isset($_GET['id'])) {
-    // Obtiene el código de error
-    $err_code = htmlspecialchars($_GET['id']);
+global $err_id, $err_code;
+if (isset($_GET['id'])) { // Obtiene el id de error
+    $err_id = htmlspecialchars($_GET['id']);
 } else {
-    $err_code = 'badErrorId';
+    $err_id = 'badErrorId';
+}
+if (isset($_GET['code'])) { // Obtiene el código de error
+    $err_code = htmlspecialchars($_GET['code']);
+} else {
+    $err_code = '';
 }
 ?>
 
@@ -103,7 +107,11 @@ if ($_GET and isset($_GET['id'])) {
     /**
      * Escribe el error
      */
-    echo '<script>err = function initError(){throwErrorID(errordb.' . $err_code . ')};pushInitAppCallbackFunction(err);</script>';
+    if ($err_code != '') {
+        echo '<script>err = function initError(){throwErrorIDPlusCode(errordb.' . $err_id . ', "' . $err_code . '")};pushInitAppCallbackFunction(err);</script>';
+    } else {
+        echo '<script>err = function initError(){throwErrorID(errordb.' . $err_id . ')};pushInitAppCallbackFunction(err);</script>';
+    }
     echo "\n";
     ?>
 

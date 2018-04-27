@@ -188,6 +188,7 @@ function _item_check_add_status()
         echo "<script>
         function uploadItemOkPopup() {
             $.alert({
+                closeIcon: true,
                 columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
                 content: lang.add_item_form_ok_upload,
                 title: lang.module_add_item

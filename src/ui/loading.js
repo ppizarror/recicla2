@@ -7,23 +7,25 @@
  */
 
 /**
- * Handler de la función loading
+ * Handler de la función loading.
  * @param {boolean} status          Indica si se muestra o no el spinner de carga
+ * @return
  */
 function loadHandler(status) {
     Loading(status, null);
 }
 
 /**
- * Muestra una pantalla de carga
+ * Muestra una pantalla de carga.
  * @param {boolean} Checker         Indica el estado
  * @param {Function} callback       Función que se llama tras la función
+ * @return
  */
 function Loading(Checker, callback) {
-    var h, hh, w, posX, posY;
-    var $body = $('body');
+    let h, hh, w, posX, posY;
+    let $body = $('body');
     // var $rootHtml = $('#root');
-    var $backtotop = $('a.back-to-top');
+    let $backtotop = $('a.back-to-top');
     if (typeof(Checker) === 'boolean') {
         h = getElementHeight($(window));
         hh = getElementHeight($body);
@@ -33,7 +35,7 @@ function Loading(Checker, callback) {
         posY = (h - 69) / 2;
         if (Checker) {
             if (document.getElementById('LoadingDivLayer') == null) {
-                var loadingTag = '<div id="LoadingDivLayer" class="LoadingDivLayerClass" style="height:' + String(hh) + 'px">';
+                let loadingTag = '<div id="LoadingDivLayer" class="LoadingDivLayerClass" style="height:' + String(hh) + 'px">';
                 loadingTag += '<div class="LoadingForeground" style="height:' + String(hh) + 'px;">';
                 loadingTag += '<div class="LoadingBox" style="top:' + String(posY) + "px;left:" + String(posX) + 'px;">';
                 loadingTag += '<img src="' + res_loading_image + "\" alt=\"Loading...\" />";
@@ -78,17 +80,18 @@ function Loading(Checker, callback) {
 }
 
 /**
- * Añade evento de redimensionado del objeto loadingDiv
+ * Añade evento de redimensionado del objeto loadingDiv.
+ * @return
  */
 $(window).resize(function () {
-    var h, hh, w, posX, posY;
+    let h, hh, w, posX, posY;
     if (document.getElementById('LoadingDivLayer') != null) {
         h = $(window).height();
         hh = $('body').height();
         w = $(window).width();
         posX = (w - 69) / 2;
         posY = (h - 69) / 2;
-        var $loadinglayer = $('#LoadingDivLayer');
+        let $loadinglayer = $('#LoadingDivLayer');
         h = Math.max(h, hh);
         $loadinglayer.css({
             height: String(h) + 'px'

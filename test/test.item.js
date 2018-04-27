@@ -1,4 +1,4 @@
-// noinspection ES6ConvertVarToLetConst
+// noinspection ES6ConvertVarToLetConst,JSUnusedGlobalSymbols
 /**
  ITEM-TEST
  Items de la aplicación.

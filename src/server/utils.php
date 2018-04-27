@@ -65,7 +65,8 @@ function convertPHPSizeToBytes($sSize)
  */
 function validate_string_size($s, $minl, $maxl)
 {
-    $l = strlen(trim($s)); // Largo del string
+    // Largo del string
+    $l = strlen(str_replace("\r", '', str_replace("\n", '', trim($s))));
 
     if ($minl != -1 and $maxl != -1) {
         if ($minl <= $l and $l <= $maxl) {

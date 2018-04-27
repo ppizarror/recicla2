@@ -68,7 +68,7 @@ function throwErrorIDException(errorid, exceptionmsg) {
     $('#errorMsgText').html('<span class="errAlertIcon">{0}</span> {1}'.format('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i><span></span>', errorid.msg));
 
     // noinspection HtmlUnknownTarget,QuirksModeInspectionTool
-    $errormsg.append('<a href="index.php" class="err-back-home hvr-bounce-in"><i class="fas fa-home"></i> {0}</a>'.format(lang.back_home));
+    $errormsg.append('<a href="index.php" class="err-back-home hvr-bounce-in">{0} <i class="fas fa-home"></i></a>'.format(lang.back_home));
 
     // Crea el tooltip
     try {
@@ -78,6 +78,7 @@ function throwErrorIDException(errorid, exceptionmsg) {
     }
     $errormsg.tooltipster({
         content: errorid.moreinfo + '.',
+        contentAsHTML: true,
         maxWidth: $errormsg.width() * 0.8,
         side: 'bottom',
         theme: cfg_tooltip_theme
@@ -109,6 +110,18 @@ function throwErrorIDException(errorid, exceptionmsg) {
  */
 function throwErrorID(errorid) {
     throwErrorIDException(errorid, null);
+}
+
+// noinspection JSUnusedGlobalSymbols
+/**
+ * Escribe un error añadiendo un código
+ * @param {object} errorid
+ * @param {string} code
+ */
+function throwErrorIDPlusCode(errorid, code) {
+    let $newerror = $.extend({}, errorid);
+    $newerror.moreinfo += '.<br /><span class="err-code">' + lang.error_code.format(code) + '</span>';
+    throwErrorID($newerror);
 }
 
 // noinspection JSUnusedGlobalSymbols

@@ -16,7 +16,7 @@ include_once("utils.php");
  */
 const FILE_UPLOAD_PATH = "../../resources/photos/"; // Ubicación carpeta uploads
 const FORM_SIZE = 11; // Tamaño del formulario
-const TEST_TYPE_ERROR_KILL = 0; // Indica el tipo de error, si es verdadero redirige la aplicación y termina consulta
+const TEST_TYPE_ERROR_KILL = 1; // Indica el tipo de error, si es verdadero redirige la aplicación y termina consulta
 
 /** @var mysqli $db */
 $db = DbConfig::getConnection();

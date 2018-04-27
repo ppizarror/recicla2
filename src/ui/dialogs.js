@@ -8,8 +8,9 @@
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Muestra una notificación positiva al usuario
+ * Muestra una notificación positiva al usuario.
  * @param {string} message      Mensaje
+ * @return
  */
 function throwNotificationOk(message) {
     toastr.options = {

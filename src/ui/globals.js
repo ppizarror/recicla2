@@ -1,3 +1,4 @@
+// noinspection ES6ConvertVarToLetConst
 /**
  UI GLOBALS
  Variables globales.

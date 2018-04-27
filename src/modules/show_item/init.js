@@ -13,6 +13,7 @@ $(function () {
 
     // Carga el artículo
     if (items === null) {
+        // noinspection JSUnresolvedVariable
         throwErrorID(errordb.itemNotExist);
         return;
     }

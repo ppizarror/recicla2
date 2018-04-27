@@ -37,6 +37,14 @@ Copyright 2018, no copiar o distribuír sin permiso directo del autor.
     padding-right: 10px;
 }
 
+.show-item-description-extended {
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 0 3px 2px -2px grey;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
 @media screen and (max-width: 700px) {
     .show-item-description {
         font-weight: 300;

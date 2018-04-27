@@ -130,6 +130,13 @@ function createShowItem($item) {
     let $comments = $item.getComments();
 
     /**
+     * Sortea los comentarios
+     */
+    if (cfg_sort_comments_by_date_desc) {
+        $comments = $comments.reverse();
+    }
+
+    /**
      * @type {ItemComment}
      */
     if ($item.getTotalComments() === 0) {
@@ -148,7 +155,7 @@ function createShowItem($item) {
         $.confirm({
             animateFromElement: false,
             animation: 'scale',
-            columnClass: 'col-md-{0} col-md-offset-5 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 400 ? '6' : '4'),
+            columnClass: 'col-md-{0} col-sm-8'.format($(window).width() < 400 ? '6' : '4'),
             title: lang.add_comment_title,
             icon: 'far fa-comment',
             draggable: true,
@@ -284,7 +291,11 @@ function addCommentItem($c) {
     }
     let $dateclockid = generateId(cfg_id_size);
     let $commentid = generateId(cfg_id_size);
-    $show_item_comment_container.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div><div class="show-item-comment-dateicon" id="{3}"><i class="far fa-clock"></i></div></div><div class="show-item-comment-content" id="{4}">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment(), $dateclockid, $commentid));
+    if (cfg_sort_comments_by_date_desc) {
+        $show_item_comment_container.append('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div><div class="show-item-comment-dateicon" id="{3}"><i class="far fa-clock"></i></div></div><div class="show-item-comment-content" id="{4}">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment(), $dateclockid, $commentid));
+    } else {
+        $show_item_comment_container.prepend('<div class="show-item-comment-entry"><div class="show-item-comment-header"><div class="show-item-comment-user-name">{0}</div><div class="show-item-comment-date">{1}</div><div class="show-item-comment-dateicon" id="{3}"><i class="far fa-clock"></i></div></div><div class="show-item-comment-content" id="{4}">{2}</div></div>'.format($c.getUser(), $c.getDate(), $c.getComment(), $dateclockid, $commentid));
+    }
     $('#' + $commentid).emoticons();
     $('#' + $dateclockid).tooltipster({
         content: lang.show_item_comment_date_tooltip.format($c.getDate()),
@@ -314,6 +325,12 @@ function autoResizeTitles(formid, titleid) {
  * @param $item {Item}  Artículo
  */
 function initShowItemSections($item) {
+    // Selecciona el tema para la descripción
+    let $theme_description = '';
+    if ($item.getDescription().length > 400) {
+        $theme_description = 'show-item-description-extended';
+    }
+
     // noinspection QuirksModeInspectionTool
     $show_item_sections = {
 
@@ -329,7 +346,7 @@ function initShowItemSections($item) {
         "1": {
             "name": lang.add_item_form_desc,
             "icon": "far fa-comment-alt",
-            "value": "<div class='show-item-description'>{0}</div>".format($item.getDescription()),
+            "value": "<div class='show-item-description {1}'>{0}</div>".format($item.getDescription(), $theme_description),
             "resizeThread": true,
             "afterDrawFun": function () {
                 $('.show-item-description').emoticons();
@@ -458,8 +475,16 @@ function initShowItemSections($item) {
         "8": {
             "name": lang.add_item_form_phone,
             "icon": "fas fa-phone",
-            "value": "<div class='show-item-text'><a href='tel:{0}' class='disable-a-hover'>+56{0}</a></div>".format($item.getUserPhone()),
-            "resizeThread": false
+            "value": "<div class='show-item-text data-item-user-phone'><a href='tel:{0}' class='disable-a-hover'>+56{0}</a></div>".format($item.getUserPhone()),
+            "resizeThread": false,
+            "afterDrawFun": function () {
+                // Si el teléfono está vacío se oculta
+                if ($item.getUserPhone() === '') {
+                    $('#' + this.id_value).hide();
+                    $('#' + this.id_title).hide();
+
+                }
+            }
         },
 
         // Publicado el

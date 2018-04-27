@@ -6,14 +6,18 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-// Variables globales
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Ubicación loading img
+ */
 var res_loading_image = 'resources/ui/loading_flower.gif';
 
 /**
- * Precarga los recursos de la plataforma
+ * Precarga los recursos de la plataforma.
+ * @return
  */
 function preloadResources() {
-    var $d = $('#preload_resources');
+    let $d = $('#preload_resources');
 
     // Añade cada recurso a cargar
     $d.append('<img src="' + res_loading_image + '" alt="" />');

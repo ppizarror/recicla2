@@ -230,7 +230,7 @@ function initAddItemFormObject() {
                 let $input = $('input[name=nombre-articulo]');
                 let $f = function () {
                     return validateAddItemInputText($input, {
-                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!;?¿/{}\[\]¡°|"-]+$/i
+                        schars: /^[À-ÿzáéíóúÁÉÍÓÚüÜ\u00f1\u00d1a-z_0-9',.#!;+-?¿():/{}\[\]¡°|"-]+$/i
                     });
                 };
 
@@ -244,7 +244,7 @@ function initAddItemFormObject() {
         "1": {
             "name": lang.add_item_form_desc,
             "icon": "far fa-comment-alt",
-            "form": "<textarea class='form-control add-item-description' rows='3' name='descripcion-articulo' maxlength='1000' autocomplete='off'></textarea>",
+            "form": "<textarea class='form-control add-item-description' rows='4' name='descripcion-articulo' maxlength='1000' autocomplete='off'></textarea>",
             "resizeThread": false,
             "validate": function () {
                 let $input = $('textarea[name=descripcion-articulo]');
@@ -253,7 +253,7 @@ function initAddItemFormObject() {
                         cantBeEmpty: false,
                         checkMaxSize: true,
                         checkMinSize: false,
-                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#!$%:;()?¿<>=\[\]¡°|"-]+$/i
+                        schars: /^[À-ÿ\u00f1\u00d1záéíóúÁÉÍÓÚüÜa-z_0-9',.#!$%:;()+*/&?¿<>=\r\n\[\]¡°|"-]+$/i
                     });
                 };
 
@@ -375,7 +375,7 @@ function initAddItemFormObject() {
                 let $input = $('input[name=calle-articulo]');
                 let $f = function () {
                     return validateAddItemInputText($input, {
-                        schars: /^[À-ÿ\u00f1\u00d1a-z_0-9',.#/!°-]+$/i
+                        schars: /^[À-ÿzáéíóúÁÉÍÓÚüÜ\u00f1\u00d1a-z_0-9',.#/!°-]+$/i
                     });
                 };
 
@@ -398,7 +398,7 @@ function initAddItemFormObject() {
                         checkMinWords: true,
                         minWords: 2,
                         minWordsErrorMessage: lang.add_item_form_bad_name_words,
-                        schars: /^[À-ÿ\u00f1\u00d1a-z,.]+$/i
+                        schars: /^[À-ÿzáéíóúÁÉÍÓÚüÜ\u00f1\u00d1a-z,.]+$/i
                     });
                 };
 
