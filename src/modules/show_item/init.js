@@ -7,10 +7,10 @@
  */
 
 /**
- * Inicia el módulo al cargar la página
+ * Inicia el módulo al cargar la página.
+ * @return
  */
 $(function () {
-
     // Carga el artículo
     if (items === null) {
         // noinspection JSUnresolvedVariable

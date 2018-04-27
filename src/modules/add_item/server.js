@@ -17,7 +17,6 @@ function uploadItemToServer() {
         // El formulario es válido
         if ($_add_item_is_valid) {
         }
-
         // El formulario tiene errores
         else {
             e.preventDefault(); // Cancela el submit

@@ -7,7 +7,7 @@
  */
 
 /**
- * Crea un objeto de Fecha
+ * Crea un objeto de Fecha.
  * @param {number} day      Día
  * @param {number} month    Mes
  * @param {number} year     Año
@@ -40,6 +40,7 @@ function createDateElement(day, month, year, hour, min, sec) {
 /**
  * Crea un objeto dateElement a partir de un string del servidor.
  * @param stime
+ * @return
  */
 function createDateFromServerTime(stime) {
     stime = stime.split(' ');
@@ -50,7 +51,7 @@ function createDateFromServerTime(stime) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Convierte un objeto date desde el servidor al local
+ * Convierte un objeto date desde el servidor al local.
  * @param {object} date     Objeto tipo DateElement
  * @return {object}         Objeto local tipo DateElement
  */
@@ -60,7 +61,7 @@ function dateElementParser(date) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Crea un objeto de fecha local
+ * Crea un objeto de fecha local.
  * @return {object}     Retorna fecha de hoy
  */
 function getLocalDateElement() {
@@ -69,7 +70,7 @@ function getLocalDateElement() {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Crea un objeto de fecha local
+ * Crea un objeto de fecha local.
  * @return {object}     Retorna la fecha de ayer
  */
 function getYesterdayDateElement() {
@@ -78,7 +79,7 @@ function getYesterdayDateElement() {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Crea una fecha random entre el día actual y el principio de año
+ * Crea una fecha random entre el día actual y el principio de año.
  * @return {object}     Fecha random
  */
 function getRandomDateElement() {
@@ -92,7 +93,7 @@ function getRandomDateElement() {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Crea un objeto de fecha local
+ * Crea un objeto de fecha local.
  * @return {object}     Retorna la fecha de mañana
  */
 function getTomorrowDateElement() {
@@ -100,7 +101,7 @@ function getTomorrowDateElement() {
 }
 
 /**
- * Retorna un objeto de fecha local modificado
+ * Retorna un objeto de fecha local modificado.
  * @param {number} d    Días a descontar
  * @param {number} m    Meses a descontar
  * @param {number} y    Años a descontar
@@ -120,7 +121,8 @@ function getDateElement(d, m, y, h, mn, s) {
 }
 
 /**
- * Formatea las fechas
+ * Formatea las fechas.
+ * @return
  */
 (function () {
     function g(a, c) {

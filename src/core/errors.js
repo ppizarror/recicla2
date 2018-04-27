@@ -21,7 +21,8 @@ var errordb = {
 };
 
 /**
- * Inicia mensajes de error
+ * Inicia mensajes de error.
+ * @return
  */
 function initErrors() {
     let $add = function (id, msg, moreinfo, code) {
@@ -43,7 +44,8 @@ function initErrors() {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Oculta mensajes de error
+ * Oculta mensajes de error.
+ * @return
  */
 function cleanErrorMsg() {
     $('#errorMsg').css('display', 'none');
@@ -52,9 +54,10 @@ function cleanErrorMsg() {
 }
 
 /**
- * Escribe el error en el panel con una excepción
+ * Escribe el error en el panel con una excepción.
  * @param {object} errorid          Objecto de errordb
  * @param {object} exceptionmsg     Objeto de exepción
+ * @return
  */
 function throwErrorIDException(errorid, exceptionmsg) {
     let $maincontent = $('#mainContent');
@@ -105,8 +108,9 @@ function throwErrorIDException(errorid, exceptionmsg) {
 }
 
 /**
- * Escribe el error en el panel
+ * Escribe el error en el panel.
  * @param {object} errorid      Objeto de errordb
+ * @return
  */
 function throwErrorID(errorid) {
     throwErrorIDException(errorid, null);
@@ -114,9 +118,10 @@ function throwErrorID(errorid) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Escribe un error añadiendo un código
+ * Escribe un error añadiendo un código.
  * @param {object} errorid
  * @param {string} code
+ * @return
  */
 function throwErrorIDPlusCode(errorid, code) {
     let $newerror = $.extend({}, errorid);
@@ -126,16 +131,18 @@ function throwErrorIDPlusCode(errorid, code) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Escribe un error en toda la página
+ * Escribe un error en toda la página.
  * @param {object} errorid      Objeto de errordb
+ * @return
  */
 function throwFullErrorId(errorid) {
     throwErrorID(errorid);
 }
 
 /**
- * Lanza una notificación de error
+ * Lanza una notificación de error.
  * @param {object} errorid      Objeto de errordb
+ * @return
  */
 function throwErrorNotification(errorid) {
     toastr.options = {
@@ -160,8 +167,9 @@ function throwErrorNotification(errorid) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Lanza una notificación de error más un mensaje en la página web
+ * Lanza una notificación de error más un mensaje en la página web.
  * @param {object} errorid      Objeto de errordb
+ * @return
  */
 function throwErrorMessage(errorid) {
     throwErrorNotification(errorid);
@@ -172,8 +180,9 @@ function throwErrorMessage(errorid) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Lanza un mensaje de exepción
+ * Lanza un mensaje de exepción.
  * @param {object} exceptionmsg     Objeto de la exepción
+ * @return
  */
 function throwExceptionMessage(exceptionmsg) {
     toastr.options = {
@@ -202,8 +211,9 @@ function throwExceptionMessage(exceptionmsg) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Muestra una advertencia al usuario
+ * Muestra una advertencia al usuario.
  * @param {string} message      Mensaje de error
+ * @return
  */
 function throwNotificationWarning(message) {
     toastr.options = {

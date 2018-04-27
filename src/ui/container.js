@@ -7,7 +7,7 @@
  */
 
 /**
- *
+ * Contenedor
  * @param options
  * @constructor
  */
@@ -58,7 +58,7 @@ function Container(options) {
 
     // noinspection JSUnusedGlobalSymbols
     /**
-     * Retorna el id
+     * Retorna el id.
      * @return {string|*}
      */
     this.getId = function () {
@@ -66,7 +66,7 @@ function Container(options) {
     };
 
     /**
-     * Retorna el objeto del contenido
+     * Retorna el objeto del contenido.
      * @return {jQuery|HTMLElement|*}
      */
     this.getDOM = function () {

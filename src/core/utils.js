@@ -20,7 +20,7 @@ if (!String.prototype.format) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Retorna un color aleatorio
+ * Retorna un color aleatorio.
  * @return {string}
  */
 function getRandomColor() {
@@ -33,7 +33,7 @@ function getRandomColor() {
 }
 
 /**
- * Aplica padding
+ * Aplica padding.
  * @param nr
  * @param n
  * @returns {string}
@@ -44,7 +44,7 @@ function padLeft(nr, n) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Redondea un número
+ * Redondea un número.
  * @param {number} num      Número
  * @param {number} scale    Cantidad de decimales
  * @return {number}         Número redondeado
@@ -67,7 +67,7 @@ function roundNumber(num, scale) {
 }
 
 /**
- * Convierte un número decimal en hexadecimal
+ * Convierte un número decimal en hexadecimal.
  * @param {number} dec      Número decimal
  * @return {string}         Número hexadecimal
  */
@@ -77,7 +77,7 @@ function dec2hex(dec) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Genera un string aleatorio
+ * Genera un string aleatorio.
  * @param {number} len      Largo del string a generar
  * @return {string}         String aleatorio
  */
@@ -89,7 +89,7 @@ function generateId(len) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Borra un diccionario
+ * Borra un diccionario.
  * @param {object} $dict        Diccionario
  */
 function clearDict($dict) {
@@ -100,7 +100,7 @@ function clearDict($dict) {
 }
 
 /**
- * Retorna verdadero si el objeto no es nulo e indefinido
+ * Retorna verdadero si el objeto no es nulo e indefinido.
  * @param {object} obj      Objeto a comprobar
  * @return {boolean}        Booleano de comprobación
  */
@@ -110,7 +110,7 @@ function notNullUndf(obj) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Retorna verdadero si el objeto es nulo o indefinido
+ * Retorna verdadero si el objeto es nulo o indefinido.
  * @param {object} obj      Objeto a comprobar
  * @return {boolean}
  */
@@ -120,7 +120,7 @@ function isNullUndf(obj) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Retorna verdadero si el objeto es falso y no nulo
+ * Retorna verdadero si el objeto es falso y no nulo.
  * @param {object} obj      Objeto a comprobar
  * @return {boolean}
  */
@@ -130,7 +130,7 @@ function isFalseNotNull(obj) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Retorna verdadero si el objeto es verdadero y no nulo
+ * Retorna verdadero si el objeto es verdadero y no nulo.
  * @param {object} obj      Objeto a comprobar
  * @return {boolean}
  */
@@ -139,7 +139,8 @@ function isTrueNotNull(obj) {
 }
 
 /**
- * Muestra el botón para subir al tope de la página
+ * Muestra el botón para subir al tope de la página.
+ * @return
  */
 function showBackToTopButton() {
     if (cfg_back_to_top.enabled) {
@@ -156,7 +157,7 @@ function showBackToTopButton() {
 }
 
 /**
- * Retorna la altura en px del elemento en el DOM
+ * Retorna la altura en px del elemento en el DOM.
  * @param elem {Object}         Elemento jQuery
  * @return {number}
  */
@@ -172,7 +173,7 @@ function getElementHeight(elem) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Retorna el ancho en px del elemento en el DOM
+ * Retorna el ancho en px del elemento en el DOM.
  * @param elem {Object}         Elemento jQuery
  * @return {number}
  */
@@ -187,7 +188,7 @@ function getElementWidth(elem) {
 }
 
 /**
- * Retorna el ancho en px del elemento en el DOM sin padding
+ * Retorna el ancho en px del elemento en el DOM sin padding.
  * @param elem {Object}         Elemento jQuery
  * @return {number}
  */
@@ -202,9 +203,10 @@ function getElementInnerWidth(elem) {
 }
 
 /**
- * Muestra un mensaje de error en la consola
+ * Muestra un mensaje de error en la consola.
  * @param {string} msg      Mensaje
  * @param {boolean} w       Indica si se escribe el encabezado o no
+ * @return
  */
 function consoleLogError(msg, w) {
     let $m;
@@ -220,9 +222,10 @@ function consoleLogError(msg, w) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Muestra un mensaje de advertencia en la consola
+ * Muestra un mensaje de advertencia en la consola.
  * @param {string} msg      Mensaje
  * @param {boolean} w       Indica si se escribe el encabezado o no
+ * @return
  */
 function consoleLogWarn(msg, w) {
     let $m;
@@ -237,9 +240,10 @@ function consoleLogWarn(msg, w) {
 }
 
 /**
- * Escribe un error en consola
+ * Escribe un error en consola.
  * @param exceptionmsg      Excepción
  * @param {boolean} w       Indica si se escribe el encabezado o no
+ * @return
  */
 function consoleLogException(exceptionmsg, w) {
     let $m;
@@ -255,8 +259,9 @@ function consoleLogException(exceptionmsg, w) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Muestra un mensaje de información en la consola
+ * Muestra un mensaje de información en la consola.
  * @param {string} msg      Mensaje
+ * @return
  */
 function consoleLogInfo(msg) {
     if (cfg_verbose) {
@@ -264,8 +269,9 @@ function consoleLogInfo(msg) {
     }
 }
 
+// noinspection JSUnusedGlobalSymbols
 /**
- * Obtiene parámetro url
+ * Obtiene parámetro url.
  * @param {string} name     Nombre del parámetro
  * @return {string}         Valor del parámetro
  */
@@ -284,6 +290,7 @@ var __initAppCallback = [];
 /**
  * Agrega función al callback inicial.
  * @param {function} $f
+ * @return
  */
 function pushInitAppCallbackFunction($f) {
     __initAppCallback.push($f);
@@ -291,6 +298,7 @@ function pushInitAppCallbackFunction($f) {
 
 /**
  * Llama a todas las funciones iniciales.
+ * @return
  */
 function initAppCallback() {
     for (let i = 0; i < __initAppCallback.length; i++) {
@@ -299,7 +307,7 @@ function initAppCallback() {
 }
 
 /**
- * Borra un parámetro de la url
+ * Borra un parámetro de la url.
  * @param parameter
  * @returns {string}
  */

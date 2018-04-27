@@ -1,16 +1,16 @@
 /**
  LIST ITEM INIT
- Inicia el módulo de agregar item.
+ Inicia el módulo de agregar ítem.
 
  @author Pablo Pizarro R. @ppizarror.com
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
 /**
- * Inicia el módulo al cargar la página
+ * Inicia el módulo al cargar la página.
+ * @return
  */
 $(function () {
-
     // Muestra panel cargando
     loadHandler(true);
 

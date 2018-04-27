@@ -110,6 +110,7 @@ function Item(options) {
 
     /**
      * Retorna la región del artículo.
+     * @return {string}
      */
     this.getRegion = function () {
         return self._r;
@@ -177,6 +178,7 @@ function Item(options) {
      * @param user
      * @param comment
      * @param date
+     * @return
      */
     this.addComment = function (user, comment, date) {
         self._comments.push(new ItemComment({

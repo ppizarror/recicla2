@@ -1,18 +1,26 @@
 /**
  LANG
- Achivo general de idiomas y localización (l10n)
+ Achivo general de idiomas y localización (i10n).
 
  @author Pablo Pizarro R. @ppizarror.com
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-// Globales
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Almacena los distintos idiomas
+ */
 var $lang_db = {};
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Idioma seleccionado
+ */
 var lang;
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Retorna un arreglo con todos los idiomas disponibles
+ * Retorna un arreglo con todos los idiomas disponibles.
  * @return {Array}
  */
 function getAllLangAvaiable() {

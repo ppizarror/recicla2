@@ -22,6 +22,7 @@ var $add_item_total_pics = 1;
 
 /**
  * Crea el módulo en la ui.
+ * @return
  */
 function createAddItem() {
 
@@ -168,7 +169,8 @@ function createAddItem() {
 }
 
 /**
- * Función que se ejecuta después de cerrar el pop-up de errores al intentar enviar el formulario
+ * Función que se ejecuta después de cerrar el pop-up de errores al intentar enviar el formulario.
+ * @return
  */
 function onClosePopupErrorAddItemHandler() {
     if (notNullUndf($_validation_add_item_tooltip)) {
@@ -178,7 +180,7 @@ function onClosePopupErrorAddItemHandler() {
 }
 
 /**
- * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario
+ * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario.
  * @param formid {string}   ID del formulario
  * @param titleid {string}  ID del elemento del título
  * @return {function}       Función ajuste del css
@@ -192,7 +194,8 @@ function autoResizeTitles(formid, titleid) {
 }
 
 /**
- * Actualiza el nombre de las imágenes en los label
+ * Actualiza el nombre de las imágenes en los label.
+ * @return
  */
 function updateFileFormAddItemWatcher() {
     $(document).on('change', ':file', function () {
@@ -215,6 +218,7 @@ function updateFileFormAddItemWatcher() {
 
 /**
  * Inicia el objeto del formulario.
+ * @return
  */
 function initAddItemFormObject() {
     // noinspection QuirksModeInspectionTool
@@ -464,7 +468,8 @@ function initAddItemFormObject() {
 }
 
 /**
- * Actualiza el formulario de las regiones y las comunas
+ * Actualiza el formulario de las regiones y las comunas.
+ * @return
  */
 function addItemUpdateRCForm() {
     let $hr = '<option value="sin-region">{0}</option>'.format(lang.add_item_r_pick);

@@ -14,6 +14,7 @@ var list_item_container;
 
 /**
  * Crea el módulo en la ui.
+ * @return
  */
 function createListItem() {
 
@@ -190,7 +191,8 @@ function createListItem() {
 }
 
 /**
- * Ajusta el contenido al ancho de la página a un 80%
+ * Ajusta el contenido al ancho de la página a un 80%.
+ * @return
  */
 function adjustListItemWidth() {
     let $min = parseInt($(ui_main_content).css('min-width'), 10);
@@ -205,7 +207,7 @@ function adjustListItemWidth() {
 }
 
 /**
- * Acorta el nombre de un artículo a lo pedido por configuración página visualización
+ * Acorta el nombre de un artículo a lo pedido por configuración página visualización.
  * @param name {string}     Nombre de un artículo
  * @return {object}         Retorna objeto status trim
  */

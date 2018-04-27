@@ -60,13 +60,14 @@ function throwNotificationInfo(message) {
 }
 
 /**
- * Lanza un popup de confirmación
+ * Lanza un popup de confirmación.
  * @param {string} title        Título del popup
  * @param {string} content      Contenido del popup
  * @param {object} options      Opciones de creación
+ * @return
  */
 function confirmPopup(title, content, options) {
-    var $defaults = {
+    let $defaults = {
         animation: 'zoom', // Animación de apertura
         backgroundDismiss: 'close', // Evento clickeo fuera del popup
         cancel: null, // Función que se ejecuta al cancelar

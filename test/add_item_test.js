@@ -1,7 +1,7 @@
 /**
  ADD_ITEM_TEST
  Testeo módulo añadir ítem.
- Añade texto en distintos campos
+ Añade texto en distintos campos.
 
  @author Pablo Pizarro R. @ppizarror.com
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
@@ -10,6 +10,7 @@
 // noinspection JSUnusedGlobalSymbols
 /**
  * Agrega un ítem.
+ * @return
  */
 function __addItemTest() {
     let $form = document.addItem;
@@ -31,7 +32,7 @@ function __addItemTest() {
 }
 
 /**
- * Agrega un botón para setear el formulario
+ * Agrega un botón para setear el formulario.
  * @private
  */
 function __buttonAddItemTest() {
@@ -42,7 +43,6 @@ function __buttonAddItemTest() {
     // Se agrega evento
     $('#' + $id).on('click', __addItemTest);
 }
-
 
 // Añade callback a module
 addAfterInitModuleCallback(__buttonAddItemTest);

@@ -40,6 +40,7 @@ var $show_item_sections;
 /**
  * Crea el módulo en la ui.
  * @param $item {Item}      Artículo cargado
+ * @return
  */
 function createShowItem($item) {
 
@@ -281,8 +282,9 @@ function createShowItem($item) {
 }
 
 /**
- * Añade un comentario en la página
+ * Añade un comentario en la página.
  * @param $c {ItemComment}      Comentario
+ * @return
  */
 function addCommentItem($c) {
     if ($show_item_empty_comment) {
@@ -307,7 +309,7 @@ function addCommentItem($c) {
 }
 
 /**
- * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario
+ * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario.
  * @param formid {string}       ID del formulario
  * @param titleid {string}      ID del elemento del título
  * @return {function}
@@ -323,6 +325,7 @@ function autoResizeTitles(formid, titleid) {
 /**
  * Inicia el objeto del formulario.
  * @param $item {Item}  Artículo
+ * @return
  */
 function initShowItemSections($item) {
     // Selecciona el tema para la descripción
@@ -498,7 +501,8 @@ function initShowItemSections($item) {
 }
 
 /**
- * Centra el panel principal
+ * Centra el panel principal.
+ * @return
  */
 function showItemBackgroundResize() {
     let $appbackground = $('#appBackground');

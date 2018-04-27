@@ -7,10 +7,10 @@
  */
 
 /**
- * Inicia la aplicación
+ * Inicia la aplicación.
+ * @return
  */
 $(function () {
-
     // Imprime el acerca-de
     printAboutInfo();
 

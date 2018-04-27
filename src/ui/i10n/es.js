@@ -1,3 +1,4 @@
+// noinspection JSUndefinedPropertyAssignment
 /**
  ES
  Idioma español.

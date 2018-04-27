@@ -26,8 +26,9 @@ var modules = {
 };
 
 /**
- * Carga el archivo definido por el módulo m
+ * Carga el archivo definido por el módulo m.
  * @param m {object}        Archivo del módulo
+ * @return
  */
 function loadModule(m) {
     window.location.href = m.file;
