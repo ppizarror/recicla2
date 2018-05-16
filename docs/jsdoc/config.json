@@ -48,7 +48,7 @@
     "encoding": "utf8",
     "private": false,
     "recurse": true,
-    "template": "themes/countly-docdash"
+    "template": "countly-docdash"
   },
   "docdash": {
     "search": true
