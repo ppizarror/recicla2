@@ -61,6 +61,7 @@ if (isset($_COOKIE['additem'])) {
         <script src="lib/tooltipster/tooltipster.bundle.min.js"></script>
         <script src="lib/dataTables/jquery.dataTables.min.js"></script>
         <script src="lib/dataTables/dataTables.responsive.min.js"></script>
+        <script src="lib/dataTables/date-euro.js"
         <script src="lib/jquery-dateFormat/jquery-dateFormat.min.js"></script>
 
         <!-- Estilos de librerías -->

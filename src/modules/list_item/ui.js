@@ -93,9 +93,10 @@ function createListItem() {
     $table.DataTable({
         responsive: true,
         paging: false,
-        columnDefs: [{
-            className: 'dt-center',
-        }],
+        columnDefs: [
+            {className: 'dt-center'},
+            {type: 'date-euro', targets: 0}
+        ],
         language:
             {
                 'url':

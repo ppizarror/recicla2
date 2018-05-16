@@ -80,10 +80,10 @@ function Item(options) {
     /**
      * Obtiene la fecha del artículo
      * @function
-     * @return {{}|date|*}
+     * @return {string}
      */
     this.getDate = function () {
-        let $d = this._date.year + '/' + padLeft(this._date.day, 2) + '/' + padLeft(this._date.month, 2);
+        let $d = padLeft(this._date.day, 2) + '/' + padLeft(this._date.month, 2) + '/' + this._date.year;
         $d += ' ' + padLeft(this._date.hour, 2) + ':' + padLeft(this._date.min, 2) + ':' + padLeft(this._date.sec, 2);
         return $d;
     };
@@ -94,7 +94,7 @@ function Item(options) {
      * @return {string}
      */
     this.getPublishDate = function () {
-        let $a = this._date.year + '/' + padLeft(this._date.day, 2) + '/' + padLeft(this._date.month, 2) + ' ';
+        let $a = padLeft(this._date.day, 2) + '/' + padLeft(this._date.month, 2) + '/' + this._date.year + ' ';
         let $b = padLeft(this._date.hour, 2) + ':' + padLeft(this._date.min, 2) + ':' + padLeft(this._date.sec, 2);
         return lang.comment_date_format.format($a, $b);
     };

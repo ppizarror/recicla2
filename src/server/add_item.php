@@ -1,12 +1,13 @@
 <?php
 /**
- * Funciones utilitarias add_item.
+ * Funciones utilitarias add_item
+ *
  * @author Pablo Pizarro R. @ppizarror.com
  * @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
  */
 
 /**
- * Genera un JSON de las regiones y comunas de Chile.
+ * Genera un JSON de las regiones y comunas de Chile
  * @param $db {Base de datos}
  */
 function load_rc_chile($db)

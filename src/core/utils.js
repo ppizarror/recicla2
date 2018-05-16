@@ -231,7 +231,7 @@ function consoleLogError(msg, w) {
         } else {
             $m = '';
         }
-        console.error('{2}{1} [{0}]'.format($.format.date(new Date(), 'dd/MM/yyyy H:mm:ss'), msg, $m));
+        console.error('{1}{0}'.format(msg, $m));
     }
 }
 
@@ -250,7 +250,7 @@ function consoleLogWarn(msg, w) {
         } else {
             $m = '';
         }
-        console.warn('{2}{1} [{0}]'.format($.format.date(new Date(), 'dd/MM/yyyy H:mm:ss'), msg, $m));
+        console.warn('{1}{0}'.format($.format.date(msg, $m)));
     }
 }
 
@@ -280,7 +280,7 @@ function consoleLogException(exceptionmsg, w) {
  */
 function consoleLogInfo(msg) {
     if (cfg_verbose) {
-        console.log('[{0}] {1}'.format($.format.date(new Date(), 'dd/MM/yyyy H:mm:ss'), msg));
+        console.log(msg);
     }
 }
 

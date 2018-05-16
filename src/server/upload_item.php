@@ -22,7 +22,7 @@ const TEST_TYPE_ERROR_KILL = 1; // Indica el tipo de error, si es verdadero redi
 $db = DbConfig::getConnection();
 
 /**
- * Redirige a error consulta.
+ * Redirige a error consulta
  * @param $id
  */
 function throw_error($id)
@@ -58,7 +58,9 @@ function validate_telephone($t)
     return false;
 }
 
-// Si se envía por post se realiza cadena de verificaciones
+/**
+ * Si se envía por post se realiza cadena de verificaciones
+ */
 if ($_POST and !$_GET) {
 
     /**
@@ -267,6 +269,7 @@ if ($_POST and !$_GET) {
     setcookie('additem', 1, 0, "/");
     header("Location: ../../index.php?status=added");
     die();
+
 } else {
     throw_error('NOT POST');
 }

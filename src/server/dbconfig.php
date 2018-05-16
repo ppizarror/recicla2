@@ -2,7 +2,7 @@
 /**
  * Class DbConfig
  * Clase que crea una conexión a la base de datos.
- * Utilizada desde archivos taller 2.
+ * Utilizada desde archivos taller 2
  *
  * Modo de uso:
  *      $db = DbConfig::getConnection();

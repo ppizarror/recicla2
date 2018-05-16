@@ -57,7 +57,7 @@ function convertPHPSizeToBytes($sSize)
 }
 
 /**
- * Comprueba que un string esté entre mínimo y maximo.
+ * Comprueba que un string esté entre mínimo y maximo
  * @param $s
  * @param $minl
  * @param $maxl

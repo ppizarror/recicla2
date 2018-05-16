@@ -1,6 +1,7 @@
 <?php
 /**
- * Administración y descarga de ítems.
+ * Administración y descarga de ítems
+ *
  * @author Pablo Pizarro R. @ppizarror.com
  * @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
  */
@@ -13,7 +14,7 @@ require_once('utils.php');
 const ITEM_CAT_MAX_LIST = 5; // Número de ítems por lista
 
 /**
- * Descarga un ítem raw por id.
+ * Descarga un ítem raw por id
  * @param mysqli $db
  * @param int $id
  * @return array
@@ -33,7 +34,7 @@ function item_download_by_id($db, $id)
 }
 
 /**
- * Descarga un ítem raw por orden.
+ * Descarga un ítem raw por orden
  * @param mysqli $db
  * @param int $from
  * @return array
@@ -96,7 +97,7 @@ function item_exists_after($db, $from)
 }
 
 /**
- * Genera una lista de ítems a partir de un resultado raw.
+ * Genera una lista de ítems a partir de un resultado raw
  * @param mysqli $db
  * @param array $rows
  * @return array array
@@ -179,7 +180,7 @@ function item_generate_list($db, $rows)
 }
 
 /**
- * Chequea que un ítem se subió, se manda una alerta.
+ * Chequea que un ítem se subió, se manda una alerta
  */
 function _item_check_add_status()
 {
