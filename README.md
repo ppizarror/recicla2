@@ -58,6 +58,7 @@ Para la comunicación con el servidor se utiliza:
 - Ítem: Todo se usa por $_POST, se llama a src/server/add_item.php para añadir elementos.
 - Comentarios: Se llama mediante Ajax, utilizando jQuery.
 - Fotos: Se añaden en add_item.php
+- Búsqueda de ítems: Consulta mediante Ajax a search_item.php
 ```
 
 Para llevar a cabo las validaciones se utilizaron funciones propias, por lo general se valido:
@@ -68,3 +69,20 @@ Para llevar a cabo las validaciones se utilizaron funciones propias, por lo gene
 ```
 
 Por el lado del servidor también se aplicaron validaciones, solo de tamaño (largo de los strings). Cabe destacar que para ciertos datos (nombre, descripción, calle, email) se validó como un string, para la región, comuna, teléfono se valido como un entero.
+
+Para el caso del buscador se creó el archivo search_item.php en *src/server/* el cual consulta a la base de datos por un nombre parecido en la base de datos (LIKE). El resultado se retorna a la función y se escribe en varios div. La barra de búsqueda se añadió al header programado de la tarea 2.
+
+Para los mapas de google maps se consultó la API, las fotos se obtienen mediante items.php, el cual recorre cada artículo, consulta la comuna (obteniendo su nombre y la región), y luego se añade cada fotografia asociada a ese artículo. Todo se escribe en un json. Posteriormente la función **listItemInitMap()** de *src/modules/list_item/ui.js* recoge la información y la escribe ordenadamente.
+
+#### Página online
+La aplicación en su versión 2.30 se encuentra online en <a href="https://ppizarror.000webhostapp.com/recicla2/index.php">https://ppizarror.000webhostapp.com/recicla2/index.php</a>. En ella se puede interactuar con los controles.
+
+Validaciones W3C:
+
+ - Lista de ítems <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fppizarror.000webhostapp.com%2Frecicla2%2Findex.php&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=es"> index.php</a>
+ - Añadir ítem <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fppizarror.000webhostapp.com%2Frecicla2%2Fadd_item.php&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=es">add_item.php</a>
+ - Mostrar ítem <a href="https://ppizarror.000webhostapp.com/recicla2/show_item.php?id=20">add_item.php</a>
+
+#### Documentación
+
+La documentación es generada con JSDOC3, se puede revisar de manera <a href="https://ppizarror.000webhostapp.com/recicla2/docs/">online</a> o bien se puede acceder de manera local a la carpeta *docs/index.html*.
