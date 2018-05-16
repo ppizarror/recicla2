@@ -7,7 +7,7 @@
  */
 
 /**
- * Contenedor
+ * Contenedor - UI
  * @class
  * @param {object} options - Opciones del constructor
  */

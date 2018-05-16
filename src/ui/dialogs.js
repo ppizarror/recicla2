@@ -93,14 +93,14 @@ function confirmPopup(title, content, options) {
         animation: options.animation,
         backgroundDismiss: options.backgroundDismiss,
         columnClass: 'col-md-{0} col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1'.format($(window).width() < 1000 ? '6' : '4'),
-        containerFluid: mobile_page_enabled,
+        containerFluid: cfg_mobile_page_enabled,
         content: content,
         draggable: options.draggable,
         dragWindowGap: 0,
         escapeKey: options.escapeCancelKey,
-        icon: !mobile_page_enabled ? options.icon : '',
+        icon: !cfg_mobile_page_enabled ? options.icon : '',
         theme: cfg_popup_theme,
-        title: !mobile_page_enabled ? title : '',
+        title: !cfg_mobile_page_enabled ? title : '',
         watchInterval: options.watchInterval,
         buttons: {
             confirm: {

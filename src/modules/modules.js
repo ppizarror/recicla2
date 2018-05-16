@@ -9,6 +9,7 @@
 // noinspection ES6ConvertVarToLetConst
 /**
  * Módulos de la aplicación
+ * @var
  */
 var modules = {
     'addItem': {
@@ -48,7 +49,6 @@ var __afterModuleInit = [];
  * Añade una función a afterModuleInit
  * @function
  * @param {function} $f - Función
- * @ignore
  */
 function addAfterInitModuleCallback($f) {
     __afterModuleInit.push($f);

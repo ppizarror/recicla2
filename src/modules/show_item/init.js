@@ -27,6 +27,7 @@ $(function () {
         let $f = function () {
             centerMainContent();
         };
+        // noinspection JSUnresolvedFunction
         $(window).on('resize.errorPanel', $f);
         $f();
     }

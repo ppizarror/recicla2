@@ -298,7 +298,8 @@ function getURLParameter(name) {
 // noinspection ES6ConvertVarToLetConst
 /**
  * Funciones que se ejecutan luego de iniciar la aplicación
- * @function
+ * @ignore
+ * @var
  */
 var __initAppCallback = [];
 

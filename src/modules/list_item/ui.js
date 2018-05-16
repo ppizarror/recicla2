@@ -9,12 +9,14 @@
 // noinspection ES6ConvertVarToLetConst
 /**
  * Contenedor listar ítems
+ * @ignore
  */
 var list_item_container;
 
 /**
  * Crea el módulo en la ui
  * @function
+ * @ignore
  */
 function createListItem() {
 
@@ -53,7 +55,7 @@ function createListItem() {
 
         /**
          * Carga el ítem
-         * @type    {Item}
+         * @type {Item}
          */
         $item = $items[i];
 
@@ -196,6 +198,7 @@ function createListItem() {
 /**
  * Ajusta el contenido al ancho de la página a un 80%
  * @function
+ * @ignore
  */
 function adjustListItemWidth() {
     let $min = parseInt($(ui_main_content).css('min-width'), 10);
@@ -214,6 +217,7 @@ function adjustListItemWidth() {
  * @function
  * @param {string} name - Nombre de un artículo
  * @return {object} - Retorna objeto status trim
+ * @ignore
  */
 function trimShowItemName(name) {
     let $n = name; // Nombre

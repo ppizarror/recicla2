@@ -83,6 +83,7 @@ function Loading(Checker, callback) {
 /**
  * Añade evento de redimensionado del objeto loadingDiv
  * @function
+ * @ignore
  */
 $(window).resize(function () {
     let h, hh, w, posX, posY;

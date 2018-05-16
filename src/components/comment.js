@@ -11,8 +11,9 @@
  * @function
  * @param {string} $email - Email
  * @return {boolean}
+ * @ignore
  */
-function validateEmail($email) {
+function validateCommentEmail($email) {
     $email = $.trim($email);
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String($email).toLowerCase());
@@ -23,8 +24,9 @@ function validateEmail($email) {
  * @function
  * @param {string} $tel - Número de teléfono
  * @return {boolean}
+ * @ignore
  */
-function validatePhone($tel) {
+function validateCommentPhone($tel) {
     if (!/^\d+$/.test($tel)) {
         return false;
     }
@@ -81,10 +83,10 @@ function ItemComment(options) {
          */
         let $words = self._comment.split(' ');
         for (let $i = 0; $i < $words.length; $i++) {
-            if (validateEmail($words[$i])) {
+            if (validateCommentEmail($words[$i])) {
                 // noinspection QuirksModeInspectionTool
                 $words[$i] = '<a href="mailto:matias@faisbun.com" class="disable-a-hover">{0}</a>'.format($words[$i]);
-            } else if (validatePhone($words[$i].replace('+56', ''))) {
+            } else if (validateCommentPhone($words[$i].replace('+56', ''))) {
                 $words[$i] = $words[$i].replace('+56', '');
                 // noinspection QuirksModeInspectionTool
                 $words[$i] = '<a href="tel:{0}" class="disable-a-hover">+56{0}</a>'.format($words[$i]);

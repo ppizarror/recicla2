@@ -9,8 +9,9 @@
 // noinspection ES6ConvertVarToLetConst
 /**
  * Indica si el modo móvil está activado
+ * @var
  */
-var mobile_page_enabled = false;
+var cfg_mobile_page_enabled = false;
 
 /**
  * Chequea que el modo móvil está activado
@@ -18,8 +19,9 @@ var mobile_page_enabled = false;
  */
 function checkMobileStatus() {
     let $f = function () {
-        mobile_page_enabled = $(window).width() < cfg_width_enable_mobile;
+        cfg_mobile_page_enabled = $(window).width() < cfg_width_enable_mobile;
     };
     $f();
+    // noinspection JSUnresolvedFunction
     $(window).on('resize.mobileStatusChecker', $f);
 }

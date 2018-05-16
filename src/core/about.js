@@ -39,6 +39,7 @@ var aboutinfo = {
 /**
  * Imprime un acerca-de en consola
  * @function
+ * @ignore
  */
 function printAboutInfo() {
     console.log('{0} v{1} ({2})'.format(aboutinfo.productname, aboutinfo.version.v, aboutinfo.version.date));

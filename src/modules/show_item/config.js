@@ -6,10 +6,21 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
  */
 
-var cfg_showitem_center_module = true; // Centra la página de visualización
-var cfg_sort_comments_by_date_desc = false; // Comentarios por fecha descendente
+/**
+ * Centra la página de visualización
+ * @type {boolean}
+ */
+var cfg_showitem_center_module = true;
 
 /**
- * Parámetros globales
+ * Comentarios por fecha descendente
+ * @type {boolean}
  */
-var items;
+var cfg_sort_comments_by_date_desc = false;
+
+/**
+ * Arreglo de ítems cargados desde el servidor
+ * @type {object}
+ * @ignore
+ */
+var items = {};
