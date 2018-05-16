@@ -42,7 +42,7 @@ function createAddItem() {
     /**
      * Genera el header y el contenedor
      */
-    new Header({
+    let additem_header = new Header({
         showAppInfoRight: true,
         showBackButton: true,
         title: lang.module_add_item
@@ -50,6 +50,10 @@ function createAddItem() {
     let add_container = new Container({
         padding: 0
     });
+
+    additem_header.init();
+    add_container.init();
+
     let $add_c = add_container.getDOM();
 
     /**

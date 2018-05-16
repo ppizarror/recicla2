@@ -28,16 +28,20 @@ function createListItem() {
     /**
      * Genera el header y el contenedor
      */
-    new Header({
+    let listitem_header = new Header({
         showAppInfoLeft: true,
         showSearchBox: true,
         title: lang.list_item_title
     });
-    let list_item_c = new Container({
+    let listitem_container = new Container({
         elementClass: 'list-item-container',
         padding: 0
     });
-    list_item_container = list_item_c.getDOM();
+
+    listitem_header.init();
+    listitem_container.init();
+
+    list_item_container = listitem_container.getDOM();
 
     /**
      * Carga los artículos y los dibuja

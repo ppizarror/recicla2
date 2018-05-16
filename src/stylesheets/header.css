@@ -36,6 +36,7 @@ Header, cabecera de cada página.
     display: block;
     cursor: pointer;
     font-weight: 300;
+    margin-top: 3px;
 }
 
 .header-back-button-container:hover {
@@ -45,6 +46,7 @@ Header, cabecera de cada página.
 .header-back-button-icon {
     float: left;
     margin-right: 15px;
+    margin-top: 1px;
 }
 
 .header-back-button-icon:hover {
@@ -107,7 +109,7 @@ Header, cabecera de cada página.
 
 .header-app-container {
     margin-bottom: -20px;
-    margin-top: 1px;
+    margin-top: 3px;
     padding: 10px;
     position: relative;
     top: -10px;
@@ -125,6 +127,7 @@ Header, cabecera de cada página.
 @media screen and (min-width: 900px) and (max-width: 1200px) {
     .header-app-container {
         font-size: 1.2rem;
+        margin-top: 5px;
     }
 }
 
@@ -132,6 +135,7 @@ Header, cabecera de cada página.
     .header-app-container {
         font-size: 1.2rem;
         padding: 7px;
+        margin-top: 0;
     }
 }
 
@@ -171,7 +175,7 @@ Header, cabecera de cada página.
     float: right;
     margin-top: 6px;
     position: relative;
-    width: 100%
+    width: 110%;
 }
 
 .header-search-input {
@@ -192,4 +196,13 @@ Header, cabecera de cada página.
     padding: 3px 3px 3px 10px !important;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     width: 100%;
+}
+
+.header-search-input.displaybox {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.header-search-results-container {
+
 }

@@ -58,16 +58,20 @@ function createShowItem($item) {
     /**
      * Genera el header y el contenedor
      */
-    let show_header = new Header({
+    let showitem_header = new Header({
         showBackButton: true,
         showSearchBox: true,
         title: lang.show_item_title
     });
-    let show_container = new Container({
+    let showitem_container = new Container({
         padding: 0
     });
-    $show_item_container = show_container.getDOM();
-    $show_item_header_container = show_header.getDOM();
+
+    showitem_header.init();
+    showitem_container.init();
+
+    $show_item_container = showitem_container.getDOM();
+    $show_item_header_container = showitem_header.getDOM();
 
     /**
      * Inicia los datos del objeto
