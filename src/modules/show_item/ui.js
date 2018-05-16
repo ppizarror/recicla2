@@ -530,7 +530,7 @@ function showItemBackgroundResize() {
     let $maincontent = $(ui_content);
 
     // Aplica css
-    $maincontent.css('position', 'relative');
+    $maincontent.css('position', 'static');
     $(ui_content).css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_content))) / 2) + 'px');
     $appbackground.css('width', getElementInnerWidth($('#root')) + 'px');
     $appbackground.css('height', getElementHeight($show_item_container) + 100 + 'px')
