@@ -93,19 +93,33 @@ Header, cabecera de cada página.
 
 .header-app-logo {
     font-weight: 400;
-    text-align: right;
     font-size: 1.3rem;
     width: 25%;
 }
 
+.header-app-logo.left {
+    text-align: left;
+}
+
+.header-app-logo.right {
+    text-align: right;
+}
+
 .header-app-container {
-    float: right;
     margin-bottom: -20px;
     margin-top: 1px;
     padding: 10px;
     position: relative;
     top: -10px;
     width: fit-content;
+}
+
+.header-app-container.left {
+    float: left;
+}
+
+.header-app-container.right {
+    float: right;
 }
 
 @media screen and (min-width: 900px) and (max-width: 1200px) {
@@ -144,4 +158,18 @@ Header, cabecera de cada página.
     .header-app-container > img {
         display: none;
     }
+}
+
+.header-search-box {
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: right;
+    width: 25%;
+}
+
+.header-search-container {
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    width: fit-content;
 }

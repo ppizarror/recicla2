@@ -2,8 +2,8 @@
 SHOW ITEM STYLE
 Estilo lista de artículos.
 
-@author Pablo Pizarro R. @ppizarror.com
-@license Copyright 2018, no copiar o distribuír sin permiso directo del autor
+Autor: Pablo Pizarro R. @ppizarror.com
+Copyright 2018, no copiar o distribuír sin permiso directo del autor.
 */
 
 .show-item-transform {
@@ -39,10 +39,12 @@ Estilo lista de artículos.
 
 .show-item-description-extended {
     background-color: #f3f3f3;
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
     box-shadow: 0 3px 2px -2px grey;
     max-height: 250px;
     overflow-y: auto;
+    padding: 0 5px;
 }
 
 @media screen and (max-width: 700px) {

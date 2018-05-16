@@ -29,8 +29,9 @@ function createListItem() {
      * Genera el header y el contenedor
      */
     new Header({
-        title: lang.list_item_title,
-        showBackButton: false
+        showAppInfoLeft: true,
+        showSearchBox: true,
+        title: lang.list_item_title
     });
     let list_item_c = new Container({
         elementClass: 'list-item-container',

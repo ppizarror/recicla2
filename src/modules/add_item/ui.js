@@ -43,6 +43,8 @@ function createAddItem() {
      * Genera el header y el contenedor
      */
     new Header({
+        showAppInfoRight: true,
+        showBackButton: true,
         title: lang.module_add_item
     });
     let add_container = new Container({

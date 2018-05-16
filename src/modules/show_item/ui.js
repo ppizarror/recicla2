@@ -59,6 +59,8 @@ function createShowItem($item) {
      * Genera el header y el contenedor
      */
     let show_header = new Header({
+        showBackButton: true,
+        showSearchBox: true,
         title: lang.show_item_title
     });
     let show_container = new Container({
