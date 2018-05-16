@@ -63,6 +63,7 @@ $lang_db.es = {
     'error': 'Error',
     'error_code': 'Código error: {0}',
     'header_index': 'Ir a Inicio',
+    'header_searchbox_placeholder': 'Buscar...',
     'item_not_exist_moreinfo': 'La ID del artículo no ha podido ser encontrada en la base de datos',
     'item_not_exist_msg': 'El artículo no existe en la base de datos',
     'list_item_c': 'Comuna',

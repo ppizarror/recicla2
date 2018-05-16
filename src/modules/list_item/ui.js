@@ -102,6 +102,7 @@ function createListItem() {
             [
                 [0, 'desc']
             ],
+        searching: false,
         initComplete: // Función que se carga al generar la tabla
             function () {
 

@@ -41,6 +41,7 @@ Estilo lista de artículos.
     line-height: 0;
     margin-top: -3px;
     outline-offset: -2px;
+    outline: none;
     padding: 3px 3px 3px 10px !important;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }

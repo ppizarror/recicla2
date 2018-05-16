@@ -168,8 +168,28 @@ Header, cabecera de cada página.
 }
 
 .header-search-container {
-    margin: 0 auto;
-    padding: 10px;
+    float: right;
+    margin-top: 6px;
     position: relative;
-    width: fit-content;
+    width: 100%
+}
+
+.header-search-input {
+    background-clip: padding-box;
+    background: #fff none;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, .15);
+    color: #495057;
+    display: block;
+    float: right;
+    font-family: inherit;
+    font-size: 1.0rem;
+    font-weight: 300;
+    line-height: 0;
+    margin-top: -3px;
+    outline-offset: -2px;
+    outline: none;
+    padding: 3px 3px 3px 10px !important;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    width: 100%;
 }
