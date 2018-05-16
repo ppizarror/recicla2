@@ -13,7 +13,8 @@
 var mobile_page_enabled = false;
 
 /**
- * Chequea que el modo móvil está activado.
+ * Chequea que el modo móvil está activado
+ * @function
  */
 function checkMobileStatus() {
     let $f = function () {

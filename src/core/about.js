@@ -23,6 +23,7 @@ var aboutinfo = {
         "hover": "2.3.0",               // https://github.com/IanLunn/Hover
         "jquery": "3.3.1",              // https://github.com/jquery/jquery
         "jquery-confirm": "3.3.0",      // https://github.com/craftpip/jquery-confirm
+        "jquery-dateFormat": "1.0.2",   // https://github.com/phstc/jquery-dateFormat
         "photoswipe": "4.1.2",          // http://photoswipe.com
         "slick": "1.8.0",               // http://kenwheeler.github.io
         "toastr": "2.1.4",              // https://github.com/CodeSeven/toastr
@@ -31,7 +32,7 @@ var aboutinfo = {
     "productname": "Recicla2",
     "version": {
         "date": "16/05/2018",
-        "v": "1.90"
+        "v": "1.92"
     }
 };
 

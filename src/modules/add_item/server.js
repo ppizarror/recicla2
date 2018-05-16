@@ -7,11 +7,12 @@
  */
 
 /**
- * Carga un artículo en el servidor.
- * @return
+ * Carga un artículo en el servidor
+ * @function
  */
 function uploadItemToServer() {
     let $o = $('#' + cfg_additem_form_id);
+    // noinspection JSUnresolvedFunction
     $o.on('submit', function (e) {
 
         // El formulario es válido
@@ -22,5 +23,6 @@ function uploadItemToServer() {
             e.preventDefault(); // Cancela el submit
         }
     });
+    // noinspection JSDeprecatedSymbols
     $o.submit();
 }

@@ -7,19 +7,19 @@
  */
 
 /**
- * Handler de la función loading.
- * @param {boolean} status          Indica si se muestra o no el spinner de carga
- * @return
+ * Handler de la función loading
+ * @function
+ * @param {boolean} status - Indica si se muestra o no el spinner de carga
  */
 function loadHandler(status) {
     Loading(status, null);
 }
 
 /**
- * Muestra una pantalla de carga.
- * @param {boolean} Checker         Indica el estado
- * @param {Function} callback       Función que se llama tras la función
- * @return
+ * Muestra una pantalla de carga
+ * @function
+ * @param {boolean} Checker - Indica el estado
+ * @param {Function} callback - Función que se llama tras la función
  */
 function Loading(Checker, callback) {
     let h, hh, w, posX, posY;
@@ -79,9 +79,10 @@ function Loading(Checker, callback) {
     }
 }
 
+// noinspection JSDeprecatedSymbols
 /**
- * Añade evento de redimensionado del objeto loadingDiv.
- * @return
+ * Añade evento de redimensionado del objeto loadingDiv
+ * @function
  */
 $(window).resize(function () {
     let h, hh, w, posX, posY;

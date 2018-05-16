@@ -26,9 +26,9 @@ var modules = {
 };
 
 /**
- * Carga el archivo definido por el módulo m.
- * @param m {object}        Archivo del módulo
- * @return
+ * Carga el archivo definido por el módulo m
+ * @function
+ * @param m {object} - Archivo del módulo
  */
 function loadModule(m) {
     window.location.href = m.file;
@@ -37,23 +37,26 @@ function loadModule(m) {
 // noinspection ES6ConvertVarToLetConst
 /**
  * Contiene los llamados a las funciones a ejecutar tras iniciar un módulo
+ * @function
  * @type {Array}
  * @private
+ * @ignore
  */
 var __afterModuleInit = [];
 
 /**
- * Añade una función a afterModuleInit.
- * @param {function} $f     Función
- * @return
+ * Añade una función a afterModuleInit
+ * @function
+ * @param {function} $f - Función
+ * @ignore
  */
 function addAfterInitModuleCallback($f) {
     __afterModuleInit.push($f);
 }
 
 /**
- * Llama a todas las funcionesafterModuleInit.
- * @return
+ * Llama a todas las funcionesafterModuleInit
+ * @function
  */
 function afterInitModuleCallback() {
     let $f;

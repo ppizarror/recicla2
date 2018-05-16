@@ -239,9 +239,8 @@ function consoleLogError(msg, w) {
 /**
  * Muestra un mensaje de advertencia en la consola
  * @function
- * @param {string} msg      Mensaje
- * @param {boolean} w       Indica si se escribe el encabezado o no
- * @return
+ * @param {string} msg - Mensaje
+ * @param {boolean} w - Indica si se escribe el encabezado o no
  */
 function consoleLogWarn(msg, w) {
     let $m;
@@ -256,10 +255,10 @@ function consoleLogWarn(msg, w) {
 }
 
 /**
- * Escribe un error en consola.
- * @param exceptionmsg      Excepción
- * @param {boolean} w       Indica si se escribe el encabezado o no
- * @return
+ * Escribe un error en consola
+ * @function
+ * @param exceptionmsg - Excepción
+ * @param {boolean} w - Indica si se escribe el encabezado o no
  */
 function consoleLogException(exceptionmsg, w) {
     let $m;
@@ -275,9 +274,9 @@ function consoleLogException(exceptionmsg, w) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Muestra un mensaje de información en la consola.
- * @param {string} msg      Mensaje
- * @return
+ * Muestra un mensaje de información en la consola
+ * @function
+ * @param {string} msg - Mensaje
  */
 function consoleLogInfo(msg) {
     if (cfg_verbose) {
@@ -287,9 +286,10 @@ function consoleLogInfo(msg) {
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Obtiene parámetro url.
- * @param {string} name     Nombre del parámetro
- * @return {string}         Valor del parámetro
+ * Obtiene parámetro url
+ * @function
+ * @param {string} name - Nombre del parámetro
+ * @return {string} - Valor del parámetro
  */
 function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
@@ -297,24 +297,24 @@ function getURLParameter(name) {
 
 // noinspection ES6ConvertVarToLetConst
 /**
- * Funciones que se ejecutan luego de iniciar la aplicación.
- * @private
+ * Funciones que se ejecutan luego de iniciar la aplicación
+ * @function
  */
 var __initAppCallback = [];
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Agrega función al callback inicial.
- * @param {function} $f
- * @return
+ * Agrega función al callback inicial
+ * @function
+ * @param {function} $f - Callback
  */
 function pushInitAppCallbackFunction($f) {
     __initAppCallback.push($f);
 }
 
 /**
- * Llama a todas las funciones iniciales.
- * @return
+ * Llama a todas las funciones iniciales
+ * @function
  */
 function initAppCallback() {
     for (let i = 0; i < __initAppCallback.length; i++) {
@@ -323,7 +323,8 @@ function initAppCallback() {
 }
 
 /**
- * Borra un parámetro de la url.
+ * Borra un parámetro de la url
+ * @function
  * @param parameter
  * @returns {string}
  */

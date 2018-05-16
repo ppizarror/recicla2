@@ -9,18 +9,21 @@
 // noinspection ES6ConvertVarToLetConst
 /**
  * Objeto contenedor de los comentarios
+ * @ignore
  */
 var $show_item_comment_container;
 
 // noinspection ES6ConvertVarToLetConst
 /**
  * Contenedor de la página mostrar artículo
+ * @ignore
  */
 var $show_item_container;
 
 // noinspection ES6ConvertVarToLetConst
 /**
  * Indica si hay o no comentarios
+ * @ignore
  * @type {boolean}
  */
 var $show_item_empty_comment = true;
@@ -28,19 +31,21 @@ var $show_item_empty_comment = true;
 // noinspection ES6ConvertVarToLetConst
 /**
  * Elemento header de la página
+ * @ignore
  */
 var $show_item_header_container;
 
 // noinspection ES6ConvertVarToLetConst
 /**
  * Secciones del artículo
+ * @ignore
  */
 var $show_item_sections;
 
 /**
- * Crea el módulo en la ui.
- * @param $item {Item}      Artículo cargado
- * @return
+ * Crea el módulo en la ui
+ * @function
+ * @param {Item} $item - Artículo cargado
  */
 function createShowItem($item) {
 
@@ -75,6 +80,7 @@ function createShowItem($item) {
     let $ocl = $('#{0}'.format($cl));
     let $ocr = $('#{0}'.format($cr));
 
+    // noinspection JSUnresolvedFunction
     /**
      * Desactiva selección columna izquierda
      */
@@ -126,6 +132,7 @@ function createShowItem($item) {
     // noinspection QuirksModeInspectionTool
     $(ui_main_content).append('<div class="show-item-comments-container"><div class="show-item-comment-menu"><div class="show-item-comment-menu-title">{1}</div><div class="show-item-comment-buttons"><button id="{2}" type="button" class="btn btn-primary show-item-add-comment-button hvr-shadow">{0}</button></div></div><div class="show-item-comment-list" id="{3}"></div></div>'.format(lang.show_item_add_comment, lang.show_item_comments_title, $comment_button_id, $comment_container_id));
     $show_item_comment_container = $('#' + $comment_container_id);
+    // noinspection JSUnresolvedFunction
     $('.show-item-comment-menu').on('selectstart dragstart', false);
 
     let $comments = $item.getComments();
@@ -149,6 +156,7 @@ function createShowItem($item) {
         $show_item_empty_comment = false;
     }
 
+    // noinspection JSUnresolvedFunction
     /**
      * Añade evento añadir comentario
      */
@@ -282,9 +290,9 @@ function createShowItem($item) {
 }
 
 /**
- * Añade un comentario en la página.
- * @param $c {ItemComment}      Comentario
- * @return
+ * Añade un comentario en la página
+ * @function
+ * @param {ItemComment} $c - Comentario
  */
 function addCommentItem($c) {
     if ($show_item_empty_comment) {
@@ -309,9 +317,10 @@ function addCommentItem($c) {
 }
 
 /**
- * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario.
- * @param formid {string}       ID del formulario
- * @param titleid {string}      ID del elemento del título
+ * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario
+ * @function
+ * @param {string} formid - ID del formulario
+ * @param {string} titleid - ID del elemento del título
  * @return {function}
  */
 function autoResizeTitles(formid, titleid) {
@@ -323,9 +332,9 @@ function autoResizeTitles(formid, titleid) {
 }
 
 /**
- * Inicia el objeto del formulario.
- * @param $item {Item}  Artículo
- * @return
+ * Inicia el objeto del formulario
+ * @function
+ * @param {Item} $item - Artículo
  */
 function initShowItemSections($item) {
     // Selecciona el tema para la descripción
@@ -427,6 +436,7 @@ function initShowItemSections($item) {
                 });
                 this.resizeFun();
 
+                // noinspection JSUnresolvedFunction
                 /**
                  * Desactiva selección del contenedor
                  */
@@ -501,8 +511,8 @@ function initShowItemSections($item) {
 }
 
 /**
- * Centra el panel principal.
- * @return
+ * Centra el panel principal
+ * @function
  */
 function showItemBackgroundResize() {
     let $appbackground = $('#appBackground');

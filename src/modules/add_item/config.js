@@ -13,7 +13,13 @@ var cfg_additem_form_tooltip_error_delay = 1500; // Temporizador tooltip errores
 var cfg_additem_max_photos = 5; // Numero máximo de fotos permitidas
 
 /**
- * Variables globales
+ * Comunas lista Chile
+ * @ignore
  */
 var $add_item_c_chile;
+
+/**
+ * Regiones lista Chile
+ * @ignore
+ */
 var $add_item_r_chile;

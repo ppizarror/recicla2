@@ -7,10 +7,11 @@
  */
 
 /**
- * Inicia el módulo al cargar la página.
- * @return
+ * Inicia el módulo al cargar la página
+ * @ignore
  */
 $(function () {
+
     // Muestra panel cargando
     loadHandler(true);
 
@@ -34,4 +35,5 @@ $(function () {
 
     // Llamada a los callbacks
     afterInitModuleCallback();
+
 });

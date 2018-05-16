@@ -10,19 +10,21 @@
 // noinspection ES6ConvertVarToLetConst
 /**
  * Elementos del formulario
+ * @ignore
  */
 var $add_item_form_titles;
 
 // noinspection ES6ConvertVarToLetConst
 /**
  * Imágenes totales añadidas al formulario
+ * @ignore
  * @type {number}
  */
 var $add_item_total_pics = 1;
 
 /**
- * Crea el módulo en la ui.
- * @return
+ * Crea el módulo en la ui
+ * @function
  */
 function createAddItem() {
 
@@ -56,6 +58,7 @@ function createAddItem() {
     let $ocl = $('#{0}'.format($cl));
     let $ocr = $('#{0}'.format($cr));
 
+    // noinspection JSUnresolvedFunction
     /**
      * Desactiva selección columna izquierda
      */
@@ -116,6 +119,7 @@ function createAddItem() {
     $(ui_main_content).append('<div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{3}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
 
     // Botón cancelar cierra módulo y carga módulo listar
+    // noinspection JSUnresolvedFunction
     $('#' + $b_cancel_id).on('click.cancelFormButton', function () {
         confirmPopup(lang.add_item_cancel_title, lang.add_item_cancel_ask, {
             icon: 'fas fa-exclamation-triangle',
@@ -126,6 +130,7 @@ function createAddItem() {
     });
 
     // Botón guardar artículo
+    // noinspection JSUnresolvedFunction
     $('#' + $b_add_id).on('click.submitFormButtom', function () {
         // Se valida el formulario
         let $validate = validateAddItemForm();
@@ -169,8 +174,8 @@ function createAddItem() {
 }
 
 /**
- * Función que se ejecuta después de cerrar el pop-up de errores al intentar enviar el formulario.
- * @return
+ * Función que se ejecuta después de cerrar el pop-up de errores al intentar enviar el formulario
+ * @function
  */
 function onClosePopupErrorAddItemHandler() {
     if (notNullUndf($_validation_add_item_tooltip)) {
@@ -180,10 +185,11 @@ function onClosePopupErrorAddItemHandler() {
 }
 
 /**
- * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario.
- * @param formid {string}   ID del formulario
- * @param titleid {string}  ID del elemento del título
- * @return {function}       Función ajuste del css
+ * Auto ajusta el tamaño de los títulos de cada entrada del formulario según la altura del formulario
+ * @function
+ * @param formid {string} - ID del formulario
+ * @param titleid {string} - ID del elemento del título
+ * @return {function} - Función ajuste del css
  */
 function autoResizeTitles(formid, titleid) {
     return function () {
@@ -194,17 +200,20 @@ function autoResizeTitles(formid, titleid) {
 }
 
 /**
- * Actualiza el nombre de las imágenes en los label.
- * @return
+ * Actualiza el nombre de las imágenes en los label
+ * @function
  */
 function updateFileFormAddItemWatcher() {
+    // noinspection JSUnresolvedFunction
     $(document).on('change', ':file', function () {
         let input = $(this),
             numFiles = input.get(0).files ? input.get(0).files.length : 1,
             label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
         input.trigger('fileselect', [numFiles, label]);
     });
+    // noinspection JSDeprecatedSymbols
     $(document).ready(function () {
+        // noinspection JSUnresolvedFunction
         $(':file').on('fileselect', function (event, numFiles, label) {
             let input = $(this).parents('.input-group').find(':text'),
                 log = numFiles > 1 ? numFiles + ' files selected' : label;
@@ -217,8 +226,8 @@ function updateFileFormAddItemWatcher() {
 }
 
 /**
- * Inicia el objeto del formulario.
- * @return
+ * Inicia el objeto del formulario
+ * @function
  */
 function initAddItemFormObject() {
     // noinspection QuirksModeInspectionTool
@@ -326,6 +335,7 @@ function initAddItemFormObject() {
                         centerMainContent();
                     }
                 };
+                // noinspection JSUnresolvedFunction
                 $a.on('click.addNewPic', $f);
             }
         },
@@ -468,8 +478,8 @@ function initAddItemFormObject() {
 }
 
 /**
- * Actualiza el formulario de las regiones y las comunas.
- * @return
+ * Actualiza el formulario de las regiones y las comunas
+ * @function
  */
 function addItemUpdateRCForm() {
     let $hr = '<option value="sin-region">{0}</option>'.format(lang.add_item_r_pick);
@@ -486,7 +496,7 @@ function addItemUpdateRCForm() {
     $ohr.html($hr);
     $ohc.html($hc);
 
-    // noinspection JSValidateTypes
+    // noinspection JSDeprecatedSymbols
     $ohr.change(function () {
         let $ohc = $('#formComunas');
         $ohc.removeAttr('disabled');

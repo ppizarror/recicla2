@@ -13,8 +13,8 @@
 var res_loading_image = 'resources/ui/loading_flower.gif';
 
 /**
- * Precarga los recursos de la plataforma.
- * @return
+ * Precarga los recursos de la plataforma
+ * @function
  */
 function preloadResources() {
     let $d = $('#preload_resources');

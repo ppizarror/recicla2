@@ -8,8 +8,8 @@
 
 /**
  * Contenedor
- * @param options
- * @constructor
+ * @class
+ * @param {object} options - Opciones del constructor
  */
 function Container(options) {
     let $defaults = {
@@ -27,6 +27,7 @@ function Container(options) {
 
     /**
      * Crea el container en el DOM
+     * @ignore
      */
     let _mainContent = $(options.parent);
     this._id = generateId(cfg_id_size);
@@ -40,6 +41,7 @@ function Container(options) {
      * Desactiva la selección
      */
     if (options.disableSelection) {
+        // noinspection JSUnresolvedFunction
         this._obj.on('selectstart dragstart', false);
     }
 
@@ -58,7 +60,8 @@ function Container(options) {
 
     // noinspection JSUnusedGlobalSymbols
     /**
-     * Retorna el id.
+     * Retorna el id
+     * @function
      * @return {string|*}
      */
     this.getId = function () {
@@ -66,7 +69,8 @@ function Container(options) {
     };
 
     /**
-     * Retorna el objeto del contenido.
+     * Retorna el objeto del contenido
+     * @function
      * @return {jQuery|HTMLElement|*}
      */
     this.getDOM = function () {

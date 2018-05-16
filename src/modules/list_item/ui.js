@@ -13,8 +13,8 @@
 var list_item_container;
 
 /**
- * Crea el módulo en la ui.
- * @return
+ * Crea el módulo en la ui
+ * @function
  */
 function createListItem() {
 
@@ -81,8 +81,8 @@ function createListItem() {
     /**
      * Crea el Datatables
      */
-        // noinspection JSCheckFunctionSignatures
     let $table = $('#{0}'.format($tableid));
+    // noinspection JSCheckFunctionSignatures, JSUnusedGlobalSymbols
     $table.DataTable({
         responsive: true,
         paging: false,
@@ -116,6 +116,7 @@ function createListItem() {
                         }
                         adjustListItemWidth();
                     };
+                    // noinspection JSUnresolvedFunction
                     $(window).on('resize.listItemPanel', $f);
                     $f();
                 });
@@ -180,10 +181,12 @@ function createListItem() {
     let $new_item_id = generateId(cfg_id_size);
     // noinspection QuirksModeInspectionTool
     $(ui_main_content).append('<div class="list-item-bottom-bar"><div class="list-item-botton-buttoncontainer"><button id="{0}" type="button" class="btn btn-success list-item-bottom-button hvr-shadow">{1}</button></div></div>'.format($new_item_id, lang.list_item_new_item));
+    // noinspection JSUnresolvedFunction
     $('#' + $new_item_id).on('click', function () {
         loadModule(modules.addItem);
     });
 
+    // noinspection JSUnresolvedFunction
     /**
      * Desactiva selección en contenido
      */
@@ -191,8 +194,8 @@ function createListItem() {
 }
 
 /**
- * Ajusta el contenido al ancho de la página a un 80%.
- * @return
+ * Ajusta el contenido al ancho de la página a un 80%
+ * @function
  */
 function adjustListItemWidth() {
     let $min = parseInt($(ui_main_content).css('min-width'), 10);
@@ -207,9 +210,10 @@ function adjustListItemWidth() {
 }
 
 /**
- * Acorta el nombre de un artículo a lo pedido por configuración página visualización.
- * @param name {string}     Nombre de un artículo
- * @return {object}         Retorna objeto status trim
+ * Acorta el nombre de un artículo a lo pedido por configuración página visualización
+ * @function
+ * @param {string} name - Nombre de un artículo
+ * @return {object} - Retorna objeto status trim
  */
 function trimShowItemName(name) {
     let $n = name; // Nombre

@@ -7,10 +7,11 @@
  */
 
 /**
- * Inicia el módulo al cargar la página.
- * @return
+ * Inicia el módulo al cargar la página
+ * @ignore
  */
 $(function () {
+
     // Carga el artículo
     if (items === null) {
         // noinspection JSUnresolvedVariable
@@ -34,9 +35,11 @@ $(function () {
     let $f = function () {
         showItemBackgroundResize();
     };
+    // noinspection JSUnresolvedFunction
     $(window).on('resize.backgroundItem', $f);
     $f();
 
     // Llamada a los callbacks
     afterInitModuleCallback();
+
 });

@@ -7,8 +7,8 @@
  */
 
 /**
- * Centra el panel principal.
- * @return
+ * Centra el panel principal
+ * @function
  */
 function centerMainContent() {
     let $maincontent = $(ui_main_content);
@@ -17,8 +17,8 @@ function centerMainContent() {
 }
 
 /**
- * Oculta el panel principal.
- * @return
+ * Oculta el panel principal
+ * @function
  */
 function hideMainContent() {
     let $maincontent = $(ui_main_content);
@@ -26,9 +26,9 @@ function hideMainContent() {
 }
 
 /**
- * Muestra el panel principal.
- * @param $f        Callback finalización
- * @return
+ * Muestra el panel principal
+ * @function
+ * @param {function} $f - Callback finalización
  */
 function fadeInMainContent($f) {
     let $maincontent = $(ui_main_content);

@@ -8,6 +8,7 @@
 
 /**
  * Inicia la aplicación
+ * @ignore
  */
 $(function () {
 

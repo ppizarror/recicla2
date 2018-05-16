@@ -8,9 +8,9 @@
 
 // noinspection JSUnusedGlobalSymbols
 /**
- * Muestra una notificación positiva al usuario.
- * @param {string} message      Mensaje
- * @return
+ * Muestra una notificación positiva al usuario
+ * @function
+ * @param {string} message - Mensaje
  */
 function throwNotificationOk(message) {
     toastr.options = {
@@ -36,7 +36,8 @@ function throwNotificationOk(message) {
 // noinspection JSUnusedGlobalSymbols
 /**
  * Muestra una notificación de información al usuario
- * @param {string} message     Mensaje
+ * @function
+ * @param {string} message - Mensaje
  */
 function throwNotificationInfo(message) {
     toastr.options = {
@@ -60,11 +61,11 @@ function throwNotificationInfo(message) {
 }
 
 /**
- * Lanza un popup de confirmación.
- * @param {string} title        Título del popup
- * @param {string} content      Contenido del popup
- * @param {object} options      Opciones de creación
- * @return
+ * Lanza un popup de confirmación
+ * @function
+ * @param {string} title - Título del popup
+ * @param {string} content - Contenido del popup
+ * @param {object} options - Opciones de creación
  */
 function confirmPopup(title, content, options) {
     let $defaults = {
