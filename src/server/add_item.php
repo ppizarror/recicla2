@@ -51,15 +51,8 @@ function load_rc_chile($db)
     // Abre un script
     echo "<script>\n\t\t";
 
-    /** @noinspection PhpUndefinedVariableInspection */
-    /** @noinspection ES6ConvertVarToLetConst */
-    /** @noinspection JSUnusedLocalSymbols */
     echo '$add_item_c_chile=' . json_encode($comunas);
     echo "\n\t\t";
-
-    /** @noinspection PhpUndefinedVariableInspection */
-    /** @noinspection ES6ConvertVarToLetConst */
-    /** @noinspection JSUnusedLocalSymbols */
     echo '$add_item_r_chile=' . json_encode($region);
 
     // Cierra el script

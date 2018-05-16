@@ -238,6 +238,76 @@ function listItemInitMap() {
         center: {lat: -33.27, lng: -70.40} // Centro en Santiago
     });
     list_item_map_geocoder = new google.maps.Geocoder();
+
+    let c_id = Object.keys($photo_map); // Identificador de las comunas
+    let c; // Comuna
+    let addr; // Dirección comuna/región
+
+    // Recorre cada elemento de las fotos cargadas y obtiene sus coordenadas al obtener respuesta
+    // En la respuesta añade un marcador y el infowindow
+    for (let i = 0; i < c_id.length; i++) {
+        c = $photo_map[c_id[i]];
+
+        // Genera dirección de búsqueda
+        addr = c['comuna'] + ', ' + c['region'] + ', ' + 'Chile';
+
+        // Crea función que escribe el marcador y el infowindow
+        let $f = function (results, status) {
+            // noinspection JSValidateTypes
+            if (status === 'OK') {
+
+                // Comuna
+                let c = $photo_map[c_id[i]];
+
+                // Arreglo de fotografías
+                let photos = c['photos'];
+
+                // Título del marcador
+                let title;
+                if (photos.length === 1) {
+                    title = lang.map_marker_title_1;
+                } else {
+                    title = lang.map_marker_title_n.format(photos.length);
+                }
+
+                // Añade un marcador
+                let marker = new google.maps.Marker({
+                    map: list_item_map_map,
+                    position: results[0].geometry.location,
+                    title: title
+                });
+
+                // Crea el infowindow
+                let photoHTML = '<ul>';
+                for (let i = 0; i < photos.length; i++) {
+                    // noinspection HtmlUnknownTarget
+                    photoHTML += '<li><b><a href="{1}">{2}</a></b> {0}</li>'.format(photos[i]['item_name'], modules.showItem.photo.format(photos[i]['item_id'], hashCode(photos[i]['path'])), photos[i]['name']);
+                }
+                photoHTML += '</ul>';
+                let contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h2 id="firstHeading" class="firstHeading">{0}</h2>'.format(c['comuna']) +
+                    '<div id="bodyContent">' +
+                    '<p>{0}</p>'.format(photoHTML) +
+                    '</div>' +
+                    '</div>';
+
+                let infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                marker.addListener('click', function () {
+                    infowindow.open(list_item_map_map, marker);
+                });
+
+            } else {
+                console.error('Geocode was not successful for the following reason: ' + status);
+            }
+        };
+
+        // Obtiene las coordenadas de la comuna
+        list_item_map_geocoder.geocode({'address': addr}, $f);
+    }
 }
 
 /**

@@ -42,3 +42,9 @@ var list_item_prev_page;
  * @ignore
  */
 var list_item_next_page;
+
+/**
+ * Lista de comunas con fotos
+ * @ignore
+ */
+var $photo_map;

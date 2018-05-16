@@ -78,6 +78,8 @@ $lang_db.es = {
     'list_item_user_phone': 'Fono contacto',
     'list_item_user_street': 'Dirección',
     'look_file': 'Buscar&hellip;',
+    'map_marker_title_1': '1 fotografía',
+    'map_marker_title_n': '{0} fotografías',
     'module_add_item': 'Añadir nuevo artículo',
     'module_list_item': 'Recicla2',
     'name_lang': 'Español',

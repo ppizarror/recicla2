@@ -14,6 +14,80 @@ require_once('utils.php');
 const ITEM_CAT_MAX_LIST = 5; // Número de ítems por lista
 
 /**
+ * Retorna un arreglo con las comunas y las fotos de cada comuna
+ * @param mysqli $db
+ */
+function item_group_by_comuna_photos($db)
+{
+    // Genera arreglo de regiones
+    $sql = "SELECT nombre,id FROM region";
+    $results = $db->query($sql);
+    $r = array();
+    while ($row = $results->fetch_assoc()) {
+        $r[$row['id']] = $row['nombre'];
+    }
+    mysqli_free_result($results);
+
+    // Selecciona todos los artículos por id, comuna
+    $sql = "SELECT id,comuna_id,nombre FROM articulo";
+    $results = $db->query($sql);
+
+    // Crea arreglo de comunas único por ID
+    $c_photos = array();
+    while ($row = $results->fetch_assoc()) {
+
+        $item_id = $row['id'];
+        $c_id = $row['comuna_id'];
+
+        // Si la comuna no ha sido visitada se carga el nombre y la región correspondiente
+        if (!in_array($c_id, $c_photos)) {
+            $comuna = get_c_by_id($db, $c_id);
+            $c_photos[$c_id] = array(
+                "comuna" => $comuna['nombre'],
+                "region" => $r[$comuna['region_id']],
+                "photos" => array());
+        }
+
+        // Se carga la fotografía y añade al arreglo $c_photos
+        $sql = "SELECT nombre_archivo,ruta_archivo FROM fotografia WHERE articulo_id={$item_id}";
+        $photoresult = $db->query($sql);
+        while ($photo = $photoresult->fetch_assoc()) {
+            // Añade la fotografía
+            $c_photos[$c_id]['photos'][] = array(
+                "item_name" => $row['nombre'],
+                "item_id" => $row['id'],
+                "name" => $photo['nombre_archivo'],
+                "path" => PHOTO_PATH . $photo['ruta_archivo']);
+        }
+        mysqli_free_result($photoresult);
+    }
+
+    mysqli_free_result($results);
+
+    // Abre un script
+    echo "\t<script>\n\t\t";
+    echo '$photo_map=' . json_encode($c_photos);
+    echo "\n\t</script>\n";
+}
+
+;
+
+/**
+ * Retorna nombre comuna por id
+ * @param mysqli $db
+ * @param int $id
+ * @return array
+ */
+function get_c_by_id($db, $id)
+{
+    $sql = "SELECT nombre,region_id FROM comuna WHERE id={$id}";
+    $result = $db->query($sql);
+    $row = $result->fetch_array();
+    mysqli_free_result($result);
+    return $row;
+}
+
+/**
  * Descarga ítems por nombre
  * @param mysqli $db
  * @param string $itemname

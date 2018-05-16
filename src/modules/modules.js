@@ -19,7 +19,8 @@ var modules = {
         'file': 'index.php'
     },
     'showItem': {
-        'file': 'show_item.php?id={0}'
+        'file': 'show_item.php?id={0}',
+        'photo': 'show_item.php?id={0}&photo={1}',
     },
     'home': {
         'file': 'index.php'

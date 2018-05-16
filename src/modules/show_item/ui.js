@@ -388,9 +388,18 @@ function initShowItemSections($item) {
                 let $imageswipe;
 
                 /**
+                 * Obtiene la foto desde GET
+                 */
+                let $photoget = getURLParameter('photo');
+                if (isNullUndf($photoget)) {
+                    $photoget = '';
+                }
+
+                /**
                  * Recorre cada foto y añade a la galería
                  */
                 for (let i = 0; i < $item.getTotalPhotos(); i++) {
+
                     $imageid = generateId(cfg_id_size);
                     let $imagesrc = $pics[i];
 
@@ -408,14 +417,15 @@ function initShowItemSections($item) {
                                 title: lang.show_item_pic_n.format($i)
                             }];
                             let options = {
-                                index: 0,
-                                showAnimationDuration: 400,
+                                arrowEl: true,
+                                counterEl: true,
+                                fullscreenEl: true,
                                 hideAnimationDuration: 400,
-                                shareEl: false,
-                                counterEl: false,
                                 history: true,
-                                fullscreenEl: false,
-                                zoomEl: false
+                                index: 0,
+                                shareEl: false,
+                                showAnimationDuration: 400,
+                                zoomEl: true
                             };
                             let gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
                             gallery.listen('close', function () {
@@ -429,6 +439,14 @@ function initShowItemSections($item) {
 
                     // El click activa la galería
                     $('#' + $imageid).on('click', $imageswipe);
+
+                    // Si se pasa una foto por argumento comprueba que tengan el mismo HASH
+                    // Si lo tiene ejecuta la galería
+                    if ($photoget === hashCode($imagesrc).toString()) {
+                        removeUrlParam('photo');
+                        $imageswipe();
+                    }
+
                 }
 
                 /**
