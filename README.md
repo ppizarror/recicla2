@@ -2,9 +2,7 @@
 
 Proyecto reciclaje, tarea curso CC5002-1 Desarrollo de Aplicaciones Web. Universidad de Chile.
 
-## Importante
-
-#### Algunas configuraciones
+### Algunas configuraciones
 
 Configuraciones de php.ini:
 ```bash
@@ -17,7 +15,7 @@ Apache puertos: 80, 8080
 Mysql puertos: 3306
 ```
 
-#### Sobre la base de datos
+### Sobre la base de datos
 En el archivo sql/tarea2.sql se encuentra la base de datos con los registros ya añadidos, pruebe a añadir este sql a phpmyadmin para tener todos los registros de la aplicación.
 
 En la carpeta:
@@ -27,7 +25,7 @@ resources/photos/
 
 Se encuentran los archivos de las imágenes añadidos al servidor.
 
-#### Sobre el desarrollo
+### Sobre el desarrollo
 
 La aplicación tiene una ideologia fuerte en javascript. Esta basada en módulos, los cuales son:
 
@@ -74,7 +72,7 @@ Para el caso del buscador se creó el archivo search_item.php en *src/server/* e
 
 Para los mapas de google maps se consultó la API, las fotos se obtienen mediante items.php, el cual recorre cada artículo, consulta la comuna (obteniendo su nombre y la región), y luego se añade cada fotografia asociada a ese artículo. Todo se escribe en un json. Posteriormente la función **listItemInitMap()** de *src/modules/list_item/ui.js* recoge la información y la escribe ordenadamente.
 
-#### Página online
+### Página online
 La aplicación en su versión 2.30 se encuentra online en <a href="https://ppizarror.000webhostapp.com/recicla2/index.php">https://ppizarror.000webhostapp.com/recicla2/index.php</a>. En ella se puede interactuar con los controles.
 
 Validaciones W3C:
@@ -83,6 +81,6 @@ Validaciones W3C:
  - Añadir ítem <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fppizarror.000webhostapp.com%2Frecicla2%2Fadd_item.php&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=es">add_item.php</a>
  - Mostrar ítem <a href="https://ppizarror.000webhostapp.com/recicla2/show_item.php?id=20">add_item.php</a>
 
-#### Documentación
+### Documentación
 
 La documentación es generada con JSDOC3, se puede revisar de manera <a href="https://ppizarror.000webhostapp.com/recicla2/docs/">online</a> o bien se puede acceder de manera local a la carpeta *docs/index.html*.
