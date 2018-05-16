@@ -151,6 +151,7 @@ function isTrueNotNull(obj) {
 /**
  * Muestra el botón para subir al tope de la página
  * @function
+ * @ignore
  */
 function showBackToTopButton() {
     /* global $*/

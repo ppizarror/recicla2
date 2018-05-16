@@ -64,6 +64,6 @@ Estilo de errores.
 }
 
 .err-code {
-    font-family: Lucida Sans Typewriter, Lucida Console, monaco, Bitstream Vera Sans Mono, monospace;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", "monaco", "Bitstream Vera Sans Mono", "monospace";
     font-weight: 400 !important;
 }

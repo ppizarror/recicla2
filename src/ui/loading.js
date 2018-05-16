@@ -20,6 +20,7 @@ function loadHandler(status) {
  * @function
  * @param {boolean} Checker - Indica el estado
  * @param {Function} callback - Función que se llama tras la función
+ * @ignore
  */
 function Loading(Checker, callback) {
     let h, hh, w, posX, posY;

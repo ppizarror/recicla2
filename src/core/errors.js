@@ -10,6 +10,7 @@
 /**
  * Código de errores
  * @type {{langNotExist: {code: number, id: string, moreinfo: string, msg: string}}}
+ * @ignore
  */
 var errordb = {
     "langNotExist": {

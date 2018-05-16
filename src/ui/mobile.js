@@ -16,6 +16,7 @@ var cfg_mobile_page_enabled = false;
 /**
  * Chequea que el modo móvil está activado
  * @function
+ * @ignore
  */
 function checkMobileStatus() {
     let $f = function () {

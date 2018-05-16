@@ -9,12 +9,15 @@
 // noinspection ES6ConvertVarToLetConst
 /**
  * Ubicación loading img
+ * @global
+ * @ignore
  */
 var res_loading_image = 'resources/ui/loading_flower.gif';
 
 /**
  * Precarga los recursos de la plataforma
  * @function
+ * @ignore
  */
 function preloadResources() {
     let $d = $('#preload_resources');

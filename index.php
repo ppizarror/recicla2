@@ -95,8 +95,8 @@ $db = DbConfig::getConnection();
     <script src="src/core/utils.js"></script>
 
     <!-- Carga elementos interfaz gráfica -->
-    <script src="src/ui/i10n/lang.js"></script>
-    <script src="src/ui/i10n/es.js"></script>
+    <script src="src/ui/i18n/lang.js"></script>
+    <script src="src/ui/i18n/es.js"></script>
     <script src="src/ui/globals.js"></script>
     <script src="src/ui/mobile.js"></script>
     <script src="src/ui/dialogs.js"></script>
