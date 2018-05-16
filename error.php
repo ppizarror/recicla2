@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <?php
 /**
+ * RECICLA2
  * Errores de la aplicación.
+ *
  * @author Pablo Pizarro R. @ppizarror.com
- * @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
+ * @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
  */
 
 global $err_id, $err_code;
@@ -50,28 +52,28 @@ if (isset($_GET['code'])) { // Obtiene el código de error
     <meta name="theme-color" content="#ffffff">
 
     <!-- Importación de librerías -->
-    <script src="js/jquery/jquery-3.3.1.js"></script>
-    <script src="js/toastr/toastr.min.js"></script>
-    <script src="js/jquery-confirm/jquery-confirm.min.js"></script>
-    <script src="js/tooltipster/tooltipster.bundle.min.js"></script>
-    <script src="js/dataTables/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables/dataTables.responsive.min.js"></script>
-    <script src="js/jquery-dateFormat/jquery-dateFormat.min.js"></script>
+    <script src="lib/jquery/jquery-3.3.1.js"></script>
+    <script src="lib/toastr/toastr.min.js"></script>
+    <script src="lib/jquery-confirm/jquery-confirm.min.js"></script>
+    <script src="lib/tooltipster/tooltipster.bundle.min.js"></script>
+    <script src="lib/dataTables/jquery.dataTables.min.js"></script>
+    <script src="lib/dataTables/dataTables.responsive.min.js"></script>
+    <script src="lib/jquery-dateFormat/jquery-dateFormat.min.js"></script>
 
     <!-- Estilos de librerías -->
-    <link rel="stylesheet" type="text/css" href="css/font-awesome-v5/css/fontawesome-all.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/dataTables/jquery.dataTables.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/dataTables/responsive.dataTables.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-4.0.0-beta.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/toastr/toastr.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/tooltipster/tooltipster.bundle.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/tooltipster/themes/sideTip-borderless.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/tooltipster/themes/sideTip-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/tooltipster/themes/sideTip-noir.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/tooltipster/themes/sideTip-punk.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/tooltipster/themes/sideTip-shadow.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/hover/hover.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/jquery-confirm/jquery-confirm.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/font-awesome-v5/css/fontawesome-all.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/dataTables/jquery.dataTables.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/dataTables/responsive.dataTables.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap-4.0.0-beta.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/toastr/toastr.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/tooltipster/tooltipster.bundle.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/tooltipster/themes/sideTip-borderless.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/tooltipster/themes/sideTip-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/tooltipster/themes/sideTip-noir.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/tooltipster/themes/sideTip-punk.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/tooltipster/themes/sideTip-shadow.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/hover/hover.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="lib/jquery-confirm/jquery-confirm.css" media="screen">
 
     <!-- Estilo de la aplicación -->
     <link rel="stylesheet" type="text/css" href="src/stylesheets/root.css" media="screen">

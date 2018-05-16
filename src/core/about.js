@@ -4,7 +4,7 @@
  Provee la información del autor del software y de las bibliotecas.
 
  @author Pablo Pizarro R. @ppizarror.com
- @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
+ @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
  */
 
 // Infomación del proyecto
@@ -32,7 +32,7 @@ var aboutinfo = {
     "productname": "Recicla2",
     "version": {
         "date": "16/05/2018",
-        "v": "1.92"
+        "v": "2.00"
     }
 };
 

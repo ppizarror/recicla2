@@ -3,7 +3,7 @@
  Crea un header que incluye el título de la página, un botón para retroceder, herramientas y el ícono de la app.
 
  @author Pablo Pizarro R. @ppizarror.com
- @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
+ @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
  */
 
 /**

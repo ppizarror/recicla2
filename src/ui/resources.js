@@ -3,7 +3,7 @@
  Funciones asociadas al manejo de recursos.
 
  @author Pablo Pizarro R. @ppizarror.com
- @license Copyright 2018, no copiar o distribuír sin permiso directo del autor.
+ @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
  */
 
 // noinspection ES6ConvertVarToLetConst
