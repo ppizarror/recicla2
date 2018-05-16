@@ -79,7 +79,7 @@ Validaciones W3C:
 
  - Lista de ítems: <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fppizarror.000webhostapp.com%2Frecicla2%2Findex.php&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=es"> index.php</a>
  - Añadir ítem: <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fppizarror.000webhostapp.com%2Frecicla2%2Fadd_item.php&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=es">add_item.php</a>
- - Mostrar ítem: <a href="https://ppizarror.000webhostapp.com/recicla2/show_item.php?id=20">add_item.php</a>
+ - Mostrar ítem: <a href="https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fppizarror.000webhostapp.com%2Frecicla2%2Fshow_item.php%3Fid%3D20&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=es">show_item.php</a>
 
 ### Documentación
 
