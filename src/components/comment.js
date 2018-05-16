@@ -7,8 +7,9 @@
  */
 
 /**
- * Valida un email.
- * @param $email
+ * Valida un email
+ * @function
+ * @param {string} $email - Email
  * @return {boolean}
  */
 function validateEmail($email) {
@@ -18,8 +19,9 @@ function validateEmail($email) {
 }
 
 /**
- * Valida un número de teléfono.
- * @param $tel
+ * Valida un número de teléfono
+ * @function
+ * @param {string} $tel - Número de teléfono
  * @return {boolean}
  */
 function validatePhone($tel) {
@@ -31,8 +33,8 @@ function validatePhone($tel) {
 
 /**
  * Comentario de un Ítem
- * @param options
- * @constructor
+ * @class
+ * @param {object} options - Opciones de creación
  */
 function ItemComment(options) {
     let self = this;
@@ -49,7 +51,8 @@ function ItemComment(options) {
     this._user = options.user;
 
     /**
-     * Retorna el objeto de la fecha.
+     * Retorna el objeto de la fecha
+     * @function
      * @return {string}
      */
     this.getDate = function () {
@@ -59,7 +62,8 @@ function ItemComment(options) {
     };
 
     /**
-     * Retorna el nombre del autor del comentario.
+     * Retorna el nombre del autor del comentario
+     * @function
      * @return {string|*}
      */
     this.getUser = function () {
@@ -67,7 +71,8 @@ function ItemComment(options) {
     };
 
     /**
-     * Retorna el comentario mismo.
+     * Retorna el comentario mismo
+     * @function
      * @return {string|*}
      */
     this.getComment = function () {
@@ -85,7 +90,6 @@ function ItemComment(options) {
                 $words[$i] = '<a href="tel:{0}" class="disable-a-hover">+56{0}</a>'.format($words[$i]);
             }
         }
-
         return $words.join(' ');
     };
 }

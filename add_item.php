@@ -52,6 +52,7 @@ $db = DbConfig::getConnection();
     <script src="js/toastr/toastr.min.js"></script>
     <script src="js/jquery-confirm/jquery-confirm.min.js"></script>
     <script src="js/tooltipster/tooltipster.bundle.min.js"></script>
+    <script src="js/jquery-dateFormat/jquery-dateFormat.min.js"></script>
 
     <!-- Estilos de librerías -->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-v5/css/fontawesome-all.css" media="screen">

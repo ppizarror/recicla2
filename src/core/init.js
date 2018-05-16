@@ -7,10 +7,10 @@
  */
 
 /**
- * Inicia la aplicación.
- * @return
+ * Inicia la aplicación
  */
 $(function () {
+
     // Imprime el acerca-de
     printAboutInfo();
 
@@ -35,4 +35,5 @@ $(function () {
 
     // Llamada a callbacks
     initAppCallback();
+
 });

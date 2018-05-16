@@ -30,14 +30,14 @@ var aboutinfo = {
     },
     "productname": "Recicla2",
     "version": {
-        "date": "26/04/2018",
-        "v": "1.85"
+        "date": "16/05/2018",
+        "v": "1.90"
     }
 };
 
 /**
- * Imprime un acerca-de en consola.
- * @return
+ * Imprime un acerca-de en consola
+ * @function
  */
 function printAboutInfo() {
     console.log('{0} v{1} ({2})'.format(aboutinfo.productname, aboutinfo.version.v, aboutinfo.version.date));

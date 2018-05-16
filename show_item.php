@@ -63,6 +63,7 @@ $db = DbConfig::getConnection();
     <script src="js/slick/slick.min.js"></script>
     <script src="js/photoswipe/photoswipe.min.js"></script>
     <script src="js/photoswipe/photoswipe-ui-default.min.js"></script>
+    <script src="js/jquery-dateFormat/jquery-dateFormat.min.js"></script>
 
     <!-- Estilos de librerías -->
     <link rel="stylesheet" type="text/css" href="css/font-awesome-v5/css/fontawesome-all.css" media="screen">
