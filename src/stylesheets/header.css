@@ -194,7 +194,7 @@ Header, cabecera de cada página.
     outline-offset: -2px;
     outline: none;
     padding: 3px 3px 3px 10px !important;
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, border-bottom-left-radius ease-in-out .15s, border-bottom-right-radius ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, border-bottom-left-radius ease-in-out .35s, border-bottom-right-radius ease-in .35s;
     width: 100%;
 }
 
@@ -212,32 +212,65 @@ Header, cabecera de cada página.
     color: #000;
     display: none;
     font-size: 1rem;
+    font-weight: 500;
     position: fixed;
     text-align: left;
     top: 25px;
     width: 100%;
 }
 
+.header-search-results-container :last-child {
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
 @media screen and (min-width: 1200px) {
     .header-search-results-container {
-        padding: 6px;
+        font-size: 0.9rem;
     }
 }
 
 @media screen and (min-width: 900px) and (max-width: 1200px) {
     .header-search-results-container {
-        padding: 5px;
+        font-size: 0.9rem;
     }
 }
 
 @media screen and (min-width: 500px) and (max-width: 900px) {
     .header-search-results-container {
-        padding: 5px;
+        font-size: 0.8rem;
     }
 }
 
 @media screen and (max-width: 500px) {
     .header-search-results-container {
-        padding: 3px;
+        font-size: 0.7rem;
     }
+}
+
+.header-search-results-none {
+    cursor: default;
+    padding: 5px;
+    text-align: center;
+}
+
+.header-search-results-entry {
+    opacity: 0.9;
+    padding: 4px;
+}
+
+.header-search-results-entry:hover {
+    opacity: 1.0;
+}
+
+.header-search-results-entry a {
+    text-decoration: none;
+}
+
+.header-search-results-entry a:hover {
+    text-decoration: underline;
+}
+
+.header-search-results-entry.even {
+    background-color: #ffffff;
 }

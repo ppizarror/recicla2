@@ -24,6 +24,7 @@ function Header(options) {
     let self = this;
     let _parentobj = $(options.parent);
     let _lastquery = '';
+    let _lastresults = -1;
 
     /**
      * Se buscan configuraciones incompatibles
@@ -36,6 +37,65 @@ function Header(options) {
     }
 
     /**
+     * Muestra los resultados de la búsqueda
+     * @function
+     * @param {Array} items - Ítems de la búsqueda
+     * @private
+     * @ignore
+     */
+    this._showSearchResults = function (items) {
+        let $results = $(this._searchid + ' .header-search-results-container');
+        let $search = $(this._searchid + ' .searchinput');
+
+        // Borra el recuadro
+        $results.empty();
+
+        // Si existen resultados
+        if (items.length !== 0) {
+
+            // Alterna entre even y odd para cambiar el color de fondo
+            let j = '';
+
+            // Recorre cada ítem y lo añade como entrada en el recuadro de búsqueda
+            for (let i = 0; i < items.length; i++) {
+                j = i % 2 === 0 ? 'odd' : 'even';
+                // noinspection QuirksModeInspectionTool, HtmlUnknownTarget
+                $results.append('<div class="header-search-results-entry {2}"><a href="{1}">{0}</a></div>'.format(items[i]['nombre'], modules.showItem.file.format(items[i]['id']), j));
+            }
+
+            // Actualiza últimos resultados
+            _lastresults = items.length;
+        } else {
+            $results.append('<div class="header-search-results-none">{0}</div>'.format(lang.search_item_noresults));
+            _lastresults = -1;
+        }
+
+        // Muestra el recuadro
+        $results.fadeIn(400);
+        $search.addClass('displaybox');
+        $(ui_content).css('opacity', 0.75);
+    };
+
+    /**
+     * Oculta los resultados de la búsqueda
+     * @function
+     * @private
+     * @ignore
+     */
+    this._hideSearchResults = function () {
+        let $results = $(this._searchid + ' .header-search-results-container');
+        let $search = $(this._searchid + ' .searchinput');
+
+        // Aplica efectos
+        $search.removeClass('displaybox');
+        $results.fadeOut(200);
+        $(ui_content).css('opacity', 1.0);
+
+        // Borra última búsqueda
+        _lastresults = -1;
+    };
+
+    /**
      * Establece el evento de búsqueda
      * @private
      * @ignore
@@ -46,11 +106,6 @@ function Header(options) {
          * Obtiene el objeto DOM del input de búsqueda
          */
         let $search = $(this._searchid + ' .searchinput');
-
-        /**
-         * Recuadro de resultados
-         */
-        let $results = $(this._searchid + ' .header-search-results-container');
 
         // noinspection JSUnresolvedFunction
         /**
@@ -68,14 +123,11 @@ function Header(options) {
 
             // Si hay menos de tres caracteres oculta recuadro de búsqueda
             if ($search.val().length < 3) {
-                $results.fadeOut(400);
-                $search.removeClass('displaybox');
+                self._hideSearchResults();
             }
 
             // Hay más de tres caracteres, hace consulta ajax y escribe resultados en el recuadro de búsqueda
             else {
-                $results.fadeIn(400);
-                $search.addClass('displaybox');
 
                 // Obtiene el texto y lo formatea
                 let $query = $search.val();
@@ -105,10 +157,9 @@ function Header(options) {
                             if (Object.keys(data).indexOf('error') !== -1 && data.error === '') {
                                 let items = data['items'];
 
-                                // Recorre cada ítem y lo añade como entrada en el recuadro de búsqueda
-                                for (let i = 0; i < items.length; i++) {
-                                    // noinspection HtmlUnknownTarget
-                                    $results.append('<div class=""><a href="{1}">{0}</a></div>'.format(items[i]['nombre'], modules.showItem.file.format(items[i]['id'])));
+                                // Si los resultados son distintos en número a los anteriores se borra el recuadro
+                                if (items.length !== _lastresults) {
+                                    self._showSearchResults(items);
                                 }
 
                             } else {

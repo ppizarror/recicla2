@@ -74,10 +74,11 @@ a.back-to-top {
 }
 
 #content {
-    position: static;
-    z-index: -1;
     margin: 0 auto;
     max-width: 980px;
     min-width: 420px;
+    position: static;
+    transition: ease-in-out opacity .4s;
     width: 100%;
+    z-index: -1;
 }
