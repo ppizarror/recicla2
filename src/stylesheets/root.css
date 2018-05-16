@@ -67,3 +67,17 @@ a.back-to-top {
 .disable-a-hover:hover {
     text-decoration: none;
 }
+
+#header {
+    position: relative;
+    z-index: 1;
+}
+
+#content {
+    position: static;
+    z-index: -1;
+    margin: 0 auto;
+    max-width: 980px;
+    min-width: 420px;
+    width: 100%;
+}

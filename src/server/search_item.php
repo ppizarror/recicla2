@@ -11,6 +11,7 @@
  */
 include_once("dbconfig.php");
 include_once("utils.php");
+include_once("item.php");
 
 /** @var mysqli $db */
 $db = DbConfig::getConnection();
@@ -35,7 +36,7 @@ if ($_POST and !$_GET) {
      * Se verifican parámetros post
      */
     $postkeys = array_keys($_POST);
-    if (count($postkeys) !== 4) {
+    if (count($postkeys) !== 1) {
         throw_error("BAD POST SIZE");
     }
     $needed_keys = array("item-name-search");
@@ -48,73 +49,25 @@ if ($_POST and !$_GET) {
     /**
      * Obtiene parámetros
      */
-    $comment = $db->real_escape_string(htmlspecialchars($_POST["comment-text"]));
-    $author = $db->real_escape_string(htmlspecialchars($_POST["comment-author"]));
-    $validated = $db->real_escape_string(htmlspecialchars($_POST["validated"]));
-    $itemid = $db->real_escape_string(htmlspecialchars($_POST["itemid"]));
+    $item_name = $db->real_escape_string(htmlspecialchars($_POST["item-name-search"]));
 
     /**
-     * Validación comentario
+     * Validación búsqueda
      */
-    if (!validate_string_size($comment, 10, 500)) {
-        throw_error("COMMENT NOT VALID");
+    if (!validate_string_size($item_name, 3, -1)) {
+        throw_error("SEARCH NOT VALID");
     }
 
     /**
-     * Validación nombre comentarista
+     * Se obtienen nombres de artículo similares
      */
-    if (!validate_string_size($author, 5, 200)) {
-        throw_error("AUTHOR NAME NOT VALID");
-    }
-
-    /**
-     * Validación formulario
-     */
-    if (!$validated === 'true') {
-        throw_error("FORM NOT VALID");
-    }
-
-    /**
-     * Validación item id
-     */
-    if (!is_numeric($itemid)) {
-        throw_error("ITEM ID NOT VALID");
-    } else {
-        $itemid = intval($itemid);
-        if ($itemid < 0) {
-            throw_error("ITEM ID MUST BE POSITIVE");
-        }
-
-        // Busca que el item exista
-        $sql = "SELECT nombre FROM articulo where id={$itemid}";
-        $result = $db->query($sql) or die("ERROR ON ACCESS DB");
-        $result_length = mysqli_num_rows($result);
-        mysqli_free_result($result);
-        if ($result_length !== 1) {
-            throw_error("ITEM ID NOT EXITS");
-        }
-    }
-
-    /**
-     * Se obtiene fecha comentario
-     */
-    date_default_timezone_set('America/Santiago');
-    $comment_date = date(DATE_FORMAT);
-
-    /**
-     * Se carga el comentario
-     */
-    $sql = "INSERT INTO comentario (articulo_id,nombre_comentarista,comentario,fecha) VALUES ({$itemid},'{$author}','{$comment}','{$comment_date}')";
-    $result = $db->query($sql) or die("ERROR EN DB");
-    if (!$result) {
-        throw_error('CANNOT INSERT COMMENT ON DB');
-    }
+    $items = item_download_by_search($db, $item_name);
 
     /**
      * Retorna OK y fecha del comentario
      */
-    $err = array("error" => "", "date" => $comment_date);
-    echo json_encode($err);
+    $data = array("error" => "", "items" => $items);
+    echo json_encode($data);
     $db->close();
 } else {
     throw_error("NOT POST");

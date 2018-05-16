@@ -137,7 +137,7 @@ function createShowItem($item) {
     let $comment_button_id = generateId(cfg_id_size);
     let $comment_container_id = generateId(cfg_id_size);
     // noinspection QuirksModeInspectionTool
-    $(ui_main_content).append('<div class="show-item-comments-container"><div class="show-item-comment-menu"><div class="show-item-comment-menu-title">{1}</div><div class="show-item-comment-buttons"><button id="{2}" type="button" class="btn btn-primary show-item-add-comment-button hvr-shadow">{0}</button></div></div><div class="show-item-comment-list" id="{3}"></div></div>'.format(lang.show_item_add_comment, lang.show_item_comments_title, $comment_button_id, $comment_container_id));
+    $(ui_content).append('<div class="show-item-comments-container"><div class="show-item-comment-menu"><div class="show-item-comment-menu-title">{1}</div><div class="show-item-comment-buttons"><button id="{2}" type="button" class="btn btn-primary show-item-add-comment-button hvr-shadow">{0}</button></div></div><div class="show-item-comment-list" id="{3}"></div></div>'.format(lang.show_item_add_comment, lang.show_item_comments_title, $comment_button_id, $comment_container_id));
     $show_item_comment_container = $('#' + $comment_container_id);
     // noinspection JSUnresolvedFunction
     $('.show-item-comment-menu').on('selectstart dragstart', false);
@@ -242,7 +242,7 @@ function createShowItem($item) {
                                     $.alert(lang.add_comment_query_error);
                                 }
                             } catch ($e) {
-                                console.log($e.message);
+                                console.error($e.message);
                             } finally {
                             }
                         });
@@ -527,11 +527,11 @@ function initShowItemSections($item) {
  */
 function showItemBackgroundResize() {
     let $appbackground = $('#appBackground');
-    let $maincontent = $(ui_main_content);
+    let $maincontent = $(ui_content);
 
     // Aplica css
     $maincontent.css('position', 'relative');
-    $(ui_main_content).css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_main_content))) / 2) + 'px');
+    $(ui_content).css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_content))) / 2) + 'px');
     $appbackground.css('width', getElementInnerWidth($('#root')) + 'px');
     $appbackground.css('height', getElementHeight($show_item_container) + 100 + 'px')
 }

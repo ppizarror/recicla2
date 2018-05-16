@@ -13,7 +13,7 @@
 function centerMainContent() {
     let $maincontent = $(ui_main_content);
     $maincontent.css('position', 'relative');
-    $(ui_main_content).css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_main_content))) / 2) + 'px');
+    $maincontent.css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_main_content))) / 2) + 'px');
 }
 
 /**
@@ -33,7 +33,8 @@ function hideMainContent() {
 function fadeInMainContent($f) {
     let $maincontent = $(ui_main_content);
     if (notNullUndf($f)) {
-        $maincontent.fadeIn(400, $f);
+        $f();
+        $maincontent.fadeIn(400);
     } else {
         $maincontent.fadeIn(400);
     }

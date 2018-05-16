@@ -194,7 +194,7 @@ Header, cabecera de cada página.
     outline-offset: -2px;
     outline: none;
     padding: 3px 3px 3px 10px !important;
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, border-bottom-left-radius ease-in-out .15s, border-bottom-right-radius ease-in-out .15s;
     width: 100%;
 }
 

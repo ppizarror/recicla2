@@ -13,7 +13,7 @@
  */
 function Header(options) {
     let $defaults = {
-        parent: ui_main_content,
+        parent: ui_header,
         showAppInfoLeft: false,
         showAppInfoRight: false,
         showBackButton: false,
@@ -68,22 +68,67 @@ function Header(options) {
 
             // Si hay menos de tres caracteres oculta recuadro de búsqueda
             if ($search.val().length < 3) {
-                $results.hide();
+                $results.fadeOut(400);
                 $search.removeClass('displaybox');
             }
 
             // Hay más de tres caracteres, hace consulta ajax y escribe resultados en el recuadro de búsqueda
             else {
-                $results.show();
+                $results.fadeIn(400);
                 $search.addClass('displaybox');
 
                 // Obtiene el texto y lo formatea
                 let $query = $search.val();
-                $query = $query.replace(/^[À-ÿzáéíóúÁÉÍÓÚüÜ\u00f1\u00d1a-z_0-9',.#!;+-?¿():/{}\[\]¡°|"-]/g, '');
 
                 // Si el query es distinto al anteriormente realizado entonces hace una consulta Ajax
                 if ($query !== _lastquery) {
-                    console.log($query);
+
+                    /**
+                     * Se crea la consulta Ajax
+                     * @type {JQuery.jqXHR}
+                     */
+                    let $request = $.ajax({
+                        data: 'item-name-search={0}'.format($query),
+                        timeout: 10000,
+                        type: 'post',
+                        url: 'src/server/search_item.php'
+                    });
+
+                    // noinspection JSUnresolvedFunction
+                    /**
+                     * Respuesta correcta
+                     */
+                    $request.done(function (response) {
+                        try {
+                            let data = JSON.parse(response);
+                            // Si no se encontraron errores se procede
+                            if (Object.keys(data).indexOf('error') !== -1 && data.error === '') {
+                                let items = data['items'];
+
+                                // Recorre cada ítem y lo añade como entrada en el recuadro de búsqueda
+                                for (let i = 0; i < items.length; i++) {
+                                    // noinspection HtmlUnknownTarget
+                                    $results.append('<div class=""><a href="{1}">{0}</a></div>'.format(items[i]['nombre'], modules.showItem.file.format(items[i]['id'])));
+                                }
+
+                            } else {
+                                $.alert(lang.search_item_server_error);
+                            }
+                        } catch ($e) {
+                            $.alert(lang.search_item_server_error);
+                            console.error($e.message);
+                        } finally {
+                        }
+                    });
+
+                    // noinspection JSUnresolvedFunction
+                    /**
+                     * Server falló, se alerta al usuario
+                     */
+                    $request.fail(function () {
+                            $.error(lang.search_item_server_error);
+                        }
+                    );
                 }
                 _lastquery = $query;
             }
@@ -118,7 +163,7 @@ function Header(options) {
          * Añade el header
          * @ignore
          */
-        _parentobj.append('<div id="{0}" class="header-container"><div class="header-module header-app-logo left"><div class="header-app-container left {2}"><img src="resources/ui/favicon/favicon.png" alt=""/> Recicla2</div></div><div class="header-module header-back-button"><div class="header-back-button-container"><div class="header-back-button-icon {3}"><i class="fas fa-chevron-circle-left hvr-icon"></i></div><div class="header-back-button-title">{1}</div></div></div><div class="header-module header-title"></div><div class="header-module header-app-logo right"><div class="header-app-container right {2}"><img src="resources/ui/favicon/favicon.png" alt=""/> Recicla2</div></div><div class="header-module header-search-box"><div class="header-search-container hvr-shadow" id="{5}"><form autocomplete="off"><input type="search" name="item-name-search" class="header-search-input searchinput" placeholder="{4}" maxlength="40" required></form><div class="header-search-results-container">Iluaudsadi</div></div></div></div>'.format(self._id, lang.header_index, cfg_header_applogo_effect, cfg_header_indexicon_effect, lang.header_searchbox_placeholder, this._searchid));
+        _parentobj.append('<div id="{0}" class="header-container"><div class="header-module header-app-logo left"><div class="header-app-container left {2}"><img src="resources/ui/favicon/favicon.png" alt=""/> Recicla2</div></div><div class="header-module header-back-button"><div class="header-back-button-container"><div class="header-back-button-icon {3}"><i class="fas fa-chevron-circle-left hvr-icon"></i></div><div class="header-back-button-title">{1}</div></div></div><div class="header-module header-title"></div><div class="header-module header-app-logo right"><div class="header-app-container right {2}"><img src="resources/ui/favicon/favicon.png" alt=""/> Recicla2</div></div><div class="header-module header-search-box"><div class="header-search-container hvr-shadow" id="{5}"><form autocomplete="off"><input type="search" name="item-name-search" class="header-search-input searchinput" placeholder="{4}" maxlength="40" required></form><div class="header-search-results-container"></div></div></div></div>'.format(self._id, lang.header_index, cfg_header_applogo_effect, cfg_header_indexicon_effect, lang.search_item_placeholder, this._searchid));
 
         this._obj = $('#{0}'.format(self._id));
         // noinspection JSUnresolvedFunction

@@ -156,6 +156,8 @@ $db = DbConfig::getConnection();
 <div id="root">
     <div id="appBackground" class="show-item-transform"></div>
     <div id="mainContent">
+        <div id="header"></div>
+        <div id="content"></div>
     </div>
     <div id="errorMsg">
         <div id="errorMsgText"></div>

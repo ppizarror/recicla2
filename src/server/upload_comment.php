@@ -112,8 +112,8 @@ if ($_POST and !$_GET) {
     /**
      * Retorna OK y fecha del comentario
      */
-    $err = array("error" => "", "date" => $comment_date);
-    echo json_encode($err);
+    $data = array("error" => "", "date" => $comment_date);
+    echo json_encode($data);
     $db->close();
 } else {
     throw_error("NOT POST");

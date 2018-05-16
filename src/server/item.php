@@ -14,6 +14,26 @@ require_once('utils.php');
 const ITEM_CAT_MAX_LIST = 5; // Número de ítems por lista
 
 /**
+ * Descarga ítems por nombre
+ * @param mysqli $db
+ * @param string $itemname
+ * @return array
+ */
+function item_download_by_search($db, $itemname)
+{
+    $sql = "SELECT id, nombre FROM articulo WHERE nombre LIKE '{$itemname}%'";
+    $results = $db->query($sql);
+
+    // Almacena todos los registros
+    $rows = array();
+    while ($row = $results->fetch_assoc()) {
+        $rows[] = $row;
+    }
+    mysqli_free_result($results);
+    return $rows;
+}
+
+/**
  * Descarga un ítem raw por id
  * @param mysqli $db
  * @param int $id

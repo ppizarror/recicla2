@@ -123,7 +123,7 @@ function createAddItem() {
     let $b_cancel_id = generateId(cfg_id_size);
     let $b_add_id = generateId(cfg_id_size);
     // noinspection QuirksModeInspectionTool
-    $(ui_main_content).append('<div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{3}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
+    $(ui_content).append('<div class="add-item-bottom-bar"><div class="add-item-botton-buttoncontainer"><button id="{2}" type="button" class="btn btn-danger add-item-bottom-button  hvr-shadow">{0}</button><button id="{3}" type="button" class="btn btn-success add-item-bottom-button hvr-shadow">{1}</button></div></div>'.format(lang.add_item_cancel, lang.add_item_add, $b_cancel_id, $b_add_id));
 
     // Botón cancelar cierra módulo y carga módulo listar
     // noinspection JSUnresolvedFunction

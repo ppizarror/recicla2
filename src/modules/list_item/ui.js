@@ -120,7 +120,7 @@ function createListItem() {
                 fadeInMainContent(function () {
                     $(window).off('resize.listItemPanel');
                     let $f = function () {
-                        if (cfg_listitem_center_module) { //Centra la página
+                        if (cfg_listitem_center_module) { // Centra la página
                             centerMainContent();
                         }
                         adjustListItemWidth();
@@ -189,7 +189,7 @@ function createListItem() {
      */
     let $new_item_id = generateId(cfg_id_size);
     // noinspection QuirksModeInspectionTool
-    $(ui_main_content).append('<div class="list-item-bottom-bar"><div class="list-item-botton-buttoncontainer"><button id="{0}" type="button" class="btn btn-success list-item-bottom-button hvr-shadow">{1}</button></div></div>'.format($new_item_id, lang.list_item_new_item));
+    $(ui_content).append('<div class="list-item-bottom-bar"><div class="list-item-botton-buttoncontainer"><button id="{0}" type="button" class="btn btn-success list-item-bottom-button hvr-shadow">{1}</button></div></div>'.format($new_item_id, lang.list_item_new_item));
     // noinspection JSUnresolvedFunction
     $('#' + $new_item_id).on('click', function () {
         loadModule(modules.addItem);
@@ -199,7 +199,7 @@ function createListItem() {
     /**
      * Desactiva selección en contenido
      */
-    $(ui_main_content).on('selectstart dragstart', false);
+    $(ui_content).on('selectstart dragstart', false);
 }
 
 /**
@@ -208,8 +208,8 @@ function createListItem() {
  * @ignore
  */
 function adjustListItemWidth() {
-    let $min = parseInt($(ui_main_content).css('min-width'), 10);
-    let $max = parseInt($(ui_main_content).css('max-width'), 10);
+    let $min = parseInt($(ui_content).css('min-width'), 10);
+    let $max = parseInt($(ui_content).css('max-width'), 10);
 
     // Calcula nuevo ancho
     let $w = getElementWidth($(window)) * 0.8;

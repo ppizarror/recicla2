@@ -1,6 +1,6 @@
 /**
  LIST ITEM INIT
- Inicia el módulo de agregar ítem.
+ Inicia el módulo de mostrar lista de ítems.
 
  @author Pablo Pizarro R. @ppizarror.com
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
@@ -24,6 +24,7 @@ $(function () {
     // Centra la página
     if (cfg_listitem_center_module) {
         centerMainContent();
+        // noinspection JSUnresolvedFunction
         $(window).on('resize.listItemPanel', centerMainContent);
     }
 

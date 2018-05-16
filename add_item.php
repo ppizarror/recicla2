@@ -113,7 +113,10 @@ $db = DbConfig::getConnection();
 <body>
 <div id="root">
     <div id="appBackground"></div>
-    <div id="mainContent"></div>
+    <div id="mainContent">
+        <div id="header"></div>
+        <div id="content"></div>
+    </div>
     <div id="errorMsg">
         <div id="errorMsgText"></div>
     </div>

@@ -18,7 +18,7 @@ function Container(options) {
         elementClass: '',
         disableSelection: false,
         padding: 10,
-        parent: ui_main_content,
+        parent: ui_content,
         shadow: true,
         width: 100
     };
