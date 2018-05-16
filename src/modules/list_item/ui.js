@@ -13,6 +13,20 @@
  */
 var list_item_container;
 
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Almacena objeto mapa de google
+ * @ignore
+ */
+var list_item_map_map;
+
+// noinspection ES6ConvertVarToLetConst
+/**
+ * Almacena geocoder de google
+ * @ignore
+ */
+var list_item_map_geocoder;
+
 /**
  * Crea el módulo en la ui
  * @function
@@ -184,8 +198,25 @@ function createListItem() {
         });
     }
 
+    // noinspection JSUnresolvedFunction
     /**
-     * Añade botón informar artículo
+     * Desactiva selección en contenido
+     */
+    $(ui_content).on('selectstart dragstart', false);
+
+    /**
+     * Añade contenedor con google maps
+     */
+    let maps_container = new Container({
+        elementClass: 'list-item-container',
+        padding: 0
+    });
+    maps_container.init();
+    maps_container = maps_container.getDOM();
+    maps_container.append('<div id="list-item-map-container"></div><script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwUWMg608x0Meh2ejD9d7cX0BDrzvLPhM&callback=listItemInitMap"></script>');
+
+    /**
+     * Añade botón informar artículo (FINAL)
      */
     let $new_item_id = generateId(cfg_id_size);
     // noinspection QuirksModeInspectionTool
@@ -194,12 +225,19 @@ function createListItem() {
     $('#' + $new_item_id).on('click', function () {
         loadModule(modules.addItem);
     });
+}
 
-    // noinspection JSUnresolvedFunction
-    /**
-     * Desactiva selección en contenido
-     */
-    $(ui_content).on('selectstart dragstart', false);
+// noinspection JSUnusedGlobalSymbols
+/**
+ * Inicia el mapa
+ * @function
+ */
+function listItemInitMap() {
+    list_item_map_map = new google.maps.Map(document.getElementById('list-item-map-container'), {
+        zoom: 4,
+        center: {lat: -33.27, lng: -70.40} // Centro en Santiago
+    });
+    list_item_map_geocoder = new google.maps.Geocoder();
 }
 
 /**

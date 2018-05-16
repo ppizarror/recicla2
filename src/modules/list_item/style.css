@@ -79,3 +79,8 @@ Estilo lista de artículos.
     float: right;
     margin-left: 20px;
 }
+
+#list-item-map-container {
+    height: 400px;
+    width: 100%;
+}

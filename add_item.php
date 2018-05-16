@@ -101,6 +101,7 @@ $db = DbConfig::getConnection();
     <script src="src/modules/add_item/server.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/add_item/ui.js?v=<?php echo uniqid(); ?>"></script>
     <script src="src/modules/add_item/validation.js?v=<?php echo uniqid(); ?>"></script>
+
     <?php
     load_rc_chile($db);
     ?>

@@ -115,6 +115,7 @@ if (isset($_COOKIE['additem'])) {
         <script src="src/modules/modules.js?v=<?php echo uniqid(); ?>"></script>
         <script src="src/modules/list_item/config.js?v=<?php echo uniqid(); ?>"></script>
         <script src="src/modules/list_item/ui.js?v=<?php echo uniqid(); ?>"></script>
+
         <?php
         /**
          * Chequea que un ítem se subió, se manda un popup
@@ -171,6 +172,11 @@ if (isset($_COOKIE['additem'])) {
                 items[i] = new Item(items[i]);
             }
         </script>\n";
+
+        /**
+         * Escribe comunas y fotos
+         */
+
         ?>
 
         <!-- Inicia app -->
