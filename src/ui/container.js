@@ -49,6 +49,7 @@ function Container(options) {
      * @function
      */
     this.init = function () {
+
         /**
          * Crea el container en el DOM
          * @ignore
@@ -81,5 +82,6 @@ function Container(options) {
         if (options.shadow) {
             self._obj.css('box-shadow', 'rgba(0, 0, 0, 0.3) 3px 3px 20px 2px')
         }
+
     };
 }

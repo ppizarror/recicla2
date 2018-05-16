@@ -38,7 +38,7 @@ function Header(options) {
      * Establece el evento de búsqueda
      * @private
      */
-    this._searchEvent = function () {
+    this._initSearch = function () {
         console.log('iniciando');
     };
 
@@ -56,16 +56,24 @@ function Header(options) {
      * @function
      */
     this.init = function () {
+
+        /**
+         * Crea los ID
+         */
+        this._id = generateId(cfg_id_size);
+        this._searchid = generateId(cfg_id_size);
+
+        // noinspection QuirksModeInspectionTool,HtmlUnknownTarget
         /**
          * Añade el header
          * @ignore
          */
-        this._id = generateId(cfg_id_size);
-        // noinspection QuirksModeInspectionTool,HtmlUnknownTarget
-        _parentobj.append('<div id="{0}" class="header-container"><div class="header-module header-app-logo left"><div class="header-app-container left {2}"><img src="resources/ui/favicon/favicon.png" alt=""/> Recicla2</div></div><div class="header-module header-back-button"><div class="header-back-button-container"><div class="header-back-button-icon {3}"><i class="fas fa-chevron-circle-left hvr-icon"></i></div><div class="header-back-button-title">{1}</div></div></div><div class="header-module header-title"></div><div class="header-module header-app-logo right"><div class="header-app-container right {2}"><img src="resources/ui/favicon/favicon.png" alt=""/> Recicla2</div></div><div class="header-module header-search-box"><div class="header-search-container hvr-shadow"><input type="search" class="header-search-input displaybox" placeholder="{4}"><div class=""></div></div></div></div>'.format(self._id, lang.header_index, cfg_header_applogo_effect, cfg_header_indexicon_effect, lang.header_searchbox_placeholder));
+        _parentobj.append('<div id="{0}" class="header-container"><div class="header-module header-app-logo left"><div class="header-app-container left {2}"><img src="resources/ui/favicon/favicon.png" alt=""/> Recicla2</div></div><div class="header-module header-back-button"><div class="header-back-button-container"><div class="header-back-button-icon {3}"><i class="fas fa-chevron-circle-left hvr-icon"></i></div><div class="header-back-button-title">{1}</div></div></div><div class="header-module header-title"></div><div class="header-module header-app-logo right"><div class="header-app-container right {2}"><img src="resources/ui/favicon/favicon.png" alt=""/> Recicla2</div></div><div class="header-module header-search-box"><div class="header-search-container hvr-shadow"><input id="{5}" type="search" class="header-search-input displaybox" placeholder="{4}"><div class=""></div></div></div></div>'.format(self._id, lang.header_index, cfg_header_applogo_effect, cfg_header_indexicon_effect, lang.header_searchbox_placeholder, this._searchid));
+
         this._obj = $('#{0}'.format(self._id));
         // noinspection JSUnresolvedFunction
         this._obj.on('selectstart dragstart', false);
+        this._searchid = '#' + this._searchid;
 
         /**
          * Eventos botón retornar al inicio
@@ -88,13 +96,13 @@ function Header(options) {
             self._obj.find('.header-search-box').css('display', 'none');
         } else {
             self._obj.find('.header-app-logo.right').css('display', 'none');
+            self._initSearch();
         }
 
         /**
          * Eventos botón app
          */
-        // Botón izquierdo
-        if (!options.showAppInfoLeft) {
+        if (!options.showAppInfoLeft) { // Botón izquierdo
             self._obj.find('.header-app-logo.left').css('display', 'none');
         } else {
             self._obj.find('.header-app-container.left').tooltipster({
@@ -109,9 +117,7 @@ function Header(options) {
             });
             self._obj.find('.header-back-button').css('display', 'none');
         }
-
-        // Botón derecho
-        if (!options.showAppInfoRight) {
+        if (!options.showAppInfoRight) { // Botón derecho
             self._obj.find('.header-app-logo.right').css('display', 'none');
         } else {
             self._obj.find('.header-app-container.right').tooltipster({
@@ -127,7 +133,10 @@ function Header(options) {
             self._obj.find('.header-search-box').css('display', 'none');
         }
 
-        // Escribe el título
+        /**
+         * Escribe el título
+         */
         self._obj.find('.header-title').html(options.title);
+
     }
 }
