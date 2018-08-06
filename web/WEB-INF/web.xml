@@ -4,15 +4,12 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <servlet>
-        <servlet-name>TestServlet</servlet-name>
-        <servlet-class>com.recicla2.TestServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>TestServlet</servlet-name>
-        <url-pattern>/test</url-pattern>
-    </servlet-mapping>
+    <!-- Listener descarga de regiones y comunas al iniciar la aplicación -->
+    <listener>
+        <listener-class>com.recicla2.DescargaRegionComuna</listener-class>
+    </listener>
 
+    <!-- Definición de página de landing -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
