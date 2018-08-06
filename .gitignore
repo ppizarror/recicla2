@@ -3,3 +3,6 @@
 
 # Fotografías de los artículos
 resources/photos/*
+
+# Oculta los pdf
+*.pdf
