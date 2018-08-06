@@ -11,7 +11,7 @@
  * @global
  * @ignore
  */
-let res_loading_image = 'resources/ui/loading_flower.gif';
+let res_loading_image = 'res/ui/loading_flower.gif';
 
 /**
  * Precarga los recursos de la plataforma

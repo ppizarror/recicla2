@@ -11,7 +11,7 @@
  */
 jQuery.fn.emoticons = function (icon_folder) {
     /* emoticons is the folder where the emoticons are stored*/
-    var icon_folder = icon_folder || "resources/emoticons";
+    var icon_folder = icon_folder || "res/emoticons";
     //var settings = jQuery.extend({emoticons: "emoticons"}, options);
     /* keys are the emoticons
      * values are the ways of writing the emoticon

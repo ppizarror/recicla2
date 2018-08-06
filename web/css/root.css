@@ -26,7 +26,7 @@ pre {
 
 a.back-to-top {
     /* Actualizado en mobile.css*/
-    background: url('../../resources/ui/up-arrow.png') no-repeat center 43% #8dbfca;
+    background: url('../res/ui/up-arrow.png') no-repeat center 43% #8dbfca;
     border-radius: 40px;
     bottom: 20px;
     display: none;

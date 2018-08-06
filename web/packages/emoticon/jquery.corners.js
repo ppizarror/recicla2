@@ -24,8 +24,9 @@
      * @param {Object} settings
      */
     $.fn.corners = function (settings) {
-        $$ = $(this);
+        let $$ = $(this);
 
+        // noinspection JSDuplicatedDeclaration
         var settings = $.extend({
             // default classes can be separated with a space
             classContainer: 'corners',
@@ -56,13 +57,13 @@
         }, settings);
 
         return $$.each(function (index, element) {
-            var el = $(element);
+            let el = $(element);
             // remove all script tags since they would have already been executed, and if left alone, will
             // be executed a second time around
             el.find('script').remove();
             // we create html this way as to avoid the overhead involved in using jQuery for every little bit
             // since we don't actually need to reference these elements
-            var html = ''
+            let html = ''
                 + '<div class="' + settings.classContainer + '"' + applyStyle(settings.styleContainer) + '>'
                 + '<div class="' + settings.classTop + '"' + applyStyle(settings.styleTop) + '>'
                 + '<div class="' + settings.classTopLeft + '"' + applyStyle(settings.styleTopLeft) + '></div>'
