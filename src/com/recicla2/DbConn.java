@@ -10,7 +10,7 @@ import java.sql.SQLException;
 @SuppressWarnings("FieldCanBeLocal")
 class DbConn {
 
-    private static String DB_CONN_URL = "jdbc:mysql://localhost:3306/tarea4?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static String DB_CONN_URL = "jdbc:mysql://localhost:3306/tarea4?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT-4"; // Evita errores timezone
     private static String DB_CONN_USER = "root";
     private static String DB_CONN_PASSWD = "";
 
@@ -21,6 +21,7 @@ class DbConn {
      */
     static Connection crearConexionDB() {
         try {
+            // com.mysql.jdbc.Driver deprecado
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
