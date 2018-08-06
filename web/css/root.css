@@ -1,0 +1,84 @@
+/*
+RECICLA2
+Archivo estilo elementos principales de la página.
+
+Notas:
+    - Ancho mínimo 320px
+
+@author Pablo Pizarro R. @ppizarror.com
+@license Copyright 2018, no copiar o distribuír sin permiso directo del autor
+*/
+
+body {
+    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+pre {
+    font-family: Consolas, monospace;
+}
+
+#root {
+    margin: auto;
+    min-width: 440px;
+}
+
+a.back-to-top {
+    /* Actualizado en mobile.css*/
+    background: url('../../resources/ui/up-arrow.png') no-repeat center 43% #8dbfca;
+    border-radius: 40px;
+    bottom: 20px;
+    display: none;
+    height: 70px;
+    position: fixed;
+    right: 20px;
+    text-indent: -9999px;
+    width: 70px;
+    z-index: 2;
+}
+
+#preload_resources {
+    display: none;
+    z-index: -1;
+}
+
+#appBackground {
+    background: #3a7fd5;
+    background: linear-gradient(to bottom right, #003b84, #6ebce2);
+    bottom: 0;
+    box-shadow: inset 0 -3px 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+#mainContent {
+    display: table;
+    margin: 0 auto;
+    max-width: 980px;
+    min-width: 420px;
+    width: 80%;
+}
+
+.disable-a-hover:hover {
+    text-decoration: none;
+}
+
+#header {
+    position: relative;
+    z-index: 1;
+}
+
+#content {
+    margin: 0 auto;
+    max-width: 980px;
+    min-width: 420px;
+    position: static;
+    transition: ease-in-out opacity .4s;
+    width: 100%;
+    z-index: -1;
+}

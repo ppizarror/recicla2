@@ -1,0 +1,14 @@
+/*
+RECICLA2
+Contenedores.
+
+@author Pablo Pizarro R. @ppizarror.com
+@license Copyright 2018, no copiar o distribuír sin permiso directo del autor
+*/
+
+.ui-container {
+    background-color: #ffffff;
+    display: block;
+    float: left;
+    margin: 10px auto;
+}
