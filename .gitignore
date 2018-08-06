@@ -1,0 +1,8 @@
+# Carpetas IDE's
+.idea/
+
+# Fotografías de los artículos
+resources/photos/*
+
+# Archivos pdf
+*.pdf
