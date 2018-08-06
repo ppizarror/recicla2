@@ -1,5 +1,8 @@
 package com.recicla2;
 
+import com.datos.estructura.Comuna;
+import com.datos.estructura.Region;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -64,14 +67,35 @@ public class DescargaRegionComuna implements ServletContextListener,
             sc.setAttribute(Recicla2Const.APP_ATTR_ERROR, "Error al consultar las regiones");
             return;
         }
-        ArrayList<String> rArray = new ArrayList<>();
+        ArrayList<Region> rArray = new ArrayList<>();
 
         /*
          * Recorre las regiones y las guarda
          */
         try {
             while (rSelect.next()) {
-                rArray.add(rSelect.getString(2));
+                Region r = new Region(rSelect.getInt(1), rSelect.getString(2));
+
+                /*
+                Obtiene las comunas
+                 */
+                pstSelect = con.prepareStatement("SELECT * FROM comuna WHERE region_id=? LIMIT 1");
+                pstSelect.setInt(1, rSelect.getInt(1));
+                ResultSet cSelect = pstSelect.executeQuery();
+
+                /*
+                Añade comuna a la región
+                 */
+                while (cSelect.next()) {
+                    Comuna c = new Comuna(cSelect.getInt(1), cSelect.getString(2));
+                    r.AgregaComuna(c);
+                }
+
+                /*
+                Añade región a la lista
+                 */
+                rArray.add(r);
+
             }
         } catch (SQLException e) {
             sc.setAttribute(Recicla2Const.APP_ATTR_ERROR, "Error en iterar sobre las regiones");
@@ -91,7 +115,7 @@ public class DescargaRegionComuna implements ServletContextListener,
      */
     public void contextDestroyed(ServletContextEvent sce) {
         ServletContext sc = sce.getServletContext();
-        sc.removeAttribute("hola");
+        sc.removeAttribute(Recicla2Const.APP_DATA_REGION);
     }
 
 }
