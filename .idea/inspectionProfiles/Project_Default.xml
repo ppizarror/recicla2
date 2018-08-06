@@ -1,32 +1,10 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
-    <inspection_tool class="ES6ConvertVarToLetConst" enabled="true" level="WARNING" enabled_by_default="true">
-      <scope name="Ignore var" level="INFORMATION" enabled="true" />
-    </inspection_tool>
-    <inspection_tool class="JSCheckFunctionSignatures" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
-    <inspection_tool class="JSDeprecatedSymbols" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
-    <inspection_tool class="QuirksModeInspectionTool" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="IE50" value="false" />
-      <option name="IE55" value="false" />
-      <option name="IE6" value="false" />
-      <option name="IE7" value="false" />
-      <option name="IE_MAC" value="false" />
-      <option name="MOZILLA" value="true" />
-      <option name="OPERA7" value="true" />
-      <option name="OPERA8" value="true" />
-      <option name="OPERA85" value="true" />
-      <option name="OPERA9" value="true" />
-      <option name="SAFARI" value="true" />
-    </inspection_tool>
     <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="processCode" value="true" />
       <option name="processLiterals" value="true" />
       <option name="processComments" value="true" />
-    </inspection_tool>
-    <inspection_tool class="W3CssValidation" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="myCssVersion" value="css3" />
-      <option name="myIgnoreVendorSpecificProperties" value="false" />
     </inspection_tool>
   </profile>
 </component>
