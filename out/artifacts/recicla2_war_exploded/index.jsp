@@ -1,11 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="com.recicla2.Recicla2Const" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.datos.estructura.*" %>
-<%@ page import="java.math.BigInteger" %>
-<!DOCTYPE html>
-<html lang="es">
-
+<%
+    /*
+    Obtiene el contexto, si hay errores redigige el flujo a error.jsp
+     */
+    ServletContext sc = request.getServletContext();
+    if (sc.getAttribute(Recicla2Const.APP_ATTR_ERROR) != null) {
+        request.setAttribute(Recicla2Const.APP_ATTR_USERR, false);
+        sc.getRequestDispatcher("/error.jsp").forward(request, response);
+        out.write((String) sc.getAttribute(Recicla2Const.APP_ATTR_ERROR));
+    } else {
+        out.write((String) sc.getAttribute(Recicla2Const.APP_ATTR_ERROR));
+    }
+%>
 <head>
     <meta charset="UTF-8">
     <title>Recicla2</title>
@@ -61,14 +72,5 @@
 </head>
 
 <body>
-<%
-    ServletContext sc = request.getServletContext();
-    //noinspection unchecked
-    ArrayList<Region> regiones = (ArrayList<Region>) sc.getAttribute(Recicla2Const.APP_DATA_REGION);
-    for (Region r : regiones) {
-        out.print(r.obtenerNombre());
-        out.print(r.obtenerID());
-    }
-%>
 </body>
 </html>

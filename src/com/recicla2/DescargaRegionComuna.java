@@ -44,7 +44,7 @@ public class DescargaRegionComuna implements ServletContextListener,
          */
         Connection con = DbConn.crearConexionDB();
         if (con == null) {
-            sc.setAttribute(Recicla2Const.APP_ATTR_ERROR, "Error al conectar con la base de datos");
+            sc.setAttribute(Recicla2Const.APP_ATTR_ERROR, CodigoError.CORE_APP_DB_CONN);
             return;
         }
 
@@ -56,7 +56,7 @@ public class DescargaRegionComuna implements ServletContextListener,
             pstSelect = con.prepareStatement("SELECT * FROM region");
         } catch (SQLException e) {
             e.printStackTrace();
-            sc.setAttribute(Recicla2Const.APP_ATTR_ERROR, "Error al preparar consulta SQL descarga región");
+            sc.setAttribute(Recicla2Const.APP_ATTR_ERROR, CodigoError.CORE_APP_DESCARGAR_RC);
             return;
         }
         ResultSet rSelect;
@@ -64,7 +64,7 @@ public class DescargaRegionComuna implements ServletContextListener,
             rSelect = pstSelect.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
-            sc.setAttribute(Recicla2Const.APP_ATTR_ERROR, "Error al consultar las regiones");
+            sc.setAttribute(Recicla2Const.APP_ATTR_ERROR, CodigoError.CORE_APP_DESCARGAR_RC);
             return;
         }
         ArrayList<Region> rArray = new ArrayList<>();
@@ -98,7 +98,7 @@ public class DescargaRegionComuna implements ServletContextListener,
 
             }
         } catch (SQLException e) {
-            sc.setAttribute(Recicla2Const.APP_ATTR_ERROR, "Error en iterar sobre las regiones");
+            sc.setAttribute(Recicla2Const.APP_ATTR_ERROR, CodigoError.CORE_APP_DESCARGAR_RC);
         }
 
         /*

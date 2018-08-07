@@ -77,7 +77,7 @@ function throwErrorIDException(errorid, exceptionmsg) {
     $('#errorMsgText').html('<span class="errAlertIcon">{0}</span> {1}'.format('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i><span></span>', errorid.msg));
 
     // noinspection HtmlUnknownTarget,QuirksModeInspectionTool
-    $errormsg.append('<a href="index.jsp" class="err-back-home hvr-bounce-in">{0} <i class="fas fa-home"></i></a>'.format(lang.back_home));
+    $errormsg.append('<a href="index.js" class="err-back-home hvr-bounce-in">{0} <i class="fas fa-home"></i></a>'.format(lang.back_home));
 
     // Crea el tooltip
     try {

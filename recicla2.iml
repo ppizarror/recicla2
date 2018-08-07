@@ -18,8 +18,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/sql" />
       <excludeFolder url="file://$MODULE_DIR$/web/.idea" />
-      <excludeFolder url="file://$MODULE_DIR$/web/css" />
-      <excludeFolder url="file://$MODULE_DIR$/web/js" />
       <excludeFolder url="file://$MODULE_DIR$/web/lib" />
       <excludeFolder url="file://$MODULE_DIR$/web/resources" />
     </content>
@@ -28,5 +26,6 @@
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="jsp-api" level="project" />
     <orderEntry type="library" name="annotations-api" level="project" />
+    <orderEntry type="library" name="java-json" level="project" />
   </component>
 </module>

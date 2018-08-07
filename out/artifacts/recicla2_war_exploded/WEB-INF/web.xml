@@ -4,6 +4,22 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!-- Versión de la aplicación -->
+    <context-param>
+        <param-name>appver</param-name>
+        <param-value>0.11</param-value>
+    </context-param>
+
+    <!-- Servlet descarga de comentarios, se envían por get, usar ajax -->
+    <servlet>
+        <servlet-name>descargaDeComentarios</servlet-name>
+        <servlet-class>com.recicla2.fotos.DescargaComentarios</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>descargaDeComentarios</servlet-name>
+        <url-pattern>/obtenComentarios</url-pattern>
+    </servlet-mapping>
+
     <!-- Listener descarga de regiones y comunas al iniciar la aplicación -->
     <listener>
         <listener-class>com.recicla2.DescargaRegionComuna</listener-class>
