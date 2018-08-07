@@ -6,3 +6,6 @@
 
 # Ignora las fotos
 web/res/photos/*
+
+# Ignora directorio out
+out/*
