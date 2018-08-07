@@ -2,6 +2,7 @@
 <%@ page import="com.recicla2.Recicla2Const" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.datos.estructura.*" %>
+<%@ page import="java.math.BigInteger" %>
 <!DOCTYPE html>
 <html lang="es">
 

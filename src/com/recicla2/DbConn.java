@@ -8,7 +8,7 @@ import java.sql.SQLException;
  * Clase que maneja la conexión con la base de datos
  */
 @SuppressWarnings("FieldCanBeLocal")
-class DbConn {
+public class DbConn {
 
     private static String DB_CONN_URL = "jdbc:mysql://localhost:3306/tarea4?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT-4"; // Evita errores timezone
     private static String DB_CONN_USER = "root";
