@@ -2,8 +2,6 @@
 <html lang="es">
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="com.recicla2.Recicla2Const" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.datos.estructura.*" %>
 <%
     /*
     Obtiene el contexto, si hay errores redigige el flujo a error.jsp
@@ -12,9 +10,6 @@
     if (sc.getAttribute(Recicla2Const.APP_ATTR_ERROR) != null) {
         request.setAttribute(Recicla2Const.APP_ATTR_USERR, false);
         sc.getRequestDispatcher("/error.jsp").forward(request, response);
-        out.write((String) sc.getAttribute(Recicla2Const.APP_ATTR_ERROR));
-    } else {
-        out.write((String) sc.getAttribute(Recicla2Const.APP_ATTR_ERROR));
     }
 %>
 <head>
@@ -69,8 +64,53 @@
     <link rel="stylesheet" type="text/css" href="packages/tooltipster/themes/sideTip-shadow.css" media="screen">
     <link rel="stylesheet" type="text/css" href="packages/hover/hover.css" media="screen">
     <link rel="stylesheet" type="text/css" href="packages/jquery-confirm/jquery-confirm.css" media="screen">
+
+    <!-- Estilo de la aplicación -->
+    <link rel="stylesheet" type="text/css" href="css/root.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/errors.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/container.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/header.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/loading.css" media="screen">
+
+    <!-- Carga núcleo js -->
+    <script src="js/core/config.js"></script>
+    <script src="js/core/about.js"></script>
+    <script src="js/core/errors.js"></script>
+    <script src="js/core/date.js"></script>
+    <script src="js/core/utils.js"></script>
+
+    <!-- Carga elementos interfaz gráfica -->
+    <script src="js/ui/i18n/lang.js"></script>
+    <script src="js/ui/i18n/es.js"></script>
+    <script src="js/ui/globals.js"></script>
+    <script src="js/ui/mobile.js"></script>
+    <script src="js/ui/dialogs.js"></script>
+    <script src="js/ui/utils.js"></script>
+    <script src="js/ui/container.js"></script>
+    <script src="js/ui/header.js"></script>
+    <script src="js/ui/loading.js"></script>
+    <script src="js/ui/resources.js"></script>
+
+    <script>
+        $rc_chile = <%=sc.getAttribute(Recicla2Const.APP_DATA_JSON_COMUNA).toString()%>;
+        $r_chile = <%=sc.getAttribute(Recicla2Const.APP_DATA_JSON_REGION).toString()%>;
+    </script>
 </head>
 
 <body>
+<div id="root">
+    <div id="appBackground"></div>
+    <div id="mainContent">
+        <div id="header"></div>
+        <div id="content"></div>
+    </div>
+    <div id="errorMsg">
+        <div id="errorMsgText"></div>
+    </div>
+    <div id="footer"></div>
+</div>
+<a href="#" class="back-to-top" id="scrolls"></a>
+<div id="preload_resources"></div>
 </body>
 </html>

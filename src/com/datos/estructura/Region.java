@@ -29,6 +29,7 @@ public class Region {
      *
      * @return ID de la región
      */
+    @SuppressWarnings("unused")
     public int obtenerID() {
         return this.id;
     }
@@ -71,7 +72,9 @@ public class Region {
     }
 
     /**
-     * Retorna el JSON de la lista de comunas
+     * Retorna el JSON de la lista de comunas.
+     *
+     * @return JSON lista de comunas
      */
     public JSONObject JSONComunas() {
         JSONObject json = new JSONObject();
@@ -96,6 +99,24 @@ public class Region {
         for (Region re : r) {
             try {
                 json.put(re.obtenerIDString(), re.obtenerNombre());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return json;
+    }
+
+    /**
+     * Genera un JSON lista de comunas a partir de la lista de regiones.
+     *
+     * @param r - Lista de regiones
+     * @return JSON del objeto
+     */
+    public static JSONObject JSONListaRegionesComunas(ArrayList<Region> r) {
+        JSONObject json = new JSONObject();
+        for (Region re : r) {
+            try {
+                json.put(re.obtenerIDString(), re.JSONComunas());
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Descarga las regiones y las comunas al iniciar el servlet
+ * Descarga las regiones y las comunas al iniciar el servlet.
  */
 public class DescargaRegionComuna implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
@@ -79,7 +79,7 @@ public class DescargaRegionComuna implements ServletContextListener,
                 /*
                 Obtiene las comunas
                  */
-                pstSelect = con.prepareStatement("SELECT * FROM comuna WHERE region_id=? LIMIT 1");
+                pstSelect = con.prepareStatement("SELECT * FROM comuna WHERE region_id=?");
                 pstSelect.setInt(1, rSelect.getInt(1));
                 ResultSet cSelect = pstSelect.executeQuery();
 
@@ -105,6 +105,8 @@ public class DescargaRegionComuna implements ServletContextListener,
         Establece las regiones como parámetro del paquete
          */
         sc.setAttribute(Recicla2Const.APP_DATA_REGION, rArray);
+        sc.setAttribute(Recicla2Const.APP_DATA_JSON_REGION, Region.JSONListaRegiones(rArray));
+        sc.setAttribute(Recicla2Const.APP_DATA_JSON_COMUNA, Region.JSONListaRegionesComunas(rArray));
 
     }
 

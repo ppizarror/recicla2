@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Clase que maneja la conexión con la base de datos
+ * Clase que maneja la conexión con la base de datos.
  */
 @SuppressWarnings("FieldCanBeLocal")
 public class DbConn {
