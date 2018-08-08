@@ -8,7 +8,6 @@
 
 /**
  * Infomación del proyecto
- * @type {{author: {email: string, github: string, name: string, tag: string, website: string}, dependencies: {bootstrap: string, dataTables: string, fontawesome: string, hover: string, jquery: string, "jquery-confirm": string, "jquery-dateFormat": string, photoswipe: string, slick: string, toastr: string, tooltipster: string}, productname: string, version: {date: string, v: string}}}
  */
 let aboutinfo = {
     "author": {
@@ -34,7 +33,7 @@ let aboutinfo = {
     "productname": "Recicla2-Tarea4",
     "version": {
         "date": "08/08/2018",
-        "v": "0.11",
+        "v": "0.12",
     }
 };
 
