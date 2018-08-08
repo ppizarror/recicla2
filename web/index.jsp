@@ -92,6 +92,7 @@
     <script src="js/ui/loading.js"></script>
     <script src="js/ui/resources.js"></script>
 
+    <!-- Escribe los datos de las comunas y regiones -->
     <script>
         $rc_chile = <%=sc.getAttribute(Recicla2Const.APP_DATA_JSON_COMUNA).toString()%>;
         $r_chile = <%=sc.getAttribute(Recicla2Const.APP_DATA_JSON_REGION).toString()%>;

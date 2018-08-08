@@ -18,7 +18,6 @@ let $lang_db = {};
  */
 let lang;
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Retorna un arreglo con todos los idiomas disponibles
  * @function

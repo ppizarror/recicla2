@@ -18,7 +18,6 @@ if (!String.prototype.format) {
     };
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Retorna un color aleatorio
  * @function
@@ -44,7 +43,6 @@ function padLeft(nr, n) {
     return Array(n - String(nr).length + 1).join('0') + nr;
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Redondea un número
  * @function
@@ -79,7 +77,6 @@ function dec2hex(dec) {
     return ('0' + dec.toString(16)).substr(-2)
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Genera un string aleatorio
  * @function
@@ -92,7 +89,6 @@ function generateId(len) {
     return Array.from(arr, dec2hex).join('');
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Borra un diccionario
  * @function
@@ -115,7 +111,6 @@ function notNullUndf(obj) {
     return (obj !== null && obj !== undefined);
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Retorna verdadero si el objeto es nulo o indefinido
  * @function
@@ -126,7 +121,6 @@ function isNullUndf(obj) {
     return (obj === null || obj === undefined)
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Retorna verdadero si el objeto es falso y no nulo
  * @function
@@ -137,7 +131,6 @@ function isFalseNotNull(obj) {
     return notNullUndf(obj) && !obj
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Retorna verdadero si el objeto es verdadero y no nulo
  * @function
@@ -185,7 +178,6 @@ function getElementHeight(elem) {
     }
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Retorna el ancho en px del elemento en el DOM
  * @function
@@ -236,7 +228,6 @@ function consoleLogError(msg, w) {
     }
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Muestra un mensaje de advertencia en la consola
  * @function
@@ -273,7 +264,6 @@ function consoleLogException(exceptionmsg, w) {
     }
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Muestra un mensaje de información en la consola
  * @function
@@ -285,7 +275,6 @@ function consoleLogInfo(msg) {
     }
 }
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Obtiene parámetro url
  * @function
@@ -296,15 +285,13 @@ function getURLParameter(name) {
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
 }
 
-// noinspection ES6ConvertVarToLetConst
 /**
  * Funciones que se ejecutan luego de iniciar la aplicación
  * @ignore
- * @var
+ * @let
  */
-var __initAppCallback = [];
+let __initAppCallback = [];
 
-// noinspection JSUnusedGlobalSymbols
 /**
  * Agrega función al callback inicial
  * @function

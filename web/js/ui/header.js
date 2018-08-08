@@ -9,7 +9,6 @@
 /**
  * Crea un header - UI
  *
- * @public
  * @class
  * @param {object} options - Opciones del constructor
  */
@@ -190,7 +189,6 @@ function Header(options) {
 
     };
 
-    // noinspection JSUnusedGlobalSymbols
     /**
      * Retorna el DOM
      * @function

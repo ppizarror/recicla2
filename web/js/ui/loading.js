@@ -9,7 +9,6 @@
 /**
  * Handler de la función loading
  * @function
- * @public
  * @param {boolean} status - Indica si se muestra o no el spinner de carga
  */
 function loadHandler(status) {
@@ -19,7 +18,6 @@ function loadHandler(status) {
 /**
  * Muestra una pantalla de carga
  * @function
- * @public
  * @param {boolean} Checker - Indica el estado
  * @param {Function} callback - Función que se llama tras la función
  * @ignore
@@ -82,13 +80,13 @@ function Loading(Checker, callback) {
     }
 }
 
-// noinspection JSDeprecatedSymbols
+// noinspection JSUnresolvedFunction
 /**
  * Añade evento de redimensionado del objeto loadingDiv
  * @function
  * @ignore
  */
-$(window).resize(function () {
+$(window).on('resize', function () {
     let h, hh, w, posX, posY;
     if (document.getElementById('LoadingDivLayer') != null) {
         h = $(window).height();

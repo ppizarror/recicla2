@@ -8,15 +8,12 @@
 
 /**
  * Indica si el modo móvil está activado
- * @public
  */
 let cfg_mobile_page_enabled = false;
 
 /**
  * Chequea que el modo móvil está activado
  * @function
- * @public
- * @ignore
  */
 function checkMobileStatus() {
     let $f = function () {

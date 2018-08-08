@@ -15,17 +15,16 @@ function Container(options) {
     let $defaults = {
         backgroundColor: '#ffffff',
         borderRadius: 5,
-        elementClass: '',
         disableSelection: false,
+        elementClass: '',
         padding: 10,
         parent: ui_content,
         shadow: true,
-        width: 100
+        width: 100,
     };
     options = $.extend($defaults, options);
     let self = this;
-
-    // noinspection JSUnusedGlobalSymbols
+    
     /**
      * Retorna el id
      * @function

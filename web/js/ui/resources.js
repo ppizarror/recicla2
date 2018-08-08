@@ -16,12 +16,8 @@ let res_loading_image = 'res/ui/loading_flower.gif';
 /**
  * Precarga los recursos de la plataforma
  * @function
- * @public
- * @ignore
  */
 function preloadResources() {
     let $d = $('#preload_resources');
-
-    // Añade cada recurso a cargar
     $d.append('<img src="' + res_loading_image + '" alt="" />');
 }
