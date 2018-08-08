@@ -10,6 +10,12 @@
         <param-value>0.11</param-value>
     </context-param>
 
+    <!-- Cantidad de paginado artículos -->
+    <context-param>
+        <param-name>articulosPorPagina</param-name>
+        <param-value>5</param-value>
+    </context-param>
+
     <!-- Servlet descarga de comentarios, se envían por get, usar ajax -->
     <servlet>
         <servlet-name>descargaDeComentarios</servlet-name>
@@ -29,4 +35,5 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
 </web-app>
