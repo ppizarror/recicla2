@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 RECICLA2
 Archivo estilo página web en móviles para los elementos principales.
@@ -6,7 +7,7 @@ Archivo estilo página web en móviles para los elementos principales.
 @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
 */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 576px) {
     a.back-to-top {
         border-radius: 30px;
         height: 60px;

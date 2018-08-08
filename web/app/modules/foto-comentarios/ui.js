@@ -8,7 +8,7 @@
 
 /**
  * Contenedor
- * @type {jQuery | HTMLElement}
+ * @type {jQuery}
  */
 let fotocomentario_container;
 
@@ -42,9 +42,29 @@ function createFotoComentariosUI() {
     fotocomentario_container = _cfcm.getDOM();
 
     /**
+     * Dibuja contenedor de ítemes y paginador
+     */
+    let $selectorRegion = generateId(cfg_id_size);
+    let $selectorComuna = generateId(cfg_id_size);
+    let $selectorOrden = generateId(cfg_id_size);
+    fotocomentario_container.append('<div class="foto-comentarios-header"><div class="foto-comentario-selector-panel selector-orden"><select id="{2}" class="form-control form-control-sm"></select></div><div class="foto-comentario-selector-panel selector-regioncomuna"><select id="{0}" class="form-control form-control-sm"></select><select id="{1}" class="form-control form-control-sm"></select></div></div><div class="foto-comentarios-contenedor">hola</div>'.format($selectorRegion, $selectorComuna, $selectorOrden));
+
+    /**
+     * Añade opciones a selectores
+     */
+    $selectorRegion = $('#' + $selectorRegion);
+    $selectorRegion.append('<option value="null" selected disabled>hoa</option>');
+
+    /**
      * Desactiva carga
      */
     loadHandler(false);
+
+    // noinspection JSCheckFunctionSignatures
+    /**
+     * Redimensionado de ventana aplica adjust
+     */
+    $(window).on('resize', adjustListItemWidth);
 
 }
 

@@ -37,7 +37,7 @@ function Container(options) {
     /**
      * Retorna el objeto del contenido
      * @function
-     * @return {jQuery|HTMLElement|*}
+     * @return {jQuery}
      */
     this.getDOM = function () {
         return self._obj;

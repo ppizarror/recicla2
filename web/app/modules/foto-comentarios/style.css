@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 FOTO COMENTARIOS
 Estilo módulo lista de fotos y soporte de comentarios.
@@ -5,3 +6,45 @@ Estilo módulo lista de fotos y soporte de comentarios.
 @author Pablo Pizarro R. @ppizarror.com
 @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
 */
+
+/**
+Header selector artículos
+ */
+.foto-comentarios-header {
+    display: flow-root;
+    margin: 15px;
+}
+
+/**
+Bloque que almacena selectores
+ */
+.foto-comentario-selector-panel {
+    display: flex;
+    float: right;
+    margin-left: 10px;
+}
+
+.foto-comentario-selector-panel .form-control {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.selector-regioncomuna {
+    width: 40%;
+    min-width: 150px;
+}
+
+.selector-orden {
+    width: 15%;
+}
+
+@media screen and (max-width: 576px) {
+
+}
+
+/**
+Contenedor de los ítemes/artículos
+ */
+.foto-comentarios-contenedor {
+
+}

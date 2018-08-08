@@ -90,7 +90,7 @@
     <script src="app/modules/foto-comentarios/config.js"></script>
     <script src="app/modules/foto-comentarios/server.js"></script>
     <script src="app/modules/foto-comentarios/ui.js"></script>
-    <script src="app/modules/foto-comentarios/style.css"></script>
+    <link rel="stylesheet" type="text/css" href="app/modules/foto-comentarios/style.css" media="screen">
 
     <!-- Escribe los datos iniciales -->
     <script>
