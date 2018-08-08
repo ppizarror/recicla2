@@ -2,6 +2,7 @@
 <html lang="es">
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="com.recicla2.Recicla2Const" %>
+<%@ page import="com.recicla2.articulos.ObtenerTotalArticulos" %>
 <%
     /*
     Obtiene el contexto, si hay errores redigige el flujo a error.jsp
@@ -103,6 +104,7 @@
 
 <body>
 <div id="root">
+    <%=ObtenerTotalArticulos.obtener()%>
     <div id="appBackground"></div>
     <div id="mainContent">
         <div id="header"></div>

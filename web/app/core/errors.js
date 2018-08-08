@@ -47,6 +47,8 @@ function initErrors() {
     $addError('coreAppDbConn', 'Error al conectar con la base de datos', 'Ocurrió un error fatal al conectar con la base de datos', 0);
     $addError('coreAppRCDescarga', 'Error al descargar datos de regiones y comunas', 'Ocurrió un error fatal al descargar datos de regiones y comunas en la aplicación', 1);
     $addError('errorErrorObt', 'Error al obtener el error de la aplicación', 'Ocurrió un error fatal al obtener el código del error obtenido en la aplicación, contacte con su Administrador', 2);
+    $addError('corePostGetError', 'Error al acceder de forma incorrecta a Servlet', 'Servlet no soporta el llamado especificado', 3);
+    $addError('descargaArticulo', 'Error al descargar artículos', 'Ocurrió un error al descargar los artículos', 4);
 }
 
 /**
@@ -56,6 +58,7 @@ function initErrors() {
 function cleanErrorMsg() {
     $('#errorMsg').css('display', 'none');
     $('#errorMsgText').html('');
+    // noinspection JSCheckFunctionSignatures
     $(window).off('resize.errorPanel');
 }
 
@@ -94,15 +97,13 @@ function throwErrorIDException(errorid, exceptionmsg) {
     });
 
     // Muestra una notificación
-    if (cfg_always_show_err_notification) {
-        throwErrorNotification(errorid);
-    }
+    if (cfg_always_show_err_notification) throwErrorNotification(errorid);
     let resizeObject = function () {
         // noinspection JSCheckFunctionSignatures
         $errormsg.css('top', (getElementHeight($(document)) - getElementHeight($errormsg)) / 2 + 'px');
     };
     resizeObject();
-    // noinspection JSUnresolvedFunction
+    // noinspection JSCheckFunctionSignatures
     $(window).on('resize.errorPanel', resizeObject);
 
     // Crea una entrada de la excepción en la consola

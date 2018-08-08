@@ -108,6 +108,15 @@ public class DescargaRegionComuna implements ServletContextListener,
         sc.setAttribute(Recicla2Const.APP_DATA_JSON_REGION, Region.JSONListaRegiones(rArray));
         sc.setAttribute(Recicla2Const.APP_DATA_JSON_COMUNA, Region.JSONListaRegionesComunas(rArray));
 
+        /*
+        Cierra la conexión con la base de datos
+         */
+        try {
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**

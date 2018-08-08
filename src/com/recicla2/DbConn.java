@@ -19,7 +19,7 @@ public class DbConn {
      *
      * @return - Conexión con la base de datos
      */
-    static Connection crearConexionDB() {
+    public static Connection crearConexionDB() {
         try {
             // com.mysql.jdbc.Driver deprecado
             Class.forName("com.mysql.cj.jdbc.Driver");
