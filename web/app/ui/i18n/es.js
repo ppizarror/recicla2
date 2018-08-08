@@ -58,7 +58,7 @@ $lang_db.es = {
     'bad_error_id_msg': 'ID de error no existe',
     'close': 'Cerrar',
     'comment_date_format': '{0} a las {1}',
-    'datatable_json_file': 'resources/ui/tableSpanish.json',
+    'datatable_json_file': 'res/ui/tableSpanish.json',
     'error': 'Error',
     'error_code': 'Código error: {0}',
     'header_index': 'Ir a Inicio',

@@ -3,12 +3,12 @@
     "short_name": "Recicla2",
     "icons": [
         {
-            "src": "resources/ui/favicon/android-chrome-192x192.png",
+            "src": "res/ui/favicon/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "resources/ui/favicon/android-chrome-512x512.png",
+            "src": "res/ui/favicon/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }

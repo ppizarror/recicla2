@@ -53,8 +53,8 @@
     <meta name="apple-mobile-web-app-title" content="Recicla2">
     <meta name="application-name" content="Recicla2">
     <meta name="msapplication-TileColor" content="#00aba9">
-    <meta name="msapplication-TileImage" content="resources/ui/favicon/mstile-144x144.png">
-    <meta name="msapplication-config" content="resources/ui/favicon/browserconfig.xml">
+    <meta name="msapplication-TileImage" content="res/ui/favicon/mstile-144x144.png">
+    <meta name="msapplication-config" content="res/ui/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Librerías js -->
