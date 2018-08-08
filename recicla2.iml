@@ -22,6 +22,7 @@
       <sourceFolder url="file://$MODULE_DIR$/web/WEB-INF/lib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/web/res" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/docs" />
       <excludeFolder url="file://$MODULE_DIR$/sql" />
       <excludeFolder url="file://$MODULE_DIR$/web/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/web/lib" />
