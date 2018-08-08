@@ -358,3 +358,34 @@ hashCode = function (s) {
 function isBoolean(obj) {
     return typeof(obj) === 'boolean';
 }
+
+/**
+ * Convierte un string a un booleano
+ * @function
+ * @param {String} bool - Booleano
+ * @returns {String}
+ */
+function stringToBoolean(bool) {
+    let $b = bool.toLowerCase();
+    return $b === 'true';
+}
+
+/**
+ * Abre un selector
+ */
+(function ($) {
+    "use strict";
+    $.fn.openSelect = function () {
+        return this.each(function (idx, domEl) {
+            if (document.createEvent) {
+                let event = document.createEvent("MouseEvents");
+                event.initMouseEvent("mousedown", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                domEl.dispatchEvent(event);
+            } else { // noinspection JSUnresolvedVariable
+                if (element.fireEvent) {
+                    domEl.fireEvent("onmousedown");
+                }
+            }
+        });
+    }
+}(jQuery));

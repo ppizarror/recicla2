@@ -26,16 +26,18 @@ Bloque que almacena selectores
 
 .foto-comentario-selector-panel .form-control {
     display: inline-block;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .selector-regioncomuna {
-    width: 40%;
+    max-width: 375px;
     min-width: 150px;
+    width: 50%;
 }
 
 .selector-orden {
-    width: 15%;
+    max-width: 175px;
+    width: 30%;
 }
 
 @media screen and (max-width: 576px) {

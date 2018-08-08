@@ -33,8 +33,8 @@ let aboutinfo = {
     },
     "productname": "Recicla2-Tarea4",
     "version": {
-        "date": "08/08/2018",
-        "v": "0.14",
+        "date": "09/08/2018",
+        "v": "0.20",
     }
 };
 

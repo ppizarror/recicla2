@@ -13,18 +13,28 @@
 let fotocomentario_container;
 
 /**
+ * Almacena la página actual
+ * @type {number}
+ */
+let fotocomentario_page = 0;
+
+/**
  * Crea el módulo en la ui
  * @function
  */
 function createFotoComentariosUI() {
 
     /**
+     * ------------------------------------------------------------------------
      * Cambia el título de la página
+     * ------------------------------------------------------------------------
      */
-    document.title = lang.module_list_item;
+    document.title = lang.module_foto_comentarios_title;
 
     /**
+     * ------------------------------------------------------------------------
      * Genera el header y el contenedor
+     * ------------------------------------------------------------------------
      */
     let _hfcm = new Header({
         showAppInfoLeft: true,
@@ -42,28 +52,100 @@ function createFotoComentariosUI() {
     fotocomentario_container = _cfcm.getDOM();
 
     /**
+     * ------------------------------------------------------------------------
+     * Genera ID principales
+     * ------------------------------------------------------------------------
+     */
+    let $selectorRegionID = generateId(cfg_id_size);
+    let $selectorComunaID = generateId(cfg_id_size);
+    let $selectorOrdenID = generateId(cfg_id_size);
+
+    /**
+     * ------------------------------------------------------------------------
+     * Función de llamado selectores AJAX obtención de artículos
+     * ------------------------------------------------------------------------
+     */
+    let cargarArticulos = function () {
+
+        // Obtiene los valores
+        let $comuna = $('#' + $selectorComunaID).val();
+        if (notNullUndf($comuna)) $comuna = parseInt($comuna);
+        let $desc = stringToBoolean($('#' + $selectorOrdenID).val());
+
+        console.log(fotocomentario_page, $comuna, $desc);
+        return;
+
+        // Llama a AJAX
+        obtenerListaArticulos(fotocomentario_page, $comuna, $desc);
+
+    };
+
+    /**
+     * ------------------------------------------------------------------------
      * Dibuja contenedor de ítemes y paginador
+     * ------------------------------------------------------------------------
      */
-    let $selectorRegion = generateId(cfg_id_size);
-    let $selectorComuna = generateId(cfg_id_size);
-    let $selectorOrden = generateId(cfg_id_size);
-    fotocomentario_container.append('<div class="foto-comentarios-header"><div class="foto-comentario-selector-panel selector-orden"><select id="{2}" class="form-control form-control-sm"></select></div><div class="foto-comentario-selector-panel selector-regioncomuna"><select id="{0}" class="form-control form-control-sm"></select><select id="{1}" class="form-control form-control-sm"></select></div></div><div class="foto-comentarios-contenedor">hola</div>'.format($selectorRegion, $selectorComuna, $selectorOrden));
+    fotocomentario_container.append('<div class="foto-comentarios-header"><div class="foto-comentario-selector-panel selector-orden"><select id="{2}" class="form-control form-control-sm"></select></div><div class="foto-comentario-selector-panel selector-regioncomuna"><select id="{0}" class="form-control form-control-sm"></select><select id="{1}" class="form-control form-control-sm" disabled></select></div></div><div class="foto-comentarios-contenedor"></div>'.format($selectorRegionID, $selectorComunaID, $selectorOrdenID));
 
     /**
-     * Añade opciones a selectores
+     * ------------------------------------------------------------------------
+     * Añade opciones a selectores comuna-región
+     * ------------------------------------------------------------------------
      */
-    $selectorRegion = $('#' + $selectorRegion);
-    $selectorRegion.append('<option value="null" selected disabled>hoa</option>');
+    let $selectorRegion = $('#' + $selectorRegionID);
+    let $selectorComuna = $('#' + $selectorComunaID);
+    $selectorRegion.append('<option value="null" selected disabled>{0}</option>'.format(lang.foto_comentarios_r_pick));
+    let $rky = Object.keys($r_chile);
+    for (let i = 0; i < $rky.length; i++) {
+        $selectorRegion.append('<option value="{0}">{1}</option>'.format($rky[i], $r_chile[$rky[i]]));
+    }
+    $selectorRegion.on('change', function () {
+        $selectorComuna.removeAttr('disabled');
+        let $r = $selectorRegion.val();
+        let $comunas = $rc_chile[$r]; // Obtiene las comunas
+        let $cky = Object.keys($comunas);
+        $selectorComuna.empty();
+        $selectorComuna.off('change');
+        $selectorComuna.append('<option value="null" selected disabled>{0}</option>'.format(lang.foto_comentarios_c_pick));
+        for (let i = 0; i < $cky.length; i++) {
+            $selectorComuna.append('<option value="{0}">{1}</option>'.format($cky[i], $comunas[$cky[i]]));
+        }
+        // $selectorComuna.openSelect();
+        $selectorComuna.on('change', cargarArticulos);
+    });
+
+    $selectorComuna.append('<option value="null" selected disabled>{0}</option>'.format(lang.foto_comentarios_c_pick));
+
+    // Mensaje filtrar por comuna
+    $('.selector-regioncomuna').tooltipster({
+        content: lang.foto_comentarios_filter_by_rc,
+        contentAsHTML: false,
+        delay: 1000,
+        maxWidth: 250,
+        side: 'bottom',
+        theme: cfg_tooltip_theme,
+    });
 
     /**
-     * Desactiva carga
+     * ------------------------------------------------------------------------
+     * Selector orden fecha
+     * ------------------------------------------------------------------------
+     */
+    let $selectorFecha = $('#' + $selectorOrdenID);
+    $selectorFecha.append('<option value="false" selected>{0}</option>'.format(lang.foto_comentarios_filter_date_desc));
+    $selectorFecha.append('<option value="true">{0}</option>'.format(lang.foto_comentarios_filter_date_asc));
+    cargarArticulos();
+
+    $selectorFecha.on('change', cargarArticulos);
+
+    /**
+     * ------------------------------------------------------------------------
+     * Termina la carga del módulo
+     * ------------------------------------------------------------------------
      */
     loadHandler(false);
 
     // noinspection JSCheckFunctionSignatures
-    /**
-     * Redimensionado de ventana aplica adjust
-     */
     $(window).on('resize', adjustListItemWidth);
 
 }

@@ -58,12 +58,12 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
         try {
 
             let data = JSON.parse(response);
-            console.log(response);
 
             /**
              * Se obtuvo de manera satisfactoria el contenido desde el servidor
              */
             if (Object.keys(data).indexOf('error') === -1) {
+                // Dibujar en .foto-comentarios-contenedor
             }
 
             /**
