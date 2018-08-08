@@ -18,6 +18,7 @@ $lang_db.es = {
     'error': 'Error',
     'error_code': 'Código error: {0}',
     'foto_comentarios_c_pick': 'Seleccione comuna',
+    'foto_comentarios_filter_by_date': 'Ordenar por fecha de ingreso',
     'foto_comentarios_filter_by_rc': 'Consultar por comuna',
     'foto_comentarios_filter_date_asc': 'Fecha ascendente',
     'foto_comentarios_filter_date_desc': 'Fecha descendente',

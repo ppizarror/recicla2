@@ -363,7 +363,7 @@ function isBoolean(obj) {
  * Convierte un string a un booleano
  * @function
  * @param {String} bool - Booleano
- * @returns {String}
+ * @returns {Boolean}
  */
 function stringToBoolean(bool) {
     let $b = bool.toLowerCase();

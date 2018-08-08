@@ -26,3 +26,8 @@ let $r_chile = {};
  * Total de artículos
  */
 let $art_total = 0;
+
+/**
+ * Artículos por página
+ */
+let $art_pp = 3;

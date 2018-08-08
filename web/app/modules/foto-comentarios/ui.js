@@ -72,9 +72,6 @@ function createFotoComentariosUI() {
         if (notNullUndf($comuna)) $comuna = parseInt($comuna);
         let $desc = stringToBoolean($('#' + $selectorOrdenID).val());
 
-        console.log(fotocomentario_page, $comuna, $desc);
-        return;
-
         // Llama a AJAX
         obtenerListaArticulos(fotocomentario_page, $comuna, $desc);
 
@@ -137,6 +134,16 @@ function createFotoComentariosUI() {
     cargarArticulos();
 
     $selectorFecha.on('change', cargarArticulos);
+
+    // Mensaje filtrar por comuna
+    $('.selector-orden').tooltipster({
+        content: lang.foto_comentarios_filter_by_date,
+        contentAsHTML: false,
+        delay: 1000,
+        maxWidth: 250,
+        side: 'bottom',
+        theme: cfg_tooltip_theme,
+    });
 
     /**
      * ------------------------------------------------------------------------

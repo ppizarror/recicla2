@@ -45,7 +45,7 @@ public class ObtenerTotalArticulos {
         /*
         Obtiene total
          */
-        int total = 0;
+        int total;
         try {
             resultados.next();
             total = resultados.getInt(1);

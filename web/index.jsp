@@ -95,6 +95,7 @@
     <!-- Escribe los datos iniciales -->
     <script>
         $art_total = <%=ObtenerTotalArticulos.obtener()%>;
+        $art_pp = <%=sc.getInitParameter("articulosPorPagina")%>;
         $r_chile = <%=sc.getAttribute(Recicla2Const.APP_DATA_JSON_REGION).toString()%>;
         $rc_chile = <%=sc.getAttribute(Recicla2Const.APP_DATA_JSON_COMUNA).toString()%>;
     </script>
