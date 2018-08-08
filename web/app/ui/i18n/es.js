@@ -70,6 +70,7 @@ $lang_db.es = {
     'list_item_ncoments': 'N° Comentarios',
     'list_item_new_item': 'Informar Nuevo Artículo',
     'list_item_npics': 'N° Fotos',
+    'foto_comentarios_title': 'Lista de Fotografías',
     'list_item_r': 'Región',
     'list_item_title': 'Últimos artículos',
     'list_item_user_email': 'Email contacto',

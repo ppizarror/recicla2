@@ -98,8 +98,15 @@
         $r_chile = <%=sc.getAttribute(Recicla2Const.APP_DATA_JSON_REGION).toString()%>;
     </script>
 
+    <!-- Carga el módulo -->
+    <script src="app/modules/modules.js"></script>
+    <script src="app/modules/foto-comentarios/config.js"></script>
+    <script src="app/modules/foto-comentarios/ui.js"></script>
+    <script src="app/modules/foto-comentarios/style.css"></script>
+
     <!-- Inicia app -->
     <script src="app/core/init.js"></script>
+    <script src="app/modules/foto-comentarios/init.js"></script>
 </head>
 
 <body>
