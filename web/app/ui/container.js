@@ -24,7 +24,7 @@ function Container(options) {
     };
     options = $.extend($defaults, options);
     let self = this;
-    
+
     /**
      * Retorna el id
      * @function

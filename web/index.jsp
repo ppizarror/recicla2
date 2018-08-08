@@ -66,37 +66,40 @@
     <link rel="stylesheet" type="text/css" href="packages/jquery-confirm/jquery-confirm.css" media="screen">
 
     <!-- Estilo de la aplicación -->
-    <link rel="stylesheet" type="text/css" href="css/root.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/errors.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/container.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/header.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/loading.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="app/stylesheets/root.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="app/stylesheets/mobile.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="app/stylesheets/errors.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="app/stylesheets/container.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="app/stylesheets/header.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="app/stylesheets/loading.css" media="screen">
 
     <!-- Carga núcleo js -->
-    <script src="js/core/config.js"></script>
-    <script src="js/core/about.js"></script>
-    <script src="js/core/errors.js"></script>
-    <script src="js/core/date.js"></script>
-    <script src="js/core/utils.js"></script>
+    <script src="app/core/config.js"></script>
+    <script src="app/core/about.js"></script>
+    <script src="app/core/errors.js"></script>
+    <script src="app/core/date.js"></script>
+    <script src="app/core/utils.js"></script>
 
     <!-- Carga elementos interfaz gráfica -->
-    <script src="js/ui/i18n/lang.js"></script>
-    <script src="js/ui/i18n/es.js"></script>
-    <script src="js/ui/globals.js"></script>
-    <script src="js/ui/mobile.js"></script>
-    <script src="js/ui/dialogs.js"></script>
-    <script src="js/ui/utils.js"></script>
-    <script src="js/ui/container.js"></script>
-    <script src="js/ui/header.js"></script>
-    <script src="js/ui/loading.js"></script>
-    <script src="js/ui/resources.js"></script>
+    <script src="app/ui/i18n/lang.js"></script>
+    <script src="app/ui/i18n/es.js"></script>
+    <script src="app/ui/globals.js"></script>
+    <script src="app/ui/mobile.js"></script>
+    <script src="app/ui/dialogs.js"></script>
+    <script src="app/ui/utils.js"></script>
+    <script src="app/ui/container.js"></script>
+    <script src="app/ui/header.js"></script>
+    <script src="app/ui/loading.js"></script>
+    <script src="app/ui/resources.js"></script>
 
     <!-- Escribe los datos de las comunas y regiones -->
     <script>
         $rc_chile = <%=sc.getAttribute(Recicla2Const.APP_DATA_JSON_COMUNA).toString()%>;
         $r_chile = <%=sc.getAttribute(Recicla2Const.APP_DATA_JSON_REGION).toString()%>;
     </script>
+
+    <!-- Inicia app -->
+    <script src="app/core/init.js"></script>
 </head>
 
 <body>
