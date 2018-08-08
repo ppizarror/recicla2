@@ -64,6 +64,7 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
              */
             if (Object.keys(data).indexOf('error') === -1) {
                 // Dibujar en .foto-comentarios-contenedor
+                console.log(data);
             }
 
             /**

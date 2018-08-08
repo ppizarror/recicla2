@@ -53,5 +53,38 @@ Bloque que almacena selectores
 Contenedor de los ítemes/artículos
  */
 .foto-comentarios-contenedor {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin: 0 15px;
+}
 
+/**
+Paginador
+ */
+.foto-comentarios-paginador {
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-align: center;
+    display: flex;
+    padding: 15px;
+}
+
+.foto-comentarios-paginador .pagination {
+    margin: 0 auto;
+}
+
+/**
+Mensaje en contenedor
+ */
+.foto-comentarios-articulo-mensaje {
+    cursor: default;
+    font-weight: 400;
+    padding: 30px;
+    text-align: center;
+}
+
+.foto-comentarios-articulo-mensaje i {
+    margin: 0 6px;
+    opacity: 0.7;
+    position: relative;
 }

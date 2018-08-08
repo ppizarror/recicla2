@@ -59,6 +59,7 @@ function createFotoComentariosUI() {
     let $selectorRegionID = generateId(cfg_id_size);
     let $selectorComunaID = generateId(cfg_id_size);
     let $selectorOrdenID = generateId(cfg_id_size);
+    let $paginadorID = generateId(cfg_id_size);
 
     /**
      * ------------------------------------------------------------------------
@@ -82,7 +83,7 @@ function createFotoComentariosUI() {
      * Dibuja contenedor de ítemes y paginador
      * ------------------------------------------------------------------------
      */
-    fotocomentario_container.append('<div class="foto-comentarios-header"><div class="foto-comentario-selector-panel selector-orden"><select id="{2}" class="form-control form-control-sm"></select></div><div class="foto-comentario-selector-panel selector-regioncomuna"><select id="{0}" class="form-control form-control-sm"></select><select id="{1}" class="form-control form-control-sm" disabled></select></div></div><div class="foto-comentarios-contenedor"></div>'.format($selectorRegionID, $selectorComunaID, $selectorOrdenID));
+    fotocomentario_container.append('<div class="foto-comentarios-header"><div class="foto-comentario-selector-panel selector-orden"><select id="{2}" class="form-control form-control-sm"></select></div><div class="foto-comentario-selector-panel selector-regioncomuna"><select id="{0}" class="form-control form-control-sm"></select><select id="{1}" class="form-control form-control-sm" disabled></select></div></div><div class="foto-comentarios-contenedor"></div><div class="foto-comentarios-paginador" id="{3}"></div>'.format($selectorRegionID, $selectorComunaID, $selectorOrdenID, $paginadorID));
 
     /**
      * ------------------------------------------------------------------------
@@ -131,8 +132,6 @@ function createFotoComentariosUI() {
     let $selectorFecha = $('#' + $selectorOrdenID);
     $selectorFecha.append('<option value="false" selected>{0}</option>'.format(lang.foto_comentarios_filter_date_desc));
     $selectorFecha.append('<option value="true">{0}</option>'.format(lang.foto_comentarios_filter_date_asc));
-    cargarArticulos();
-
     $selectorFecha.on('change', cargarArticulos);
 
     // Mensaje filtrar por comuna
@@ -147,6 +146,38 @@ function createFotoComentariosUI() {
 
     /**
      * ------------------------------------------------------------------------
+     * Crea paginador
+     * ------------------------------------------------------------------------
+     */
+    if ($art_total > 0) {
+        $('#' + $paginadorID).twbsPagination({
+            totalPages: Math.ceil($art_total / $art_pp),
+            visiblePages: 5,
+            onPageClick: function (event, page) {
+                fotocomentario_page = page - 1;
+                cargarArticulos();
+            },
+            first: lang.twbs_pagination_first,
+            prev: lang.twbs_pagination_prev,
+            next: lang.twbs_pagination_next,
+            last: lang.twbs_pagination_last,
+        });
+    }
+
+    /**
+     * ------------------------------------------------------------------------
+     * Contenedor de los artículos
+     * ------------------------------------------------------------------------
+     */
+    if ($art_total === 0) {
+        let $articuloContainer = $('.foto-comentarios-contenedor');
+        $articuloContainer.append('<div class="foto-comentarios-articulo-mensaje">{0}</div>'.format(lang.foto_comentarios_no_items));
+    } else {
+        clearArticleContainer();
+    }
+
+    /**
+     * ------------------------------------------------------------------------
      * Termina la carga del módulo
      * ------------------------------------------------------------------------
      */
@@ -155,6 +186,16 @@ function createFotoComentariosUI() {
     // noinspection JSCheckFunctionSignatures
     $(window).on('resize', adjustListItemWidth);
 
+}
+
+/**
+ * Limpia el contenedor de artículos y escribe un mensaje cargando
+ * @function
+ */
+function clearArticleContainer() {
+    let $articuloContainer = $('.foto-comentarios-contenedor');
+    $articuloContainer.empty();
+    $articuloContainer.append('<div class="foto-comentarios-articulo-mensaje"><i class="fas fa-circle-notch fa-spin"></i>{0}</div>'.format(lang.foto_comentarios_downloading));
 }
 
 /**
