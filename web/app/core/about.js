@@ -29,6 +29,7 @@ let aboutinfo = {
         "slick": "1.8.0",               // http://kenwheeler.github.io
         "toastr": "2.1.4",              // https://github.com/CodeSeven/toastr
         "tooltipster": "4.2.6",         // https://github.com/iamceege/tooltipster
+        "twbs-pagination": "1.4.2",     // https://github.com/josecebe/twbs-pagination
     },
     "productname": "Recicla2-Tarea4",
     "version": {
