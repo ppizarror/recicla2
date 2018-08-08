@@ -24,7 +24,7 @@ $(function () {
     // Centra la página
     if (cfg_fotocomentarios_center_module) {
         centerMainContent();
-        // noinspection JSUnresolvedFunction
+        // noinspection JSCheckFunctionSignatures
         $(window).on('resize.listItemPanel', centerMainContent);
     }
 

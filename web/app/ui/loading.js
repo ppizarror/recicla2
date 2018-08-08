@@ -28,9 +28,11 @@ function Loading(Checker, callback) {
     // var $rootHtml = $('#root');
     let $backtotop = $('a.back-to-top');
     if (typeof(Checker) === 'boolean') {
+        // noinspection JSCheckFunctionSignatures
         h = getElementHeight($(window));
         hh = getElementHeight($body);
         hh = Math.max(h, hh);
+        // noinspection JSCheckFunctionSignatures
         w = $(window).width();
         posX = (w - 69) / 2;
         posY = (h - 69) / 2;
@@ -80,7 +82,7 @@ function Loading(Checker, callback) {
     }
 }
 
-// noinspection JSUnresolvedFunction
+// noinspection JSCheckFunctionSignatures
 /**
  * Añade evento de redimensionado del objeto loadingDiv
  * @function
@@ -89,8 +91,10 @@ function Loading(Checker, callback) {
 $(window).on('resize', function () {
     let h, hh, w, posX, posY;
     if (document.getElementById('LoadingDivLayer') != null) {
+        // noinspection JSCheckFunctionSignatures
         h = $(window).height();
         hh = $('body').height();
+        // noinspection JSCheckFunctionSignatures
         w = $(window).width();
         posX = (w - 69) / 2;
         posY = (h - 69) / 2;

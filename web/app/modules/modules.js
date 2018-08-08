@@ -6,25 +6,20 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
  */
 
-// noinspection ES6ConvertVarToLetConst
+/**
+ * Contiene los llamados a las funciones a ejecutar tras iniciar un módulo
+ * @type {Array}
+ * @private
+ */
+let __afterModuleInit = [];
+
 /**
  * Módulos de la aplicación
- * @var
  */
-var modules = {
-    'addItem': {
-        'file': 'add_item.php'
+let modules = {
+    'fotoComentarios': {
+        'file': 'index.jsp'
     },
-    'listItem': {
-        'file': 'index.php'
-    },
-    'showItem': {
-        'file': 'show_item.php?id={0}',
-        'photo': 'show_item.php?id={0}&photo={1}',
-    },
-    'home': {
-        'file': 'index.php'
-    }
 };
 
 /**
@@ -36,16 +31,6 @@ function loadModule(m) {
     window.location.href = m.file;
 }
 
-// noinspection ES6ConvertVarToLetConst
-/**
- * Contiene los llamados a las funciones a ejecutar tras iniciar un módulo
- * @function
- * @type {Array}
- * @private
- * @ignore
- */
-var __afterModuleInit = [];
-
 /**
  * Añade una función a afterModuleInit
  * @function
@@ -56,7 +41,7 @@ function addAfterInitModuleCallback($f) {
 }
 
 /**
- * Llama a todas las funcionesafterModuleInit
+ * Llama a todas las funciones {@link __afterModuleInit}
  * @function
  */
 function afterInitModuleCallback() {

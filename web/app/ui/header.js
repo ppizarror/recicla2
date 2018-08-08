@@ -24,8 +24,6 @@ function Header(options) {
     options = $.extend($defaults, options);
     let self = this;
     let _parentobj = $(options.parent);
-    let _lastquery = '';
-    let _lastresults = -1;
 
     /**
      * Se buscan configuraciones incompatibles
@@ -36,158 +34,6 @@ function Header(options) {
     if (options.showAppInfoRight && options.showSearchBox) {
         throw('Header::@constructor colision showAppInfoRight/showSearchBox');
     }
-
-    /**
-     * Muestra los resultados de la búsqueda
-     * @function
-     * @param {Array} items - Ítems de la búsqueda
-     * @private
-     * @ignore
-     */
-    this._showSearchResults = function (items) {
-        let $results = $(this._searchid + ' .header-search-results-container');
-        let $search = $(this._searchid + ' .searchinput');
-
-        // Borra el recuadro
-        $results.empty();
-
-        // Si existen resultados
-        if (items.length !== 0) {
-
-            // Alterna entre even y odd para cambiar el color de fondo
-            let j = '';
-
-            // Recorre cada ítem y lo añade como entrada en el recuadro de búsqueda
-            for (let i = 0; i < items.length; i++) {
-                j = i % 2 === 0 ? 'odd' : 'even';
-                // noinspection QuirksModeInspectionTool, HtmlUnknownTarget
-                $results.append('<div class="header-search-results-entry {2}"><a href="{1}">{0}</a></div>'.format(items[i]['nombre'], modules.showItem.file.format(items[i]['id']), j));
-            }
-
-            // Actualiza últimos resultados
-            _lastresults = items.length;
-        } else {
-            $results.append('<div class="header-search-results-none">{0}</div>'.format(lang.search_item_noresults));
-            _lastresults = -1;
-        }
-
-        // Muestra el recuadro
-        $results.fadeIn(400);
-        $search.addClass('displaybox');
-        $(ui_content).css('opacity', 0.75);
-    };
-
-    /**
-     * Oculta los resultados de la búsqueda
-     * @function
-     * @private
-     * @ignore
-     */
-    this._hideSearchResults = function () {
-        let $results = $(this._searchid + ' .header-search-results-container');
-        let $search = $(this._searchid + ' .searchinput');
-
-        // Aplica efectos
-        $search.removeClass('displaybox');
-        $results.fadeOut(200);
-        $(ui_content).css('opacity', 1.0);
-
-        // Borra última búsqueda
-        _lastresults = -1;
-    };
-
-    /**
-     * Establece el evento de búsqueda
-     * @private
-     * @ignore
-     */
-    this._initSearch = function () {
-
-        /**
-         * Obtiene el objeto DOM del input de búsqueda
-         */
-        let $search = $(this._searchid + ' .searchinput');
-
-        // noinspection JSUnresolvedFunction
-        /**
-         * Previene el submit del input
-         */
-        $(this._searchid).find('form').on('submit', function (e) {
-            e.preventDefault();
-        });
-
-        // noinspection JSUnresolvedFunction
-        /**
-         * Añade evento keyup, si hay más de 3 caracteres -> carga con ajax, si no oculta recuadro de búsqueda
-         */
-        $search.on('keyup', function () {
-
-            // Si hay menos de tres caracteres oculta recuadro de búsqueda
-            if ($search.val().length < 3) {
-                self._hideSearchResults();
-            }
-
-            // Hay más de tres caracteres, hace consulta ajax y escribe resultados en el recuadro de búsqueda
-            else {
-
-                // Obtiene el texto y lo formatea
-                let $query = $search.val();
-
-                // Si el query es distinto al anteriormente realizado entonces hace una consulta Ajax
-                if ($query !== _lastquery) {
-
-                    /**
-                     * Se crea la consulta Ajax
-                     * @type {JQuery.jqXHR}
-                     */
-                    let $request = $.ajax({
-                        data: 'item-name-search={0}'.format($query),
-                        timeout: 10000,
-                        type: 'post',
-                        url: 'src/server/search_item.php'
-                    });
-
-                    // noinspection JSUnresolvedFunction
-                    /**
-                     * Respuesta correcta
-                     */
-                    $request.done(function (response) {
-                        try {
-                            let data = JSON.parse(response);
-                            // Si no se encontraron errores se procede
-                            if (Object.keys(data).indexOf('error') !== -1 && data.error === '') {
-                                let items = data['items'];
-
-                                // Si los resultados son distintos en número a los anteriores se borra el recuadro
-                                if (items.length !== _lastresults) {
-                                    self._showSearchResults(items);
-                                }
-
-                            } else {
-                                $.alert(lang.search_item_server_error);
-                            }
-                        } catch ($e) {
-                            $.alert(lang.search_item_server_error);
-                            console.error($e.message);
-                        } finally {
-                        }
-                    });
-
-                    // noinspection JSUnresolvedFunction
-                    /**
-                     * Server falló, se alerta al usuario
-                     */
-                    $request.fail(function () {
-                            $.error(lang.search_item_server_error);
-                        }
-                    );
-                }
-                _lastquery = $query;
-            }
-
-        });
-
-    };
 
     /**
      * Retorna el DOM
@@ -232,19 +78,14 @@ function Header(options) {
         } else {
             // noinspection JSDeprecatedSymbols
             $backb.click(function () {
-                loadModule(modules.home);
+                loadModule(modules.fotoComentarios);
             });
         }
 
         /**
          * Oculta/Muestra la caja de búsqueda
          */
-        if (!options.showSearchBox) {
-            self._obj.find('.header-search-box').css('display', 'none');
-        } else {
-            self._obj.find('.header-app-logo.right').css('display', 'none');
-            self._initSearch();
-        }
+        self._obj.find('.header-search-box').css('display', 'none');
 
         /**
          * Eventos botón app
@@ -260,7 +101,7 @@ function Header(options) {
                 maxWidth: 280,
                 side: 'bottom',
                 theme: cfg_tooltip_theme,
-                timer: 0
+                timer: 0,
             });
             self._obj.find('.header-back-button').css('display', 'none');
         }
@@ -275,7 +116,7 @@ function Header(options) {
                 maxWidth: 280,
                 side: 'bottom',
                 theme: cfg_tooltip_theme,
-                timer: 0
+                timer: 0,
             });
             self._obj.find('.header-search-box').css('display', 'none');
         }

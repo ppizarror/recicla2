@@ -17,9 +17,10 @@ let cfg_mobile_page_enabled = false;
  */
 function checkMobileStatus() {
     let $f = function () {
+        // noinspection JSCheckFunctionSignatures
         cfg_mobile_page_enabled = $(window).width() < cfg_width_enable_mobile;
     };
     $f();
-    // noinspection JSUnresolvedFunction
+    // noinspection JSCheckFunctionSignatures
     $(window).on('resize.mobileStatusChecker', $f);
 }

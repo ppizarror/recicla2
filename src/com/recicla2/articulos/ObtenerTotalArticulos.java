@@ -1,9 +1,6 @@
 package com.recicla2.articulos;
 
-import com.recicla2.CodigoError;
 import com.recicla2.DbConn;
-import com.recicla2.Recicla2Const;
-import util.core.AdministracionError;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,7 +23,7 @@ public class ObtenerTotalArticulos {
         Genera conexión con base de datos
          */
         Connection con = DbConn.crearConexionDB();
-        if (con == null) return "-1";
+        if (con == null) return "0";
 
         /*
         Genera consulta
@@ -36,13 +33,13 @@ public class ObtenerTotalArticulos {
             pstSelect = con.prepareStatement("SELECT COUNT(id) FROM articulo");
         } catch (SQLException e) {
             e.printStackTrace();
-            return "-2";
+            return "0";
         }
         ResultSet resultados;
         try {
             resultados = pstSelect.executeQuery();
         } catch (SQLException e) {
-            return "-3";
+            return "0";
         }
 
         /*
@@ -54,7 +51,7 @@ public class ObtenerTotalArticulos {
             total = resultados.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
-            return "-4";
+            return "0";
         }
 
         /*

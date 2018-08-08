@@ -2,6 +2,8 @@ package com.recicla2.articulos;
 
 import com.recicla2.CodigoError;
 import com.recicla2.DbConn;
+import org.json.JSONException;
+import org.json.JSONObject;
 import util.core.AdministracionError;
 import util.core.FuncionesNumericas;
 
@@ -120,6 +122,30 @@ public class DescargaArticulos extends HttpServlet {
             out.write(AdministracionError.generaErrorGenerico(CodigoError.ERROR_DESCARGAR_ARTICULOS));
             return;
         }
+        JSONObject json = new JSONObject(); // JSON Artículos
+
+        /*
+        Recorre los resultados
+         */
+        try {
+            while (resultados.next()) {
+                JSONObject articulo = new JSONObject();
+                String articuloID = Integer.toString(resultados.getInt(1));
+
+                /*
+                Arma el artículo
+                 */
+                json.put("id", resultados.getInt(1));
+
+                json.put(articuloID, articulo); // Añade artículo a artículos
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            out.write(AdministracionError.generaErrorGenerico(CodigoError.ERROR_DESCARGAR_ARTICULOS));
+            return;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         /*
         Cierra la conexión con la base de datos
@@ -133,7 +159,7 @@ public class DescargaArticulos extends HttpServlet {
         /*
         Escribe los resultados
          */
-        out.write("holi");
+        out.write(json.toString());
 
     }
 

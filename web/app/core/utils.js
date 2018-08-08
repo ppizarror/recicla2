@@ -6,7 +6,16 @@
  @license Copyright 2018, no copiar o distribuír sin permiso directo del autor
  */
 
-// String format
+/**
+ * Funciones que se ejecutan luego de iniciar la aplicación
+ * @ignore
+ * @let
+ */
+let __initAppCallback = [];
+
+/**
+ * String format
+ */
 if (!String.prototype.format) {
     String.prototype.format = function () {
         let args = arguments;
@@ -147,12 +156,11 @@ function isTrueNotNull(obj) {
  * @ignore
  */
 function showBackToTopButton() {
-    /* global $*/
     if (cfg_back_to_top.enabled) {
-        // noinspection JSDeprecatedSymbols
+        // noinspection JSCheckFunctionSignatures, JSDeprecatedSymbols
         $(window).scroll(function () {
             location.pathname.replace(/^\//, '');
-            // noinspection JSValidateTypes
+            // noinspection JSCheckFunctionSignatures
             if ($(window).scrollTop() > cfg_back_to_top.px_to_trigger) {
                 $('a.back-to-top').fadeIn('slow');
             } else {
@@ -282,15 +290,9 @@ function consoleLogInfo(msg) {
  * @return {string} - Valor del parámetro
  */
 function getURLParameter(name) {
+    // noinspection JSConsecutiveCommasInArrayLiteral
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
 }
-
-/**
- * Funciones que se ejecutan luego de iniciar la aplicación
- * @ignore
- * @let
- */
-let __initAppCallback = [];
 
 /**
  * Agrega función al callback inicial

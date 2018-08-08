@@ -13,6 +13,7 @@
 function centerMainContent() {
     let $maincontent = $(ui_main_content);
     $maincontent.css('position', 'relative');
+    // noinspection JSCheckFunctionSignatures
     $maincontent.css('top', Math.max(0, (getElementHeight($(window)) - getElementHeight($(ui_main_content))) / 2) + 'px');
 }
 

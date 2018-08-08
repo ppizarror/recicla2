@@ -92,6 +92,10 @@ function throwErrorNotification(errorid) {
  * @param {object} options - Opciones de creación
  */
 function confirmPopup(title, content, options) {
+
+    /**
+     * Parámetros creación por defecto
+     */
     let $defaults = {
         animation: 'zoom', // Animación de apertura
         backgroundDismiss: 'close', // Evento clickeo fuera del popup
@@ -105,13 +109,12 @@ function confirmPopup(title, content, options) {
         watchInterval: 250, // Intervalo de observación de eventos
     };
     options = $.extend($defaults, options);
+    if (options.escapeCancelKey) options.escapeCancelKey = 'cancel';
 
-    // Actualiza parámetros
-    if (options.escapeCancelKey) {
-        options.escapeCancelKey = 'cancel';
-    }
-
-    // Crea el confirm
+    // noinspection JSCheckFunctionSignatures
+    /**
+     * Crea el confirm
+     */
     $.confirm({
         animateFromElement: false,
         animation: options.animation,
@@ -140,4 +143,5 @@ function confirmPopup(title, content, options) {
             }
         },
     });
+
 }
