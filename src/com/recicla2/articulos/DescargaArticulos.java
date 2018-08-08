@@ -67,7 +67,7 @@ public class DescargaArticulos extends HttpServlet {
         Obtiene el número de la página, si no se pasa entonces es 1
          */
         int pag = 0;
-        String $p = request.getParameter("page");
+        String $p = request.getParameter("pag");
         if ($p != null && FuncionesNumericas.isNumeric($p)) {
             pag = Math.max(0, Integer.parseInt($p)); // Convierte a número
         }
@@ -133,9 +133,28 @@ public class DescargaArticulos extends HttpServlet {
                 String articuloID = Integer.toString(resultados.getInt(1));
 
                 /*
+                Obtiene las fotografías
+                 */
+                JSONObject fotos = new JSONObject();
+                pstSelect = con.prepareStatement("SELECT * FROM fotografia WHERE articulo_id=?");
+                pstSelect.setInt(1, resultados.getInt(1));
+                ResultSet fotoSelect = pstSelect.executeQuery();
+                while (fotoSelect.next()) {
+                    JSONObject foto = new JSONObject();
+                    foto.put("id", fotoSelect.getInt(1));
+                    foto.put("ruta", fotoSelect.getString(2));
+                    foto.put("nombre", fotoSelect.getString(3));
+                    fotos.put(Integer.toString(fotoSelect.getInt(1)), foto);
+                }
+
+                /*
                 Arma el artículo
                  */
-                json.put("id", resultados.getInt(1));
+                articulo.put("id", resultados.getInt(1));
+                articulo.put("nombre", resultados.getString(2));
+                articulo.put("fecha", resultados.getString(4));
+                articulo.put("comuna", resultados.getInt(9));
+                articulo.put("fotos", fotos);
 
                 json.put(articuloID, articulo); // Añade artículo a artículos
             }

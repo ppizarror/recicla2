@@ -88,10 +88,11 @@
     <!-- Carga el módulo -->
     <script src="app/modules/modules.js"></script>
     <script src="app/modules/foto-comentarios/config.js"></script>
+    <script src="app/modules/foto-comentarios/server.js"></script>
     <script src="app/modules/foto-comentarios/ui.js"></script>
     <script src="app/modules/foto-comentarios/style.css"></script>
 
-    <!-- Escribe los datos de las comunas y regiones -->
+    <!-- Escribe los datos iniciales -->
     <script>
         $art_total = <%=ObtenerTotalArticulos.obtener()%>;
         $r_chile = <%=sc.getAttribute(Recicla2Const.APP_DATA_JSON_REGION).toString()%>;

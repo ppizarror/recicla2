@@ -348,3 +348,13 @@ hashCode = function (s) {
         return a & a
     }, 0);
 };
+
+/**
+ * Retorna true/false si el objeto es booleano
+ * @function
+ * @param {object} obj - Objeto
+ * @returns {boolean} - Indica si el objeto es booleano
+ */
+function isBoolean(obj) {
+    return typeof(obj) === 'boolean';
+}

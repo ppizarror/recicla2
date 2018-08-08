@@ -26,6 +26,16 @@
         <url-pattern>/obtenComentarios</url-pattern>
     </servlet-mapping>
 
+    <!-- Servlet descarga de artículos -->
+    <servlet>
+        <servlet-name>descargaArticulo</servlet-name>
+        <servlet-class>com.recicla2.articulos.DescargaArticulos</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>descargaArticulo</servlet-name>
+        <url-pattern>/obtenArticulo</url-pattern>
+    </servlet-mapping>
+
     <!-- Listener descarga de regiones y comunas al iniciar la aplicación -->
     <listener>
         <listener-class>com.recicla2.DescargaRegionComuna</listener-class>

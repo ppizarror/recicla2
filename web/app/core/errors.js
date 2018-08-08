@@ -49,6 +49,7 @@ function initErrors() {
     $addError('errorErrorObt', 'Error al obtener el error de la aplicación', 'Ocurrió un error fatal al obtener el código del error obtenido en la aplicación, contacte con su Administrador', 2);
     $addError('corePostGetError', 'Error al acceder de forma incorrecta a Servlet', 'Servlet no soporta el llamado especificado', 3);
     $addError('descargaArticulo', 'Error al descargar artículos', 'Ocurrió un error al descargar los artículos', 4);
+    $addError('errorConsultaArticulos', 'Error al generar la consulta al servidor para obtener los artículos', 'Ocurrió un error fatal al generar la consulta al servidor para obtener los artículos', 5);
 }
 
 /**
