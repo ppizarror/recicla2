@@ -15,9 +15,14 @@ let cfg_fotocomentarios_center_module = true;
 /**
  * Comunas de las regiones
  */
-let $rc_chile;
+let $rc_chile = {};
 
 /**
  * Objeto de las regiones
  */
-let $r_chile;
+let $r_chile = {};
+
+/**
+ * Total de artículos
+ */
+let $art_total = 0;

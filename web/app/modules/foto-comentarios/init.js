@@ -18,9 +18,6 @@ $(function () {
     // Dibuja el módulo
     createFotoComentariosUI();
 
-    // Oculta el panel principal
-    hideMainContent();
-
     // Centra la página
     if (cfg_fotocomentarios_center_module) {
         centerMainContent();

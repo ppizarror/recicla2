@@ -40,6 +40,12 @@ function createFotoComentariosUI() {
 
     // Obtiene el contenedor
     fotocomentario_container = _cfcm.getDOM();
+
+    /**
+     * Desactiva carga
+     */
+    loadHandler(false);
+
 }
 
 /**

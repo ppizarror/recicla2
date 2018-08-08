@@ -178,7 +178,6 @@ function showBackToTopButton() {
  */
 function getElementHeight(elem) {
     try {
-        // noinspection JSValidateTypes
         return elem.outerHeight();
     } catch (e) {
         return -1;
@@ -194,7 +193,6 @@ function getElementHeight(elem) {
  */
 function getElementWidth(elem) {
     try {
-        // noinspection JSValidateTypes
         return elem.outerWidth();
     } catch (e) {
         return -1;
