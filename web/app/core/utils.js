@@ -89,11 +89,10 @@ function dec2hex(dec) {
 /**
  * Genera un string aleatorio
  * @function
- * @param {number} len - Largo del string a generar
  * @return {string} - String aleatorio
  */
-function generateId(len) {
-    let arr = new Uint8Array((len || 40) / 2);
+function generateId() {
+    let arr = new Uint8Array((cfg_id_size || 40) / 2);
     window.crypto.getRandomValues(arr);
     return Array.from(arr, dec2hex).join('');
 }

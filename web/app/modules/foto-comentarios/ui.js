@@ -25,7 +25,7 @@ let fotocomentario_page = 0;
  * @type {string}
  * @private
  */
-let $paginadorID = generateId(cfg_id_size);
+let $paginadorID = generateId();
 
 /**
  * Función global que carga los artículos
@@ -72,9 +72,9 @@ function createFotoComentariosUI() {
      * Genera ID principales
      * ------------------------------------------------------------------------
      */
-    let $selectorRegionID = generateId(cfg_id_size);
-    let $selectorComunaID = generateId(cfg_id_size);
-    let $selectorOrdenID = generateId(cfg_id_size);
+    let $selectorRegionID = generateId();
+    let $selectorComunaID = generateId();
+    let $selectorOrdenID = generateId();
 
     /**
      * ------------------------------------------------------------------------
@@ -224,7 +224,7 @@ function createPaginator(totalp) {
      * Obtiene el contenedor
      */
     let $pagcontainer = $('#' + $paginadorID);
-    let $pid = generateId(cfg_id_size);
+    let $pid = generateId();
     $pagcontainer.empty();
     $pagcontainer.append('<div class="foto-comentarios-paginador-linea" id="{0}"></div>'.format($pid));
 
@@ -304,7 +304,7 @@ function drawResults(results) {
         }
         for (let j = 0; j < $fotoObj.length; j++) {
             $f = $r['fotos'][$fotoObj[j]];
-            let $fotoID = generateId(cfg_id_size);
+            let $fotoID = generateId();
             // noinspection HtmlUnknownTarget
             $listaFotos += '<div class="art-foto-item" id="{2}"><img src="{0}" alt="{1}" width="120" height="120"/></div>'.format($photo_path + $f['ruta'], $f['nombre'], $fotoID);
             $listaFotoID.push({
@@ -316,7 +316,7 @@ function drawResults(results) {
         /**
          * Escribe el elemento en el contenedor
          */
-        let $nombreid = generateId(cfg_id_size); // ID nombre
+        let $nombreid = generateId(); // ID nombre
         $articuloContainer.append('<div class="foto-comentario-nuevo-articulo"><div class="art-nombre"><span id="{2}">{0}</span></div><div class="art-foto-lista">{1}</div></div>'.format($r['nombre'], $listaFotos, $nombreid));
 
         /**
@@ -349,6 +349,15 @@ function drawResults(results) {
      */
     centerMainContent();
 
+    /**
+     * Mueve hasta el cielo
+     */
+    try {
+        $('html, body').animate({scrollTop: 0}, 400);
+    } catch ($e) {
+    } finally {
+    }
+
 }
 
 /**
@@ -379,4 +388,37 @@ function loadPicCommentsPanel(ev) {
  */
 function picPanelComment(cdata, picData) {
     console.log(cdata, picData);
+
+    /**
+     * Genera los ID de los elementos
+     * @type {string}
+     */
+    let $btnID = generateId(); // ID botón comentar
+    let $comContID = generateId(); // ID contenedor comentarios
+    let $textID = generateId(); // ID del textarea
+
+    // noinspection HtmlUnknownTarget
+    /**
+     * Crea el HTML del contenido
+     */
+    let $content = '<div class="foto-grande-panel"><img src="{0}" alt="" /></div><div class="foto-grande-panel-com-title">{1}</div><div class="foto-grande-panel-input"><textarea id="{2}" class="form-control" cols="50" rows="10" placeholder="{3}"></textarea><button type="button" class="btn btn-primary" id="{5}">{4}</button></div><div class="foto-comentarios-com-contenedor" id="{6}"><div class="foto-comentarios-com-item"><div class="foto-comentarios-com-com">Hola</div><div class="foto-comentarios-com-fecha">hace 14 horas</div></div><div class="foto-comentarios-com-item"><div class="foto-comentarios-com-com">Hola</div><div class="foto-comentarios-com-fecha">hace 14 horas</div></div></div>'.format($photo_path + picData['ruta'], lang.foto_comentarios_title_com, $textID, lang.foto_comentarios_text_com_placeholder, lang.foto_comentarios_com_btn, $btnID, $comContID);
+
+    $.confirm({
+        animateFromElement: false,
+        boxWidth: '80%',
+        closeIcon: true,
+        content: $content,
+        escapeKey: 'cancel',
+        theme: 'light',
+        title: lang.foto_comentarios_photo_title,
+        useBootstrap: false,
+        buttons: {
+            cancel: {
+                text: lang.close,
+                action: function () {
+                }
+            }
+        }
+    });
+
 }

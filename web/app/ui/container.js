@@ -54,7 +54,7 @@ function Container(options) {
          * @ignore
          */
         let _mainContent = $(options.parent);
-        this._id = generateId(cfg_id_size);
+        this._id = generateId();
         if (options.elementClass !== '') {
             options.elementClass = ' ' + options.elementClass;
         }

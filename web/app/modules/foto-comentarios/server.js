@@ -174,7 +174,7 @@ function descargarComentariosFoto(picData) {
         url: 'obtenComentariosFoto',
     });
     console.info(lang.foto_comentarios_ajax_descarga_comentarios.format(picData.id));
-    
+
     /**
      * Respuesta correcta desde el servidor
      */

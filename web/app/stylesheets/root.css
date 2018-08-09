@@ -16,6 +16,17 @@ body {
     font-weight: 300;
 }
 
+/**
+Desactiva el outline
+ */
+.form-control:focus {
+    box-shadow: inherit !important;
+}
+
+.btn.focus, .btn:focus {
+    box-shadow: inherit !important;
+}
+
 pre {
     font-family: Consolas, monospace;
 }

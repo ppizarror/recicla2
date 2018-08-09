@@ -169,3 +169,71 @@ Foto
     height: 120px;
     width: 120px;
 }
+
+/**
+Visualizador de fotos
+ */
+.foto-grande-panel {
+    padding: 10px;
+    text-align: center;
+}
+
+.foto-grande-panel img {
+    height: 600px;
+    width: 800px !important;
+}
+
+/**
+Título comentarios
+ */
+.foto-grande-panel-com-title {
+    cursor: pointer;
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.foto-grande-panel-input {
+    display: block;
+    padding: 0 20px;
+}
+
+.foto-grande-panel-input .form-control {
+    font-size: 0.9rem;
+    padding: 5px;
+}
+
+.foto-grande-panel-input .btn {
+    display: block;
+    margin: 10px 0;
+}
+
+/**
+Contenedor de los comentarios
+ */
+.foto-comentarios-com-contenedor {
+    display: block;
+    padding: 0 20px;
+}
+
+/**
+Comentario
+ */
+.foto-comentarios-com-item {
+
+}
+
+/**
+Texto del comentario
+ */
+.foto-comentarios-com-com {
+
+}
+
+/**
+Fecha del comentario
+ */
+.foto-comentarios-com-fecha {
+
+}

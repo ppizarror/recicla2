@@ -53,8 +53,8 @@ function Header(options) {
         /**
          * Crea los ID
          */
-        this._id = generateId(cfg_id_size);
-        this._searchid = generateId(cfg_id_size);
+        this._id = generateId();
+        this._searchid = generateId();
 
         // noinspection QuirksModeInspectionTool,HtmlUnknownTarget
         /**
