@@ -25,5 +25,5 @@ Se usa MySQL, con driver de conexión **com.mysql.cj.jdbc.Driver**, puerto 3306.
 En el lado del cliente se desarrolló la tarea 4 sobre la arquitectura de las tareas anteriores, reusando casi todo el código, la interfaz gráfica, paquetes (librerías) y otras funciones adicionales son similares.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ppizarror/recicla2/java-servlets/docs/examples/foto1.PNG?raw=true" width="40%" alt="" title="Vista general de la aplicación" />
+  <img src="https://raw.githubusercontent.com/ppizarror/recicla2/java-servlets/docs/examples/vistagen.PNG?raw=true" width="70%" alt="" title="Vista general de la aplicación" />
 </p>
