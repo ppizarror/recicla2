@@ -7,9 +7,16 @@
  */
 
 /**
- * Función que obtiene por AJAX artículos desde un cierto número de página
- * @param {number} npag - Número de página
+ * Indica última búsqueda realizada
+ * @type {number}
  */
+let lastPaginadorLength = 0;
+
+/**
+ * Hash última búsqueda
+ * @type {number}
+ */
+let lastQueryHash = 0;
 
 /**
  * Función que obtiene por AJAX artículos
@@ -40,15 +47,20 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
      * Verifica número de página
      */
     if (isNaN(npag)) npag = 0;
+    let $data = 'pag={0}&asc={1}'.format(npag, !descendente) + $comuna;
+    let $hash = $data.hashCode();
+    if (lastQueryHash === $hash) return;
+    lastQueryHash = $hash;
 
     // noinspection JSUnresolvedFunction
     let $downloadIssues = $.ajax({
         crossOrigin: false,
-        data: 'pag={0}&asc={1}'.format(npag, !descendente) + $comuna,
+        data: $data,
         timeout: 10000,
         type: 'get',
         url: 'obtenArticulo',
     });
+    console.log(lang.foto_comentarios_ajax_info.format($hash));
 
     // noinspection JSCheckFunctionSignatures
     /**
@@ -63,8 +75,22 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
              * Se obtuvo de manera satisfactoria el contenido desde el servidor
              */
             if (Object.keys(data).indexOf('error') === -1) {
-                // Dibujar en .foto-comentarios-contenedor
-                console.log(data);
+
+                /**
+                 * Actualiza total de artículos
+                 */
+                let $totalArt = data.total;
+                delete data.total;
+                if (lastPaginadorLength !== $totalArt) {
+                    createPaginator($totalArt);
+                }
+                lastPaginadorLength = $totalArt;
+
+                /**
+                 * Dibuja los resultados
+                 */
+                drawResults(data);
+
             }
 
             /**

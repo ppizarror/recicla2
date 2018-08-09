@@ -111,6 +111,11 @@ public class DescargaArticulos extends HttpServlet {
         }
 
         /*
+        Obtiene el total de resultados sin aplicar LIMIT
+         */
+        int totalResultados = obtenerTotalDatos(con, filtrarPorComuna, comunaid);
+
+        /*
         Obtiene los resultados
          */
         ResultSet resultados;
@@ -123,6 +128,15 @@ public class DescargaArticulos extends HttpServlet {
             return;
         }
         JSONObject json = new JSONObject(); // JSON Artículos
+
+        /*
+        Agrega total de resultados
+         */
+        try {
+            json.put("total", totalResultados);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         /*
         Recorre los resultados
@@ -179,6 +193,61 @@ public class DescargaArticulos extends HttpServlet {
         Escribe los resultados
          */
         out.write(json.toString());
+
+    }
+
+    /**
+     * Prepara la consulta dependiendo de los valores obtenidos desde GET.
+     *
+     * @param con           - Conexión con la base de datos
+     * @param filtrarcomuna - Filtra las comunas por ID
+     * @param numerocomuna  - Número de la comuna a filtrar
+     * @return Retorna el PreparedStatement para hacer las peticiones
+     */
+    private int obtenerTotalDatos(Connection con, boolean filtrarcomuna, int numerocomuna) {
+
+        /*
+        Prepara la sentencia
+         */
+        PreparedStatement pstSelect = null;
+
+        try {
+            if (!filtrarcomuna) { // No aplica filtro comuna
+                pstSelect = con.prepareStatement("SELECT COUNT(id) FROM articulo");
+            } else { // Aplica filtro comuna
+                pstSelect = con.prepareStatement("SELECT COUNT(id) FROM articulo WHERE comuna_id=?");
+                pstSelect.setInt(1, numerocomuna);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        /*
+        Ejecuta la sentencia
+         */
+        ResultSet resultados;
+        try {
+            assert pstSelect != null;
+            resultados = pstSelect.executeQuery();
+        } catch (SQLException e) {
+            return 0;
+        }
+
+        /*
+        Obtiene total
+         */
+        int total = 0;
+        try {
+            resultados.next();
+            total = resultados.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        /*
+        Retorna el total de datos
+         */
+        return total;
 
     }
 

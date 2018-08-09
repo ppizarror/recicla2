@@ -69,8 +69,18 @@ Paginador
     padding: 15px;
 }
 
-.foto-comentarios-paginador .pagination {
+.foto-comentarios-paginador-linea {
+    display: flex;
+    text-align: center;
+    width: 100%;
+}
+
+.foto-comentarios-paginador .foto-comentarios-paginador-linea .pagination {
     margin: 0 auto;
+}
+
+.foto-comentarios-paginador-vacio {
+    padding: 8px;
 }
 
 /**

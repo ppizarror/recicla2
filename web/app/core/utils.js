@@ -337,16 +337,18 @@ function removeUrlParam(parameter) {
 }
 
 /**
- * Genera un código HASH
- * @function
- * @param {string} s - String a hacer el hash
+ * Crea un hash en un string
  * @returns {number}
  */
-hashCode = function (s) {
-    return s.split("").reduce(function (a, b) {
-        a = ((a << 5) - a) + b.charCodeAt(0);
-        return a & a
-    }, 0);
+String.prototype.hashCode = function () {
+    let hash = 0, i, chr;
+    if (this.length === 0) return hash;
+    for (i = 0; i < this.length; i++) {
+        chr = this.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0;
+    }
+    return hash;
 };
 
 /**

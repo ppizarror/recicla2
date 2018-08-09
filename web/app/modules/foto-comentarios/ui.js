@@ -19,6 +19,18 @@ let fotocomentario_container;
 let fotocomentario_page = 0;
 
 /**
+ * Paginador
+ * @type {string}
+ */
+let $paginadorID = generateId(cfg_id_size);
+
+/**
+ * Función global que carga los artículos
+ * @type{function}
+ */
+let cargarArticulos;
+
+/**
  * Crea el módulo en la ui
  * @function
  */
@@ -59,14 +71,13 @@ function createFotoComentariosUI() {
     let $selectorRegionID = generateId(cfg_id_size);
     let $selectorComunaID = generateId(cfg_id_size);
     let $selectorOrdenID = generateId(cfg_id_size);
-    let $paginadorID = generateId(cfg_id_size);
 
     /**
      * ------------------------------------------------------------------------
      * Función de llamado selectores AJAX obtención de artículos
      * ------------------------------------------------------------------------
      */
-    let cargarArticulos = function () {
+    cargarArticulos = function () {
 
         // Obtiene los valores
         let $comuna = $('#' + $selectorComunaID).val();
@@ -83,7 +94,7 @@ function createFotoComentariosUI() {
      * Dibuja contenedor de ítemes y paginador
      * ------------------------------------------------------------------------
      */
-    fotocomentario_container.append('<div class="foto-comentarios-header"><div class="foto-comentario-selector-panel selector-orden"><select id="{2}" class="form-control form-control-sm"></select></div><div class="foto-comentario-selector-panel selector-regioncomuna"><select id="{0}" class="form-control form-control-sm"></select><select id="{1}" class="form-control form-control-sm" disabled></select></div></div><div class="foto-comentarios-contenedor"></div><div class="foto-comentarios-paginador" id="{3}"></div>'.format($selectorRegionID, $selectorComunaID, $selectorOrdenID, $paginadorID));
+    fotocomentario_container.append('<div class="foto-comentarios-header"><div class="foto-comentario-selector-panel selector-orden"><select id="{2}" class="form-control form-control-sm"></select></div><div class="foto-comentario-selector-panel selector-regioncomuna"><select id="{0}" class="form-control form-control-sm"></select><select id="{1}" class="form-control form-control-sm" disabled></select></div></div><div class="foto-comentarios-contenedor"></div><div class="foto-comentarios-paginador foto-comentarios-paginador-vacio" id="{3}"></div>'.format($selectorRegionID, $selectorComunaID, $selectorOrdenID, $paginadorID));
 
     /**
      * ------------------------------------------------------------------------
@@ -146,26 +157,6 @@ function createFotoComentariosUI() {
 
     /**
      * ------------------------------------------------------------------------
-     * Crea paginador
-     * ------------------------------------------------------------------------
-     */
-    if ($art_total > 0) {
-        $('#' + $paginadorID).twbsPagination({
-            totalPages: Math.ceil($art_total / $art_pp),
-            visiblePages: 5,
-            onPageClick: function (event, page) {
-                fotocomentario_page = page - 1;
-                cargarArticulos();
-            },
-            first: lang.twbs_pagination_first,
-            prev: lang.twbs_pagination_prev,
-            next: lang.twbs_pagination_next,
-            last: lang.twbs_pagination_last,
-        });
-    }
-
-    /**
-     * ------------------------------------------------------------------------
      * Contenedor de los artículos
      * ------------------------------------------------------------------------
      */
@@ -174,6 +165,7 @@ function createFotoComentariosUI() {
         $articuloContainer.append('<div class="foto-comentarios-articulo-mensaje">{0}</div>'.format(lang.foto_comentarios_no_items));
     } else {
         clearArticleContainer();
+        cargarArticulos();
     }
 
     /**
@@ -215,4 +207,89 @@ function adjustListItemWidth() {
     $w = Math.min($max, Math.max($min, $w));
     // noinspection JSUnresolvedFunction
     fotocomentario_container.css('width', $w + 'px');
+}
+
+/**
+ * Crea el paginador
+ * @function
+ * @param {number} totalp - Total de artículos
+ */
+function createPaginator(totalp) {
+
+    /**
+     * Calcula la cantidad de páginas
+     * @type {number}
+     */
+    let $totalp = Math.ceil(totalp / $art_pp);
+
+    /**
+     * Obtiene el contenedor
+     */
+    let $pagcontainer = $('#' + $paginadorID);
+    let $pid = generateId(cfg_id_size);
+    $pagcontainer.empty();
+    $pagcontainer.append('<div class="foto-comentarios-paginador-linea" id="{0}"></div>'.format($pid));
+
+    /**
+     * Dependiendo del total de páginas se muestra u oculta el paginador
+     */
+    if ($totalp <= 1) {
+        $pagcontainer.addClass('foto-comentarios-paginador-vacio');
+        return;
+    } else {
+        $pagcontainer.removeClass('foto-comentarios-paginador-vacio');
+    }
+
+    $('#' + $pid).twbsPagination({
+        totalPages: $totalp,
+        visiblePages: 5,
+        onPageClick: function (event, page) {
+            fotocomentario_page = page - 1;
+            cargarArticulos();
+        },
+        first: lang.twbs_pagination_first,
+        prev: lang.twbs_pagination_prev,
+        next: lang.twbs_pagination_next,
+        last: lang.twbs_pagination_last,
+    });
+
+}
+
+/**
+ * Función que dibuja los resultados obtenidos desde el servidor
+ * @function
+ * @param {object} results - Resultados descargados
+ */
+function drawResults(results) {
+
+    /**
+     * Obtiene el contenedor de los fotos y comentarios
+     * @type {JQuery<HTMLElement> | jQuery | HTMLElement}
+     */
+    let $articuloContainer = $('.foto-comentarios-contenedor');
+    $articuloContainer.empty();
+
+    /**
+     * Obtiene los keys de los resultados
+     */
+    let $rk = Object.keys(results);
+
+    /**
+     * Si no hay resultados se muestra un mensaje
+     */
+    console.log(results);
+    if ($rk.length === 0) {
+        $articuloContainer.append('<div class="foto-comentarios-articulo-mensaje">{0}</div>'.format(lang.foto_comentarios_no_results));
+        return;
+    }
+
+    /**
+     * Dibuja cada elemento en el contenedor
+     */
+    let $r; // Ítem resultado
+    for (let i = 0; i < $rk.length; i++) {
+        $r = results[$rk[i]];
+        console.log($r);
+    }
+
 }
