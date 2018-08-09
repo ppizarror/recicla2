@@ -62,7 +62,7 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
         type: 'get',
         url: 'obtenArticulo',
     });
-    consoleLogInfo(lang.foto_comentarios_ajax_info.format($hash));
+    console.info(lang.foto_comentarios_ajax_info.format($hash));
 
     // noinspection JSCheckFunctionSignatures
     /**
@@ -176,7 +176,7 @@ function descargarComentariosFoto(picData) {
         type: 'get',
         url: 'obtenComentariosFoto',
     });
-    consoleLogInfo(lang.foto_comentarios_ajax_descarga_comentarios.format(picData.id));
+    console.info(lang.foto_comentarios_ajax_descarga_comentarios.format(picData.id));
 
     // noinspection JSCheckFunctionSignatures
     /**

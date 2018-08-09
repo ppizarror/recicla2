@@ -291,7 +291,6 @@ function drawResults(results) {
          * Carga el artículo
          */
         $r = results[$rk[i]];
-        console.log($r);
         let $listaFotos = '';
         let $listaFotoID = [];
 
