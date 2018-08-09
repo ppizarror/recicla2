@@ -80,6 +80,15 @@ MS Edge              v42.17134
 
 No se garantiza el funcionamiento correcto en otros navegadores.
 
+## Versión compilada
+
+La versión compilada de la aplicación se puede encontrar en el *artifact* dentro de la carpeta out/:
+
+```bash
+out/artifacts/recicla2_war_exploded/    Compilación de la aplicación
+out/production/                         Compilación archivos del servidor
+```
+
 ## Documentación
 
 La documentación es generada con JSDOC3, se puede ver de manera local en la carpeta *docs/index.html*.
