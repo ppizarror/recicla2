@@ -126,6 +126,12 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
 
 }
 
+/**
+ * Retorna el nombre de una comuna a partir de los datos cargados
+ * @function
+ * @param {number} id - ID de la comuna
+ * @returns {String}
+ */
 function buscarComuna(id) {
 
     /**
