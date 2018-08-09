@@ -289,6 +289,7 @@ function drawResults(results) {
         $r = results[$rk[i]];
         console.log($r);
         let $listaFotos = '';
+        let $listaFotoID = [];
 
         /**
          * Genera lista de fotos
@@ -300,8 +301,13 @@ function drawResults(results) {
         }
         for (let j = 0; j < $fotoObj.length; j++) {
             $f = $r['fotos'][$fotoObj[j]];
+            let $fotoID = generateId(cfg_id_size);
             // noinspection HtmlUnknownTarget
-            $listaFotos += '<div class="art-foto-item"><img src="{0}" alt="{1}" title="{2}" width="120" height="120"/></div>'.format($photo_path + $f['ruta'], $f['nombre'], lang.foto_comentarios_pic_view_comments);
+            $listaFotos += '<div class="art-foto-item" id="{2}"><img src="{0}" alt="{1}" width="120" height="120"/></div>'.format($photo_path + $f['ruta'], $f['nombre'], $fotoID);
+            $listaFotoID.push({
+                domID: $fotoID,
+                picID: $f['id'],
+            });
         }
 
         /**
@@ -325,9 +331,34 @@ function drawResults(results) {
         /**
          * Establece eventos clickeos de fotos
          */
+        let $elem; // Contiene referencia foto
+        for (let j = 0; j < $listaFotoID.length; j++) {
+            $elem = $listaFotoID[j];
+            $('#' + $elem.domID).on('click', {
+                id: $elem.picID,
+            }, loadPicCommentsPanel);
+        }
 
     }
 
+    /**
+     * Centra el contenido
+     */
     centerMainContent();
+
+}
+
+/**
+ * Función que carga el panel de comentarios, obtiene ID foto, carga Ajax comentarios y despliega panel
+ * @function
+ * @param {Object} ev - Evento click
+ */
+function loadPicCommentsPanel(ev) {
+
+    /**
+     * Obtiene la ID de la imagen clickeada
+     */
+    let $picID = ev.data.id;
+    console.log($picID);
 
 }

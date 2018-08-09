@@ -50,6 +50,7 @@ function initErrors() {
     $addError('corePostGetError', 'Error al acceder de forma incorrecta a Servlet', 'Servlet no soporta el llamado especificado', 3);
     $addError('descargaArticulo', 'Error al descargar artículos', 'Ocurrió un error al descargar los artículos', 4);
     $addError('errorConsultaArticulos', 'Error al generar la consulta al servidor para obtener los artículos', 'Ocurrió un error fatal al generar la consulta al servidor para obtener los artículos', 5);
+    $addError('descargaFotoComentario', 'Error al descargar comentarios de la fotografía', 'Ocurrió un error al consultar los comentarios de la fotografía seleccionada', 6);
 }
 
 /**
