@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/*
+RECICLA2
+Archivo estilo panel de carga.
+
+@author Pablo Pizarro R. @ppizarror.com
+@license Copyright 2018, no copiar o distribuír sin permiso directo del autor
+*/
+
+#LoadingDivLayer {
+    width: 100%;
+}
+
+.LoadingDivLayerClass {
+    border: none;
+    display: none;
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    z-index: 99999;
+}
+
+.LoadingDivLayerClass .LoadingForeground {
+    position: fixed;
+    width: 100%;
+    z-index: 101;
+}
+
+.LoadingDivLayerClass .LoadingForeground .LoadingBox {
+    background: rgba(0, 0, 0, .85);
+    border-radius: 8px;
+    height: 69px !important;
+    line-height: 67px;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    text-align: center;
+    width: 69px !important;
+}
+
+.LoadingDivLayerClass .LoadingForeground .LoadingBox img {
+    border: none;
+    height: 29px;
+    margin: 18px auto;
+    outline: none;
+    padding: 0;
+    position: relative;
+    width: 29px;
+}
+
+.LoadingDivLayerClass .LoadingBackground {
+    background-color: #000;
+    border: none;
+    left: 0;
+    margin: 0;
+    opacity: 0.3;
+    overflow: hidden;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}

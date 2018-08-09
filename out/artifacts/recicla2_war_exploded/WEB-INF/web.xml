@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!-- Versión de la aplicación -->
+    <context-param>
+        <param-name>appver</param-name>
+        <param-value>1.00</param-value>
+    </context-param>
+
+    <!-- Cantidad de paginado artículos -->
+    <context-param>
+        <param-name>articulosPorPagina</param-name>
+        <param-value>5</param-value>
+    </context-param>
+
+    <!-- Directorio de las fotos de la aplicación -->
+    <context-param>
+        <param-name>directorioFotosArticulos</param-name>
+        <param-value>"res/photos/"</param-value>
+    </context-param>
+
+    <!-- Servlet descarga de comentarios, se envían por get, usar ajax -->
+    <servlet>
+        <servlet-name>descargaDeComentariosFotos</servlet-name>
+        <servlet-class>com.recicla2.fotos.DescargaComentarios</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>descargaDeComentariosFotos</servlet-name>
+        <url-pattern>/obtenComentariosFoto</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlet carga de comentarios, se envían por post, usar ajax -->
+    <servlet>
+        <servlet-name>cargaComentarioDeFotos</servlet-name>
+        <servlet-class>com.recicla2.fotos.CargarComentario</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cargaComentarioDeFotos</servlet-name>
+        <url-pattern>/subirComentarioFoto</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlet descarga de artículos -->
+    <servlet>
+        <servlet-name>descargaArticulo</servlet-name>
+        <servlet-class>com.recicla2.articulos.DescargaArticulos</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>descargaArticulo</servlet-name>
+        <url-pattern>/obtenArticulo</url-pattern>
+    </servlet-mapping>
+
+    <!-- Listener descarga de regiones y comunas al iniciar la aplicación -->
+    <listener>
+        <listener-class>com.recicla2.DescargaRegionComuna</listener-class>
+    </listener>
+
+    <!-- Definición de página de landing -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
