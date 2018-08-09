@@ -163,17 +163,11 @@ function createFotoComentariosUI() {
     if ($art_total === 0) {
         let $articuloContainer = $('.foto-comentarios-contenedor');
         $articuloContainer.append('<div class="foto-comentarios-articulo-mensaje">{0}</div>'.format(lang.foto_comentarios_no_items));
+        loadHandler(false);
     } else {
         clearArticleContainer();
         cargarArticulos();
     }
-
-    /**
-     * ------------------------------------------------------------------------
-     * Termina la carga del módulo
-     * ------------------------------------------------------------------------
-     */
-    loadHandler(false);
 
     // noinspection JSCheckFunctionSignatures
     $(window).on('resize', adjustListItemWidth);
@@ -288,9 +282,17 @@ function drawResults(results) {
      */
     let $r; // Ítem resultado
     for (let i = 0; i < $rk.length; i++) {
+
+        /**
+         * Carga el artículo
+         */
         $r = results[$rk[i]];
         console.log($r);
         let $listaFotos = '';
+
+        /**
+         * Genera lista de fotos
+         */
         let $fotoObj = Object.keys($r['fotos']);
         let $f;
         if ($fotoObj.length === 0) {
@@ -299,9 +301,31 @@ function drawResults(results) {
         for (let j = 0; j < $fotoObj.length; j++) {
             $f = $r['fotos'][$fotoObj[j]];
             // noinspection HtmlUnknownTarget
-            $listaFotos += '<div class="art-foto-item"><img src="{0}" alt="{1}" title="{2}"/></div>'.format($photo_path + $f['ruta'], $f['nombre'], lang.foto_comentarios_pic_view_comments);
+            $listaFotos += '<div class="art-foto-item"><img src="{0}" alt="{1}" title="{2}" width="120" height="120"/></div>'.format($photo_path + $f['ruta'], $f['nombre'], lang.foto_comentarios_pic_view_comments);
         }
-        $articuloContainer.append('<div class="foto-comentario-nuevo-articulo"><div class="art-nombre" title="{1}">{0}</div><div class="art-foto-lista">{2}</div></div>'.format($r['nombre'], $r['fecha'], $listaFotos));
+
+        /**
+         * Escribe el elemento en el contenedor
+         */
+        let $nombreid = generateId(cfg_id_size); // ID nombre
+        $articuloContainer.append('<div class="foto-comentario-nuevo-articulo"><div class="art-nombre"><span id="{2}">{0}</span></div><div class="art-foto-lista">{1}</div></div>'.format($r['nombre'], $listaFotos, $nombreid));
+
+        /**
+         * Agrega tooltip
+         */
+        $('#' + $nombreid).tooltipster({
+            content: lang.foto_comentarios_item_name.format($r['fecha'], buscarComuna($r['comuna'])),
+            contentAsHTML: true,
+            delay: 500,
+            maxWidth: 300,
+            side: 'bottom',
+            theme: cfg_tooltip_theme,
+        });
+
+        /**
+         * Establece eventos clickeos de fotos
+         */
+
     }
 
     centerMainContent();

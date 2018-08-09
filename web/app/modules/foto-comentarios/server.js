@@ -123,4 +123,33 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
     });
 
     loadHandler(false);
+
+}
+
+function buscarComuna(id) {
+
+    /**
+     * Itera por las regiones de cada grupo de comunas
+     */
+    let $r = Object.keys($rc_chile);
+    for (let i = 0; i < $r.length; i++) {
+
+        // Paquete de comunas
+        let $pc = $rc_chile[$r[i]];
+        let $pk = Object.keys($pc);
+
+        // Recorre cada elemento del paquete y verifica igualdad de ID
+        for (let j = 0; j < $pk.length; j++) {
+            let $pi = parseInt($pk[j]);
+            if ($pi === id) {
+                return $pc[$pk[j]]; // Retona el nombre de la comuna
+            }
+        }
+    }
+
+    /**
+     * Si no se encuentra entonces retorna error
+     */
+    return lang.foto_comentarios_comuna_inv;
+
 }
