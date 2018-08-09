@@ -17,7 +17,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 public class CargarComentario extends HttpServlet {
 
@@ -29,7 +28,7 @@ public class CargarComentario extends HttpServlet {
      * @throws ServletException Excepción del Servlet
      * @throws IOException      Error acceso IO
      */
-    @SuppressWarnings("RedundantThrows")
+    @SuppressWarnings({"RedundantThrows", "Duplicates"})
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         /*
@@ -57,11 +56,6 @@ public class CargarComentario extends HttpServlet {
             out.write(AdministracionError.generaErrorGenerico(CodigoError.ERROR_CARGA_COMENTARIO_FOTO));
             return;
         }
-
-        /*
-        Genera fecha consulta
-         */
-        Date fecha = new Date();
 
         /*
         Genera conexión con base de datos
@@ -109,11 +103,9 @@ public class CargarComentario extends HttpServlet {
         Carga el comentario
          */
         try {
-            pstSelect = con.prepareStatement("INSERT INTO comentario_fotografia (fecha,comentario,fotografia) VALUES (?,?,?)");
-            java.sql.Date sqlDate = new java.sql.Date(fecha.getTime());
-            pstSelect.setDate(1, sqlDate);
-            pstSelect.setString(2, comentario);
-            pstSelect.setInt(3, fotoID);
+            pstSelect = con.prepareStatement("INSERT INTO comentario_fotografia (fecha,comentario,fotografia) VALUES (CURRENT_TIMESTAMP,?,?)");
+            pstSelect.setString(1, comentario);
+            pstSelect.setInt(2, fotoID);
         } catch (SQLException e) {
             e.printStackTrace();
             out.write(AdministracionError.generaErrorGenerico(CodigoError.ERROR_CARGA_COMENTARIO_FOTO, "crearConsulta"));
@@ -121,7 +113,12 @@ public class CargarComentario extends HttpServlet {
         }
 
         try {
-            pstSelect.executeQuery();
+            int rs = pstSelect.executeUpdate(); // executeQuery() no sirve para manipular datos
+            if (rs != 1) {
+                out.write(AdministracionError.generaErrorGenerico(CodigoError.ERROR_CARGA_COMENTARIO_FOTO, "noInsertado"));
+                return;
+            }
+            con.commit(); // Actualiza
         } catch (SQLException e) {
             e.printStackTrace();
             out.write(AdministracionError.generaErrorGenerico(CodigoError.ERROR_CARGA_COMENTARIO_FOTO, "cargaSQL"));
@@ -133,6 +130,8 @@ public class CargarComentario extends HttpServlet {
          */
         try {
             con.close();
+            pstSelect.close();
+            resultados.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

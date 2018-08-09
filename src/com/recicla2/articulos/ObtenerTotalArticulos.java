@@ -17,6 +17,7 @@ public class ObtenerTotalArticulos {
      *
      * @return Número de artículos
      */
+    @SuppressWarnings("Duplicates")
     public static String obtener() {
 
         /*
@@ -59,6 +60,8 @@ public class ObtenerTotalArticulos {
          */
         try {
             con.close();
+            pstSelect.close();
+            resultados.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

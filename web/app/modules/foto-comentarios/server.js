@@ -34,7 +34,7 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
      */
     let $comuna = '';
     if (!isNullUndf(comunaID) && !isNaN(comunaID)) {
-        $comuna = '&comuna=' + comunaID;
+        $comuna = '&comuna=' + encodeURI(comunaID.toString());
     }
 
     /**
@@ -49,7 +49,7 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
      * Verifica número de página
      */
     if (isNaN(npag)) npag = 0;
-    let $data = 'pag={0}&asc={1}'.format(npag, !descendente) + $comuna;
+    let $data = 'pag={0}&asc={1}'.format(encodeURI(npag.toString()), !descendente) + $comuna;
     let $hash = $data.hashCode();
     if (lastQueryHash === $hash) return;
     lastQueryHash = $hash;
@@ -105,10 +105,12 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
              */
             else {
                 throwErrorID(errordb['errorConsultaArticulos']);
+                consoleLogError(response);
             }
 
         } catch ($e) {
             throwErrorID(errordb['errorConsultaArticulos']);
+            consoleLogError(response);
         } finally {
         }
     });
@@ -119,6 +121,7 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
      */
     $descargaArticulos.fail(function (response, textStatus, jqXHR) {
         throwErrorID(errordb['errorConsultaArticulos']);
+        consoleLogError(response);
     });
 
     loadHandler(false);
@@ -168,7 +171,7 @@ function descargarComentariosFoto(picData) {
 
     let $descargaComentario = $.ajax({
         crossOrigin: false,
-        data: 'id={0}'.format(picData.id),
+        data: 'id={0}'.format(encodeURI(picData.id.toString())),
         timeout: 10000,
         type: 'get',
         url: 'obtenComentariosFoto',
@@ -194,11 +197,13 @@ function descargarComentariosFoto(picData) {
              * Ocurrió un error
              */
             else {
-                throwErrorID(errordb['descargaFotoComentario'])
+                throwErrorID(errordb['descargaFotoComentario']);
+                consoleLogError(response);
             }
 
         } catch ($e) {
-            throwErrorID(errordb['descargaFotoComentario'])
+            throwErrorID(errordb['descargaFotoComentario']);
+            consoleLogError(response);
         } finally {
         }
     });
@@ -209,6 +214,7 @@ function descargarComentariosFoto(picData) {
      */
     $descargaComentario.fail(function (response, textStatus, jqXHR) {
         throwErrorID(errordb['descargaFotoComentario']);
+        consoleLogError(response);
     });
 
     loadHandler(false);
@@ -230,9 +236,9 @@ function enviarComentario(contenedor, comentario, fotoID) {
     if (isNaN(fotoID)) return;
     if (comentario.length === 0 || comentario.length > 512) return;
 
-    let $descargaComentario = $.ajax({
+    let $cargaComentario = $.ajax({
         crossOrigin: false,
-        data: 'c={0}&id={1}'.format(encodeURI(comentario)),
+        data: 'c={0}&id={1}'.format(encodeURI(comentario), encodeURI(fotoID.toString())),
         timeout: 10000,
         type: 'post',
         url: 'subirComentarioFoto',
@@ -242,27 +248,29 @@ function enviarComentario(contenedor, comentario, fotoID) {
     /**
      * Respuesta correcta desde el servidor
      */
-    $descargaComentario.done(function (response) {
+    $cargaComentario.done(function (response) {
         try {
 
             let data = JSON.parse(response);
 
             /**
-             * Se obtuvo de manera satisfactoria el contenido desde el servidor
+             * No ocurrieron errores al cargar el comentario en el servidor
              */
             if (Object.keys(data).indexOf('error') === -1) {
-                picPanelComment(data, picData);
+                writePicComment(contenedor, new Date(), comentario, true);
             }
 
             /**
              * Ocurrió un error
              */
             else {
-                throwErrorID(errordb['descargaFotoComentario'])
+                throwErrorID(errordb['cargaComentarioFoto']);
+                consoleLogError(response);
             }
 
         } catch ($e) {
-            throwErrorID(errordb['descargaFotoComentario'])
+            throwErrorID(errordb['cargaComentarioFoto']);
+            consoleLogError(response);
         } finally {
         }
     });
@@ -271,8 +279,9 @@ function enviarComentario(contenedor, comentario, fotoID) {
     /**
      * Respuesta fallida desde el servidor
      */
-    $descargaComentario.fail(function (response, textStatus, jqXHR) {
-        throwErrorID(errordb['descargaFotoComentario']);
+    $cargaComentario.fail(function (response, textStatus, jqXHR) {
+        throwErrorID(errordb['cargaComentarioFoto']);
+        consoleLogError(response);
     });
 
 }

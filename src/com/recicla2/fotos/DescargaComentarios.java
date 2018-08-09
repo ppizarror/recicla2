@@ -45,12 +45,14 @@ public class DescargaComentarios extends HttpServlet {
      * @throws ServletException Excepción del Servlet
      * @throws IOException      Error acceso IO
      */
+    @SuppressWarnings("Duplicates")
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         /*
         Genera el objeto para escribir
          */
         PrintWriter out = response.getWriter();
+        response.setHeader("Content-Type", "text/html; charset=UTF-8");
 
         /*
         Obtiene ID de la foto
@@ -106,7 +108,7 @@ public class DescargaComentarios extends HttpServlet {
                 Genera json comentario en particular
                  */
                 JSONObject cfoto = new JSONObject();
-                cfoto.put("id", resultados.getInt(1));
+                // cfoto.put("id", resultados.getInt(1));
                 cfoto.put("fecha", resultados.getString(2));
                 cfoto.put("comentario", resultados.getString(3));
 
@@ -125,6 +127,8 @@ public class DescargaComentarios extends HttpServlet {
          */
         try {
             con.close();
+            pstSelect.close();
+            resultados.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

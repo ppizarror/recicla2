@@ -218,7 +218,7 @@ function getElementInnerWidth(elem) {
  * Muestra un mensaje de error en la consola
  * @function
  * @param {string} msg - Mensaje
- * @param {boolean} w - Indica si se escribe el encabezado o no
+ * @param {boolean=} w - Indica si se escribe el encabezado o no
  */
 function consoleLogError(msg, w) {
     let $m;

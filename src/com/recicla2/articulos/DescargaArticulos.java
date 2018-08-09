@@ -52,6 +52,7 @@ public class DescargaArticulos extends HttpServlet {
         Genera el objeto para escribir
          */
         PrintWriter out = response.getWriter();
+        response.setHeader("Content-Type", "text/html; charset=UTF-8");
 
         /*
         Obtiene el contexto del contenedor
