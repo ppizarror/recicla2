@@ -401,7 +401,7 @@ function picPanelComment(cdata, picData) {
     /**
      * Crea el HTML del contenido
      */
-    let $content = '<div class="foto-grande-panel"><img src="{0}" alt="" /></div><div class="foto-grande-panel-com-title">{1}</div><div class="foto-grande-panel-input"><textarea id="{2}" class="form-control" cols="50" rows="10" placeholder="{3}"></textarea><button type="button" class="btn btn-primary" id="{5}">{4}</button></div><div class="foto-comentarios-com-contenedor" id="{6}"><div class="foto-comentarios-com-item"><div class="foto-comentarios-com-com">Hola</div><div class="foto-comentarios-com-fecha">hace 14 horas</div></div><div class="foto-comentarios-com-item"><div class="foto-comentarios-com-com">Hola</div><div class="foto-comentarios-com-fecha">hace 14 horas</div></div></div>'.format($photo_path + picData['ruta'], lang.foto_comentarios_title_com, $textID, lang.foto_comentarios_text_com_placeholder, lang.foto_comentarios_com_btn, $btnID, $comContID);
+    let $content = '<div class="foto-grande-panel"><img src="{0}" alt="" /></div><div class="foto-grande-panel-com-title">{1}</div><div class="foto-grande-panel-input"><textarea id="{2}" class="form-control" cols="50" rows="10" placeholder="{3}" maxlength="512"></textarea><button type="button" class="btn btn-primary" id="{5}" disabled>{4}</button></div><div class="foto-comentarios-com-contenedor" id="{6}"></div>'.format($photo_path + picData['ruta'], lang.foto_comentarios_title_com, $textID, lang.foto_comentarios_text_com_placeholder, lang.foto_comentarios_com_btn, $btnID, $comContID);
 
     $.confirm({
         animateFromElement: false,
@@ -418,7 +418,81 @@ function picPanelComment(cdata, picData) {
                 action: function () {
                 }
             }
-        }
+        },
+
+        /**
+         * Función que se ejecuta cuando se despliega el contenido, asocia evento a textarea
+         */
+        onContentReady: function () {
+
+            /**
+             * Dibuja los comentarios
+             */
+            let $conk = Object.keys(cdata);
+            for (let i = 0; i < $conk.length; i++) {
+                console.log(cdata[$conk[i]]);
+            }
+
+            // noinspection JSUnusedLocalSymbols
+            /**
+             * Escribir en el textarea activa o desactiva botón comentar
+             */
+            $('#' + $textID).on('keydown', function (e) {
+                let $c = $('#' + $textID).val();
+                let $btn = $('#' + $btnID);
+                if ($c.length > 0) {
+                    $btn.removeAttr('disabled');
+                } else {
+                    $btn.attr('disabled', 'disabled');
+                }
+            });
+
+            /**
+             * Asocia evento click botón con el textarea
+             */
+            $('#' + $btnID).on('click', function (e) {
+
+                // Previene el defaultState
+                e.preventDefault();
+
+                // Obtiene elementos
+                let $txtArea = $('#' + $textID);
+                let $button = $('#' + $btnID);
+
+                // Obtiene el texto
+                let $text = $txtArea.val().toString();
+                if ($text.length === 0) return;
+
+                // Aplica cambios visuales
+                $txtArea.val('');
+                $button.attr('disabled', 'disabled');
+
+            })
+
+        },
     });
+
+}
+
+/**
+ * Escribe un comentario en el panel de comentarios de una foto
+ * @function
+ * @param {String} panel - ID del panel
+ * @param {Date} date - Fecha del comentario
+ * @param {String} com - Comentario
+ * @param {boolean=} prepend - Indica si el comentario se prepone o no
+ */
+function writePicComment(panel, date, com, prepend) {
+
+    let $tago = $.timeago(date);
+    let $content = '<div class="foto-comentarios-com-item"><div class="foto-comentarios-com-com"><span class="foto-comentarios-com-fecha">{0}</span>{1}</div></div>'.format($tago, com);
+
+    let $con = $('#' + panel);
+    if ($con.length === 0) return; // Evita error si el contenedor no existe
+    if (prepend) {
+        $con.prepend($content);
+    } else {
+        $con.append($content);
+    }
 
 }

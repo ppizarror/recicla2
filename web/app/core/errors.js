@@ -21,36 +21,38 @@ let errordb = {
 };
 
 /**
- * Añade un código de error a la base de datos
- * @function
- * @param {String} id - Identificador del error
- * @param {String} msg - Mensaje del error
- * @param {String} moreinfo - Más información
- * @param {number=} code - Código del error
- */
-function $addError(id, msg, moreinfo, code) {
-    if (isNullUndf(code)) code = -1; // Si el código no se define se deja como 99
-    if (notNullUndf(errordb[id])) return; // Si el error ya existe retorna
-    errordb[id] = {
-        code: code,
-        id: id,
-        moreinfo: moreinfo,
-        msg: msg,
-    }
-}
-
-/**
  * Inicia mensajes de error
  * @function
  */
 function initErrors() {
-    $addError('coreAppDbConn', 'Error al conectar con la base de datos', 'Ocurrió un error fatal al conectar con la base de datos', 0);
-    $addError('coreAppRCDescarga', 'Error al descargar datos de regiones y comunas', 'Ocurrió un error fatal al descargar datos de regiones y comunas en la aplicación', 1);
-    $addError('errorErrorObt', 'Error al obtener el error de la aplicación', 'Ocurrió un error fatal al obtener el código del error obtenido en la aplicación, contacte con su Administrador', 2);
-    $addError('corePostGetError', 'Error al acceder de forma incorrecta a Servlet', 'Servlet no soporta el llamado especificado', 3);
-    $addError('descargaArticulo', 'Error al descargar artículos', 'Ocurrió un error al descargar los artículos', 4);
-    $addError('errorConsultaArticulos', 'Error al generar la consulta al servidor para obtener los artículos', 'Ocurrió un error fatal al generar la consulta al servidor para obtener los artículos', 5);
-    $addError('descargaFotoComentario', 'Error al descargar comentarios de la fotografía', 'Ocurrió un error al consultar los comentarios de la fotografía seleccionada', 6);
+
+    /**
+     * Añade un código de error a la base de datos
+     * @function
+     * @param {String} id - Identificador del error
+     * @param {String} msg - Mensaje del error
+     * @param {String} moreinfo - Más información
+     * @param {number=} code - Código del error
+     */
+    let $addError = function (id, msg, moreinfo, code) {
+        if (isNullUndf(code)) code = -1; // Si el código no se define se deja como 99
+        if (notNullUndf(errordb[id])) return; // Si el error ya existe retorna
+        errordb[id] = {
+            code: code,
+            id: id,
+            moreinfo: moreinfo,
+            msg: msg,
+        }
+    };
+
+    $addError('coreAppDbConn', 'Error al conectar con la base de datos', 'Ocurrió un error fatal al conectar con la base de datos', 1);
+    $addError('coreAppRCDescarga', 'Error al descargar datos de regiones y comunas', 'Ocurrió un error fatal al descargar datos de regiones y comunas en la aplicación', 2);
+    $addError('errorErrorObt', 'Error al obtener el error de la aplicación', 'Ocurrió un error fatal al obtener el código del error obtenido en la aplicación, contacte con su Administrador', 3);
+    $addError('corePostGetError', 'Error al acceder de forma incorrecta a Servlet', 'Servlet no soporta el llamado especificado', 4);
+    $addError('descargaArticulo', 'Error al descargar artículos', 'Ocurrió un error al descargar los artículos', 5);
+    $addError('errorConsultaArticulos', 'Error al generar la consulta al servidor para obtener los artículos', 'Ocurrió un error fatal al generar la consulta al servidor para obtener los artículos', 6);
+    $addError('descargaFotoComentario', 'Error al descargar comentarios de la fotografía', 'Ocurrió un error al consultar los comentarios de la fotografía seleccionada', 7);
+    $addError('cargaComentarioFoto', 'Error al cargar comentario fotografía', 'Ocurrió un error al escribir un comentario para la fotografía, consulte con el Administrador', 8);
 }
 
 /**

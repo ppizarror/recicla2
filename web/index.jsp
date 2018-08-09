@@ -43,10 +43,11 @@
 
     <!-- Librerías js -->
     <script src="packages/jquery/jquery-3.3.1.js"></script>
+    <script src="packages/jquery-timeago/jquery.timeago.min.js"></script>
+    <script src="packages/jquery-timeago/locales/jquery.timeago.es.min.js"></script>
     <script src="packages/toastr/toastr.min.js"></script>
     <script src="packages/jquery-confirm/jquery-confirm.min.js"></script>
     <script src="packages/tooltipster/tooltipster.bundle.min.js"></script>
-    <script src="packages/jquery-dateFormat/jquery-dateFormat.min.js"></script>
     <script src="packages/twbs-pagination/jquery.twbsPagination.min.js"></script>
 
     <!-- Estilos de librerías -->

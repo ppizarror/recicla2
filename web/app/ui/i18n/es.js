@@ -18,6 +18,7 @@ $lang_db.es = {
     'error': 'Error',
     'error_code': 'Código error: {0}',
     'foto_comentarios_ajax_descarga_comentarios': 'Consulta Ajax descarga comentarios foto ID {0}',
+    'foto_comentarios_ajax_carga_comentario': 'Consulta Ajax carga comentario hashQuery {0}',
     'foto_comentarios_ajax_info': 'Consulta Ajax descarga de artículos hashQuery {0}',
     'foto_comentarios_c_pick': 'Seleccione comuna',
     'foto_comentarios_comuna_inv': 'Comuna no encontrada',

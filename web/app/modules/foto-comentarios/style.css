@@ -215,25 +215,45 @@ Contenedor de los comentarios
 .foto-comentarios-com-contenedor {
     display: block;
     padding: 0 20px;
+    margin-top: 20px;
 }
 
 /**
 Comentario
  */
 .foto-comentarios-com-item {
+    background-color: #eaeaea;
+    border-radius: 5px;
+    cursor: default;
+    display: flex;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 10px 0;
+    padding: 5px;
+}
 
+.foto-comentarios-com-item:hover {
+    background-color: #d4d4d4;
 }
 
 /**
 Texto del comentario
  */
 .foto-comentarios-com-com {
-
+    word-wrap: break-word;
 }
 
 /**
 Fecha del comentario
  */
 .foto-comentarios-com-fecha {
+    color: #7b7b7b;
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-right: 10px;
+    position: relative;
+}
 
+.foto-comentarios-com-fecha:first-letter {
+    text-transform: uppercase;
 }

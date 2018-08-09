@@ -7,7 +7,7 @@
     <!-- Versión de la aplicación -->
     <context-param>
         <param-name>appver</param-name>
-        <param-value>0.29</param-value>
+        <param-value>0.40</param-value>
     </context-param>
 
     <!-- Cantidad de paginado artículos -->
