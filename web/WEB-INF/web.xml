@@ -16,6 +16,12 @@
         <param-value>5</param-value>
     </context-param>
 
+    <!-- Directorio de las fotos de la aplicación -->
+    <context-param>
+        <param-name>directorioFotosArticulos</param-name>
+        <param-value>"res/photos/"</param-value>
+    </context-param>
+
     <!-- Servlet descarga de comentarios, se envían por get, usar ajax -->
     <servlet>
         <servlet-name>descargaDeComentarios</servlet-name>

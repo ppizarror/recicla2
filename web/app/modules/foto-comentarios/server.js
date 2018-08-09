@@ -52,6 +52,7 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
     if (lastQueryHash === $hash) return;
     lastQueryHash = $hash;
 
+
     // noinspection JSUnresolvedFunction
     let $downloadIssues = $.ajax({
         crossOrigin: false,
@@ -85,6 +86,13 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
                     createPaginator($totalArt);
                 }
                 lastPaginadorLength = $totalArt;
+
+                /**
+                 * Reordena los datos dependiendo del orden del filtro
+                 */
+                if (descendente) {
+                    data = reverseObject(data);
+                }
 
                 /**
                  * Dibuja los resultados

@@ -240,6 +240,7 @@ function createPaginator(totalp) {
         $pagcontainer.removeClass('foto-comentarios-paginador-vacio');
     }
 
+    fotocomentario_page = 0;
     $('#' + $pid).twbsPagination({
         totalPages: $totalp,
         visiblePages: 5,
@@ -277,7 +278,6 @@ function drawResults(results) {
     /**
      * Si no hay resultados se muestra un mensaje
      */
-    console.log(results);
     if ($rk.length === 0) {
         $articuloContainer.append('<div class="foto-comentarios-articulo-mensaje">{0}</div>'.format(lang.foto_comentarios_no_results));
         return;
@@ -290,6 +290,20 @@ function drawResults(results) {
     for (let i = 0; i < $rk.length; i++) {
         $r = results[$rk[i]];
         console.log($r);
+        let $listaFotos = '';
+        let $fotoObj = Object.keys($r['fotos']);
+        let $f;
+        if ($fotoObj.length === 0) {
+            $listaFotos = lang.foto_comentarios_item_no_pics;
+        }
+        for (let j = 0; j < $fotoObj.length; j++) {
+            $f = $r['fotos'][$fotoObj[j]];
+            // noinspection HtmlUnknownTarget
+            $listaFotos += '<div class="art-foto-item"><img src="{0}" alt="{1}" title="{2}"/></div>'.format($photo_path + $f['ruta'], $f['nombre'], lang.foto_comentarios_pic_view_comments);
+        }
+        $articuloContainer.append('<div class="foto-comentario-nuevo-articulo"><div class="art-nombre" title="{1}">{0}</div><div class="art-foto-lista">{2}</div></div>'.format($r['nombre'], $r['fecha'], $listaFotos));
     }
+
+    centerMainContent();
 
 }

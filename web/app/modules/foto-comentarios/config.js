@@ -31,3 +31,8 @@ let $art_total = 0;
  * Artículos por página
  */
 let $art_pp = 3;
+
+/**
+ * Dirección disco directorio de fotos de los artículos
+ */
+let $photo_path = '';

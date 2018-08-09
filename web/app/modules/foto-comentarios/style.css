@@ -26,7 +26,7 @@ Bloque que almacena selectores
 .foto-comentario-selector-panel {
     display: flex;
     float: right;
-    margin-left: 10px;
+    margin-left: 7px;
 }
 
 .foto-comentario-selector-panel .form-control {
@@ -43,10 +43,6 @@ Bloque que almacena selectores
 .selector-orden {
     max-width: 175px;
     width: 30%;
-}
-
-@media screen and (max-width: 576px) {
-
 }
 
 /**
@@ -97,4 +93,74 @@ Mensaje en contenedor
     margin: 0 6px;
     opacity: 0.7;
     position: relative;
+}
+
+/**
+Elemento artículo
+ */
+.foto-comentario-nuevo-articulo {
+    border-bottom: 1px solid #fff;
+    box-shadow: inset 0 0 11px 4px rgba(0, 0, 0, 0.02);
+    display: flex;
+    padding: 10px;
+    width: 100%;
+}
+
+.foto-comentario-nuevo-articulo:hover {
+    background-color: #e3e3e3;
+}
+
+.foto-comentario-nuevo-articulo:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/**
+Contiene el nombre de cada artículo
+ */
+.art-nombre {
+    cursor: default;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0 10px;
+    width: 25%;
+    word-break: break-word;
+}
+
+/**
+Lista de fotos de cada artículo
+ */
+.art-foto-lista {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 75%;
+}
+
+/**
+Foto
+ */
+.art-foto-item {
+    border: 1px solid #d3d3d3;
+    display: inline-block;
+    float: left;
+    margin: 0 5px;
+}
+
+.art-foto-lista span {
+    cursor: default;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.art-foto-item:hover {
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.21);
+    cursor: pointer;
+}
+
+.art-foto-item img {
+    height: 120px;
+    width: 120px;
 }

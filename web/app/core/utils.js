@@ -352,6 +352,22 @@ String.prototype.hashCode = function () {
 };
 
 /**
+ * object.reverse()
+ * @param object
+ * @returns {Object}
+ */
+function reverseObject(object) {
+    let $new = {};
+    let $keys = Object.keys(object);
+    // $keys.reverse();
+    let $kl = $keys.length - 1;
+    for (let i = 0; i < $keys.length; i++) {
+        $new[$keys[i]] = object[$keys[$kl - i]];
+    }
+    return $new;
+}
+
+/**
  * Retorna true/false si el objeto es booleano
  * @function
  * @param {object} obj - Objeto
