@@ -54,7 +54,6 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
     if (lastQueryHash === $hash) return;
     lastQueryHash = $hash;
 
-    // noinspection JSUnresolvedFunction
     let $downloadIssues = $.ajax({
         crossOrigin: false,
         data: $data,
@@ -64,7 +63,6 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
     });
     console.info(lang.foto_comentarios_ajax_info.format($hash));
 
-    // noinspection JSCheckFunctionSignatures
     /**
      * Respuesta correcta desde el servidor
      */
@@ -168,7 +166,6 @@ function buscarComuna(id) {
  */
 function descargarComentariosFoto(picData) {
 
-    // noinspection JSUnresolvedFunction
     let $downloadIssues = $.ajax({
         crossOrigin: false,
         data: 'id={0}'.format(picData.id),
@@ -177,8 +174,7 @@ function descargarComentariosFoto(picData) {
         url: 'obtenComentariosFoto',
     });
     console.info(lang.foto_comentarios_ajax_descarga_comentarios.format(picData.id));
-
-    // noinspection JSCheckFunctionSignatures
+    
     /**
      * Respuesta correcta desde el servidor
      */
