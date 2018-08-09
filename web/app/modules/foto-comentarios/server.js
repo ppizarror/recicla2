@@ -235,7 +235,7 @@ function enviarComentario(contenedor, comentario, fotoID) {
         data: 'c={0}&id={1}'.format(encodeURI(comentario)),
         timeout: 10000,
         type: 'post',
-        url: 'obtenComentariosFoto',
+        url: 'subirComentarioFoto',
     });
     console.info(lang.foto_comentarios_ajax_carga_comentario.format(comentario.hashCode()));
 

@@ -32,6 +32,16 @@
         <url-pattern>/obtenComentariosFoto</url-pattern>
     </servlet-mapping>
 
+    <!-- Servlet carga de comentarios, se envían por post, usar ajax -->
+    <servlet>
+        <servlet-name>cargaComentarioDeFotos</servlet-name>
+        <servlet-class>com.recicla2.fotos.CargarComentario</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cargaComentarioDeFotos</servlet-name>
+        <url-pattern>/subirComentarioFoto</url-pattern>
+    </servlet-mapping>
+
     <!-- Servlet descarga de artículos -->
     <servlet>
         <servlet-name>descargaArticulo</servlet-name>
