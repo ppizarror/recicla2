@@ -49,10 +49,12 @@
     <script src="packages/jquery-confirm/jquery-confirm.min.js"></script>
     <script src="packages/tooltipster/tooltipster.bundle.min.js"></script>
     <script src="packages/twbs-pagination/jquery.twbsPagination.min.js"></script>
+    <script src="packages/emoticon/jquery.corners.js"></script>
+    <script src="packages/emoticon/jquery.emoticons.js"></script>
 
     <!-- Estilos de librerías -->
     <link rel="stylesheet" type="text/css" href="packages/font-awesome-v5/css/fontawesome-all.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="packages/bootstrap/bootstrap-4.0.0-beta.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="packages/bootstrap/bootstrap-4.0.0.css" media="screen">
     <link rel="stylesheet" type="text/css" href="packages/toastr/toastr.css" media="screen">
     <link rel="stylesheet" type="text/css" href="packages/tooltipster/tooltipster.bundle.css" media="screen">
     <link rel="stylesheet" type="text/css" href="packages/tooltipster/themes/sideTip-borderless.css" media="screen">

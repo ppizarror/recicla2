@@ -403,3 +403,13 @@ function stringToBoolean(bool) {
         });
     }
 }(jQuery));
+
+/**
+ * Capitaliza la primera letra de un string
+ * @function
+ * @param {String} string - String a capitalizar
+ * @returns {String}
+ */
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

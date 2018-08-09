@@ -65,7 +65,7 @@
 
     <!-- Estilos de librerías -->
     <link rel="stylesheet" type="text/css" href="packages/font-awesome-v5/css/fontawesome-all.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="packages/bootstrap/bootstrap-4.0.0-beta.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="packages/bootstrap/bootstrap-4.0.0.css" media="screen">
     <link rel="stylesheet" type="text/css" href="packages/toastr/toastr.css" media="screen">
     <link rel="stylesheet" type="text/css" href="packages/tooltipster/tooltipster.bundle.css" media="screen">
     <link rel="stylesheet" type="text/css" href="packages/tooltipster/themes/sideTip-borderless.css" media="screen">

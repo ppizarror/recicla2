@@ -161,6 +161,7 @@ public class DescargaArticulos extends HttpServlet {
                     foto.put("nombre", fotoSelect.getString(3));
                     fotos.put(Integer.toString(fotoSelect.getInt(1)), foto);
                 }
+                fotoSelect.close();
 
                 /*
                 Arma el artículo
@@ -186,6 +187,7 @@ public class DescargaArticulos extends HttpServlet {
          */
         try {
             con.close();
+            pstSelect.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

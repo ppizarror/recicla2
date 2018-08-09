@@ -154,6 +154,7 @@ Foto
 }
 
 .art-foto-lista span {
+    color: #828282;
     cursor: default;
     font-size: 1rem;
     font-weight: 400;
@@ -180,6 +181,8 @@ Visualizador de fotos
 
 .foto-grande-panel img {
     height: 600px;
+    max-height: 600px;
+    max-width: 800px;
     width: 800px !important;
 }
 

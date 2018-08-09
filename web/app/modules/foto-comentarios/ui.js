@@ -401,11 +401,11 @@ function picPanelComment(cdata, picData) {
     /**
      * Crea el HTML del contenido
      */
-    let $content = '<div id="{7}" style="display: none"></div><div class="foto-grande-panel"><img src="{0}" alt="" /></div><div class="foto-grande-panel-com-title">{1}</div><div class="foto-grande-panel-input"><textarea id="{2}" class="form-control" cols="50" rows="10" placeholder="{3}" maxlength="512"></textarea><button type="button" class="btn btn-primary" id="{5}" disabled>{4}</button></div><div class="foto-comentarios-com-contenedor" id="{6}"></div>'.format($photo_path + picData['ruta'], lang.foto_comentarios_title_com, $textID, lang.foto_comentarios_text_com_placeholder, lang.foto_comentarios_com_btn, $btnID, $comContID, $textSanitize);
+    let $content = '<div id="{7}" style="display:none"></div><div class="foto-grande-panel"><img src="{0}" alt="{8}" /></div><div class="foto-grande-panel-com-title">{1}</div><div class="foto-grande-panel-input"><textarea id="{2}" class="form-control" cols="50" rows="10" placeholder="{3}" maxlength="512"></textarea><button type="button" class="btn btn-primary" id="{5}" disabled>{4}</button></div><div class="foto-comentarios-com-contenedor" id="{6}"></div>'.format($photo_path + picData['ruta'], lang.foto_comentarios_title_com, $textID, lang.foto_comentarios_text_com_placeholder, lang.foto_comentarios_com_btn, $btnID, $comContID, $textSanitize, picData['nombre']);
 
     $.confirm({
         animateFromElement: false,
-        boxWidth: '80%',
+        boxWidth: cfg_mobile_page_enabled ? '80%' : '60%',
         closeIcon: true,
         content: $content,
         escapeKey: 'cancel',
@@ -503,9 +503,9 @@ function writePicComment(panel, date, com, prepend, titlef) {
         $showtf = false;
     }
 
-    let $tago = $.timeago(date);
+    let $tago = capitalizeFirstLetter($.timeago(date));
     // noinspection HtmlUnknownAttribute
-    let $content = '<div class="foto-comentarios-com-item"><div class="foto-comentarios-com-com"><span class="foto-comentarios-com-fecha"{2}>{0}</span>{1}</div></div>'.format($tago, com, $showtf ? 'title="' + titlef + '"' : '');
+    let $content = '<div class="foto-comentarios-com-item"><div class="foto-comentarios-com-com"><span class="foto-comentarios-com-fecha" {2}>{0}</span>{1}</div></div>'.format($tago, com, $showtf ? 'title="' + titlef + '"' : '');
 
     let $con = $('#' + panel);
     if ($con.length === 0) return; // Evita error si el contenedor no existe
@@ -514,5 +514,6 @@ function writePicComment(panel, date, com, prepend, titlef) {
     } else {
         $con.append($content);
     }
+    $con.emoticons();
 
 }

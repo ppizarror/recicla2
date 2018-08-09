@@ -90,6 +90,7 @@ public class DescargaRegionComuna implements ServletContextListener,
                     Comuna c = new Comuna(cSelect.getInt(1), cSelect.getString(2));
                     r.AgregaComuna(c);
                 }
+                cSelect.close();
 
                 /*
                 Añade región a la lista
@@ -113,6 +114,7 @@ public class DescargaRegionComuna implements ServletContextListener,
          */
         try {
             con.close();
+            rSelect.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

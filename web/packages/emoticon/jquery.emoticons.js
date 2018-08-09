@@ -11,7 +11,7 @@
  */
 jQuery.fn.emoticons = function (icon_folder) {
     /* emoticons is the folder where the emoticons are stored*/
-    var icon_folder = icon_folder || "res/emoticons";
+    icon_folder = icon_folder || "res/emoticons";
     //var settings = jQuery.extend({emoticons: "emoticons"}, options);
     /* keys are the emoticons
      * values are the ways of writing the emoticon
@@ -22,7 +22,7 @@ jQuery.fn.emoticons = function (icon_folder) {
      * we add "cow" : Array("(C)") to emotes
      * and an image called 'face-cow.png' under the emoticons folder   
      */
-    var emotes = {
+    let emotes = {
         "smile": Array(":-)", ":)", "=]", "=)"),
         "sad": Array(":-(", "=(", ":[", ":&lt;"),
         "wink": Array(";-)", ";)", ";]", "*)"),
@@ -41,10 +41,10 @@ jQuery.fn.emoticons = function (icon_folder) {
     /* Replaces all ocurrences of emoticons in the given html with images
      */
     function emoticons(html) {
-        for (var emoticon in emotes) {
-            for (var i = 0; i < emotes[emoticon].length; i++) {
+        for (let emoticon in emotes) {
+            for (let i = 0; i < emotes[emoticon].length; i++) {
                 /* css class of images is emoticonimg for styling them*/
-                html = html.replace(emotes[emoticon][i], "<img src=\"" + icon_folder + "/face-" + emoticon + ".png\" class=\"emoticonimg\" alt=\"" + emotes[emoticon][i] + "\"/>", "g");
+                html = html.replace(emotes[emoticon][i], "<img src=\"" + icon_folder + "/face-" + emoticon + ".png\" class=\"emoticonimg\" alt='' />", "g");
             }
         }
         return html;
