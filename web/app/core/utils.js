@@ -208,7 +208,6 @@ function getElementWidth(elem) {
  */
 function getElementInnerWidth(elem) {
     try {
-        // noinspection JSValidateTypes
         return elem.innerWidth();
     } catch (e) {
         return -1;
@@ -276,9 +275,7 @@ function consoleLogException(exceptionmsg, w) {
  * @param {string} msg - Mensaje
  */
 function consoleLogInfo(msg) {
-    if (cfg_verbose) {
-        console.log(msg);
-    }
+    if (cfg_verbose) console.log(msg);
 }
 
 /**

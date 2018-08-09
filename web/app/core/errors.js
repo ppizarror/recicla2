@@ -71,6 +71,11 @@ function cleanErrorMsg() {
  * @param {object} exceptionmsg - Objeto de excepción
  */
 function throwErrorIDException(errorid, exceptionmsg) {
+
+    /**
+     * Obtiene contenedores
+     * @type {JQuery<HTMLElement> | jQuery | HTMLElement}
+     */
     let $maincontent = $('#mainContent');
     let $errormsg = $('#errorMsg');
 
@@ -81,10 +86,22 @@ function throwErrorIDException(errorid, exceptionmsg) {
     $errormsg.css('display', 'block');
     $('#errorMsgText').html('<span class="errAlertIcon">{0}</span> {1}'.format('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i><span></span>', errorid.msg));
 
-    // noinspection HtmlUnknownTarget,QuirksModeInspectionTool
+    /**
+     * Elimina recuadro previo de errores
+     */
+    $('.err-back-home').each(function () {
+        $(this).remove();
+    });
+
+    // noinspection HtmlUnknownTarget,QuirksModeInspectionTool,HtmlUnknownTarget
+    /**
+     * Crea mensaje reenvió a inicio
+     */
     $errormsg.append('<a href="index.jsp" class="err-back-home hvr-bounce-in">{0} <i class="fas fa-home"></i></a>'.format(lang.back_home));
 
-    // Crea el tooltip
+    /**
+     * Crea el tooltip
+     */
     try {
         $errormsg.tooltipster('delete');
     } catch (e) {
@@ -98,7 +115,9 @@ function throwErrorIDException(errorid, exceptionmsg) {
         theme: cfg_tooltip_theme,
     });
 
-    // Muestra una notificación
+    /**
+     * Muestra una notificación
+     */
     if (cfg_always_show_err_notification) throwErrorNotification(errorid);
     let resizeObject = function () {
         // noinspection JSCheckFunctionSignatures
@@ -108,7 +127,9 @@ function throwErrorIDException(errorid, exceptionmsg) {
     // noinspection JSCheckFunctionSignatures
     $(window).on('resize.errorPanel', resizeObject);
 
-    // Crea una entrada de la excepción en la consola
+    /**
+     * Crea una entrada de la excepción en la consola
+     */
     consoleLogError('Error #{0} <{2}>: {1}.'.format(errorid.code, errorid.msg, errorid.id), false);
     if (exceptionmsg != null) {
         console.error('EXCEPTION: {0} {1}.'.format(exceptionmsg.message, exceptionmsg.stack));
@@ -116,6 +137,7 @@ function throwErrorIDException(errorid, exceptionmsg) {
     if (cfg_always_show_err_notification) {
         throwErrorNotification(errorid);
     }
+
 }
 
 /**
