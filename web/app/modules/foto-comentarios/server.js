@@ -9,12 +9,14 @@
 /**
  * Indica última búsqueda realizada
  * @type {number}
+ * @private
  */
 let lastPaginadorLength = 0;
 
 /**
  * Hash última búsqueda
  * @type {number}
+ * @private
  */
 let lastQueryHash = 0;
 
@@ -51,7 +53,6 @@ function obtenerListaArticulos(npag, comunaID, ascendente) {
     let $hash = $data.hashCode();
     if (lastQueryHash === $hash) return;
     lastQueryHash = $hash;
-
 
     // noinspection JSUnresolvedFunction
     let $downloadIssues = $.ajax({
@@ -157,5 +158,63 @@ function buscarComuna(id) {
      * Si no se encuentra entonces retorna error
      */
     return lang.foto_comentarios_comuna_inv;
+
+}
+
+/**
+ * Función que obtiene por AJAX artículos
+ * @function
+ * @param {Object} picData - Datos de la foto
+ */
+function descargarComentariosFoto(picData) {
+
+    // noinspection JSUnresolvedFunction
+    let $downloadIssues = $.ajax({
+        crossOrigin: false,
+        data: 'id={0}'.format(picData.id),
+        timeout: 10000,
+        type: 'get',
+        url: 'obtenComentariosFoto',
+    });
+    console.log(lang.foto_comentarios_ajax_descarga_comentarios.format(picData.id));
+
+    // noinspection JSCheckFunctionSignatures
+    /**
+     * Respuesta correcta desde el servidor
+     */
+    $downloadIssues.done(function (response) {
+        try {
+
+            let data = JSON.parse(response);
+
+            /**
+             * Se obtuvo de manera satisfactoria el contenido desde el servidor
+             */
+            if (Object.keys(data).indexOf('error') === -1) {
+                picPanelComment(data, picData);
+            }
+
+            /**
+             * Ocurrió un error
+             */
+            else {
+                throwErrorID(errordb['descargaFotoComentario'])
+            }
+
+        } catch ($e) {
+            throwErrorID(errordb['descargaFotoComentario'])
+        } finally {
+        }
+    });
+
+    // noinspection JSUnusedLocalSymbols
+    /**
+     * Respuesta fallida desde el servidor
+     */
+    $downloadIssues.fail(function (response, textStatus, jqXHR) {
+        throwErrorID(errordb['descargaFotoComentario']);
+    });
+
+    loadHandler(false);
 
 }

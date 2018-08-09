@@ -9,24 +9,28 @@
 /**
  * Contenedor
  * @type {jQuery}
+ * @private
  */
 let fotocomentario_container;
 
 /**
  * Almacena la página actual
  * @type {number}
+ * @private
  */
 let fotocomentario_page = 0;
 
 /**
  * Paginador
  * @type {string}
+ * @private
  */
 let $paginadorID = generateId(cfg_id_size);
 
 /**
  * Función global que carga los artículos
  * @type{function}
+ * @private
  */
 let cargarArticulos;
 
@@ -306,7 +310,7 @@ function drawResults(results) {
             $listaFotos += '<div class="art-foto-item" id="{2}"><img src="{0}" alt="{1}" width="120" height="120"/></div>'.format($photo_path + $f['ruta'], $f['nombre'], $fotoID);
             $listaFotoID.push({
                 domID: $fotoID,
-                picID: $f['id'],
+                picData: $f,
             });
         }
 
@@ -335,7 +339,7 @@ function drawResults(results) {
         for (let j = 0; j < $listaFotoID.length; j++) {
             $elem = $listaFotoID[j];
             $('#' + $elem.domID).on('click', {
-                id: $elem.picID,
+                data: $elem.picData,
             }, loadPicCommentsPanel);
         }
 
@@ -358,7 +362,22 @@ function loadPicCommentsPanel(ev) {
     /**
      * Obtiene la ID de la imagen clickeada
      */
-    let $picID = ev.data.id;
-    console.log($picID);
+    let $picData = ev.data.data;
 
+    /**
+     * Descarga las comentarios de la foto, dicha función luego llamará a abrir la ventana
+     * y desplegar el contenido
+     */
+    descargarComentariosFoto($picData);
+
+}
+
+/**
+ * Crea un panel para visualizar los comentarios de la foto y la foto
+ * @function
+ * @param {Object} cdata - Comentarios de la foto
+ * @param {Object} picData - Datos de la foto
+ */
+function picPanelComment(cdata, picData) {
+    console.log(cdata, picData);
 }

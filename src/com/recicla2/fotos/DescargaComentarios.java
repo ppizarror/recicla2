@@ -78,7 +78,7 @@ public class DescargaComentarios extends HttpServlet {
          */
         PreparedStatement pstSelect;
         try {
-            pstSelect = con.prepareStatement("SELECT * FROM comentario_fotografia WHERE fotografia=?");
+            pstSelect = con.prepareStatement("SELECT * FROM comentario_fotografia WHERE fotografia=? ORDER BY fecha DESC");
             pstSelect.setInt(1, fotoID);
         } catch (SQLException e) {
             e.printStackTrace();

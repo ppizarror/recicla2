@@ -7,7 +7,7 @@
     <!-- Versión de la aplicación -->
     <context-param>
         <param-name>appver</param-name>
-        <param-value>0.26</param-value>
+        <param-value>0.27</param-value>
     </context-param>
 
     <!-- Cantidad de paginado artículos -->
@@ -24,12 +24,12 @@
 
     <!-- Servlet descarga de comentarios, se envían por get, usar ajax -->
     <servlet>
-        <servlet-name>descargaDeComentarios</servlet-name>
+        <servlet-name>descargaDeComentariosFotos</servlet-name>
         <servlet-class>com.recicla2.fotos.DescargaComentarios</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>descargaDeComentarios</servlet-name>
-        <url-pattern>/obtenComentarios</url-pattern>
+        <servlet-name>descargaDeComentariosFotos</servlet-name>
+        <url-pattern>/obtenComentariosFoto</url-pattern>
     </servlet-mapping>
 
     <!-- Servlet descarga de artículos -->
