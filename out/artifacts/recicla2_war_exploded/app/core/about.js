@@ -15,7 +15,7 @@ let aboutinfo = {
         "github": "https://github.com/ppizarror",
         "name": "Pablo Pizarro R.",
         "tag": "@ppizarror",
-        "website": "http://ppizarror.com/",
+        "website": "https://ppizarror.com/",
     },
     "dependencies": {
         "bootstrap": "4.0.0-beta",      // https://github.com/twbs/bootstrap
