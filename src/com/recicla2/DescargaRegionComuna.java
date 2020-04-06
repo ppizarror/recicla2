@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Descarga las regiones y las comunas al iniciar el servlet.
  */
-public class DescargaRegionComuna implements ServletContextListener,
+public abstract class DescargaRegionComuna implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
 
     /**
